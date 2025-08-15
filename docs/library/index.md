@@ -1,6 +1,13 @@
 ---
-title: "PLACEHOLDER"
+title: "Library"
 status: "draft"
 updated: "2025-08-15"
 ---
-Section placeholder. Content forthcoming.
+
+# References
+Citations are managed via BibTeX in `docs/data/references.bib`.
+(Full render can be enhanced with templates later.)
+
+# Glossary
+- {{ glossary_term(term="incentive salience") }}
+- {{ glossary_term(term="reward prediction error") }}
