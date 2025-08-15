@@ -21,7 +21,8 @@ plugins:
   - macros
   - awesome-pages
   - glightbox
-  - gen-files
+  - gen-files:
+      scripts: []
 nav:
   - Home: index.md
   - Manifesto:
