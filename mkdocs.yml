@@ -1,0 +1,40 @@
+site_name: Project Dukkha
+theme:
+  name: material
+  palette:
+    - scheme: slate
+  features:
+    - navigation.sections
+    - content.code.copy
+    - content.tabs.link
+markdown_extensions:
+  - admonition
+  - attr_list
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed
+  - pymdownx.critic
+plugins:
+  - search
+  - bibtex:
+      bib_file: docs/data/references.bib
+  - macros
+  - awesome-pages
+  - glightbox
+  - gen-files
+nav:
+  - Home: index.md
+  - Manifesto:
+      - manifesto/index.md
+  - Truth:
+      - truth/index.md
+  - Model:
+      - model/index.md
+  - Practice:
+      - practice/index.md
+  - Briefs:
+      - briefs/index.md
+  - Library:
+      - library/index.md
+extra_css:
+  - assets/dukkha.css
