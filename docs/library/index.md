@@ -11,3 +11,5 @@ Citations are managed via BibTeX in `docs/data/references.bib`.
 # Glossary
 - {{ glossary_term(term="incentive salience") }}
 - {{ glossary_term(term="reward prediction error") }}
+- {{ glossary_term(term="hedonic hotspot") }}
+- {{ glossary_term(term="incentive sensitization") }}
