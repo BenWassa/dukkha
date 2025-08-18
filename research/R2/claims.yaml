@@ -1,0 +1,107 @@
+- id: R2-C01
+  text: "Intermittent/variable reward schedules drive persistent, high-rate checking; modern feeds and notifications emulate these contingencies."
+  importance: High
+  strength: High
+  scope: mixed
+  caveats: "Classic evidence is lab-based; translation to complex apps inferred via HCI experiments."
+  evidence_cites: ["ferster1957", "oulasvirta2012", "fitz2019"]
+  contradictions: []
+
+- id: R2-C02
+  text: "Smartphone checking is a brief, frequent habit reinforced by fast, informational rewards."
+  importance: High
+  strength: High
+  scope: human
+  caveats: "Student-heavy samples; early smartphones."
+  evidence_cites: ["oulasvirta2012"]
+  contradictions: []
+
+- id: R2-C03
+  text: "Auditory/tactile notifications capture attention and impair performance even without phone interaction."
+  importance: High
+  strength: High
+  scope: human
+  caveats: "Lab task generalizability to real work varies."
+  evidence_cites: ["stothart2015"]
+  contradictions: []
+
+- id: R2-C04
+  text: "Batching notifications at predictable times improves attention, mood, perceived control, and reduces stress versus default variable delivery; turning all notifications off can elevate anxiety/FoMO."
+  importance: High
+  strength: High
+  scope: human
+  caveats: "Two-week field trial; MTurk/India sample."
+  evidence_cites: ["fitz2019"]
+  contradictions: []
+
+- id: R2-C05
+  text: "Novelty signals recruit midbrain (SN/VTA) and hippocampal systems and promote exploration, supporting attentional capture by endlessly novel feeds."
+  importance: High
+  strength: High
+  scope: human
+  caveats: "fMRI inference; task differences."
+  evidence_cites: ["bunzeck2006", "krebs2009", "lisman2005"]
+  contradictions: []
+
+- id: R2-C06
+  text: "Grayscale display (cue desaturation) reduces daily screen time and problematic use; effects are modest and compliance varies."
+  importance: Medium
+  strength: Medium
+  scope: human
+  caveats: "Short interventions; self-selected compliance; mixed outcomes across studies."
+  evidence_cites: ["holte2020", "dekker2024", "wickord2023", "olson2022"]
+  contradictions: []
+
+- id: R2-C07
+  text: "Removing/quieting cues (disabling non‑essential notifications, moving/removing icon shortcuts) reduces use in multi‑strategy interventions."
+  importance: High
+  strength: Medium
+  scope: human
+  caveats: "Bundled interventions limit isolation of effects."
+  evidence_cites: ["olson2022", "fitz2019", "stothart2015"]
+  contradictions: []
+
+- id: R2-C08
+  text: "‘Wanting’ (incentive salience) can be amplified by cues/rewards without increased ‘liking,’ explaining compulsive checking under variable schedules."
+  importance: High
+  strength: High
+  scope: mixed
+  caveats: "Addiction framework extrapolated to digital habits."
+  evidence_cites: ["berridge2016"]
+  contradictions: []
+
+- id: R2-C09
+  text: "During infinite scrolling, context‑aware frictions (timely prompts/pauses) reduce scrolling when aligned with states like sleepiness or at‑home use."
+  importance: Medium
+  strength: Medium
+  scope: human
+  caveats: "Short (7‑day) study; acceptance depends on context."
+  evidence_cites: ["meinhardt2025"]
+  contradictions: []
+
+- id: R2-C10
+  text: "Adolescents show heightened ventral striatum reward sensitivity and greater peer‑amplified reward seeking, suggesting stronger susceptibility to novelty/variable cues."
+  importance: Medium
+  strength: High
+  scope: human
+  caveats: "Developmental heterogeneity; lab tasks."
+  evidence_cites: ["galvan2006", "chein2011"]
+  contradictions: []
+
+- id: R2-C11
+  text: "For high‑frequency social media users, short, pervasive checking patterns indicate stronger habit loops; batching and added friction are likely necessary."
+  importance: Medium
+  strength: Medium
+  scope: human
+  caveats: "Direct moderation tests limited."
+  evidence_cites: ["oulasvirta2012", "fitz2019"]
+  contradictions: []
+
+- id: R2-C12
+  text: "Design frictions that slow continuous consumption can improve recall/goal adherence but may reduce satisfaction."
+  importance: Medium
+  strength: Low
+  scope: human
+  caveats: "Some evidence from preprints and small samples."
+  evidence_cites: ["ruiz2024", "meinhardt2025"]
+  contradictions: []

@@ -1,0 +1,80 @@
+- id: R5-C01
+  text: "Infinite scrolling feeds and autoplay mechanisms exploit users’ propensity for endless consumption, significantly increasing time-on-platform through continuous, variable rewards:contentReference[oaicite:0]{index=0}. **Guardrail:** Introduce natural stopping points (e.g. “Are you still there?” prompts or pagination) to restore user control without entirely sacrificing convenience."
+  importance: High
+  strength: High
+  scope: human
+  caveats: "May reduce user engagement metrics; individual differences in self-control."
+  evidence_cites: ["culp2023"]
+  contradictions: []
+- id: R5-C02
+  text: "Short-form video reels (e.g. TikTok) induce flow states – marked by heightened concentration and time distortion – that fuel compulsive usage, especially in younger users:contentReference[oaicite:1]{index=1}. **Guardrail:** Implement “breaks” or gentle interruptions (e.g. reminder screens after prolonged viewing) and encourage mindful use by allowing users to set time limits."
+  importance: High
+  strength: High
+  scope: human
+  caveats: "User bypass of breaks; potential decreased engagement."
+  evidence_cites: ["qin2022"]
+  contradictions: []
+- id: R5-C03
+  text: "Frequent or gamified notifications and unpredictable reward cues (likes, badges) exploit the brain’s reward pathways, prompting habitual app-checking akin to a slot machine effect:contentReference[oaicite:2]{index=2}. **Guardrail:** Ensure notification hygiene – default to minimal, batched notifications, and empower users with granular control over alerts."
+  importance: High
+  strength: Medium
+  scope: human
+  caveats: "Overzealous filtering could cause users to miss important alerts; user habituation to reduced notifications varies."
+  evidence_cites: ["culp2023"]
+  contradictions: []
+- id: R5-C04
+  text: "Personalized recommendation feeds can leverage user data to maximize engagement, sometimes by exploiting cognitive biases or reinforcing filter bubbles:contentReference[oaicite:3]{index=3}. **Guardrail:** Provide transparency (“Why am I seeing this?” explanations) and user agency (content filters or the ability to reset/tune the algorithm) to preserve informed choice and diversity of content."
+  importance: High
+  strength: Medium
+  scope: human
+  caveats: "Trade-off with recommendation efficiency; some users may find explanations confusing."
+  evidence_cites: ["ftc2022"]
+  contradictions: []
+- id: R5-C05
+  text: "E-commerce interfaces commonly use **urgency and sneaking** dark patterns – e.g. countdown timers, low-stock warnings, hidden extra fees – which can pressure users into purchases:contentReference[oaicite:4]{index=4}:contentReference[oaicite:5]{index=5}. **Guardrail:** Mandate honest disclosures (no fake scarcity), clear pricing upfront, and require explicit user consent for add-ons (no pre-ticked upsells). Such practices align with emerging regulations against deceptive design."
+  importance: High
+  strength: High
+  scope: human
+  caveats: "May reduce short-term conversion rates; enforcement requires continuous monitoring."
+  evidence_cites: ["brignull2013", "mathur2019"]
+  contradictions: []
+- id: R5-C06
+  text: "**Obstruction patterns** like “roach motels” (easy sign-up, hard cancellation) and forced continuity trap users in subscriptions:contentReference[oaicite:6]{index=6}. These sludges impede autonomy and have triggered regulatory action (e.g. laws mandating simple online cancellations):contentReference[oaicite:7]{index=7}:contentReference[oaicite:8]{index=8}. **Guardrail:** Ensure symmetry in user flows – cancellation or opt-out should be as straightforward as sign-up – and add friction only to confirm truly high-risk actions (not to discourage legitimate exits)."
+  importance: High
+  strength: High
+  scope: human
+  caveats: "Businesses fear increased churn; what constitutes 'high-risk' must be defined (e.g. permanently deleting data vs. canceling a trial)."
+  evidence_cites: ["ftc2022", "gray2023"]
+  contradictions: []
+- id: R5-C07
+  text: "Default settings exert outsized influence on user behavior:contentReference[oaicite:9]{index=9}. Pre-selected choices that benefit the provider (e.g. opt-out data sharing or add-on services) exploit inertia and have been deemed unlawful in contexts like consent (EU’s Planet49 ruling):contentReference[oaicite:10]{index=10}. **Guardrail:** Use **benign defaults** that favor user privacy and well-being (opt-in for optional features), and obtain active consent for any deviation."
+  importance: High
+  strength: High
+  scope: human
+  caveats: "May reduce uptake of certain features if not pre-enabled; requires education so users understand benefits of opt-in features."
+  evidence_cites: ["cma2022", "lupianez2022"]
+  contradictions: []
+- id: R5-C08
+  text: "Dark patterns are pervasive and demonstrably effective at manipulating users. A large-scale audit found ~11% of shopping sites deploy them:contentReference[oaicite:11]{index=11}, and an EU study reported 97% of popular apps/websites contain at least one deceptive interface element:contentReference[oaicite:12]{index=12}. Even mild dark patterns can double user compliance with unwanted offers:contentReference[oaicite:13]{index=13}. **Guardrail:** Given this scope of harm, design teams should treat **compliance as a floor** and proactively implement “fair pattern” alternatives, emphasizing user empowerment over exploitative gains."
+  importance: High
+  strength: High
+  scope: human
+  caveats: "Causality can be context-dependent; some dark pattern effects might diminish as users become aware of them."
+  evidence_cites: ["mathur2019", "luguri2021", "lupianez2022", "ftc2022"]
+  contradictions: []
+- id: R5-C09
+  text: "Ethical design frameworks and regulations call for **transparency, consent, and clarity** in persuasive design. Interfaces should use plain language (avoid trick wording), clearly distinguish advertising or sponsored content, and provide accessible privacy controls:contentReference[oaicite:14]{index=14}:contentReference[oaicite:15]{index=15}. **Guardrail:** Incorporate an “informed consent” mindset – e.g. a **Scholia Mode** where users can toggle on explanations or citations behind claims and recommendations – to support autonomous decision-making rather than covert influence."
+  importance: Medium
+  strength: Medium
+  scope: human
+  caveats: "Some users may ignore available transparency features; balancing transparency with UI simplicity is needed."
+  evidence_cites: ["gray2023", "ftc2022"]
+  contradictions: []
+- id: R5-C10
+  text: "In sensitive domains (health, finance, and apps for minors), **persuasive elements require heightened ethical oversight**. Any behavioral nudges must be evidence-based and come with explicit, informed consent. Dark patterns that could exploit vulnerabilities in these contexts are broadly condemned by standards (e.g. bans on manipulative health app prompts) and may violate laws like GDPR if consent is not “freely given”:contentReference[oaicite:16]{index=16}. **Guardrail:** Adopt a precautionary approach: default to user wellbeing (e.g. encourage breaks, informed medical advice) over engagement, and involve ethics reviews or user testing to catch unintended coercion."
+  importance: High
+  strength: Medium
+  scope: human
+  caveats: "Defining manipulation vs. acceptable persuasion can be subjective; requires constant updating with clinical and legal guidance."
+  evidence_cites: ["lupianez2022", "thaler2018"]
+  contradictions: []
