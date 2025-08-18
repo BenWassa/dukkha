@@ -16,13 +16,13 @@ markdown_extensions:
   - pymdownx.critic
 plugins:
   - search
+  - gen-files:
+      scripts: []
   - bibtex:
       bib_file: docs/data/references.bib
   - macros
   - awesome-pages
   - glightbox
-  - gen-files:
-      scripts: []
 nav:
   - Home: index.md
   - Manifesto:
