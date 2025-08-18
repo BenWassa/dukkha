@@ -13,3 +13,5 @@ updated: "2025-08-15"
   "Differentiate Liking (hedonic tone).",
   "Track Learning (RPE-driven updates).",
 ]) }}
+
+Evidence: dopamine prediction-error bursts drive learning while mesolimbic circuits fuel wanting independent of liking [[R_wll-C01]] [[R_wll-C03]] [@schultz1997; @wyvell2000].
