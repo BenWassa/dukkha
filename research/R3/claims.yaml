@@ -1,0 +1,64 @@
+- id: R3-C01
+  text: "Dukkha, often translated as "suffering," actually denotes the inherent unsatisfactoriness of all conditioned existence, rather than mere pain or sorrow:contentReference[oaicite:0]{index=0}:contentReference[oaicite:1]{index=1}."
+  importance: High
+  strength: High
+  scope: human
+  caveats: "Translation nuances; includes impermanence and emptiness aspects."
+  evidence_cites: ["rahula1974", "gombrich2009"]
+  contradictions: []
+- id: R3-C02
+  text: "Taṇhā (literally “thirst”) is the craving or compulsive desire that leads to attachment and ongoing suffering (dukkha) in Buddhist thought:contentReference[oaicite:2]{index=2}:contentReference[oaicite:3]{index=3}."
+  importance: High
+  strength: High
+  scope: human
+  caveats: "Always an unwholesome, grasping desire; distinct from mere need or aspiration."
+  evidence_cites: ["bodhi2000", "buddharakkhita1985"]
+  contradictions: []
+- id: R3-C03
+  text: "Buddhist teachings identify three categories of taṇhā: craving for sensual pleasures (kāma-taṇhā), craving for continued existence (bhava-taṇhā), and craving for non-existence (vibhava-taṇhā):contentReference[oaicite:4]{index=4}."
+  importance: Medium
+  strength: High
+  scope: human
+  caveats: "These categories encompass all forms of craving that lead to clinging."
+  evidence_cites: ["bodhi2000"]
+  contradictions: []
+- id: R3-C04
+  text: "Not all desire is unwholesome in Buddhism: taṇhā (craving) is the grasping, ego-driven desire rooted in ignorance, whereas chanda refers to a wholesome desire or intention (e.g. the desire to do good) that can motivate progress on the path:contentReference[oaicite:5]{index=5}:contentReference[oaicite:6]{index=6}."
+  importance: High
+  strength: Medium
+  scope: human
+  caveats: "Context-dependent terminology; even chanda can be unskillful if tainted by craving."
+  evidence_cites: ["payutto1992"]
+  contradictions: []
+- id: R3-C05
+  text: "The Second Noble Truth states that taṇhā (craving) is the origin of dukkha: craving fuels the cycle of rebirth and suffering, causing “sorrows [to] grow like grass after the rains” if unchecked:contentReference[oaicite:7]{index=7}:contentReference[oaicite:8]{index=8}."
+  importance: High
+  strength: High
+  scope: human
+  caveats: "Ignorance underlies craving; some traditions highlight ignorance as the ultimate root."
+  evidence_cites: ["bodhi2000", "buddharakkhita1985"]
+  contradictions: []
+- id: R3-C06
+  text: "The Third Noble Truth (nirodha) teaches that the cessation of taṇhā results in the cessation of dukkha: by relinquishing craving entirely, one attains liberation (nirvāṇa):contentReference[oaicite:9]{index=9}:contentReference[oaicite:10]{index=10}."
+  importance: High
+  strength: High
+  scope: human
+  caveats: "Nirvāṇa is a transcendent state; its exact nature is described via negation (cessation of craving) rather than direct definition."
+  evidence_cites: ["bodhi2000", "rahula1974"]
+  contradictions: []
+- id: R3-C07
+  text: "The Buddha did **not** declare that “life is suffering” in a blanket sense; rather, the First Noble Truth observes that life invariably involves dukkha (unsatisfactoriness or stress) when experience is conditioned by craving and impermanence:contentReference[oaicite:11]{index=11}."
+  importance: High
+  strength: High
+  scope: human
+  caveats: "The phrasing “life is suffering” is an oversimplification; Buddhism acknowledges pleasure and happiness, but notes they are fleeting and ultimately incapable of providing lasting satisfaction."
+  evidence_cites: ["rahula1974"]
+  contradictions: []
+- id: R3-C08
+  text: "The Buddhist notion of taṇhā (craving) parallels what neuroscience terms the “wanting” aspect of reward, mediated by dopamine. Like taṇhā, this incentive-salience “wanting” drives relentless pursuit of rewards, distinct from the pleasure of “liking” those rewards:contentReference[oaicite:12]{index=12}."
+  importance: Medium
+  strength: Medium
+  scope: mixed
+  caveats: "Analogy only: neural “wanting” is a descriptive mechanism, whereas taṇhā carries ethical implications and is to be eliminated for liberation."
+  evidence_cites: ["berridge1998"]
+  contradictions: []
