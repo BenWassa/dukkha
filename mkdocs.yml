@@ -31,6 +31,9 @@ nav:
       - truth/index.md
   - Model:
       - model/index.md
+  - Research:
+      - research/index.md
+      - research/R1.md
   - Practice:
       - practice/index.md
   - Briefs:
