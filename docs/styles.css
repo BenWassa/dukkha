@@ -1334,9 +1334,12 @@ button:focus,
     display: block;
     width: 100%;
     max-width: 700px; /* Adjust max width for all diagrams as needed for consistency */
-    height: auto;
+    height: 400px; /* Fixed height to create a viewport for cropping */
     margin: var(--space-8) auto;
     border: 1px solid var(--color-border);
     border-radius: var(--border-radius-lg);
     box-shadow: var(--shadow-sm);
+    object-fit: none; /* Don't scale the SVG, show it at original size */
+    object-position: center center; /* Center the SVG within the viewport */
+    overflow: hidden; /* Hide parts that extend beyond the viewport */
 }
