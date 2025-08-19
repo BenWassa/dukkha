@@ -986,19 +986,14 @@ button:focus,
   100% { transform: translate(-50%, -50%) rotate(360deg); }
 }
 
-/* Placeholder Diagram Image Styling */
-.diagram-placeholder-image {
+/* General Styling for Actual Diagrams (SVG files embedded via <img>) */
+.diagram-visual {
     display: block;
     width: 100%;
-    max-width: 400px; /* Adjust based on desired size for placeholders */
+    max-width: 700px; /* Adjust max width for all diagrams as needed for consistency */
     height: auto;
     margin: var(--space-8) auto;
-    opacity: 0.7; /* Slightly faded to indicate it's a placeholder */
     border: 1px solid var(--color-border);
     border-radius: var(--border-radius-lg);
     box-shadow: var(--shadow-sm);
-    transition: opacity var(--transition-normal);
-}
-.diagram-placeholder-image:hover {
-    opacity: 1;
 }
