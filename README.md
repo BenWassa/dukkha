@@ -1,45 +1,72 @@
-# Project Dukkha — Dopamine Cartography (Artifact-First MVP)
+# Project Dukkha — Research Workspace
 
-A comprehensive field guide to dopamine as a mythic, cultural, and behavioral engine.
-Modern science (post-2015) + curated historical landmarks. Practical tools you can print.
+This repository collects the research artifacts, notes, and reference material that feed the Dukkha / "Dopamine Cartography" project. It's an artifact-first repo: there isn't a published site in this tree right now — instead you'll find per-paper research folders and a few PDFs.
 
-## Why
-No docs tooling. No build steps. Just open `index.html` and learn something useful in 30 seconds.
+## Quick summary
+- Primary content: curated research notes and bibliographies under `research/`.
+- No build step required to read the material — open the Markdown, YAML, or PDF files directly.
 
-## What’s Inside (MVP)
-- Home (Quick Take + CTAs)
-- Triad (Wanting/Liking/Learning) — atlas SVG + 3 claims + evidence chips
-- Traps (Variable Reward & Doomscrolling) — patterns + mitigations
-- Myth (taṇhā / dukkha) — analogies vs disanalogies
-- Stress (Stress → Salience → Relapse) — human-first playbook
-- Ethics (Design Guardrails) — mapped to recognized taxonomies
-- Reset (48-Hour Craving Reset) — print-ready checklist
-- Library (DOIs: Recent • Landmarks • Reviews)
+## What to expect here
+- Research claims and notes (R1..R5) — YAML and Markdown summaries, evidence and quotes, and BibTeX references.
+- Additional source PDFs (R6, R7).
 
-## Performance Budget
-- One CSS (`assets/dukkha.css`) ≤ 30 KB
-- Optional JS (`assets/dukkha.js`) ≤ 10 KB (print, “show sources”)
-- SVG-only diagrams; system UI fonts (no webfont downloads)
+## Quick start
+Open files in your editor or a PDF viewer. Example (from repository root):
 
-## Quick Start
-to do!!
+```powershell
+# open R1 claims in the default editor (Windows)
+# start will open the file with the associated application
+start .\research\R1\claims.yaml
+# open a PDF
+start .\research\R6\"R6 - Attention & Drive in a Distracting Economy.pdf"
+```
 
+Or simply browse the `research/` folder in VS Code.
 
-## Structure
-site/
-  assets/
-    dukkha.css
-    dukkha.js            # optional; keep tiny
-    glyph.svg
-    atlas-wll.svg
-    rpe.svg
-  index.html             # Home
-  triad.html             # R1
-  traps.html             # R2
-  myth.html              # R3
-  stress.html            # R4
-  ethics.html            # R5
-  reset.html             # Protocol
-  library.html           # Sources (manual list of DOIs)
+## Repository structure (actual)
+```
+dukkha.code-workspace
+README.md
+research/
+  R1/
+    claims.yaml
+    evidence.md
+    quotes.md
+    refs.bib
+  R2/
+    claims.yaml
+    evidence.md
+    quotes.md
+    refs.bib
+  R3/
+    claims.yaml
+    evidence.md
+    quotes.md
+    refs.bib
+  R4/
+    claims.yaml
+    evidence.md
+    quotes.md
+    refs.bib
+  R5/
+    claims.yaml
+    evidence.md
+    quotes.md
+    refs.bib
+  R6/
+    R6 - Attention & Drive in a Distracting Economy.pdf
+  R7/
+    R7 - Recovery, Stress, Sleep & the Dopamine Baseline.pdf
+```
+
+## Notes / next steps
+- If you'd like a lightweight site generated from these notes (the earlier README assumed a `site/` folder), I can scaffold a simple static site generator (Eleventy, or a tiny Node/HTML pipeline) that reads `research/*` and produces `site/`.
+- I can also add a CONTRIBUTING or index that surfaces claims across R1..R5 if you want a quick navigation UI.
+
+## License
+No license file found in the repo. If you want this project public, consider adding a `LICENSE` (for example, MIT) or a short note here about sharing terms.
+
+---
+Updated to reflect the repository contents on disk (research-first).
 
 
