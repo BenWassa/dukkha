@@ -1,0 +1,12 @@
+<svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background rectangle matching your surface color with a border -->
+    <rect x="10" y="10" width="280" height="180" rx="15" ry="15" fill="var(--color-surface)" stroke="var(--color-border)" stroke-width="2"/>
+
+    <!-- Placeholder text -->
+    <text x="150" y="95" font-family="var(--font-sans)" font-size="20" text-anchor="middle" fill="var(--color-text-muted)">Diagram Coming Soon</text>
+    <text x="150" y="120" font-family="var(--font-sans)" font-size="12" text-anchor="middle" fill="var(--color-text-muted)">(Conceptual Visual Planned)</text>
+
+    <!-- Optional: A subtle geometric placeholder shape -->
+    <circle cx="150" cy="150" r="15" fill="var(--color-accent)" opacity="0.2"/>
+    <path d="M130 150 L170 150 L150 130 Z" fill="var(--color-accent)" opacity="0.2"/>
+</svg>

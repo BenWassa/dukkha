@@ -985,3 +985,20 @@ button:focus,
   0% { transform: translate(-50%, -50%) rotate(0deg); }
   100% { transform: translate(-50%, -50%) rotate(360deg); }
 }
+
+/* Placeholder Diagram Image Styling */
+.diagram-placeholder-image {
+    display: block;
+    width: 100%;
+    max-width: 400px; /* Adjust based on desired size for placeholders */
+    height: auto;
+    margin: var(--space-8) auto;
+    opacity: 0.7; /* Slightly faded to indicate it's a placeholder */
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-sm);
+    transition: opacity var(--transition-normal);
+}
+.diagram-placeholder-image:hover {
+    opacity: 1;
+}
