@@ -20,15 +20,12 @@
             </div>
             <ul class="nav-menu">
                 <li><a href="#home" class="nav-link active" aria-current="page">Home</a></li>
-                <li><a href="attention.html" class="nav-link">Focus & Attention</a></li>
-                <li><a href="recovery.html" class="nav-link">Recovery & Baseline</a></li>
-                <li><a href="myths.html" class="nav-link">Five Myths</a></li>
-                <li><a href="model.html" class="nav-link">Model</a></li>
-                <li><a href="library.html" class="nav-link">Library</a></li>
+                <li><a href="site/attention.html" class="nav-link">Focus & Attention</a></li>
+                <li><a href="site/recovery.html" class="nav-link">Recovery & Baseline</a></li>
+                <li><a href="site/myths.html" class="nav-link">Five Myths</a></li>
+                <li><a href="site/model.html" class="nav-link">Model</a></li>
+                <li><a href="site/library.html" class="nav-link">Library</a></li>
             </ul>
-            <button class="skeptic-toggle" id="skepticToggle" aria-label="Toggle skeptic mode">
-                Skeptic Mode
-            </button>
         </div>
     </nav>
 
@@ -182,7 +179,7 @@
                     <span>Project Dukkha</span>
                 </div>
                 <div class="footer-links">
-                    <a href="library.html">Research</a>
+                    <a href="site/library.html">Research</a>
                     <a href="#" class="print-link" onclick="window.print()">Print Guide</a>
                     <a href="mailto:contact@projectdukkha.com">Contact</a>
                 </div>
@@ -219,15 +216,6 @@
                     target.classList.add('highlight');
                     setTimeout(() => target.classList.remove('highlight'), 2000);
                 });
-            });
-
-            // Skeptic mode toggle
-            const skepticToggle = document.getElementById('skepticToggle');
-            skepticToggle.addEventListener('click', function() {
-                document.body.classList.toggle('skeptic-mode');
-                this.textContent = document.body.classList.contains('skeptic-mode') 
-                    ? 'Exit Skeptic Mode' 
-                    : 'Skeptic Mode';
             });
 
             // Smooth navigation highlighting
