@@ -1,6 +1,6 @@
 # Project Dukkha — Dopamine Cartography (Artifact-First MVP)
 
-A fast, beautiful, zero-build field guide to dopamine as a mythic, cultural, and behavioral engine.
+A comprehensive field guide to dopamine as a mythic, cultural, and behavioral engine.
 Modern science (post-2015) + curated historical landmarks. Practical tools you can print.
 
 ## Why
