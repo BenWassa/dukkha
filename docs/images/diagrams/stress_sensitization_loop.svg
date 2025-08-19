@@ -1,0 +1,67 @@
+<svg viewBox="0 0 680 650" xmlns="http://www.w3.org/2000/svg" aria-labelledby="stressSensitizationTitle stressSensitizationDesc">
+    <title id="stressSensitizationTitle">The Stress-Reward Sensitization Loop and How to Break It</title>
+    <desc id="stressSensitizationDesc">A flowchart depicting how acute stress leads to impulsive reward-seeking, negative baseline drops, and self-reinforcing stress, with strategic exit points shown.</desc>
+
+    <defs>
+        <marker id="arrowhead-solid-stress" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="var(--color-text-secondary)" />
+        </marker>
+        <marker id="arrowhead-dashed-stress" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="var(--color-text-muted)" />
+        </marker>
+    </defs>
+
+    <!-- Main Loop Nodes (Vertical flow, then curve back) -->
+    <!-- Stress / Anxiety -->
+    <rect x="240" y="40" width="200" height="60" rx="12" ry="12" fill="var(--color-surface-elevated)" stroke="var(--color-border)" stroke-width="2"></rect>
+    <text x="340" y="75" text-anchor="middle" fill="var(--color-text-primary)" font-size="16" font-family="var(--font-sans)">Stress / Anxiety</text>
+
+    <!-- Attention on Quick Rewards -->
+    <rect x="240" y="140" width="200" height="60" rx="12" ry="12" fill="var(--color-surface-elevated)" stroke="var(--color-border)" stroke-width="2"></rect>
+    <text x="340" y="175" text-anchor="middle" fill="var(--color-text-primary)" font-size="16" font-family="var(--font-sans)">Attention on Quick Rewards</text>
+
+    <!-- Impulse / Short-term Reward-Seeking -->
+    <rect x="240" y="240" width="200" height="60" rx="12" ry="12" fill="var(--color-surface-elevated)" stroke="var(--color-border)" stroke-width="2"></rect>
+    <text x="340" y="275" text-anchor="middle" fill="var(--color-text-primary)" font-size="16" font-family="var(--font-sans)">Impulse / Short-term</text>
+    <text x="340" y="295" text-anchor="middle" fill="var(--color-text-primary)" font-size="16" font-family="var(--font-sans)">Reward-Seeking</text>
+
+    <!-- Brief Relief (Dopamine Spike) -->
+    <rect x="240" y="340" width="200" height="60" rx="12" ry="12" fill="var(--color-accent)" stroke="var(--color-accent)" stroke-width="2"></rect>
+    <text x="340" y="375" text-anchor="middle" fill="var(--color-background)" font-size="16" font-family="var(--font-sans)">Brief Relief</text>
+    <text x="340" y="395" text-anchor="middle" fill="var(--color-background)" font-size="16" font-family="var(--font-sans)">(Dopamine Spike)</text>
+
+    <!-- Baseline Drops (Mood, Energy Down) -->
+    <rect x="240" y="440" width="200" height="60" rx="12" ry="12" fill="var(--color-surface-elevated)" stroke="var(--color-border)" stroke-width="2"></rect>
+    <text x="340" y="475" text-anchor="middle" fill="var(--color-text-primary)" font-size="16" font-family="var(--font-sans)">Baseline Drops</text>
+    <text x="340" y="495" text-anchor="middle" fill="var(--color-text-primary)" font-size="16" font-family="var(--font-sans)">(Mood, Energy Down)</text>
+
+    <!-- More Stress, Regret or Fatigue -->
+    <rect x="240" y="540" width="200" height="60" rx="12" ry="12" fill="var(--color-surface-elevated)" stroke="var(--color-border)" stroke-width="2"></rect>
+    <text x="340" y="575" text-anchor="middle" fill="var(--color-text-primary)" font-size="16" font-family="var(--font-sans)">More Stress, Regret or Fatigue</text>
+
+    <!-- Main Loop Arrows -->
+    <path d="M340 100 V140" fill="none" stroke="var(--color-text-secondary)" stroke-width="2" marker-end="url(#arrowhead-solid-stress)"></path>
+    <path d="M340 200 V240" fill="none" stroke="var(--color-text-secondary)" stroke-width="2" marker-end="url(#arrowhead-solid-stress)"></path>
+    <path d="M340 300 V340" fill="none" stroke="var(--color-text-secondary)" stroke-width="2" marker-end="url(#arrowhead-solid-stress)"></path>
+    <path d="M340 400 V440" fill="none" stroke="var(--color-text-secondary)" stroke-width="2" marker-end="url(#arrowhead-solid-stress)"></path>
+    <path d="M340 500 V540" fill="none" stroke="var(--color-text-secondary)" stroke-width="2" marker-end="url(#arrowhead-solid-stress)"></path>
+    <!-- Curved arrow back to Stress / Anxiety -->
+    <path d="M340 600 C 150 650 100 550 100 350 C 100 150 300 0 340 40" fill="none" stroke="var(--color-text-secondary)" stroke-width="2" marker-end="url(#arrowhead-solid-stress)"></path>
+
+    <!-- Exit Points (Oval Nodes) -->
+    <!-- Exit: Breathwork or Pause -->
+    <rect x="20" y="60" width="160" height="50" rx="25" ry="25" fill="var(--color-surface)" stroke="var(--color-border)" stroke-width="2"></rect>
+    <text x="100" y="90" text-anchor="middle" fill="var(--color-text-primary)" font-size="14" font-family="var(--font-sans)">Exit: Breathwork or Pause</text>
+    <line x1="240" y1="70" x2="180" y2="85" stroke="var(--color-text-muted)" stroke-width="1.5" stroke-dasharray="6 3" marker-end="url(#arrowhead-dashed-stress)"></line>
+
+    <!-- Exit: Exercise or Social Support -->
+    <rect x="490" y="160" width="160" height="50" rx="25" ry="25" fill="var(--color-surface)" stroke="var(--color-border)" stroke-width="2"></rect>
+    <text x="570" y="190" text-anchor="middle" fill="var(--color-text-primary)" font-size="14" font-family="var(--font-sans)">Exit: Exercise or Social support</text>
+    <line x1="440" y1="170" x2="490" y2="185" stroke="var(--color-text-muted)" stroke-width="1.5" stroke-dasharray="6 3" marker-end="url(#arrowhead-dashed-stress)"></line>
+
+    <!-- Exit: Plan / Reflection -->
+    <rect x="20" y="370" width="160" height="50" rx="25" ry="25" fill="var(--color-surface)" stroke="var(--color-border)" stroke-width="2"></rect>
+    <text x="100" y="400" text-anchor="middle" fill="var(--color-text-primary)" font-size="14" font-family="var(--font-sans)">Exit: Plan / Reflection</text>
+    <line x1="240" y1="370" x2="180" y2="395" stroke="var(--color-text-muted)" stroke-width="1.5" stroke-dasharray="6 3" marker-end="url(#arrowhead-dashed-stress)"></line>
+
+</svg>
