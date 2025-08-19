@@ -9,20 +9,20 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Chosen Palette: Project Dukkha Premium Guidebook Palette -->
+    <!-- Chosen Palette: Dukkha - A Muted & Harmonious Palette -->
     <!-- Application Structure Plan: The application is structured as a single-page, vertical-scrolling narrative, mimicking a premium digital guidebook. A sticky top navigation allows users to jump to any of the four core concepts (The Loop, The Curve, The Spiral, The Compass), supporting both linear discovery and direct access. Each concept is presented in a dedicated section with an introductory paragraph, an interactive visualization, and contextual information that appears on interaction. This structure was chosen to guide the user through a logical learning journey—from identifying the problem (The Loop) to understanding its neurological basis (The Curve), its connection to stress (The Spiral), and finally, a framework for self-assessment and improvement (The Compass). This sequential yet flexible structure enhances usability and comprehension. -->
     <!-- Visualization & Content Choices: 1. Ping/Scroll Loop: Goal=Inform. Viz=Custom HTML/CSS flowchart. Interaction=Hover/click on nodes reveals detailed text. Justification=Maintains minimalist aesthetic while providing deep-dive information on demand. 2. Dopamine Curve: Goal=Change/Compare. Viz=Chart.js Line Chart. Interaction=Detailed tooltips and an animated "play" button to show the curve's progression. Justification=Chart.js effectively renders scientific data, and animation makes the temporal aspect of recovery intuitive. 3. Stress-Sensitization Loop: Goal=Organize. Viz=Custom HTML/CSS descending flowchart. Interaction=Clicking "Exit Points" provides actionable advice. Justification=Custom layout captures the "downward spiral" metaphor effectively. 4. Reward Compass: Goal=Organize/Inform. Viz=HTML/CSS 2x2 Matrix. Interaction=Clicking quadrants expands detailed descriptions. Justification=Transforms a static model into an interactive self-assessment tool. -->
     <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
     <style>
         :root {
-            --color-accent: #8A5CFE; /* A vibrant purple for highlights */
-            --color-text-primary: #111827; /* Near-black for main text */
-            --color-text-secondary: #4B5563; /* Medium gray for secondary text */
-            --color-text-muted: #9CA3AF; /* Light gray for subtle text/lines */
-            --color-background: #F9FAFB; /* Very light gray for main background */
-            --color-surface: #FFFFFF; /* White for cards and surfaces */
-            --color-surface-elevated: #F3F4F6; /* Slightly off-white for layered surfaces */
-            --color-border: #E5E7EB; /* Light gray for borders */
+            --color-primary: #8C7851;
+            --color-secondary: #B1A384;
+            --color-accent: #E8D38D;
+            --color-background: #F8F4EC;
+            --color-surface: #FFFFFF;
+            --color-text-primary: #3C3322;
+            --color-text-secondary: #7A6F5E;
+            --color-border: #D1C5B3;
         }
         body {
             font-family: 'Inter', sans-serif;
@@ -47,23 +47,29 @@
             transition: color 0.2s ease-in-out;
         }
         .nav-link:hover, .nav-link.active {
-            color: var(--color-accent);
+            color: var(--color-primary);
         }
         .diagram-node {
             transition: all 0.3s ease;
             cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
         }
         .diagram-node:hover {
             transform: translateY(-4px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
         }
         .compass-quadrant {
             transition: all 0.3s ease;
             cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
         }
         .compass-quadrant:hover {
-            transform: scale(1.03);
-            border-color: var(--color-accent);
+            transform: scale(1.02);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+        .compass-quadrant.optimal:hover {
+            transform: scale(1.04);
+            box-shadow: 0 10px 20px rgba(232, 211, 141, 0.4);
         }
         .content-fade-in {
             animation: fadeIn 0.5s ease-in-out forwards;
@@ -72,13 +78,44 @@
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
+        .arrow-path {
+            stroke: var(--color-border);
+            stroke-width: 2;
+            fill: none;
+            transition: stroke-dashoffset 1s ease-in-out;
+        }
+        .loop-arrow {
+            stroke: var(--color-secondary);
+        }
+        .loop-accent-arrow {
+            stroke: var(--color-primary);
+            stroke-width: 2.5;
+        }
+        .spiral-arrow {
+            stroke: var(--color-secondary);
+        }
+        .tooltip-container {
+            background-color: var(--color-surface);
+            border-radius: 8px;
+            padding: 12px;
+            border: 1px solid var(--color-border);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .chartjs-tooltip {
+            background-color: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: 6px;
+            padding: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            color: var(--color-text-primary);
+        }
     </style>
 </head>
 <body class="antialiased">
 
     <header class="sticky top-0 z-50 bg-white/80 backdrop-blur-lg border-b border-[var(--color-border)]">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <h1 class="text-xl font-bold text-[var(--color-text-primary)]">Project Dukkha</h1>
+            <h1 class="text-xl font-bold text-[var(--color-primary)]">Project Dukkha</h1>
             <div class="hidden md:flex items-center space-x-8">
                 <a href="#loop" class="nav-link text-sm font-medium text-[var(--color-text-secondary)]">The Loop</a>
                 <a href="#curve" class="nav-link text-sm font-medium text-[var(--color-text-secondary)]">The Curve</a>
@@ -106,45 +143,45 @@
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
                 <div class="lg:col-span-2 relative h-[500px] flex items-center justify-center">
                     <!-- Diagram Nodes -->
-                    <div id="loop-node-1" data-content="loop-content-1" class="diagram-node absolute top-[10%] left-1/2 -translate-x-1/2 p-4 w-48 text-center bg-[var(--color-surface-elevated)] border border-[var(--color-border)] rounded-lg shadow-sm">
-                        <h4 class="font-semibold">Trigger</h4>
-                        <p class="text-xs text-[var(--color-text-muted)]">e.g., Notification, Boredom</p>
+                    <div id="loop-node-1" data-content="loop-content-1" class="diagram-node absolute top-[10%] left-1/2 -translate-x-1/2 p-4 w-48 text-center bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl">
+                        <h4 class="font-semibold text-[var(--color-primary)]">Trigger</h4>
+                        <p class="text-xs text-[var(--color-text-secondary)]">e.g., Notification, Boredom</p>
                     </div>
-                    <div id="loop-node-2" data-content="loop-content-2" class="diagram-node absolute top-1/2 -translate-y-1/2 left-[5%] p-4 w-48 text-center bg-[var(--color-surface-elevated)] border border-[var(--color-border)] rounded-lg shadow-sm">
-                        <h4 class="font-semibold">Seeking / Scrolling</h4>
-                        <p class="text-xs text-[var(--color-text-muted)]">The compulsive action</p>
+                    <div id="loop-node-2" data-content="loop-content-2" class="diagram-node absolute top-1/2 -translate-y-1/2 left-[5%] p-4 w-48 text-center bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl">
+                        <h4 class="font-semibold text-[var(--color-primary)]">Seeking / Scrolling</h4>
+                        <p class="text-xs text-[var(--color-text-secondary)]">The compulsive action</p>
                     </div>
-                    <div id="loop-node-3" data-content="loop-content-3" class="diagram-node absolute bottom-[10%] left-1/2 -translate-x-1/2 p-4 w-48 text-center bg-[var(--color-surface-elevated)] border border-[var(--color-border)] rounded-lg shadow-sm">
-                        <h4 class="font-semibold">Brief, Unfulfilling Relief</h4>
-                        <p class="text-xs text-[var(--color-text-muted)]">A momentary distraction</p>
+                    <div id="loop-node-3" data-content="loop-content-3" class="diagram-node absolute bottom-[10%] left-1/2 -translate-x-1/2 p-4 w-48 text-center bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl">
+                        <h4 class="font-semibold text-[var(--color-primary)]">Brief, Unfulfilling Relief</h4>
+                        <p class="text-xs text-[var(--color-text-secondary)]">A momentary distraction</p>
                     </div>
-                    <div id="loop-node-4" data-content="loop-content-4" class="diagram-node absolute top-1/2 -translate-y-1/2 right-[5%] p-4 w-48 text-center bg-[var(--color-accent)] text-white border border-transparent rounded-lg shadow-lg">
-                        <h4 class="font-semibold">Anticipation & Craving</h4>
-                        <p class="text-xs opacity-80">Dopamine Spike</p>
+                    <div id="loop-node-4" data-content="loop-content-4" class="diagram-node absolute top-1/2 -translate-y-1/2 right-[5%] p-4 w-48 text-center bg-[var(--color-accent)] text-white border border-transparent rounded-xl shadow-lg">
+                        <h4 class="font-semibold text-[var(--color-primary)]">Anticipation & Craving</h4>
+                        <p class="text-xs opacity-80 text-[var(--color-text-primary)]">Dopamine Spike</p>
                     </div>
                      <!-- Arrows -->
-                    <svg class="absolute w-full h-full top-0 left-0" viewbox="0 0 500 500" style="pointer-events: none;">
-                        <defs><marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="var(--color-text-secondary)"/></marker></defs>
-                        <path d="M 250 80 Q 100 150 130 250" stroke="var(--color-text-secondary)" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
-                        <path d="M 130 270 Q 150 400 250 420" stroke="var(--color-text-secondary)" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
-                        <path d="M 270 420 Q 400 350 370 250" stroke="var(--color-text-secondary)" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
-                        <path d="M 370 230 Q 350 100 250 80" stroke="var(--color-accent)" stroke-width="2.5" fill="none" marker-end="url(#arrowhead)"/>
+                    <svg class="absolute w-full h-full top-0 left-0" viewBox="0 0 500 500" style="pointer-events: none;">
+                        <defs><marker id="arrowhead-loop" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="var(--color-secondary)"/></marker><marker id="arrowhead-accent" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="var(--color-primary)"/></marker></defs>
+                        <path d="M 250 80 Q 100 150 130 250" class="loop-arrow" marker-end="url(#arrowhead-loop)"/>
+                        <path d="M 130 270 Q 150 400 250 420" class="loop-arrow" marker-end="url(#arrowhead-loop)"/>
+                        <path d="M 270 420 Q 400 350 370 250" class="loop-arrow" marker-end="url(#arrowhead-loop)"/>
+                        <path d="M 370 230 Q 350 100 250 80" class="loop-accent-arrow" marker-end="url(#arrowhead-accent)"/>
                     </svg>
                     <!-- Intervention Points -->
-                    <div id="loop-node-5" data-content="loop-content-5" class="diagram-node absolute top-[25%] left-[2%] p-2 px-4 text-center bg-[var(--color-surface)] border border-dashed border-[var(--color-text-muted)] rounded-full shadow-sm">
-                        <span class="text-sm font-medium">Intervention</span>
+                    <div id="loop-node-5" data-content="loop-content-5" class="diagram-node absolute top-[25%] left-[2%] p-2 px-4 text-center bg-[var(--color-surface)] border border-dashed border-[var(--color-text-secondary)] rounded-full">
+                        <span class="text-sm font-medium text-[var(--color-primary)]">Intervention</span>
                     </div>
                 </div>
-                <div id="loop-content-display" class="bg-[var(--color-surface)] p-6 rounded-lg border border-[var(--color-border)] min-h-[300px]">
+                <div id="loop-content-display" class="bg-[var(--color-surface)] p-6 rounded-xl border border-[var(--color-border)] min-h-[300px] shadow-sm">
                     <div id="loop-content-default">
                         <h4 class="font-bold text-lg mb-2">The Anatomy of Distraction</h4>
                         <p class="text-[var(--color-text-secondary)]">Click on a node in the diagram to learn more about each stage of the cycle and how to build awareness around it.</p>
                     </div>
-                    <div id="loop-content-1" class="hidden content-fade-in"><h4 class="font-bold text-lg mb-2">Trigger</h4><p class="text-[var(--color-text-secondary)]">The cycle begins with a trigger, either external (a notification) or internal (a feeling of boredom or anxiety). This is the cue that kicks off the automated habit.</p></div>
-                    <div id="loop-content-2" class="hidden content-fade-in"><h4 class="font-bold text-lg mb-2">Seeking / Scrolling</h4><p class="text-[var(--color-text-secondary)]">Driven by the craving for a reward, you engage in the behavior—opening the app, scrolling the feed. This action is often automatic, performed without conscious thought.</p></div>
-                    <div id="loop-content-3" class="hidden content-fade-in"><h4 class="font-bold text-lg mb-2">Brief, Unfulfilling Relief</h4><p class="text-[var(--color-text-secondary)]">The "reward" is often fleeting and unsatisfying. It provides a momentary distraction from the initial trigger but doesn't resolve the underlying feeling, ensuring the cycle continues.</p></div>
-                    <div id="loop-content-4" class="hidden content-fade-in"><h4 class="font-bold text-lg mb-2 text-[var(--color-accent)]">Anticipation & Craving</h4><p class="text-[var(--color-text-secondary)]">This is the critical stage. Your brain releases dopamine not in response to the reward itself, but in *anticipation* of it. This creates a powerful "wanting" or craving that drives you to act.</p></div>
-                    <div id="loop-content-5" class="hidden content-fade-in"><h4 class="font-bold text-lg mb-2">Intervention Points</h4><p class="text-[var(--color-text-secondary)]">Breaking the loop requires a conscious "off-ramp." This involves pausing, noticing the urge without acting on it, and choosing a different, more intentional action. This is where you reclaim your agency.</p></div>
+                    <div id="loop-content-1" class="hidden content-fade-in"><h4 class="font-bold text-lg mb-2 text-[var(--color-primary)]">Trigger</h4><p class="text-[var(--color-text-secondary)]">The cycle begins with a trigger, either external (a notification) or internal (a feeling of boredom or anxiety). This is the cue that kicks off the automated habit.</p></div>
+                    <div id="loop-content-2" class="hidden content-fade-in"><h4 class="font-bold text-lg mb-2 text-[var(--color-primary)]">Seeking / Scrolling</h4><p class="text-[var(--color-text-secondary)]">Driven by the craving for a reward, you engage in the behavior—opening the app, scrolling the feed. This action is often automatic, performed without conscious thought.</p></div>
+                    <div id="loop-content-3" class="hidden content-fade-in"><h4 class="font-bold text-lg mb-2 text-[var(--color-primary)]">Brief, Unfulfilling Relief</h4><p class="text-[var(--color-text-secondary)]">The "reward" is often fleeting and unsatisfying. It provides a momentary distraction from the initial trigger but doesn't resolve the underlying feeling, ensuring the cycle continues.</p></div>
+                    <div id="loop-content-4" class="hidden content-fade-in"><h4 class="font-bold text-lg mb-2 text-[var(--color-primary)]">Anticipation & Craving</h4><p class="text-[var(--color-text-secondary)]">This is the critical stage. Your brain releases dopamine not in response to the reward itself, but in *anticipation* of it. This creates a powerful "wanting" or craving that drives you to act.</p></div>
+                    <div id="loop-content-5" class="hidden content-fade-in"><h4 class="font-bold text-lg mb-2 text-[var(--color-primary)]">Intervention Points</h4><p class="text-[var(--color-text-secondary)]">Breaking the loop requires a conscious "off-ramp." This involves pausing, noticing the urge without acting on it, and choosing a different, more intentional action. This is where you reclaim your agency.</p></div>
                 </div>
             </div>
         </section>
@@ -155,7 +192,7 @@
                 <h3 class="text-3xl font-bold mb-2">The Dopamine Curve</h3>
                 <p class="max-w-2xl mx-auto text-[var(--color-text-secondary)]">This scientific graph shows the neurobiological consequence of the Ping/Scroll Loop. It illustrates how repeated dopamine spikes lead to a crash below your baseline, driving tolerance and compulsive behavior. The slow return to baseline shows the path to recovery.</p>
             </div>
-            <div class="bg-[var(--color-surface)] p-4 sm:p-6 rounded-lg border border-[var(--color-border)] shadow-sm">
+            <div class="bg-[var(--color-surface)] p-4 sm:p-6 rounded-xl border border-[var(--color-border)] shadow-sm">
                 <div class="chart-container">
                     <canvas id="dopamineChart"></canvas>
                 </div>
@@ -171,32 +208,33 @@
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
                 <div class="lg:col-span-2 relative h-[550px] flex items-center justify-center">
                     <!-- Diagram Nodes -->
-                    <div id="spiral-node-1" data-content="spiral-content-1" class="diagram-node absolute top-[5%] left-1/2 -translate-x-1/2 p-3 w-52 text-center bg-[var(--color-surface-elevated)] border border-[var(--color-border)] rounded-lg shadow-sm"><h4 class="font-semibold">Stress / Anxiety</h4></div>
-                    <div id="spiral-node-2" data-content="spiral-content-2" class="diagram-node absolute top-[25%] right-[15%] p-3 w-52 text-center bg-[var(--color-surface-elevated)] border border-[var(--color-border)] rounded-lg shadow-sm"><h4 class="font-semibold">Attention on Quick Rewards</h4></div>
-                    <div id="spiral-node-3" data-content="spiral-content-3" class="diagram-node absolute top-[45%] right-[15%] p-3 w-52 text-center bg-[var(--color-accent)] text-white rounded-lg shadow-lg"><h4 class="font-semibold">Impulse & Brief Relief</h4></div>
-                    <div id="spiral-node-4" data-content="spiral-content-4" class="diagram-node absolute top-[65%] left-[15%] p-3 w-52 text-center bg-[var(--color-surface-elevated)] border border-[var(--color-border)] rounded-lg shadow-sm"><h4 class="font-semibold">Baseline Drops / Resources Depleted</h4></div>
-                    <div id="spiral-node-5" data-content="spiral-content-5" class="diagram-node absolute top-[85%] left-1/2 -translate-x-1/2 p-3 w-52 text-center bg-[var(--color-surface-elevated)] border border-[var(--color-border)] rounded-lg shadow-sm"><h4 class="font-semibold">Increased Sensitivity to Stress</h4></div>
+                    <div id="spiral-node-1" data-content="spiral-content-1" class="diagram-node absolute top-[5%] left-1/2 -translate-x-1/2 p-3 w-52 text-center bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl"><h4 class="font-semibold text-[var(--color-primary)]">Stress / Anxiety</h4></div>
+                    <div id="spiral-node-2" data-content="spiral-content-2" class="diagram-node absolute top-[25%] right-[15%] p-3 w-52 text-center bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl"><h4 class="font-semibold text-[var(--color-primary)]">Attention on Quick Rewards</h4></div>
+                    <div id="spiral-node-3" data-content="spiral-content-3" class="diagram-node absolute top-[45%] right-[15%] p-3 w-52 text-center bg-[var(--color-accent)] text-white rounded-xl shadow-lg"><h4 class="font-semibold text-[var(--color-primary)]">Impulse & Brief Relief</h4></div>
+                    <div id="spiral-node-4" data-content="spiral-content-4" class="diagram-node absolute top-[65%] left-[15%] p-3 w-52 text-center bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl"><h4 class="font-semibold text-[var(--color-primary)]">Baseline Drops / Resources Depleted</h4></div>
+                    <div id="spiral-node-5" data-content="spiral-content-5" class="diagram-node absolute top-[85%] left-1/2 -translate-x-1/2 p-3 w-52 text-center bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl"><h4 class="font-semibold text-[var(--color-primary)]">Increased Sensitivity to Stress</h4></div>
                     <!-- Arrows -->
-                    <svg class="absolute w-full h-full top-0 left-0" viewbox="0 0 500 500" style="pointer-events: none;">
-                        <path d="M 250 55 C 350 80 350 120 310 145" stroke="var(--color-text-secondary)" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
-                        <path d="M 310 170 V 220" stroke="var(--color-text-secondary)" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
-                        <path d="M 290 250 C 150 270 150 320 190 345" stroke="var(--color-text-secondary)" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
-                        <path d="M 190 370 C 200 420 250 420 250 450" stroke="var(--color-text-secondary)" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
-                        <path d="M 250 480 C 250 500 50 450 100 250 C 150 50 250 25 250 50" stroke="var(--color-text-secondary)" stroke-width="2" fill="none" marker-end="url(#arrowhead)" stroke-dasharray="5,5"/>
+                    <svg class="absolute w-full h-full top-0 left-0" viewBox="0 0 500 500" style="pointer-events: none;">
+                        <defs><marker id="arrowhead-spiral" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="var(--color-secondary)"/></marker></defs>
+                        <path d="M 250 55 C 350 80 350 120 310 145" class="spiral-arrow" marker-end="url(#arrowhead-spiral)"/>
+                        <path d="M 310 170 V 220" class="spiral-arrow" marker-end="url(#arrowhead-spiral)"/>
+                        <path d="M 290 250 C 150 270 150 320 190 345" class="spiral-arrow" marker-end="url(#arrowhead-spiral)"/>
+                        <path d="M 190 370 C 200 420 250 420 250 450" class="spiral-arrow" marker-end="url(#arrowhead-spiral)"/>
+                        <path d="M 250 480 C 250 500 50 450 100 250 C 150 50 250 25 250 50" stroke="var(--color-primary)" stroke-width="2" fill="none" marker-end="url(#arrowhead-spiral)" stroke-dasharray="5,5"/>
                     </svg>
                      <!-- Exit Points -->
-                    <div id="spiral-node-6" data-content="spiral-content-6" class="diagram-node absolute top-[30%] left-[5%] p-2 px-4 text-center bg-[var(--color-surface)] border border-dashed border-[var(--color-text-muted)] rounded-full shadow-sm"><span class="text-sm font-medium">Exit: Mindfulness</span></div>
-                    <div id="spiral-node-7" data-content="spiral-content-7" class="diagram-node absolute top-[60%] right-[5%] p-2 px-4 text-center bg-[var(--color-surface)] border border-dashed border-[var(--color-text-muted)] rounded-full shadow-sm"><span class="text-sm font-medium">Exit: Action</span></div>
+                    <div id="spiral-node-6" data-content="spiral-content-6" class="diagram-node absolute top-[30%] left-[5%] p-2 px-4 text-center bg-[var(--color-surface)] border border-dashed border-[var(--color-text-secondary)] rounded-full"><span class="text-sm font-medium text-[var(--color-primary)]">Exit: Mindfulness</span></div>
+                    <div id="spiral-node-7" data-content="spiral-content-7" class="diagram-node absolute top-[60%] right-[5%] p-2 px-4 text-center bg-[var(--color-surface)] border border-dashed border-[var(--color-text-secondary)] rounded-full"><span class="text-sm font-medium text-[var(--color-primary)]">Exit: Action</span></div>
                 </div>
-                <div id="spiral-content-display" class="bg-[var(--color-surface)] p-6 rounded-lg border border-[var(--color-border)] min-h-[300px]">
+                <div id="spiral-content-display" class="bg-[var(--color-surface)] p-6 rounded-xl border border-[var(--color-border)] min-h-[300px] shadow-sm">
                     <div id="spiral-content-default"><h4 class="font-bold text-lg mb-2">The Downward Spiral</h4><p class="text-[var(--color-text-secondary)]">Click on a node or an "Exit Point" to understand how stress can escalate and, more importantly, how you can step out of the cycle.</p></div>
-                    <div id="spiral-content-1" class="hidden content-fade-in"><h4 class="font-bold text-lg mb-2">Stress / Anxiety</h4><p class="text-[var(--color-text-secondary)]">The process begins with a stressor. Over time, individuals can become "sensitized," meaning smaller and smaller stressors can trigger a strong negative response.</p></div>
-                    <div id="spiral-content-2" class="hidden content-fade-in"><h4 class="font-bold text-lg mb-2">Attention on Quick Rewards</h4><p class="text-[var(--color-text-secondary)]">To cope with the stress, attention shifts to maladaptive, quick-fix rewards like digital distraction. This is an attempt to escape the negative feeling.</p></div>
-                    <div id="spiral-content-3" class="hidden content-fade-in"><h4 class="font-bold text-lg mb-2 text-[var(--color-accent)]">Impulse & Brief Relief</h4><p class="text-[var(--color-text-secondary)]">Acting on the impulse provides a brief dopamine-driven relief, reinforcing the idea that this coping mechanism "works." However, it doesn't address the root cause of the stress.</p></div>
-                    <div id="spiral-content-4" class="hidden content-fade-in"><h4 class="font-bold text-lg mb-2">Baseline Drops</h4><p class="text-[var(--color-text-secondary)]">As shown in the Dopamine Curve, this relief is followed by a drop in baseline mood and a depletion of internal resources like willpower and focus, leaving you more vulnerable.</p></div>
-                    <div id="spiral-content-5" class="hidden content-fade-in"><h4 class="font-bold text-lg mb-2">Increased Sensitivity</h4><p class="text-[var(--color-text-secondary)]">With depleted resources, your resilience is lower. You become even more sensitive to the next stressor, which can now trigger the cycle more easily, creating a downward spiral.</p></div>
-                    <div id="spiral-content-6" class="hidden content-fade-in"><h4 class="font-bold text-lg mb-2">Exit: Mindfulness</h4><p class="text-[var(--color-text-secondary)]">The first exit is awareness. By practicing mindfulness (e.g., breathwork, meditation), you can observe the initial stress without reacting, creating a space to choose a healthier response.</p></div>
-                    <div id="spiral-content-7" class="hidden content-fade-in"><h4 class="font-bold text-lg mb-2">Exit: Action</h4><p class="text-[var(--color-text-secondary)]">The second exit is taking small, positive actions that address the stressor or improve your state (e.g., exercise, talking to a friend). This builds real resilience instead of seeking temporary escape.</p></div>
+                    <div id="spiral-content-1" class="hidden content-fade-in"><h4 class="font-bold text-lg mb-2 text-[var(--color-primary)]">Stress / Anxiety</h4><p class="text-[var(--color-text-secondary)]">The process begins with a stressor. Over time, individuals can become "sensitized," meaning smaller and smaller stressors can trigger a strong negative response.</p></div>
+                    <div id="spiral-content-2" class="hidden content-fade-in"><h4 class="font-bold text-lg mb-2 text-[var(--color-primary)]">Attention on Quick Rewards</h4><p class="text-[var(--color-text-secondary)]">To cope with the stress, attention shifts to maladaptive, quick-fix rewards like digital distraction. This is an attempt to escape the negative feeling.</p></div>
+                    <div id="spiral-content-3" class="hidden content-fade-in"><h4 class="font-bold text-lg mb-2 text-[var(--color-primary)]">Impulse & Brief Relief</h4><p class="text-[var(--color-text-secondary)]">Acting on the impulse provides a brief dopamine-driven relief, reinforcing the idea that this coping mechanism "works." However, it doesn't address the root cause of the stress.</p></div>
+                    <div id="spiral-content-4" class="hidden content-fade-in"><h4 class="font-bold text-lg mb-2 text-[var(--color-primary)]">Baseline Drops</h4><p class="text-[var(--color-text-secondary)]">As shown in the Dopamine Curve, this relief is followed by a drop in baseline mood and a depletion of internal resources like willpower and focus, leaving you more vulnerable.</p></div>
+                    <div id="spiral-content-5" class="hidden content-fade-in"><h4 class="font-bold text-lg mb-2 text-[var(--color-primary)]">Increased Sensitivity</h4><p class="text-[var(--color-text-secondary)]">With depleted resources, your resilience is lower. You become even more sensitive to the next stressor, which can now trigger the cycle more easily, creating a downward spiral.</p></div>
+                    <div id="spiral-content-6" class="hidden content-fade-in"><h4 class="font-bold text-lg mb-2 text-[var(--color-primary)]">Exit: Mindfulness</h4><p class="text-[var(--color-text-secondary)]">The first exit is awareness. By practicing mindfulness (e.g., breathwork, meditation), you can observe the initial stress without reacting, creating a space to choose a healthier response.</p></div>
+                    <div id="spiral-content-7" class="hidden content-fade-in"><h4 class="font-bold text-lg mb-2 text-[var(--color-primary)]">Exit: Action</h4><p class="text-[var(--color-text-secondary)]">The second exit is taking small, positive actions that address the stressor or improve your state (e.g., exercise, talking to a friend). This builds real resilience instead of seeking temporary escape.</p></div>
                 </div>
             </div>
         </section>
@@ -208,43 +246,43 @@
                 <p class="max-w-2xl mx-auto text-[var(--color-text-secondary)]">This 2x2 matrix serves as a navigational tool for self-awareness. It integrates the previous concepts to help you map your current motivational and emotional state, and guides you toward the optimal zone of well-being. Click a quadrant to learn more.</p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
-                <div class="relative grid grid-cols-2 grid-rows-2 gap-1 bg-[var(--color-border)] p-1 rounded-xl shadow-sm">
+                <div class="relative grid grid-cols-2 grid-rows-2 gap-2 bg-[var(--color-border)] p-2 rounded-xl shadow-lg">
                     <!-- Axes Labels -->
                     <div class="absolute -top-8 left-1/2 -translate-x-1/2 text-sm font-medium text-[var(--color-text-secondary)]">Spike vs. Sensitivity →</div>
                     <div class="absolute -left-8 top-1/2 -translate-y-1/2 -rotate-90 text-sm font-medium text-[var(--color-text-secondary)]">Dopamine Baseline →</div>
 
-                    <div id="quadrant-1" class="compass-quadrant p-6 rounded-tl-lg bg-[var(--color-surface-elevated)] text-center h-48 flex flex-col justify-center">
-                        <h4 class="font-bold">High Spikes / Low Sensitivity</h4>
-                        <p class="text-xs text-[var(--color-text-muted)]">Habituated State</p>
+                    <div id="quadrant-1" class="compass-quadrant p-6 rounded-tl-lg bg-[var(--color-surface)] text-center h-48 flex flex-col justify-center border-2 border-[var(--color-border)]">
+                        <h4 class="font-bold text-[var(--color-primary)]">High Spikes / Low Sensitivity</h4>
+                        <p class="text-xs text-[var(--color-text-secondary)]">Habituated State</p>
                     </div>
-                    <div id="quadrant-2" class="compass-quadrant p-6 rounded-tr-lg bg-[var(--color-surface)] text-center h-48 flex flex-col justify-center border-2 border-[var(--color-accent)] shadow-2xl shadow-[var(--color-accent)]/20 relative">
-                         <div class="absolute top-2 right-2 text-xs font-bold text-[var(--color-accent)]">OPTIMAL</div>
-                        <h4 class="font-bold text-[var(--color-accent)]">Optimal Flow / Contentment</h4>
-                        <p class="text-xs text-[var(--color-text-muted)]">Healthy State</p>
+                    <div id="quadrant-2" class="compass-quadrant optimal p-6 rounded-tr-lg bg-[var(--color-accent)] text-white text-center h-48 flex flex-col justify-center border-2 border-[var(--color-accent)] relative">
+                         <div class="absolute top-2 right-2 text-xs font-bold text-[var(--color-primary)]">OPTIMAL</div>
+                        <h4 class="font-bold text-[var(--color-primary)]">Optimal Flow / Contentment</h4>
+                        <p class="text-xs opacity-80 text-[var(--color-text-primary)]">Healthy State</p>
                     </div>
-                    <div id="quadrant-3" class="compass-quadrant p-6 rounded-bl-lg bg-[var(--color-surface)] text-center h-48 flex flex-col justify-center">
-                        <h4 class="font-bold">Compulsive Seeking / Burnout</h4>
-                        <p class="text-xs text-[var(--color-text-muted)]">Dysregulated State</p>
+                    <div id="quadrant-3" class="compass-quadrant p-6 rounded-bl-lg bg-[var(--color-surface)] text-center h-48 flex flex-col justify-center border-2 border-[var(--color-border)]">
+                        <h4 class="font-bold text-[var(--color-primary)]">Compulsive Seeking / Burnout</h4>
+                        <p class="text-xs text-[var(--color-text-secondary)]">Dysregulated State</p>
                     </div>
-                    <div id="quadrant-4" class="compass-quadrant p-6 rounded-br-lg bg-[var(--color-surface-elevated)] text-center h-48 flex flex-col justify-center">
-                        <h4 class="font-bold">Low Drive / Anhedonia</h4>
-                        <p class="text-xs text-[var(--color-text-muted)]">Depleted State</p>
+                    <div id="quadrant-4" class="compass-quadrant p-6 rounded-br-lg bg-[var(--color-surface)] text-center h-48 flex flex-col justify-center border-2 border-[var(--color-border)]">
+                        <h4 class="font-bold text-[var(--color-primary)]">Low Drive / Anhedonia</h4>
+                        <p class="text-xs text-[var(--color-text-secondary)]">Depleted State</p>
                     </div>
                 </div>
 
-                <div id="compass-content-display" class="bg-[var(--color-surface)] p-6 rounded-lg border border-[var(--color-border)] min-h-[400px]">
+                <div id="compass-content-display" class="bg-[var(--color-surface)] p-6 rounded-xl border border-[var(--color-border)] min-h-[400px] shadow-sm">
                     <div id="compass-content-default"><h4 class="font-bold text-lg mb-2">Navigate Your Inner State</h4><p class="text-[var(--color-text-secondary)]">Click on any of the four quadrants to understand its characteristics, the underlying neurobiology, and how it connects to your daily experiences.</p></div>
-                    <div id="compass-content-1" class="hidden content-fade-in"><h4 class="font-bold text-lg mb-2">High Spikes / Low Sensitivity</h4><p class="text-[var(--color-text-secondary)]"><b>High Baseline, Low Sensitivity.</b> This state is characterized by a need for high-intensity stimuli to feel pleasure. While motivation might be high, satisfaction is often fleeting. It's a state of habituation where simple pleasures lose their appeal, pushing you to seek ever-stronger "hits."</p></div>
-                    <div id="compass-content-2" class="hidden content-fade-in"><h4 class="font-bold text-lg mb-2 text-[var(--color-accent)]">Optimal Flow / Contentment</h4><p class="text-[var(--color-text-secondary)]"><b>High Baseline, High Sensitivity.</b> The ideal state. Your dopamine system is balanced, allowing you to derive pleasure and motivation from a wide range of activities, both simple and complex. You feel engaged, driven, and content without needing constant, intense stimulation.</p></div>
-                    <div id="compass-content-3" class="hidden content-fade-in"><h4 class="font-bold text-lg mb-2">Compulsive Seeking / Burnout</h4><p class="text-[var(--color-text-secondary)]"><b>Low Baseline, Low Sensitivity.</b> This is the "addicted brain" state, caught in the crash after too many spikes. You feel a compulsive need to seek rewards but get very little pleasure from them. It's a state of high craving and low satisfaction, leading to burnout.</p></div>
-                    <div id="compass-content-4" class="hidden content-fade-in"><h4 class="font-bold text-lg mb-2">Low Drive / Anhedonia</h4><p class="text-[var(--color-text-secondary)]"><b>Low Baseline, High Sensitivity.</b> In this depleted state, your motivation is low, and you may struggle to find pleasure in activities you once enjoyed (anhedonia). Your system is highly sensitive, but the overall baseline is too low to initiate action, leading to apathy and lethargy.</p></div>
+                    <div id="compass-content-1" class="hidden content-fade-in"><h4 class="font-bold text-lg mb-2 text-[var(--color-primary)]">High Spikes / Low Sensitivity</h4><p class="text-[var(--color-text-secondary)]"><b>High Baseline, Low Sensitivity.</b> This state is characterized by a need for high-intensity stimuli to feel pleasure. While motivation might be high, satisfaction is often fleeting. It's a state of habituation where simple pleasures lose their appeal, pushing you to seek ever-stronger "hits."</p></div>
+                    <div id="compass-content-2" class="hidden content-fade-in"><h4 class="font-bold text-lg mb-2 text-[var(--color-primary)]">Optimal Flow / Contentment</h4><p class="text-[var(--color-text-secondary)]"><b>High Baseline, High Sensitivity.</b> The ideal state. Your dopamine system is balanced, allowing you to derive pleasure and motivation from a wide range of activities, both simple and complex. You feel engaged, driven, and content without needing constant, intense stimulation.</p></div>
+                    <div id="compass-content-3" class="hidden content-fade-in"><h4 class="font-bold text-lg mb-2 text-[var(--color-primary)]">Compulsive Seeking / Burnout</h4><p class="text-[var(--color-text-secondary)]"><b>Low Baseline, Low Sensitivity.</b> This is the "addicted brain" state, caught in the crash after too many spikes. You feel a compulsive need to seek rewards but get very little pleasure from them. It's a state of high craving and low satisfaction, leading to burnout.</p></div>
+                    <div id="compass-content-4" class="hidden content-fade-in"><h4 class="font-bold text-lg mb-2 text-[var(--color-primary)]">Low Drive / Anhedonia</h4><p class="text-[var(--color-text-secondary)]"><b>Low Baseline, High Sensitivity.</b> In this depleted state, your motivation is low, and you may struggle to find pleasure in activities you once enjoyed (anhedonia). Your system is highly sensitive, but the overall baseline is too low to initiate action, leading to apathy and lethargy.</p></div>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer class="bg-[var(--color-surface-elevated)] border-t border-[var(--color-border)] mt-20">
-        <div class="container mx-auto px-6 py-8 text-center text-[var(--color-text-muted)]">
+    <footer class="bg-[var(--color-surface)] border-t border-[var(--color-border)] mt-20">
+        <div class="container mx-auto px-6 py-8 text-center text-[var(--color-text-secondary)]">
             <p class="text-sm">&copy; 2025 Project Dukkha. An interactive exploration of modern well-being.</p>
         </div>
     </footer>
@@ -290,8 +328,13 @@
                         // Deactivate previous node
                         if(activeNode) {
                             activeNode.style.borderColor = 'var(--color-border)';
-                            if(!activeNode.classList.contains('bg-[var(--color-accent)]')) {
-                                activeNode.style.backgroundColor = activeNode.classList.contains('rounded-full') ? 'var(--color-surface)' : 'var(--color-surface-elevated)';
+                            if(activeNode.classList.contains('bg-[var(--color-accent)]')) {
+                                activeNode.style.backgroundColor = 'var(--color-surface)';
+                                activeNode.style.color = 'var(--color-text-primary)';
+                            }
+                            if(activeNode.classList.contains('optimal')){
+                                activeNode.style.backgroundColor = 'var(--color-accent)';
+                                activeNode.style.color = 'var(--color-text-primary)';
                             }
                         }
 
@@ -300,9 +343,19 @@
                         if (targetContent) {
                             defaultContent.classList.add('hidden');
                             targetContent.classList.remove('hidden');
-                            node.style.borderColor = 'var(--color-accent)';
-                            if(!node.classList.contains('bg-[var(--color-accent)]')) {
-                                node.style.backgroundColor = 'white';
+                            if(node.classList.contains('bg-[var(--color-surface)]')) {
+                                node.style.borderColor = 'var(--color-primary)';
+                                node.style.backgroundColor = 'var(--color-background)';
+                            }
+                             if(node.classList.contains('bg-[var(--color-accent)]')) {
+                                node.style.borderColor = 'var(--color-primary)';
+                                node.style.backgroundColor = 'var(--color-accent)';
+                                node.style.color = 'var(--color-text-primary)';
+                            }
+                            if(node.classList.contains('optimal')){
+                                node.style.borderColor = 'var(--color-primary)';
+                                node.style.backgroundColor = 'var(--color-accent)';
+                                node.style.color = 'var(--color-text-primary)';
                             }
                             activeNode = node;
                         }
@@ -317,6 +370,10 @@
 
             // --- Dopamine Chart ---
             const ctx = document.getElementById('dopamineChart').getContext('2d');
+            const gradient = ctx.createLinearGradient(0, 0, 0, 400);
+            gradient.addColorStop(0, 'rgba(193, 178, 148, 0.4)');
+            gradient.addColorStop(1, 'rgba(193, 178, 148, 0)');
+            
             const dopamineChart = new Chart(ctx, {
                 type: 'line',
                 data: {
@@ -324,17 +381,20 @@
                     datasets: [{
                         label: 'Dopamine Level',
                         data: [0, 100, -20, -50, -30, -15, -5, 0],
-                        borderColor: 'var(--color-accent)',
-                        backgroundColor: 'rgba(138, 92, 254, 0.1)',
+                        borderColor: 'var(--color-primary)',
+                        backgroundColor: gradient,
                         borderWidth: 3,
                         tension: 0.4,
                         fill: true,
-                        pointRadius: 0,
-                        pointHitRadius: 10,
+                        pointRadius: 4,
+                        pointHoverRadius: 6,
+                        pointBackgroundColor: 'var(--color-primary)',
+                        pointBorderColor: 'var(--color-surface)',
+                        pointBorderWidth: 2,
                     }, {
                         label: 'Baseline',
                         data: [0, 0, 0, 0, 0, 0, 0, 0],
-                        borderColor: 'var(--color-text-muted)',
+                        borderColor: 'var(--color-secondary)',
                         borderWidth: 2,
                         borderDash: [5, 5],
                         pointRadius: 0,
@@ -348,32 +408,45 @@
                             beginAtZero: false,
                             title: {
                                 display: true,
-                                text: 'Dopamine Level (Relative)'
+                                text: 'Dopamine Level (Relative)',
+                                color: 'var(--color-text-secondary)',
+                                font: { weight: '600' }
                             },
                             ticks: {
+                                color: 'var(--color-text-secondary)',
                                 callback: function(value) {
                                     if (value === 100) return 'Peak Spike';
                                     if (value === 0) return 'Baseline';
                                     if (value === -50) return 'Trough';
                                     return null;
                                 }
-                            }
+                            },
+                            grid: { color: 'var(--color-border)' }
                         },
                         x: {
                             title: {
                                 display: true,
-                                text: 'Time'
-                            }
+                                text: 'Time',
+                                color: 'var(--color-text-secondary)',
+                                font: { weight: '600' }
+                            },
+                            ticks: { color: 'var(--color-text-secondary)' },
+                            grid: { color: 'var(--color-border)' }
                         }
                     },
                     plugins: {
-                        legend: {
-                            display: false
-                        },
+                        legend: { display: false },
                         tooltip: {
                             enabled: true,
                             mode: 'index',
                             intersect: false,
+                            backgroundColor: 'var(--color-surface)',
+                            titleColor: 'var(--color-primary)',
+                            bodyColor: 'var(--color-text-secondary)',
+                            borderColor: 'var(--color-border)',
+                            borderWidth: 1,
+                            cornerRadius: 8,
+                            padding: 12,
                             callbacks: {
                                 title: function(tooltipItems) {
                                     return 'Phase: ' + tooltipItems[0].label;
