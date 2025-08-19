@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Diagrams preview</title>
+  <style>
+    body{font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial; background:#f7f7f8; margin:24px}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:20px}
+    .card{background:#fff;border:1px solid #e6e9ee;padding:18px;border-radius:10px;box-shadow:0 6px 18px rgba(16,24,40,0.04)}
+    .card h3{margin:0 0 12px;font-size:16px;color:#0f172a}
+    svg{width:100%;height:auto;display:block}
+    .note{font-size:13px;color:#64748b;margin-top:8px}
+  </style>
+</head>
+<body>
+  <h1>Diagram previews</h1>
+  <div class="grid">
+    <div class="card"><h3>Dopamine baseline & spike</h3><object data="dopamine_baseline_spike.svg" type="image/svg+xml">Your browser does not support SVG</object><p class="note">Standalone SVG with explicit colours for consistent rendering.</p></div>
+    <div class="card"><h3>Ping / Scroll loop</h3><object data="ping_scroll_loop.svg" type="image/svg+xml">Your browser does not support SVG</object><p class="note">Simplified flowchart with clear arrows and interventions.</p></div>
+    <div class="card"><h3>Reward compass</h3><object data="reward_compass.svg" type="image/svg+xml">Your browser does not support SVG</object><p class="note">Quadrant map with compass marker.</p></div>
+    <div class="card"><h3>Stress-sensitization loop</h3><object data="stress_sensitization_loop.svg" type="image/svg+xml">Your browser does not support SVG</object><p class="note">Flow with exit strategies and clearer layout.</p></div>
+  </div>
+</body>
+</html>

@@ -1,27 +1,48 @@
-<svg viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg" aria-labelledby="dopamineGraphTitle dopamineGraphDesc">
-    <title id="dopamineGraphTitle">Dopamine Baseline vs. Spike</title>
-    <desc id="dopamineGraphDesc">A line graph showing a sharp dopamine spike followed by a dip below baseline over time.</desc>
+<svg viewBox="0 0 700 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="titleDesc">
+    <title id="titleDesc">Dopamine baseline and spike</title>
+    <desc>Stylised line showing a sharp dopamine spike followed by a dip below baseline and recovery.</desc>
 
+    <!-- Explicit colors for standalone rendering -->
+    <!-- accent: #c9a961, text-primary: #0f172a, text-secondary: #475569, border: #e2e8f0 -->
     <defs>
-        <marker id="arrowhead-axis" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
-            <polygon points="0 0, 10 3.5, 0 7" fill="var(--color-text-muted)" />
+        <marker id="m-arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#475569" />
         </marker>
     </defs>
 
+    <!-- Background grid (subtle) -->
+    <g opacity="0.06" stroke="#e2e8f0" stroke-width="1">
+        <line x1="100" y1="40" x2="100" y2="260" />
+        <line x1="250" y1="40" x2="250" y2="260" />
+        <line x1="400" y1="40" x2="400" y2="260" />
+        <line x1="550" y1="40" x2="550" y2="260" />
+        <line x1="80" y1="60" x2="620" y2="60" />
+        <line x1="80" y1="120" x2="620" y2="120" />
+        <line x1="80" y1="180" x2="620" y2="180" />
+        <line x1="80" y1="240" x2="620" y2="240" />
+    </g>
+
     <!-- Axes -->
-    <line x1="50" y1="200" x2="350" y2="200" stroke="var(--color-text-muted)" stroke-width="1.5" marker-end="url(#arrowhead-axis)"></line> <!-- X-axis -->
-    <line x1="50" y1="200" x2="50" y2="50" stroke="var(--color-text-muted)" stroke-width="1.5" marker-end="url(#arrowhead-axis)"></line>   <!-- Y-axis -->
+    <line x1="80" y1="240" x2="620" y2="240" stroke="#475569" stroke-width="1.5" marker-end="url(#m-arrow)" />
+    <line x1="100" y1="260" x2="100" y2="20" stroke="#475569" stroke-width="1.5" marker-end="url(#m-arrow)" />
 
-    <!-- Axis Labels -->
-    <text x="350" y="215" text-anchor="end" fill="var(--color-text-secondary)" font-size="12" font-family="var(--font-sans)">Time</text>
-    <text x="35" y="140" text-anchor="middle" fill="var(--color-text-secondary)" font-size="12" font-family="var(--font-sans)" transform="rotate(-90 35 140)">Dopamine Level (Relative)</text>
+    <text x="620" y="258" text-anchor="end" fill="#475569" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13">Time</text>
+    <text x="64" y="150" transform="rotate(-90 64 150)" text-anchor="middle" fill="#475569" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13">Dopamine level</text>
 
-    <!-- Baseline (dashed line) -->
-    <line x1="50" y1="120" x2="350" y2="120" stroke="var(--color-text-muted)" stroke-dasharray="4 2" stroke-width="1.5"></line>
-    <text x="355" y="125" text-anchor="start" fill="var(--color-text-muted)" font-size="11" font-family="var(--font-sans)">Baseline</text>
+    <!-- Baseline -->
+    <line x1="100" y1="160" x2="620" y2="160" stroke="#cbd5e1" stroke-dasharray="6 4" stroke-width="1.5" />
+    <text x="628" y="160" fill="#475569" font-size="12">Baseline</text>
 
-    <!-- Dopamine Level curve - Smoother path -->
-    <path d="M50,120 C 70,120 85,70 110,50 C135,30 160,180 185,190 C210,200 240,150 270,130 C300,110 325,115 350,120"
-          fill="none" stroke="var(--color-accent)" stroke-width="3" stroke-linecap="round"></path>
-    <text x="180" y="40" text-anchor="middle" fill="var(--color-accent)" font-size="11" font-family="var(--font-sans)">Dopamine Level</text>
+    <!-- Smooth curve: spike then dip -->
+    <path d="M100 160 C 140 160, 170 110, 210 70 C 260 20, 320 140, 360 180 C 410 215, 470 200, 520 170 C 560 150, 600 152, 620 160"
+                fill="none" stroke="#c9a961" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- Emphasised spike marker -->
+    <circle cx="210" cy="70" r="7" fill="#c9a961" stroke="#ffffff" stroke-width="1.5" />
+    <text x="210" y="50" text-anchor="middle" fill="#0f172a" font-weight="600" font-size="12">Spike</text>
+
+    <!-- Dip marker -->
+    <circle cx="360" cy="180" r="6" fill="#0f172a" />
+    <text x="360" y="200" text-anchor="middle" fill="#475569" font-size="12">Below baseline</text>
+
 </svg>
