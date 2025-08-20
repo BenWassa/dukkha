@@ -551,7 +551,6 @@ a:hover {
 
 .card-icon {
   flex-shrink: 0;
-  color: var(--color-accent);
   transition: all var(--transition-normal);
   width: 80px;
   height: 80px;
@@ -561,15 +560,27 @@ a:hover {
   opacity: 0.8;
 }
 
-.card-icon svg {
+.card-icon img {
   width: 100%;
   height: 100%;
   transition: all var(--transition-normal);
+  /* Convert black SVG to accent color using CSS filters */
+  filter: invert(58%) sepia(23%) saturate(537%) hue-rotate(8deg) brightness(97%) contrast(87%);
+}
+
+/* Ensure SVG icons inherit theme colors */
+.card-icon svg {
+  color: var(--color-accent);
 }
 
 .access-card:hover .card-icon {
   opacity: 1;
   transform: scale(1.05);
+}
+
+.access-card:hover .card-icon img {
+  /* Convert to accent-light color on hover */
+  filter: invert(71%) sepia(16%) saturate(625%) hue-rotate(8deg) brightness(95%) contrast(87%);
 }
 
 .card-content {
