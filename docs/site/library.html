@@ -32,7 +32,6 @@
     <main class="page-content">
         <section class="hero-library">
             <h1>The Dukkha Library: Curated Citations</h1>
-            <p class="tagline">Explore the Evidence Behind the Field Guide</p>
             <p>Transparency and evidence are core to Project Dukkha. This library provides a curated, accessible list of the key scientific and philosophical sources that underpin the insights and protocols presented throughout the site. We prioritize recent human studies, landmark works, and systematic reviews to offer a robust and verifiable foundation for understanding the rewarded animal.</p>
         </section>
 
@@ -57,4 +56,44 @@
                 <li>Soravia, L. M., et al. (2021). Effects of acute cortisol administration on alcohol cue reactivity and craving in patients with alcohol use disorder. <em>Psychoneuroendocrinology</em>, 129, 105255. <a href="https://doi.org/10.1016/j.psyneuen.2021.105255" target="_blank" rel="noopener">DOI:10.1016/j.psyneuen.2021.105255</a></li>
                 <li>Wemm, S. E., & Wray, L. O. (2019). Daily stress and craving to drink: A day-to-day analysis of patients in treatment for alcohol use disorder. <em>Psychology of Addictive Behaviors</em>, 33(7), 901–909. <a href="https://doi.org/10.1037/adb0000494" target="_blank" rel="noopener">DOI:10.1037/adb0000494</a></li>
                 <li>Wickord, C., et al. (2023). Grayscale mode on smartphones: A digital health intervention? <em>Journal of Medical Internet Research</em>, 25, e43567. <a href="https://doi.org/10.2196/43567" target="_blank" rel="noopener">DOI:10.2196/43567</a></li>
-                <li>Zhang, H., et al. (2021). Sleep disturbances and their impact on substance use disorder outcomes: A narrative review. <em>Frontiers in Psychiatry</em>, 12, 785050. <a href="https://doi.org
+                <li>Zhang, H., et al. (2021). Sleep disturbances and their impact on substance use disorder outcomes: A narrative review. <em>Frontiers in Psychiatry</em>, 12, 785050. <a href="https://doi.org/10.3389/fpsyt.2021.785050" target="_blank" rel="noopener">DOI:10.3389/fpsyt.2021.785050</a></li>
+            </ul>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="brand-symbol"></div>
+                    <span>Project Dukkha</span>
+                </div>
+                <div class="footer-links">
+                    <a href="library.html">Research</a>
+                    <a href="#" class="print-link" onclick="window.print()">Print Guide</a>
+                    <a href="mailto:contact@projectdukkha.com">Contact</a>
+                </div>
+            </div>
+            <div class="footer-note">
+                <p>This field guide is for educational purposes. Consult healthcare professionals for medical decisions.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Smooth navigation highlighting
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                link.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-1px)';
+                });
+                link.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
