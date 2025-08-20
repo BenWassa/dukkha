@@ -274,11 +274,14 @@ a:hover {
 
 /* Smaller subtitle for protocol pages (supporting role) */
 .hero-subtitle--protocol {
+  font-family: var(--font-sans);
   font-size: var(--text-base);
   color: var(--color-text-muted);
-  font-style: italic;
+  font-style: normal;
+  font-weight: 400;
   margin-top: var(--space-1);
   max-width: 65ch;
+  line-height: 1.5;
   /* match container width and padding for visual symmetry */
   max-width: var(--container-width);
   margin-left: auto;
@@ -886,7 +889,7 @@ a:hover {
   font-size: var(--text-lg);
   color: var(--color-accent);
   margin-bottom: var(--space-6);
-  font-weight: 400;
+  font-weight: 600;
 }
 
 .hero-attention p:not(.tagline),
