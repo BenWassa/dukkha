@@ -1465,3 +1465,15 @@ button:focus,
     object-position: center center; /* Center the SVG within the viewport */
     overflow: hidden; /* Hide parts that extend beyond the viewport */
 }
+
+/* Protocol list & details styles */
+.protocol-list { display:grid; gap:1rem; grid-template-columns:1fr; max-width:900px; margin:0 auto; }
+.protocol-card { border:1px solid var(--color-border); padding:1rem; border-radius:8px; background:var(--color-surface); }
+details.protocol-summary { border:1px solid var(--color-border); padding:0.6rem; border-radius:6px; background:transparent; }
+details.protocol-summary summary { font-weight:600; cursor:pointer; }
+details.protocol-summary[open] { background: rgba(0,0,0,0.02); }
+
+@media print {
+  details.protocol-summary { display:block; }
+  details.protocol-summary summary { font-weight:700; }
+}
