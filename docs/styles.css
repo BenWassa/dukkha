@@ -180,9 +180,17 @@ a:hover {
   color: var(--color-text-primary);
 }
 
-.brand-symbol {
+.brand-symbol, .cta-icon {
   font-size: var(--text-2xl);
   color: var(--color-accent);
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-image: url('images/icons/ouroboros-svgrepo-com.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  filter: brightness(0) saturate(100%) invert(77%) sepia(15%) saturate(1068%) hue-rotate(21deg) brightness(94%) contrast(89%);
 }
 
 .nav-menu {
