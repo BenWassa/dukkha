@@ -23,7 +23,7 @@
                 <li><a href="../recovery.html" class="nav-link">Recovery & Baseline</a></li>
                 <li><a href="../myths.html" class="nav-link">Five Myths</a></li>
                 <li><a href="../model.html" class="nav-link">Model</a></li>
-                <li><a href="../protocols.html" class="nav-link">Protocols</a></li>
+                <li><a href="../protocols.html" class="nav-link active" aria-current="page">Protocols</a></li>
                 <li><a href="../library.html" class="nav-link">Library</a></li>
             </ul>
         </div>
@@ -79,16 +79,6 @@
                 <div class="protocol-steps">
                     <p>By consistently applying these interventions over 14 days, you can reset your circadian rhythm, improve sleep quality, stabilize your dopamine baseline, and enhance your resilience against stress and cravings. The focus is on establishing robust daily routines that naturally support your body's sleep-wake cycle and recovery processes.</p>
                 </div>
-
-                <h2>Sources</h2>
-                <ul>
-                    <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6143346/" target="_blank" rel="noopener noreferrer">pmc.ncbi.nlm.nih.gov</a></li>
-                    <li><a href="https://pubmed.ncbi.nlm.nih.gov/29373120/" target="_blank" rel="noopener noreferrer">pubmed.ncbi.nlm.nih.gov</a></li>
-                    <li><a href="https://www.hubermanlab.com/newsletter/using-light-for-health" target="_blank" rel="noopener noreferrer">hubermanlab.com</a></li>
-                    <li><a href="https://www.ama-assn.org/public-health/prevention-wellness/what-doctors-wish-patients-knew-about-impact-caffeine" target="_blank" rel="noopener noreferrer">ama-assn.org</a></li>
-                    <li><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9739502/" target="_blank" rel="noopener noreferrer">ncbi.nlm.nih.gov</a></li>
-                    <li><a href="https://hdl.handle.net/2027.42/65219" target="_blank" rel="noopener noreferrer">hdl.handle.net</a></li>
-                </ul>
             </article>
         </section>
     </main>
@@ -113,9 +103,42 @@
         </div>
     </footer>
 
+    <!-- Footnotes Section -->
+    <section class="footnotes" id="footnotes">
+        <div class="container">
+            <h3>Notes & Citations</h3>
+            <ol class="footnote-list">
+                <li id="fn1"><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6143346/" target="_blank" rel="noopener noreferrer">pmc.ncbi.nlm.nih.gov</a></li>
+                <li id="fn2"><a href="https://pubmed.ncbi.nlm.nih.gov/29373120/" target="_blank" rel="noopener noreferrer">pubmed.ncbi.nlm.nih.gov</a></li>
+                <li id="fn3"><a href="https://www.hubermanlab.com/newsletter/using-light-for-health" target="_blank" rel="noopener noreferrer">hubermanlab.com</a></li>
+                <li id="fn4"><a href="https://www.ama-assn.org/public-health/prevention-wellness/what-doctors-wish-patients-knew-about-impact-caffeine" target="_blank" rel="noopener noreferrer">ama-assn.org</a></li>
+                <li id="fn5"><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9739502/" target="_blank" rel="noopener noreferrer">ncbi.nlm.nih.gov</a></li>
+                <li id="fn6"><a href="https://hdl.handle.net/2027.42/65219" target="_blank" rel="noopener noreferrer">hdl.handle.net</a></li>
+            </ol>
+        </div>
+    </section>
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Smooth navigation highlighting
+            const footnotesSection = document.querySelector('.footnotes');
+            const footnotesHeader = document.querySelector('.footnotes h3');
+            if (footnotesHeader && footnotesSection) {
+                footnotesHeader.addEventListener('click', function() {
+                    footnotesSection.classList.toggle('collapsed');
+                });
+            }
+            document.querySelectorAll('.footnote-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (footnotesSection && footnotesSection.classList.contains('collapsed')) {
+                        footnotesSection.classList.remove('collapsed');
+                    }
+                    target.scrollIntoView({ behavior: 'smooth' });
+                    target.classList.add('highlight');
+                    setTimeout(() => target.classList.remove('highlight'), 2000);
+                });
+            });
             const navLinks = document.querySelectorAll('.nav-link');
             navLinks.forEach(link => {
                 link.addEventListener('mouseenter', function() {
