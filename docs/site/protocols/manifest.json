@@ -1,0 +1,32 @@
+[
+  {
+    "title": "Digital Detox Protocol",
+    "slug": "digital-detox-protocol",
+    "file": "protocols/digital-detox-protocol.html",
+    "summary": "The \"Digital Detox Protocol\" is designed as a 3-day experiment aimed at reducing digital overstimulation and rebuilding sustained attention, drawing on strong evidence related to smartphone usage habits and their impact on well-being."
+  },
+  {
+    "title": "Mindfulness & Awareness Protocol",
+    "slug": "mindfulness-awareness-protocol",
+    "file": "protocols/mindfulness-awareness-protocol.html",
+    "summary": "The \"Mindfulness & Awareness Protocol\" is a 21-day experiment designed to cultivate metacognitive awareness, enabling individuals to understand and respond skillfully to cravings and internal states. Drawing on both ancient Buddhist wisdom and modern neuroscience, this protocol aims to reduce reactivity to intense desires and foster a more balanced and contented state of mind."
+  },
+  {
+    "title": "Nutrition & Supplementation Protocol",
+    "slug": "nutrition-supplementation-protocol",
+    "file": "protocols/nutrition-supplementation-protocol.html",
+    "summary": "The \"Nutrition & Supplementation Protocol\" focuses on leveraging dietary and lifestyle interventions to optimize dopamine function for improved motivation, focus, and overall well-being. This protocol addresses the fragmented information landscape by providing a consolidated, evidence-based guide for supporting a stable and responsive dopamine system."
+  },
+  {
+    "title": "Sleep Optimization Protocol",
+    "slug": "sleep-optimization-protocol",
+    "file": "protocols/sleep-optimization-protocol.html",
+    "summary": "## The Problem: Sleep's Impact on Dopamine and Craving"
+  },
+  {
+    "title": "Stress Management Protocol",
+    "slug": "stress-management-protocol",
+    "file": "protocols/stress-management-protocol.html",
+    "summary": "The \"Stress Management Protocol\" is a 10-day experiment designed to equip individuals with practical strategies to mitigate the impact of stress on craving and overall well-being. It aims to interrupt the stress-impulse-habit loop by lowering physiological arousal and re-centering dopamine baseline. This protocol is particularly useful during peak urge moments or when stress threatens to trigger unwanted behaviors."
+  }
+]

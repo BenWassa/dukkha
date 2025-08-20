@@ -66,7 +66,7 @@ for md in sorted(SRC_DIR.glob('*.md')):
             slug = f"{base}-{i}"
             out = OUT_DIR / f"{slug}.html"
             i += 1
-      content = TEMPLATE.replace('{{TITLE}}', data['title']).replace('{{SUMMARY}}', data['summary']).replace('{{CONTENT}}', data['html'])
+      content = TEMPLATE.replace('{TITLE}', data['title']).replace('{SUMMARY}', data['summary']).replace('{CONTENT}', data['html'])
       out.write_text(content, encoding='utf-8')
       manifest.append({'title': data['title'], 'slug': slug, 'file': f'protocols/{slug}.html', 'summary': data['summary']})
 
