@@ -272,7 +272,7 @@ a:hover {
 
 /* Smaller subtitle for protocol pages (supporting role) */
 .hero-subtitle--protocol {
-  font-size: var(--text-sm);
+  font-size: var(--text-base);
   color: var(--color-text-muted);
   font-style: italic;
   margin-top: var(--space-1);
