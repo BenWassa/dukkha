@@ -551,15 +551,20 @@ a:hover {
 
 .card-icon {
   flex-shrink: 0;
-  font-size: var(--text-5xl);
   color: var(--color-accent);
   transition: all var(--transition-normal);
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
   display: flex;
   align-items: center;
   justify-content: center;
   opacity: 0.8;
+}
+
+.card-icon svg {
+  width: 100%;
+  height: 100%;
+  transition: all var(--transition-normal);
 }
 
 .access-card:hover .card-icon {
