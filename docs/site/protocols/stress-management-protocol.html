@@ -90,8 +90,35 @@
         </div>
     </footer>
 
+    <!-- Footnotes Section -->
+    <section class="footnotes" id="footnotes">
+        <div class="container">
+            <h3>Notes & Citations</h3>
+            <ol class="footnote-list">
+                <li id="fn1">Mindfulness-Based Relapse Prevention efficacy: Bowen, S., et al. (2014). Relative efficacy of mindfulness-based relapse prevention. <em>JAMA Psychiatry</em>, 71(5), 547-556. <a href="https://doi.org/10.1001/jamapsychiatry.2013.3516" target="_blank" rel="noopener">DOI:10.1001/jamapsychiatry.2013.3516</a></li>
+                <li id="fn2">Diaphragmatic breathing and stress: Ma, X., et al. (2017). The effect of diaphragmatic breathing on attention, negative affect and stress. <em>Frontiers in Psychology</em>, 8, 874. <a href="https://doi.org/10.3389/fpsyg.2017.00874" target="_blank" rel="noopener">DOI:10.3389/fpsyg.2017.00874</a></li>
+                <li id="fn3">Exercise and craving reduction: Haasova, M., et al. (2013). The acute effects of physical activity on cigarette cravings: systematic review and meta-analysis. <em>Addictive Behaviors</em>, 38(11), 2508-2516. <a href="https://doi.org/10.1016/j.addbeh.2013.06.012" target="_blank" rel="noopener">DOI:10.1016/j.addbeh.2013.06.012</a></li>
+                <li id="fn4">Stress and dopamine pathways: Sinha, R. (2024). Stress-related sensitization of drug salience. <em>Neuropsychopharmacology</em>, 49(1), e172883. <a href="https://doi.org/10.1038/s41386-024-01728-3" target="_blank" rel="noopener">DOI:10.1038/s41386-024-01728-3</a></li>
+                <li id="fn5">HRV and stress resilience: Thayer, J. F., & Lane, R. D. (2009). Claude Bernard and the heart-brain connection. <em>Neuroscience & Biobehavioral Reviews</em>, 33(2), 81-88. <a href="https://doi.org/10.1016/j.neubiorev.2008.08.004" target="_blank" rel="noopener">DOI:10.1016/j.neubiorev.2008.08.004</a></li>
+                <li id="fn6">Progressive muscle relaxation: Jacobson, E. (1938). <em>Progressive Relaxation</em>. University of Chicago Press. [Classic reference work]</li>
+            </ol>
+        </div>
+    </section>
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Footnote smooth scroll
+            document.querySelectorAll('.footnote-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    target.scrollIntoView({ behavior: 'smooth' });
+                    target.classList.add('highlight');
+                    setTimeout(() => target.classList.remove('highlight'), 2000);
+                });
+            });
+
+            // Smooth navigation highlighting
             const navLinks = document.querySelectorAll('.nav-link');
             navLinks.forEach(link => {
                 link.addEventListener('mouseenter', function() {

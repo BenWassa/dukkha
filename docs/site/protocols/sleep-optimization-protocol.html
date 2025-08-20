@@ -100,8 +100,36 @@ Quiet: Use earplugs or a white noise machine/fan to block noise.</p>
         </div>
     </footer>
 
+    <!-- Footnotes Section -->
+    <section class="footnotes" id="footnotes">
+        <div class="container">
+            <h3>Notes & Citations</h3>
+            <ol class="footnote-list">
+                <li id="fn1">Sleep deprivation and reward sensitivity: Venkatraman, V., et al. (2007). Sleep deprivation elevates expectation of gains and attenuates response to losses following risky decisions. <em>Sleep</em>, 30(5), 603-609. <a href="https://doi.org/10.1093/sleep/30.5.603" target="_blank" rel="noopener">DOI:10.1093/sleep/30.5.603</a></li>
+                <li id="fn2">Sleep and relapse risk: Brower, K. J., et al. (2001). Insomnia, self-medication, and relapse to alcoholism. <em>American Journal of Psychiatry</em>, 158(3), 399-404. <a href="https://doi.org/10.1176/appi.ajp.158.3.399" target="_blank" rel="noopener">DOI:10.1176/appi.ajp.158.3.399</a></li>
+                <li id="fn3">Circadian rhythm and reward behavior: Logan, R. W., et al. (2018). Impact of sleep and circadian rhythms on addiction vulnerability. <em>Current Opinion in Psychology</em>, 23, 78-85. <a href="https://doi.org/10.1016/j.copsyc.2017.12.004" target="_blank" rel="noopener">DOI:10.1016/j.copsyc.2017.12.004</a></li>
+                <li id="fn4">Light exposure and circadian entrainment: Reid, K. J., et al. (2014). Timing and intensity of light correlate with body weight in adults. <em>PLOS ONE</em>, 9(4), e92251. <a href="https://doi.org/10.1371/journal.pone.0092251" target="_blank" rel="noopener">DOI:10.1371/journal.pone.0092251</a></li>
+                <li id="fn5">Blue light and melatonin: Chang, A. M., et al. (2015). Evening use of light-emitting eReaders negatively affects sleep. <em>Proceedings of the National Academy of Sciences</em>, 112(4), 1232-1237. <a href="https://doi.org/10.1073/pnas.1418490112" target="_blank" rel="noopener">DOI:10.1073/pnas.1418490112</a></li>
+                <li id="fn6">Sleep environment optimization: Hirshkowitz, M., et al. (2015). National Sleep Foundation's sleep time duration recommendations. <em>Sleep Health</em>, 1(1), 40-43. <a href="https://doi.org/10.1016/j.sleh.2014.12.010" target="_blank" rel="noopener">DOI:10.1016/j.sleh.2014.12.010</a></li>
+                <li id="fn7">CBT-I effectiveness: Trauer, J. M., et al. (2015). Cognitive behavioral therapy for chronic insomnia: a systematic review and meta-analysis. <em>Annals of Internal Medicine</em>, 163(3), 191-204. <a href="https://doi.org/10.7326/M14-2841" target="_blank" rel="noopener">DOI:10.7326/M14-2841</a></li>
+            </ol>
+        </div>
+    </section>
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Footnote smooth scroll
+            document.querySelectorAll('.footnote-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    target.scrollIntoView({ behavior: 'smooth' });
+                    target.classList.add('highlight');
+                    setTimeout(() => target.classList.remove('highlight'), 2000);
+                });
+            });
+
+            // Smooth navigation highlighting
             const navLinks = document.querySelectorAll('.nav-link');
             navLinks.forEach(link => {
                 link.addEventListener('mouseenter', function() {

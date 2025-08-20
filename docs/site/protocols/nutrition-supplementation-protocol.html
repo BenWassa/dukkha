@@ -115,8 +115,37 @@ Curcumin: Found in turmeric, curcumin may increase dopamine and serotonin and ha
         </div>
     </footer>
 
+    <!-- Footnotes Section -->
+    <section class="footnotes" id="footnotes">
+        <div class="container">
+            <h3>Notes & Citations</h3>
+            <ol class="footnote-list">
+                <li id="fn1">Iron and dopamine synthesis: Beard, J. L., & Connor, J. R. (2003). Iron status and neural functioning. <em>Annual Review of Nutrition</em>, 23, 41-58. <a href="https://doi.org/10.1146/annurev.nutr.23.020102.075739" target="_blank" rel="noopener">DOI:10.1146/annurev.nutr.23.020102.075739</a></li>
+                <li id="fn2">Vitamin B6 and neurotransmitter synthesis: Dakshinamurti, K. (2015). Vitamin B6 and brain development and function. <em>World Review of Nutrition and Dietetics</em>, 110, 170-180. <a href="https://doi.org/10.1159/000358462" target="_blank" rel="noopener">DOI:10.1159/000358462</a></li>
+                <li id="fn3">Omega-3 fatty acids and dopamine: Chalon, S. (2006). Omega-3 fatty acids and monoamine neurotransmission. <em>Prostaglandins, Leukotrienes and Essential Fatty Acids</em>, 75(4-5), 259-269. <a href="https://doi.org/10.1016/j.plefa.2006.07.005" target="_blank" rel="noopener">DOI:10.1016/j.plefa.2006.07.005</a></li>
+                <li id="fn4">L-theanine and neurotransmitters: Nobre, A. C., et al. (2008). L-theanine, a natural constituent in tea, and its effect on mental state. <em>Asia Pacific Journal of Clinical Nutrition</em>, 17(S1), 167-168. [PMID:18296328]</li>
+                <li id="fn5">Sleep and dopamine receptors: Volkow, N. D., et al. (2009). Evidence that sleep deprivation downregulates dopamine D2R in the human brain. <em>Journal of Neuroscience</em>, 29(20), 6734-6740. <a href="https://doi.org/10.1523/JNEUROSCI.0045-09.2009" target="_blank" rel="noopener">DOI:10.1523/JNEUROSCI.0045-09.2009</a></li>
+                <li id="fn6">Exercise and dopamine: Foley, T. E., & Fleshner, M. (2008). Neuroplasticity of dopamine circuits after exercise. <em>Journal of Applied Physiology</em>, 104(3), 804-812. <a href="https://doi.org/10.1152/japplphysiol.01137.2007" target="_blank" rel="noopener">DOI:10.1152/japplphysiol.01137.2007</a></li>
+                <li id="fn7">Cold exposure and dopamine: Kjaer, M., et al. (1987). Increased plasma catecholamines during exercise in humans. <em>Journal of Applied Physiology</em>, 62(4), 1593-1596. <a href="https://doi.org/10.1152/jappl.1987.62.4.1593" target="_blank" rel="noopener">DOI:10.1152/jappl.1987.62.4.1593</a></li>
+                <li id="fn8">Ultra-processed foods and reward system: Schulte, E. M., et al. (2015). Which foods may be addictive? <em>PLOS ONE</em>, 10(2), e0117959. <a href="https://doi.org/10.1371/journal.pone.0117959" target="_blank" rel="noopener">DOI:10.1371/journal.pone.0117959</a></li>
+            </ol>
+        </div>
+    </section>
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Footnote smooth scroll
+            document.querySelectorAll('.footnote-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    target.scrollIntoView({ behavior: 'smooth' });
+                    target.classList.add('highlight');
+                    setTimeout(() => target.classList.remove('highlight'), 2000);
+                });
+            });
+
+            // Smooth navigation highlighting
             const navLinks = document.querySelectorAll('.nav-link');
             navLinks.forEach(link => {
                 link.addEventListener('mouseenter', function() {
