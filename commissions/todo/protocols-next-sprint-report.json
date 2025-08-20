@@ -1,0 +1,28 @@
+{
+  "generated": 6,
+  "files": [
+    "docs/site/protocols/digital-detox-protocol.html",
+    "docs/site/protocols/mindfulness-awareness-protocol.html",
+    "docs/site/protocols/nutrional-research-results.html",
+    "docs/site/protocols/nutrition-supplementation-protocol.html",
+    "docs/site/protocols/sleep-optimization-protocol.html",
+    "docs/site/protocols/stress-management-protocol.html"
+  ],
+  "index": "docs/site/protocols.html",
+  "manifest": "docs/site/protocols/manifest.json",
+  "inserted_details": [
+    "docs/site/attention.html#protocol-digital-detox-protocol-summary",
+    "docs/site/attention.html#protocol-mindfulness-awareness-protocol-summary",
+    "docs/site/attention.html#protocol-nutrional-research-results-summary",
+    "docs/site/attention.html#protocol-nutrition-supplementation-protocol-summary",
+    "docs/site/attention.html#protocol-sleep-optimization-protocol-summary",
+    "docs/site/attention.html#protocol-stress-management-protocol-summary",
+    "docs/site/recovery.html#protocol-digital-detox-protocol-summary",
+    "docs/site/recovery.html#protocol-mindfulness-awareness-protocol-summary",
+    "docs/site/recovery.html#protocol-nutrional-research-results-summary",
+    "docs/site/recovery.html#protocol-nutrition-supplementation-protocol-summary",
+    "docs/site/recovery.html#protocol-sleep-optimization-protocol-summary",
+    "docs/site/recovery.html#protocol-stress-management-protocol-summary"
+  ],
+  "errors": []
+}
