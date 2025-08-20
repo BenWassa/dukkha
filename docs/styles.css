@@ -264,10 +264,12 @@ a:hover {
 
 .hero-subtitle {
   display: block;
+  font-family: 'Crimson Text', serif;
+  font-style: italic;
   font-size: var(--text-2xl);
   color: var(--color-accent);
-  font-style: italic;
   margin-top: var(--space-2);
+  font-weight: 700;
 }
 
 /* Smaller subtitle for protocol pages (supporting role) */
