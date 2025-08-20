@@ -179,7 +179,7 @@ a:hover {
   color: var(--color-text-primary);
 }
 
-.brand-symbol, .cta-icon {
+.brand-symbol {
   font-size: var(--text-2xl);
   color: var(--color-accent);
   display: inline-block;
@@ -190,6 +190,14 @@ a:hover {
   background-repeat: no-repeat;
   background-position: center;
   filter: brightness(0) saturate(100%) invert(77%) sepia(15%) saturate(1068%) hue-rotate(21deg) brightness(94%) contrast(89%);
+}
+
+.cta-icon {
+  font-size: var(--text-lg);
+  color: var(--color-accent);
+  display: inline-block;
+  width: 20px;
+  height: 20px;
 }
 
 .nav-menu {
