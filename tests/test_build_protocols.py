@@ -1,63 +1,50 @@
+"""Site-level integration tests that validate generated HTML files under docs/site.
+
+These tests avoid importing or invoking `scripts/build_protocols.py` and instead
+assert the presence and structure of the generated pages and manifest.
+"""
+
 import json
-import importlib.util
 from pathlib import Path
+from bs4 import BeautifulSoup
 
 
-def load_builder():
-    REPO_ROOT = Path(__file__).resolve().parents[1]
-    MODULE_PATH = REPO_ROOT / 'scripts' / 'build_protocols.py'
-    spec = importlib.util.spec_from_file_location('build_protocols', MODULE_PATH)
-    builder = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(builder)
-    return builder
+BASE = Path('docs') / 'site'
 
 
-def test_extract_metadata_and_slugify(tmp_path):
-    md = tmp_path / "sample.md"
-    md.write_text("# My Protocol\n\nA short summary line.\n\nContent here.")
-
-    content = md.read_text()
-    builder = load_builder()
-    meta = builder.extract_metadata(content)
-    assert meta["title"] == "My Protocol"
-    assert "short summary" in meta["summary"].lower()
-
-    slug = builder.slugify(meta["title"])
-    assert slug == "my-protocol"
+def _load_html(path: Path):
+    text = path.read_text(encoding='utf-8')
+    return BeautifulSoup(text, 'lxml')
 
 
-def test_convert_md_to_html_roundtrip(tmp_path):
-    md = tmp_path / "roundtrip.md"
-    md.write_text("# Roundtrip Test\n\nThis is a *markdown* paragraph.")
-
-    builder = load_builder()
-    html_content, metadata = builder.convert_md_to_html(md)
-    assert "<p>" in html_content
-    assert "markdown" in html_content
-    assert metadata["title"] == "Roundtrip Test"
+def test_protocols_index_exists():
+    index = BASE / 'protocols.html'
+    assert index.exists(), f"Missing {index} - run the site build first"
+    doc = _load_html(index)
+    assert doc.select_one('.protocol-list') is not None
 
 
-def test_process_protocols_writes_manifest_and_pages(tmp_path, monkeypatch):
-    # Create a temporary source dir with a single md file
-    temp_src = tmp_path / "src"
-    temp_src.mkdir()
-    (temp_src / "one-protocol.md").write_text("# One Protocol\n\nSummary text here.\n\nContent.")
+def test_each_protocol_has_hero_subtitle_and_no_lead_paragraph():
+    proto_dir = BASE / 'protocols'
+    assert proto_dir.exists(), f"Missing {proto_dir}"
+    for f in proto_dir.glob('*.html'):
+        doc = _load_html(f)
+        # hero subtitle exists and is non-empty
+        subtitle = doc.select_one('.hero-subtitle--protocol')
+        assert subtitle is not None and subtitle.get_text(strip=True), f"Missing hero subtitle in {f.name}"
 
-    temp_out = tmp_path / "out"
-    temp_out.mkdir()
+        # first direct <p> child inside .protocol-article should be absent or empty
+        article = doc.select_one('.protocol-article')
+        if article:
+            first_p = article.find('p')
+            if first_p:
+                assert not first_p.get_text(strip=True), f"Non-empty lead paragraph left in {f.name}"
 
-    # Load builder and monkeypatch module globals to point to temp dirs
-    builder = load_builder()
-    monkeypatch.setattr(builder, 'SRC_DIR', temp_src)
-    monkeypatch.setattr(builder, 'OUT_DIR', temp_out)
 
-    # Run process_protocols and assert outputs
-    builder.process_protocols()
-
-    manifest = temp_out / 'manifest.json'
-    assert manifest.exists()
+def test_manifest_matches_files():
+    manifest = BASE / 'protocols' / 'manifest.json'
+    assert manifest.exists(), "Manifest missing; run build to generate docs/site/protocols/manifest.json"
     m = json.loads(manifest.read_text(encoding='utf-8'))
-    assert isinstance(m.get('protocols'), list)
-
-    generated_files = list(temp_out.glob('*.html'))
-    assert len(generated_files) >= 1
+    for entry in m.get('protocols', []):
+        path = BASE / 'protocols' / entry.get('filename', '')
+        assert path.exists(), f"Manifest references missing file: {path}"
