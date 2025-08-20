@@ -878,7 +878,8 @@ a:hover {
 .hero-recovery h1,
 .hero-myths h1,
 .hero-model h1,
-.hero-library h1 {
+.hero-library h1,
+.hero-protocols h1 {
   font-size: var(--text-4xl);
   margin-bottom: var(--space-4);
   color: var(--color-text-primary);
@@ -898,7 +899,8 @@ a:hover {
 .hero-recovery p:not(.tagline),
 .hero-myths p:not(.tagline),
 .hero-model p:not(.tagline),
-.hero-library p:not(.tagline) {
+.hero-library p:not(.tagline),
+.hero-protocols p:not(.tagline) {
   font-size: var(--text-lg);
   line-height: 1.7;
   color: var(--color-text-secondary);
