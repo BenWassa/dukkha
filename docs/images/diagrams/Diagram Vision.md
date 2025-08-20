@@ -1,5 +1,13 @@
 # DIAGRAM VISION
 ---
+## QUICK LIST OF DIAGRAMS
+
+1. The Ping/Scroll Loop (attention.html)
+2. Dopamine Baseline vs. Spike (recovery.html, model.html)
+3. Stress-Sensitization Loop (with Exit Points) (recovery.html)
+4. The Reward Compass (recovery.html)
+
+---
 ## ARTISTIC VISION
 ### 1. Diagram: The Ping/Scroll Loop (attention.html)
 
