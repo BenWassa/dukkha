@@ -1019,6 +1019,7 @@ a:hover {
 
 .diagram-section figcaption {
   margin-top: var(--space-4);
+  margin-bottom: var(--space-8);
   font-size: var(--text-sm);
   color: var(--color-text-muted);
   line-height: 1.5;
