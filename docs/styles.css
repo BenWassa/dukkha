@@ -1557,8 +1557,22 @@ details.protocol-summary[open] { background: rgba(0,0,0,0.02); }
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.protocol-article { max-width:900px; margin:6rem auto; padding:var(--space-6); background:var(--color-surface-elevated); border-radius:var(--border-radius); box-shadow:var(--shadow-sm); }
-.protocol-article .lead { font-size:var(--text-lg); color:var(--color-text-secondary); }
+.protocol-article {
+  max-width: 900px;
+  margin-top: 2rem;
+  margin-right: auto;
+  margin-bottom: auto;
+  margin-left: auto;
+  padding: var(--space-6);
+  background: var(--color-surface-elevated);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-sm);
+}
+
+.protocol-article .lead {
+  font-size: var(--text-lg);
+  color: var(--color-text-secondary);
+}
 details.protocol-summary { border:1px solid var(--color-border); padding:0.6rem; border-radius:6px; background:transparent; }
 details.protocol-summary summary { font-weight:600; cursor:pointer; }
 @media print { details.protocol-summary { display:block; } }
