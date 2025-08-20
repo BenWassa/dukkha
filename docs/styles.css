@@ -176,7 +176,7 @@ a:hover {
   gap: var(--space-3);
   font-family: var(--font-serif);
   font-weight: 600;
-  font-size: var(--text-xl);
+  font-size: 1.25rem;
   color: var(--color-text-primary);
 }
 
@@ -184,8 +184,8 @@ a:hover {
   font-size: var(--text-2xl);
   color: var(--color-accent);
   display: inline-block;
-  width: 30px;
-  height: 30px;
+  width: 50px;
+  height: 50px;
   background-image: url('images/icons/ouroboros-svgrepo-com.svg');
   background-size: contain;
   background-repeat: no-repeat;
