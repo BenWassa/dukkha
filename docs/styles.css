@@ -847,7 +847,8 @@ a:hover {
 .hero-recovery,
 .hero-myths,
 .hero-model,
-.hero-library {
+.hero-library,
+.hero-protocols {
   background: linear-gradient(135deg, var(--color-surface) 0%, var(--color-background) 100%);
   border-radius: var(--border-radius-lg);
   padding: var(--space-16) var(--space-8);
@@ -861,7 +862,8 @@ a:hover {
 .hero-recovery::before,
 .hero-myths::before,
 .hero-model::before,
-.hero-library::before {
+.hero-library::before,
+.hero-protocols::before {
   content: '';
   position: absolute;
   top: 0;
