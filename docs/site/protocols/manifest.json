@@ -2,6 +2,14 @@
   "generated_at": "1755794629.3790774",
   "protocols": [
     {
+      "title": "Digital Detox Protocol",
+      "slug": "digital-detox-protocol",
+      "filename": "digital-detox-protocol.html",
+      "description": "A systematic approach to reducing smartphone dependency and improving attention through environmental design changes and behavioral interventions.",
+      "duration": "4-6 weeks",
+      "tags": []
+    },
+    {
       "title": "Mindfulness & Awareness Protocol",
       "slug": "mindfulness-awareness-protocol",
       "filename": "mindfulness-awareness-protocol.html",

@@ -5,6 +5,7 @@ level: "Beginner to Intermediate"
 category: "Environmental Design"
 target: "Smartphone and media addiction, attention fragmentation"
 description: "A systematic approach to reducing smartphone dependency and improving attention through environmental design changes and behavioral interventions."
+slug: "digital-detox-protocol"
 ---
 
 # Digital Detox Protocol
