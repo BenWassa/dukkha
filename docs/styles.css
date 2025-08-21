@@ -697,7 +697,7 @@ a:hover {
 .footer {
   background-color: var(--color-background); /* Different background from footnotes */
   border-top: 2px solid var(--color-accent); /* Stronger, colored border */
-  padding: var(--space-12) 0 var(--space-8);
+  padding: var(--space-6) 0 var(--space-4); /* Reduced from space-12 and space-8 */
   margin-top: var(--space-8); /* Additional top margin for separation */
 }
 
@@ -705,7 +705,7 @@ a:hover {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: var(--space-8);
+  margin-bottom: var(--space-4); /* Reduced from space-8 */
 }
 
 .footer-brand {
@@ -738,7 +738,7 @@ a:hover {
 
 .footer-note {
   text-align: center;
-  padding-top: var(--space-8);
+  padding-top: var(--space-4); /* Reduced from space-8 */
   border-top: 1px solid var(--color-border);
 }
 
