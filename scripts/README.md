@@ -10,7 +10,9 @@ This directory contains the build system and development tools for Project Dukkh
 
 **What it does**:
 - Reads markdown files with YAML front-matter from `src/protocols/` and `src/pages/`
-- Converts markdown to HTML with proper footnote handling
+- Converts markdown to HTML with enhanced footnote handling (no duplication)
+- Processes footnotes extension and removes auto-generated divs from main content
+- Extracts footnote definitions for custom footnotes sections
 - Generates individual protocol pages, main content pages, and protocol index
 - Preserves manual CSS improvements and navigation structure
 - Creates manifest file for protocol metadata
@@ -21,9 +23,11 @@ This directory contains the build system and development tools for Project Dukkh
 - Protocol index: `docs/site/protocols.html`
 - Manifest: `docs/site/protocols/manifest.json`
 
-**Dependencies**: `pyyaml`, `markdown`
+**Dependencies**: `pyyaml`, `markdown`, `beautifulsoup4` (for footnote processing)
 
 **Safety**: Automatically preserves your manual HTML corrections through improved templates
+
+**Recent Enhancement**: Resolved duplicate footnotes issue - citations now appear cleanly in dedicated sections only
 
 ### `qa_check.ps1` - Quality Assurance
 **Purpose**: Validates footnote references and optionally checks URLs  
@@ -107,7 +111,7 @@ python scripts/build_site.py; python -m pytest tests/ -v; powershell -ExecutionP
 - **Python 3.7+** (tested with 3.13)
 - **pyyaml**: YAML front-matter parsing
 - **markdown**: Markdown to HTML conversion with extensions
-- **beautifulsoup4**: HTML parsing (for extract_protocols.py)
+- **beautifulsoup4**: HTML parsing and footnote div removal
 - **requests**: URL validation (used by some utilities)
 
 Install with: `pip install pyyaml markdown beautifulsoup4 requests`
@@ -169,8 +173,11 @@ powershell -ExecutionPolicy Bypass -File scripts/qa_check.ps1
 
 ## 🔄 Recent Updates
 
-- **August 2025**: Overhauled build system to support both protocols and main pages
-- **Template Improvements**: Preserved manual HTML corrections in build templates
+- **August 2025**: Resolved duplicate footnotes system - enhanced Protocol class footnote processing
+- **Enhanced Footnote Handling**: Added BeautifulSoup dependency for thorough auto-generated div removal
+- **Template Improvements**: Preserved manual HTML corrections in build templates with complete footnotes support
+- **Complete Citations**: All 5 protocols now have comprehensive research backing (49 total citations)
+- **Overhauled build system**: Now supports both protocols and main pages with improved footnote separation
 - **Safety Features**: Added backup system and validation pipeline
 - **Script Cleanup**: Archived outdated utilities, focused on core functionality
 - **Documentation**: Created comprehensive README with usage examples

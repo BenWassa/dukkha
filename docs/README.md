@@ -2,6 +2,12 @@
 
 This folder hosts the published version of Project Dukkha. Source material lives in `src/` and is compiled here by running `python scripts/build_site.py`. Only commit generated files or assets that are meant to be served on the live site.
 
+## Recent Updates (August 2025)
+- **Complete Footnotes System**: All 5 protocols now have comprehensive citations (49 total) with clean separation
+- **Enhanced Build System**: Resolved duplicate footnotes issue - citations appear only in dedicated sections
+- **Interactive Features**: Collapsible footnotes sections with smooth scrolling navigation
+- **Quality Validation**: Zero duplicate footnotes verified across all generated HTML pages
+
 ## Directory map
 - `index.html` – landing page linking to all major sections.
 - `site/` – generated pages (**do not** edit manually).
@@ -19,7 +25,7 @@ This folder hosts the published version of Project Dukkha. Source material lives
 | `site/model.html` | Explains dopamine baseline/spike and reward compass model. | diagrams `dopamine_baseline_spike.svg`, `reward_compass.svg` |
 | `site/library.html` | Searchable research library compiled from references. | data `assets/content_sources/references_extracted.csv` |
 | `site/protocols.html` | Index of extended protocols. | icons as on landing page |
-| `site/protocols/*.html` | Detailed protocol pages: digital detox, mindfulness, sleep, nutrition and stress. | may use future icons; served with `protocols/manifest.json` for PWA |
+| `site/protocols/*.html` | Detailed protocol pages: digital detox, mindfulness, sleep, nutrition and stress. | Complete footnotes sections with 49 total research citations; served with `protocols/manifest.json` for PWA |
 
 ## Live images
 ### Diagrams (`images/diagrams/`)
