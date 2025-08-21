@@ -654,16 +654,21 @@ a:hover {
   align-items: flex-start;
   justify-content: space-between;
   padding: var(--space-6) var(--space-6) var(--space-4);
-  background: linear-gradient(135deg, rgba(201, 169, 97, 0.03) 0%, transparent 100%);
-  border: 2px solid rgba(201, 169, 97, 0.15);
+  background: 
+    linear-gradient(135deg, rgba(0, 0, 0, 0.18) 0%, rgba(0, 0, 0, 0.12) 100%),
+    linear-gradient(45deg, rgba(201, 169, 97, 0.03) 0%, transparent 50%, rgba(201, 169, 97, 0.02) 100%);
+  border: none;
+  border-bottom: 3px solid rgba(201, 169, 97, 0.2);
   border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0;
   position: relative;
   transition: all var(--transition-normal);
 }
 
 .access-card:hover .card-header {
-  border-color: rgba(201, 169, 97, 0.3);
-  background: linear-gradient(135deg, rgba(201, 169, 97, 0.06) 0%, rgba(201, 169, 97, 0.02) 100%);
+  border-bottom-color: rgba(201, 169, 97, 0.4);
+  background: 
+    linear-gradient(135deg, rgba(0, 0, 0, 0.22) 0%, rgba(0, 0, 0, 0.15) 100%),
+    linear-gradient(45deg, rgba(201, 169, 97, 0.05) 0%, transparent 50%, rgba(201, 169, 97, 0.03) 100%);
 }
 
 .card-icon {
