@@ -676,6 +676,12 @@ a:hover {
   filter: invert(58%) sepia(23%) saturate(537%) hue-rotate(8deg) brightness(97%) contrast(87%);
 }
 
+/* Make dopamine icon larger */
+.card-icon img[src*="Dopamine.svg"] {
+  width: 112px;
+  height: 112px;
+}
+
 .access-card:hover .card-icon {
   opacity: 1;
   transform: scale(1.05);
@@ -1380,6 +1386,12 @@ a:hover {
   .card-icon img {
     width: 56px;
     height: 56px;
+  }
+  
+  /* Make dopamine icon larger on mobile too */
+  .card-icon img[src*="Dopamine.svg"] {
+    width: 98px;
+    height: 98px;
   }
   
   .footer-content {
