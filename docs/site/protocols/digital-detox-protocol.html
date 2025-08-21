@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Digital Detox Protocol - Project Dukkha</title>
-    <meta name="description" content="The ">
+    <meta name="description" content="A 3-day protocol for reducing digital overstimulation and recalibrating dopamine sensitivity through evidence-based smartphone interventions.">
     <link rel="stylesheet" href="../../variables.css">
     <link rel="stylesheet" href="../../styles.css">
     <link rel="stylesheet" href="../../utilities.css">
@@ -44,16 +44,17 @@
         <section class="container">
             <article class="protocol-article">
                 <div class="protocol-badge">3 Days</div>
-                <h2 id="the-problem-compulsive-checking-and-novelty-traps">The Problem: Compulsive Checking and Novelty Traps</h2>
-<p>Smartphones leverage principles of variable reward and novelty to drive persistent engagement. Users develop "checking habits"—brief, repetitive inspections of dynamic content, reinforced by immediate informational rewards [^1][^2][^3][^4][^5]. Notifications, even when ignored, significantly disrupt attention and impair task performance by prompting task-irrelevant thoughts, or mind wandering [^6][^7][^8][^9][^10].</p>
+                <h1 id="digital-detox-protocol">Digital Detox Protocol</h1>
+<h2 id="the-problem-compulsive-checking-and-novelty-traps">The Problem: Compulsive Checking and Novelty Traps</h2>
+<p>Smartphones leverage principles of variable reward and novelty to drive persistent engagement. Users develop "checking habits"—brief, repetitive inspections of dynamic content, reinforced by immediate informational rewards. Notifications, even when ignored, significantly disrupt attention and impair task performance by prompting task-irrelevant thoughts, or mind wandering.</p>
 <p>The brain's reward pathways are exploited by frequent notifications and unpredictable rewards, similar to a slot machine effect, fostering habitual app-checking. Novelty, a powerful learning signal, actively recruits brain systems (SN/VTA and hippocampus) that motivate exploration, making endless feeds particularly captivating.</p>
 <p>Moreover, "wanting" (incentive salience) can be amplified by cues and rewards without an increase in "liking," explaining compulsive checking even when the experience isn't inherently enjoyable.</p>
 <h2 id="key-interventions-for-digital-detox">Key Interventions for Digital Detox</h2>
 <p>This protocol focuses on practical, evidence-based interventions to create friction and reduce the addictive pull of digital devices:</p>
 <h3 id="batch-notifications-to-3xday">Batch Notifications to 3x/Day</h3>
-<p>Instead of constant interruptions, notifications are delivered at predictable intervals throughout the day. Research indicates that batching notifications (e.g., three times a day) can significantly improve attention, mood, and a sense of control over one's phone, while also reducing stress [^11][^12][^13][^14]. Conversely, completely turning off notifications can lead to increased anxiety and Fear of Missing Out (FoMO) [^12][^13][^14]. This strategy aims to provide a balance, reducing constant distractions without inducing anxiety from complete disconnection.</p>
+<p>Instead of constant interruptions, notifications are delivered at predictable intervals throughout the day. Research indicates that batching notifications (e.g., three times a day) can significantly improve attention, mood, and a sense of control over one's phone, while also reducing stress. Conversely, completely turning off notifications can lead to increased anxiety and Fear of Missing Out (FoMO). This strategy aims to provide a balance, reducing constant distractions without inducing anxiety from complete disconnection.</p>
 <h3 id="grayscale-mode-implementation">Grayscale Mode Implementation</h3>
-<p>Changing the smartphone display to grayscale reduces the visual appeal of apps, which are often designed with bright, saturated colors to be gratifying and stimulate attention [^15][^16][^17]. Studies show that using grayscale mode can reduce daily screen time by an average of almost 40 minutes per day and decrease problematic smartphone use, although effects can be modest and user compliance may vary [^15][^16][^17][^18][^19]. This intervention makes the device less intrinsically rewarding, thereby assisting individuals in controlling their smartphone use [^16][^18].</p>
+<p>Changing the smartphone display to grayscale reduces the visual appeal of apps, which are often designed with bright, saturated colors to be gratifying and stimulate attention. Studies show that using grayscale mode can reduce daily screen time by an average of almost 40 minutes per day and decrease problematic smartphone use, although effects can be modest and user compliance may vary. This intervention makes the device less intrinsically rewarding, thereby assisting individuals in controlling their smartphone use.</p>
 <h3 id="app-icon-removaldesaturation">App Icon Removal/Desaturation</h3>
 <p>Reducing visual cues on the home screen can curb impulsive checking. This involves disabling non-essential notifications and physically moving or removing app icons from the primary home screen. As part of multi-strategy interventions, cue removal has been shown to reduce overall smartphone usage and problematic use. The goal is to make accessing high-frequency stimulation less immediate and more intentional.</p>
 <h3 id="context-sensitive-friction-implementation">Context-Sensitive Friction Implementation</h3>
@@ -62,10 +63,10 @@
 <h2 id="practical-takeaway">Practical Takeaway</h2>
 <p>To begin your Digital Detox, implement the following steps:</p>
 <ol>
-<li>Set Scheduled Notification Times: Configure your phone to deliver most notifications in batches, ideally three times a day (e.g., morning, midday, evening), rather than as they arrive.</li>
-<li>Enable Grayscale Mode: Change your phone's display settings to grayscale.</li>
-<li>Declutter Your Home Screen: Remove or desaturate app icons, especially for distracting social media or entertainment apps, placing them in folders or off the main home screen.</li>
-<li>Practice Intentional Pauses: Consciously insert brief pauses when engaging in infinite scrolling or binge-watching, using built-in features or self-imposed breaks.</li>
+<li><strong>Set Scheduled Notification Times</strong>: Configure your phone to deliver most notifications in batches, ideally three times a day (e.g., morning, midday, evening), rather than as they arrive.</li>
+<li><strong>Enable Grayscale Mode</strong>: Change your phone's display settings to grayscale.</li>
+<li><strong>Declutter Your Home Screen</strong>: Remove or desaturate app icons, especially for distracting social media or entertainment apps, placing them in folders or off the main home screen.</li>
+<li><strong>Practice Intentional Pauses</strong>: Consciously insert brief pauses when engaging in infinite scrolling or binge-watching, using built-in features or self-imposed breaks.</li>
 </ol>
             </article>
         </section>
@@ -119,7 +120,13 @@
                 link.addEventListener('click', function(e) {
                     e.preventDefault();
                     const targetId = this.getAttribute('href').substring(1);
-                    const targetElement = document.getElementById(targetId);
+                    // Handle both fn:1 and fn1 formats
+                    let targetElement = document.getElementById(targetId);
+                    if (!targetElement && targetId.startsWith('fn') && !targetId.includes(':')) {
+                        targetElement = document.getElementById('fn:' + targetId.substring(2));
+                    } else if (!targetElement && targetId.includes(':')) {
+                        targetElement = document.getElementById(targetId.replace(':', ''));
+                    }
                     if (targetElement) {
                         // If footnotes section is collapsed, expand it first
                         if (footnotesSection && footnotesSection.classList.contains('collapsed')) {
