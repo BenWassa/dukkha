@@ -11,34 +11,18 @@
     
     if (!toggle || !menu) return;
 
-    // Protocol items - these should match the actual protocol pages
-    var protocols = [
-      { name: 'Digital Detox Protocol', url: 'protocols/digital-detox-protocol.html' },
-      { name: 'Mindfulness & Awareness Protocol', url: 'protocols/mindfulness-awareness-protocol.html' },
-      { name: 'Nutrition & Supplementation Protocol', url: 'protocols/nutrition-supplementation-protocol.html' },
-      { name: 'Sleep Optimization Protocol', url: 'protocols/sleep-optimization-protocol.html' },
-      { name: 'Stress Management Protocol', url: 'protocols/stress-management-protocol.html' }
-    ];
-
-    // Populate dropdown menu
-    menu.innerHTML = protocols.map(function(protocol) {
-      return '<li><a href="site/' + protocol.url + '" role="menuitem">' + protocol.name + '</a></li>';
-    }).join('');
+    // Don't dynamically populate - use existing HTML structure
 
     // Dropdown state management
     var isOpen = false;
+    var closeTimeout;
 
     function open() {
       if (isOpen) return;
+      clearTimeout(closeTimeout);
       isOpen = true;
       dropdown.classList.add('open');
       toggle.setAttribute('aria-expanded', 'true');
-      
-      // Position dropdown correctly
-      var rect = toggle.getBoundingClientRect();
-      menu.style.position = 'fixed';
-      menu.style.top = (rect.bottom + window.scrollY) + 'px';
-      menu.style.left = rect.left + 'px';
     }
 
     function close() {
@@ -48,19 +32,30 @@
       toggle.setAttribute('aria-expanded', 'false');
     }
 
-    function toggle_dropdown() {
+    function delayedClose() {
+      closeTimeout = setTimeout(close, 250);
+    }
+
+    // Event listeners
+    // Hover functionality
+    dropdown.addEventListener('mouseenter', function() {
+      clearTimeout(closeTimeout);
+      open();
+    });
+
+    dropdown.addEventListener('mouseleave', function() {
+      delayedClose();
+    });
+
+    // Click functionality (for touch devices)
+    toggle.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
       if (isOpen) {
         close();
       } else {
         open();
       }
-    }
-
-    // Event listeners
-    toggle.addEventListener('click', function(e) {
-      e.preventDefault();
-      e.stopPropagation();
-      toggle_dropdown();
     });
 
     // Close on outside click
