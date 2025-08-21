@@ -30,6 +30,16 @@
   - Dark mode support and responsive design
   - Professional appearance that reinforces correctness vs myths
 
+### Markdown to HTML Conversion (FIXED ✅)
+- **Issue:** HTML files contained Markdown formatting remnants (*text*, **text**) instead of proper HTML tags
+- **Fixed:** Systematic conversion across all HTML files:
+  - `*dukkha*` → `<i>dukkha</i>` (italic formatting for Sanskrit/Pali terms)
+  - `*taṇhā*`, `*chanda*` → `<i>taṇhā</i>`, `<i>chanda</i>` (Buddhist terminology)
+  - `**dopamine baseline**` → `<strong>dopamine baseline</strong>` (bold formatting)
+  - All neuroscience terminology properly formatted with `<strong>` tags
+- **Quality Control:** Added automated script to detect future Markdown formatting issues
+- **Files Updated:** myths.html, model.html, and comprehensive checking across all 12 HTML files
+
 ---
 
 ## 1. Progress Indicator for Each Page
