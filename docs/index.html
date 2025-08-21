@@ -26,7 +26,10 @@
                 <li><a href="site/recovery.html" class="nav-link">Recovery & Baseline</a></li>
                 <li><a href="site/myths.html" class="nav-link">Five Myths</a></li>
                 <li><a href="site/model.html" class="nav-link">Model</a></li>
-                <li><a href="site/protocols.html" class="nav-link">Protocols</a></li>
+                <li class="nav-dropdown">
+                <a href="#" class="nav-link nav-dropdown__toggle" aria-haspopup="true" aria-expanded="false">Protocols</a>
+                <ul class="nav-dropdown__menu" role="menu"></ul>
+            </li>
                 <li><a href="site/library.html" class="nav-link">Library</a></li>
             </ul>
         </div>
@@ -271,5 +274,6 @@
             });
         });
     </script>
+    <script src="index-ui.js" defer></script>
 </body>
 </html>
