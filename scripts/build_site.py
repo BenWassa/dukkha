@@ -1,10 +1,15 @@
 #!/usr/bin/env python3
 """
-New build system for Project Dukkha protocols.
+Build system for Project Dukkha site.
 
-Reads Markdown files with front-matter from src/protocols/
-Generates HTML pages to docs/site/protocols/
-Uses templates from src/templates/
+Reads Markdown files with front-matter from:
+- src/protocols/ for protocol pages
+- src/pages/ for main content pages
+
+Generates HTML pages preserving manual corrections:
+- Individual protocol pages to docs/site/protocols/
+- Main content pages to docs/site/
+- Uses improved CSS structure and navigation
 
 Usage: python scripts/build_site.py
 """
@@ -14,7 +19,7 @@ import json
 import yaml
 from pathlib import Path
 from dataclasses import dataclass
-from typing import Dict, List, Any
+from typing import Dict, List, Any, Optional
 
 try:
     import markdown
@@ -69,6 +74,49 @@ class Protocol:
         )
 
 
+@dataclass
+class Page:
+    """Data class for a main page with front-matter metadata."""
+    title: str
+    slug: str
+    description: str
+    page_type: str
+    active_nav: str
+    hero_class: str
+    content: str
+    filename: str
+    
+    @classmethod
+    def from_markdown_file(cls, path: Path) -> 'Page':
+        """Parse a markdown file with YAML front-matter."""
+        content = path.read_text(encoding='utf-8')
+        
+        # Split front-matter and content
+        if content.startswith('---\n'):
+            try:
+                _, front_matter, body = content.split('---\n', 2)
+                metadata = yaml.safe_load(front_matter)
+            except ValueError:
+                raise ValueError(f"Invalid front-matter format in {path}")
+        else:
+            raise ValueError(f"No front-matter found in {path}")
+        
+        # Convert markdown to HTML with footnotes support
+        md = markdown.Markdown(extensions=['extra', 'toc', 'codehilite', 'footnotes'])
+        html_content = md.convert(body.strip())
+        
+        return cls(
+            title=metadata['title'],
+            slug=metadata['slug'],
+            description=metadata['description'],
+            page_type=metadata.get('page_type', 'main'),
+            active_nav=metadata.get('active_nav', metadata['slug']),
+            hero_class=metadata.get('hero_class', 'hero'),
+            content=html_content,
+            filename=f"{metadata['slug']}.html"
+        )
+
+
 class SiteBuilder:
     """Builds the static site from source files."""
     
@@ -76,6 +124,7 @@ class SiteBuilder:
         self.root = Path(__file__).resolve().parents[1]
         self.src_dir = self.root / 'src'
         self.protocols_dir = self.src_dir / 'protocols'
+        self.pages_dir = self.src_dir / 'pages'
         self.templates_dir = self.src_dir / 'templates'
         self.output_dir = self.root / 'docs' / 'site'
         self.protocols_output_dir = self.output_dir / 'protocols'
@@ -88,11 +137,14 @@ class SiteBuilder:
         template_path = self.templates_dir / f"{name}.html"
         if not template_path.exists():
             # Return a basic template if none exists
-            return self.get_default_protocol_template()
+            if name == "protocol":
+                return self.get_default_protocol_template()
+            elif name == "page":
+                return self.get_default_page_template()
         return template_path.read_text(encoding='utf-8')
     
     def get_default_protocol_template(self) -> str:
-        """Default protocol page template."""
+        """Default protocol page template with improved CSS structure."""
         return '''<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -100,7 +152,10 @@ class SiteBuilder:
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{title} - Project Dukkha</title>
     <meta name="description" content="{description}">
+    <link rel="stylesheet" href="../../variables.css">
     <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="../../utilities.css">
+    <link rel="stylesheet" href="../../print.css" media="print">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -113,12 +168,15 @@ class SiteBuilder:
                 <div class="brand-symbol"></div>
             </div>
             <ul class="nav-menu">
-                <li><a href="../index.html" class="nav-link">Home</a></li>
+                <li><a href="../../index.html" class="nav-link">Home</a></li>
                 <li><a href="../attention.html" class="nav-link">Focus & Attention</a></li>
                 <li><a href="../recovery.html" class="nav-link">Recovery & Baseline</a></li>
                 <li><a href="../myths.html" class="nav-link">Five Myths</a></li>
                 <li><a href="../model.html" class="nav-link">Model</a></li>
-                <li><a href="../protocols.html" class="nav-link">Protocols</a></li>
+                <li class="nav-dropdown">
+                    <a href="#" class="nav-link nav-dropdown__toggle" aria-haspopup="true" aria-expanded="false">Protocols</a>
+                    <ul class="nav-dropdown__menu" role="menu"></ul>
+                </li>
                 <li><a href="../library.html" class="nav-link">Library</a></li>
             </ul>
         </div>
@@ -158,24 +216,90 @@ class SiteBuilder:
         </div>
     </footer>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {{
-            const navLinks = document.querySelectorAll('.nav-link');
-            navLinks.forEach(link => {{
-                link.addEventListener('mouseenter', function() {{
-                    this.style.transform = 'translateY(-1px)';
-                }});
-                link.addEventListener('mouseleave', function() {{
-                    this.style.transform = 'translateY(0)';
-                }});
-            }});
-        }});
-    </script>
+    <script src="../js/site-ui.js" defer></script>
+</body>
+</html>'''
+    
+    def get_default_page_template(self) -> str:
+        """Default main page template with improved CSS structure."""
+        return '''<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{title} - Project Dukkha</title>
+    <meta name="description" content="{description}">
+    <link rel="stylesheet" href="../variables.css">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../utilities.css">
+    <link rel="stylesheet" href="../print.css" media="print">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="read-prompt" role="status" aria-live="polite">
+        <button class="read-prompt__close" aria-label="Dismiss">&times;</button>
+        <p class="read-prompt__text"></p>
+    </div>
+    <!-- Navigation -->
+    <nav class="nav" role="navigation" aria-label="Main navigation">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <div class="brand-symbol"></div>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="../index.html" class="nav-link{home_active}">Home</a></li>
+                <li><a href="attention.html" class="nav-link{attention_active}">Focus & Attention</a></li>
+                <li><a href="recovery.html" class="nav-link{recovery_active}">Recovery & Baseline</a></li>
+                <li><a href="myths.html" class="nav-link{myths_active}">Five Myths</a></li>
+                <li><a href="model.html" class="nav-link{model_active}">Model</a></li>
+                <li class="nav-dropdown">
+                    <a href="#" class="nav-link nav-dropdown__toggle{protocols_active}" aria-haspopup="true" aria-expanded="false">Protocols</a>
+                    <ul class="nav-dropdown__menu" role="menu"></ul>
+                </li>
+                <li><a href="library.html" class="nav-link{library_active}">Library</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="page-content">
+        <section class="{hero_class}">
+            <h1>{page_title}</h1>
+            <p>{hero_description}</p>
+        </section>
+
+        <section class="content-claims">
+            {content}
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="brand-symbol"></div>
+                    <span>Project Dukkha</span>
+                </div>
+                <div class="footer-links">
+                    <a href="library.html">Research</a>
+                    <a href="#" class="print-link" onclick="window.print()">Print Guide</a>
+                    <a href="mailto:contact@projectdukkha.com">Contact</a>
+                </div>
+            </div>
+            <div class="footer-note">
+                <p>This field guide is for educational purposes. Consult healthcare professionals for medical decisions.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/site-ui.js" defer></script>
 </body>
 </html>'''
     
     def get_protocols_index_template(self) -> str:
-        """Template for the protocols index page."""
+        """Template for the protocols index page with improved structure."""
         return '''<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -183,7 +307,10 @@ class SiteBuilder:
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Protocols - Project Dukkha</title>
     <meta name="description" content="Evidence-based protocols for digital detox, stress management, sleep optimization, and mindfulness practices.">
+    <link rel="stylesheet" href="../variables.css">
     <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../utilities.css">
+    <link rel="stylesheet" href="../print.css" media="print">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -197,12 +324,15 @@ class SiteBuilder:
             </div>
             <ul class="nav-menu">
                 <li><a href="../index.html" class="nav-link">Home</a></li>
-                <li><a href="../attention.html" class="nav-link">Focus & Attention</a></li>
-                <li><a href="../recovery.html" class="nav-link">Recovery & Baseline</a></li>
-                <li><a href="../myths.html" class="nav-link">Five Myths</a></li>
-                <li><a href="../model.html" class="nav-link">Model</a></li>
-                <li><a href="../protocols.html" class="nav-link active" aria-current="page">Protocols</a></li>
-                <li><a href="../library.html" class="nav-link">Library</a></li>
+                <li><a href="attention.html" class="nav-link">Focus & Attention</a></li>
+                <li><a href="recovery.html" class="nav-link">Recovery & Baseline</a></li>
+                <li><a href="myths.html" class="nav-link">Five Myths</a></li>
+                <li><a href="model.html" class="nav-link">Model</a></li>
+                <li class="nav-dropdown">
+                <a href="#" class="nav-link nav-dropdown__toggle" aria-haspopup="true" aria-expanded="false">Protocols</a>
+                <ul class="nav-dropdown__menu" role="menu"></ul>
+            </li>
+                <li><a href="library.html" class="nav-link">Library</a></li>
             </ul>
         </div>
     </nav>
@@ -229,7 +359,7 @@ class SiteBuilder:
                     <span>Project Dukkha</span>
                 </div>
                 <div class="footer-links">
-                    <a href="../library.html">Research</a>
+                    <a href="library.html">Research</a>
                     <a href="#" class="print-link" onclick="window.print()">Print Guide</a>
                     <a href="mailto:contact@projectdukkha.com">Contact</a>
                 </div>
@@ -240,19 +370,7 @@ class SiteBuilder:
         </div>
     </footer>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {{
-            const navLinks = document.querySelectorAll('.nav-link');
-            navLinks.forEach(link => {{
-                link.addEventListener('mouseenter', function() {{
-                    this.style.transform = 'translateY(-1px)';
-                }});
-                link.addEventListener('mouseleave', function() {{
-                    this.style.transform = 'translateY(0)';
-                }});
-            }});
-        }});
-    </script>
+    <script src="js/site-ui.js" defer></script>
 </body>
 </html>'''
     
@@ -268,6 +386,42 @@ class SiteBuilder:
         )
         
         output_path = self.protocols_output_dir / protocol.filename
+        output_path.write_text(html, encoding='utf-8')
+        print(f"Generated: {output_path}")
+    
+    def build_page(self, page: Page) -> None:
+        """Build a single main page."""
+        template = self.get_default_page_template()
+        
+        # Extract title and hero description from content
+        page_title = page.title
+        hero_description = page.description
+        
+        # Set active navigation classes
+        nav_classes = {
+            'home_active': '',
+            'attention_active': '',
+            'recovery_active': '',
+            'myths_active': '',
+            'model_active': '',
+            'protocols_active': '',
+            'library_active': ''
+        }
+        
+        if page.active_nav in nav_classes:
+            nav_classes[f'{page.active_nav}_active'] = ' active" aria-current="page'
+        
+        html = template.format(
+            title=page.title,
+            description=page.description,
+            page_title=page_title,
+            hero_description=hero_description,
+            hero_class=page.hero_class,
+            content=page.content,
+            **nav_classes
+        )
+        
+        output_path = self.output_dir / page.filename
         output_path.write_text(html, encoding='utf-8')
         print(f"Generated: {output_path}")
     
@@ -316,43 +470,54 @@ class SiteBuilder:
     
     def build(self) -> None:
         """Build the entire site."""
-        if not self.protocols_dir.exists():
-            raise FileNotFoundError(f"Source directory not found: {self.protocols_dir}")
-        
-        # Load all protocols
         protocols = []
-        md_files = list(self.protocols_dir.glob("*.md"))
+        pages = []
         
-        if not md_files:
-            print(f"No markdown files found in {self.protocols_dir}")
-            return
+        # Load protocols
+        if self.protocols_dir.exists():
+            protocol_files = list(self.protocols_dir.glob("*.md"))
+            print(f"Found {len(protocol_files)} protocol files")
+            
+            for md_file in protocol_files:
+                try:
+                    protocol = Protocol.from_markdown_file(md_file)
+                    protocols.append(protocol)
+                    print(f"Loaded protocol: {protocol.title}")
+                except Exception as e:
+                    print(f"Error processing protocol {md_file}: {e}")
+                    continue
         
-        print(f"Found {len(md_files)} protocol files")
-        
-        for md_file in md_files:
-            try:
-                protocol = Protocol.from_markdown_file(md_file)
-                protocols.append(protocol)
-                print(f"Loaded: {protocol.title}")
-            except Exception as e:
-                print(f"Error processing {md_file}: {e}")
-                continue
-        
-        if not protocols:
-            print("No valid protocols to build")
-            return
+        # Load main pages
+        if self.pages_dir.exists():
+            page_files = list(self.pages_dir.glob("*.md"))
+            print(f"Found {len(page_files)} page files")
+            
+            for md_file in page_files:
+                try:
+                    page = Page.from_markdown_file(md_file)
+                    pages.append(page)
+                    print(f"Loaded page: {page.title}")
+                except Exception as e:
+                    print(f"Error processing page {md_file}: {e}")
+                    continue
         
         # Build individual protocol pages
         for protocol in protocols:
             self.build_protocol_page(protocol)
         
-        # Build index page
-        self.build_protocols_index(protocols)
+        # Build main pages
+        for page in pages:
+            self.build_page(page)
+        
+        # Build protocols index page
+        if protocols:
+            self.build_protocols_index(protocols)
         
         # Build manifest
-        self.build_manifest(protocols)
+        if protocols:
+            self.build_manifest(protocols)
         
-        print(f"\nBuild complete! Generated {len(protocols)} protocol pages.")
+        print(f"\nBuild complete! Generated {len(protocols)} protocol pages and {len(pages)} main pages.")
 
 
 def main():
