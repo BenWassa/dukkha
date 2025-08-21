@@ -216,3 +216,14 @@ details.protocol-summary[open] {
   background: var(--color-surface);
 }
 
+/* =============================================
+   Layout Utilities: Sticky Footer
+   ============================================= */
+
+/* Make main content take up at least full viewport minus nav/footer space
+   This pushes footer to bottom when content is short */
+main,
+.page-content {
+  min-height: calc(100vh - 160px); /* Approximate space for nav + footer */
+}
+
