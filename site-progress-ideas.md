@@ -44,13 +44,22 @@
   - Update nav HTML/CSS/JS
   - Dynamically generate protocol list if possible
 
+## 4. Key Notes / TL;DR in Hero Section (All Pages Except Index)
+- **Concept:** Display a concise summary or key notes at the top of each page (except index.html) within the hero section.
+- **Design:**
+    - Prominent placement in the hero area for quick reference
+    - Clear, minimal styling to match site aesthetic
+    - Bullet points or short sentences for easy scanning
 
-4. key notes/tldr at the start of each page besides index.html in the hero section
-
-5. each myth - different style for "truth:."    <br>
-   - Use a distinct font style (e.g., italic or bold) for "Truth:" to make it stand out
-   - Consider using a different background color or border to visually separate the truth statements
-- Add a subtle animation (e.g., fade-in) when the truth statements appear to draw attention
+## 5. Distinct Styling for "Truth:" in Myths Section
+- **Concept:** Make "Truth:" statements visually stand out in each myth.
+- **Design:**
+    - Use a distinct font style (e.g., bold or italic) for "Truth:"
+    - Apply a different background color or border to separate truth statements from the rest of the myth
+    - Add a subtle animation (e.g., fade-in) when truth statements appear to draw attention
+- **Implementation:**
+    - Update myths HTML/CSS for new styles and animation
+    - Ensure accessibility and consistency across all myths
 
 ---
 
