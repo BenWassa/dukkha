@@ -34,7 +34,10 @@ dukkha/
 ├── docs/                        # Static site output
 │   ├── site/                   # Generated HTML pages (DO NOT EDIT DIRECTLY)
 │   ├── index.html              # Homepage
-│   ├── styles.css              # Site styles
+│   ├── variables.css           # Design tokens & CSS custom properties
+│   ├── styles.css              # Main component & layout styles
+│   ├── utilities.css           # Utility classes & helpers
+│   ├── print.css               # Print-optimized styles
 │   └── images/                 # Diagrams and assets
 ├── research/                    # Academic research foundation
 │   ├── R1/ ... R7/            # Research clusters with claims, evidence, refs
@@ -45,6 +48,13 @@ dukkha/
 │   └── qa_check.ps1           # Quality assurance
 └── tests/                      # Automated testing
 ```
+
+### CSS Architecture (Modular Design)
+The stylesheet is split into focused, maintainable modules:
+- **`variables.css`** (2.5KB) - Design tokens, color schemes, spacing system
+- **`styles.css`** (32.3KB) - Core components, layout, page-specific styles  
+- **`utilities.css`** (3.6KB) - Utility classes, loading states, diagram helpers
+- **`print.css`** (1.2KB) - Print-optimized styles (loaded only when printing)
 
 ### Research Organization
 Each `research/Rn/` folder contains:
@@ -104,6 +114,19 @@ pytest .\tests\
 
 ## 🎨 Content Architecture
 
+### Recent Improvements (August 2025)
+- **CSS Architecture Overhaul**: Split monolithic stylesheet into modular files
+  - `variables.css` - Design tokens and color schemes
+  - `styles.css` - Core components and layouts  
+  - `utilities.css` - Helper classes and interactive elements
+  - `print.css` - Print-optimized styles with selective loading
+- **Enhanced Myths Page**: Added complete truth statements with visual distinction
+  - Interactive checkmark icons and hover animations
+  - Professional gradient backgrounds and typography hierarchy
+  - Dark mode support and responsive design
+- **Improved Content Completion**: Full five myths with proper academic citations
+- **Navigation Consistency**: Fixed protocol page navigation across all 12 HTML files
+
 ### Page Types
 - **Hero Pages**: Focus & Attention, Recovery & Baseline, Five Myths, Model, Library
 - **Protocol Pages**: Time-bound, actionable interventions with research backing
@@ -114,12 +137,14 @@ pytest .\tests\
 - **Accessible**: Clean typography, semantic HTML, screen reader friendly
 - **Printable**: CSS optimized for both screen and print
 - **Progressive**: Works without JavaScript, enhanced with JS
+- **Modular CSS**: Split architecture for maintainability and performance
 
 ### Content Standards
 - Academic citations with DOI links where available
 - Smooth-scroll footnotes with highlight animation
 - Consistent hero sections with themed styling
 - Action-oriented takeaways in every protocol
+- Enhanced truth statements with visual distinction and interactive elements
 
 ## 🧪 Quality Assurance
 
@@ -182,11 +207,15 @@ python -c "import scripts.build_site; print('Build system OK')"
 - **Quality Assurance**: Automated testing and link validation
 - **Accessibility**: Semantic HTML, ARIA labels, keyboard navigation
 - **Citation System**: Footnotes with smooth scroll and academic references
+- **Modular CSS Architecture**: Split into focused, maintainable modules for better performance
+- **Enhanced Content**: Complete myths page with 5 debunked misconceptions
+- **Professional Styling**: Interactive truth statements, action boxes, and visual hierarchy
 
 ### 🚧 In Progress  
 - **Visual Enhancements**: Progress indicators, reading prompts, protocol dropdown navigation
 - **Content Expansion**: Additional protocols for sleep, nutrition, exercise
 - **Diagram Updates**: Interactive SVG enhancements and new visualizations
+- **Performance Optimization**: Further CSS optimization and selective loading strategies
 
 ### 🔮 Planned
 - **Search Functionality**: Full-text search across all content
@@ -199,6 +228,8 @@ python -c "import scripts.build_site; print('Build system OK')"
 - **5** Evidence-based protocols with implementation guides
 - **50+** Academic citations with DOI links and full references
 - **100%** Automated test coverage for critical site functionality
+- **4** Modular CSS files for maintainable styling (40KB total, split by purpose)
+- **12** HTML files updated with optimized CSS architecture
 
 ## 📄 License
 
