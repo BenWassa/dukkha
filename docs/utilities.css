@@ -201,7 +201,8 @@ details.protocol-summary[open] {
   margin-top: var(--space-2);
   display: none;
   min-width: 200px;
-  z-index: 200;
+  z-index: 1000; /* Much higher than nav's z-index: 100 */
+  box-shadow: var(--shadow-lg); /* Add shadow for better visual separation */
 }
 .nav-dropdown.open .nav-dropdown__menu { display: block; }
 .nav-dropdown__menu li { list-style: none; }
