@@ -106,6 +106,11 @@
       function open() {
         dropdown.classList.add('open');
         toggle.setAttribute('aria-expanded', 'true');
+        
+        // Position the dropdown correctly relative to the toggle button
+        var rect = toggle.getBoundingClientRect();
+        menu.style.left = rect.left + 'px';
+        menu.style.top = (rect.bottom + 8) + 'px'; // 8px margin
       }
       function close() {
         dropdown.classList.remove('open');
