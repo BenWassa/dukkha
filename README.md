@@ -76,6 +76,13 @@ Each `research/Rn/` folder contains:
 3. **Test Changes**: Use `pytest tests/` for automated validation
 4. **Quality Check**: Run `pwsh scripts/qa_check.ps1` for link validation
 
+### Quick start (developer)
+If you're on Windows (PowerShell), from the repository root run the following short sequence to rebuild, test and validate:
+
+```powershell
+python .\scripts\build_site.py; pytest .\tests\; pwsh .\scripts\qa_check.ps1 -CheckUrls
+```
+
 ### Example Commands (PowerShell)
 ```powershell
 # View a research claim file
@@ -234,6 +241,22 @@ python -c "import scripts.build_site; print('Build system OK')"
 ## 📄 License
 
 This project is released under the MIT License - see the LICENSE file for details.
+
+## 🕘 Recent activity
+
+Summary of the latest commits (most recent first):
+
+- feat: move update-css-refs script to scripts folder (45ac37c)
+- Improve protocols dropdown and add scroll progress (46e676a)
+- feat: add progress, prompts, and protocol dropdown (a93a4d3)
+- feat(readme): overhaul CSS architecture by modularizing stylesheets (b30c25f)
+- fix(myths): update myths page content and styling for consistency and clarity (5059d28)
+
+For the full commit history, run:
+
+```powershell
+git -C .\ log --oneline -n 50
+```
 
 **Academic Use**: All research sources are properly cited. Please maintain attribution when using or building upon this work.
 
