@@ -72,9 +72,9 @@ Commit to the following daily practices for 21 days. Track progress in a simple 
 
 *Edited for clarity and consistent Markdown formatting.*
 
-[^1]: Reference 1
-[^2]: Reference 2  
-[^3]: Reference 3
-[^4]: Reference 4
-[^5]: Reference 5
-[^7]: Reference 7
+[^1]: Bodhi, B. (2000). The Connected Discourses of the Buddha: A Translation of the Samyutta Nikaya. Wisdom Publications.
+[^2]: Harvey, P. (2013). An Introduction to Buddhism: Teachings, History and Practices. Cambridge University Press.
+[^3]: Gethin, R. (1998). The Foundations of Buddhism. Oxford University Press.
+[^4]: Rahula, W. (1974). What the Buddha Taught. Grove Press.
+[^5]: Berridge, K. C., & Robinson, T. E. (2016). Liking, wanting, and the incentive-sensitization theory of addiction. American Psychologist, 71(8), 670-679. DOI: 10.1037/amp0000059
+[^7]: Bowen, S., Witkiewitz, K., Clifasefi, S. L., Grow, J., Chawla, N., Hsu, S. H., ... & Larimer, M. E. (2014). Relative efficacy of mindfulness-based relapse prevention, standard relapse prevention, and treatment as usual for substance use disorders. JAMA Psychiatry, 71(5), 547-556. DOI: 10.1001/jamapsychiatry.2013.4546

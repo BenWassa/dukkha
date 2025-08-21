@@ -17,9 +17,9 @@ slug: "sleep-optimization-protocol"
 Sleep plays a fundamental role in regulating the brain's reward system and stress response.
 
 
-- Amplified Reward-Seeking and Impulsivity: A single night of sleep deprivation can significantly increase next-day reward sensitivity, risk-taking, and impulsivity, while impairing the brain's ability to update reward values. When overtired, the brain's reward networks go into overdrive, making individuals more prone to chasing quick rewards (like junk food or mindless scrolling) and making risky decisions.
-- Increased Craving and Relapse Risk: Sleep disturbances, including insomnia and reduced slow-wave sleep, are pervasive in recovery and independently predict stronger cravings and a higher risk of relapse. For instance, insomnia and poor sleep continuity correlate with earlier relapse in alcohol use disorder.
-- Circadian Misalignment and Impulsivity: Chronic sleep restriction and disruptions to the circadian rhythm (e.g., irregular sleep times or exposure to light at wrong times) can increase baseline reward cravings and impulsivity. Young adults with chronic sleep/circadian misalignment show heightened reward-seeking behavior and reduced impulse control.
+- Amplified Reward-Seeking and Impulsivity: A single night of sleep deprivation can significantly increase next-day reward sensitivity, risk-taking, and impulsivity, while impairing the brain's ability to update reward values[^1]. When overtired, the brain's reward networks go into overdrive, making individuals more prone to chasing quick rewards (like junk food or mindless scrolling) and making risky decisions[^2].
+- Increased Craving and Relapse Risk: Sleep disturbances, including insomnia and reduced slow-wave sleep, are pervasive in recovery and independently predict stronger cravings and a higher risk of relapse[^3]. For instance, insomnia and poor sleep continuity correlate with earlier relapse in alcohol use disorder[^4].
+- Circadian Misalignment and Impulsivity: Chronic sleep restriction and disruptions to the circadian rhythm (e.g., irregular sleep times or exposure to light at wrong times) can increase baseline reward cravings and impulsivity[^5]. Young adults with chronic sleep/circadian misalignment show heightened reward-seeking behavior and reduced impulse control[^6].
 
 
 ## Key Interventions for Sleep Optimization
@@ -64,3 +64,15 @@ Quiet: Use earplugs or a white noise machine/fan to block noise.
 
 
 By consistently applying these interventions over 14 days, you can reset your circadian rhythm, improve sleep quality, stabilize your dopamine baseline, and enhance your resilience against stress and cravings. The focus is on establishing robust daily routines that naturally support your body's sleep-wake cycle and recovery processes.
+
+[^1]: Venkatraman, V., Huettel, S. A., Chuah, L. Y., Payne, J. W., & Chee, M. W. (2011). Sleep deprivation biases the neural mechanisms underlying economic preferences. Journal of Neuroscience, 31(10), 3712-3718. DOI: 10.1523/JNEUROSCI.4407-10.2011
+
+[^2]: Greer, S. M., Goldstein, A. N., & Walker, M. P. (2013). The impact of sleep deprivation on food desire in the human brain. Nature Communications, 4, 2259. DOI: 10.1038/ncomms3259
+
+[^3]: Brower, K. J., Aldrich, M. S., Robinson, E. A., Zucker, R. A., & Greden, J. F. (2001). Insomnia, self-medication, and relapse to alcoholism. American Journal of Psychiatry, 158(3), 399-404. DOI: 10.1176/appi.ajp.158.3.399
+
+[^4]: Drummond, S. P., Gillin, J. C., Smith, T. L., & DeModena, A. (1998). The sleep of abstinent pure primary alcoholic patients: natural course and relationship to relapse. Alcoholism: Clinical and Experimental Research, 22(8), 1796-1802. DOI: 10.1111/j.1530-0277.1998.tb03979.x
+
+[^5]: Hasler, B. P., Franzen, P. L., & de Zambotti, M. (2021). Sleep and circadian behavioral phenotypes in adolescents and young adults with alcohol use disorders: an integrative review. Alcohol Research, 41(1), 02. DOI: 10.35946/arcr.v41.1.02
+
+[^6]: Hasler, B. P., Soehner, A. M., & Clark, D. B. (2015). Sleep and circadian contributions to adolescent alcohol use disorder. Alcohol, 49(4), 377-387. DOI: 10.1016/j.alcohol.2014.06.010

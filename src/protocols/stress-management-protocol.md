@@ -70,3 +70,9 @@ To implement the Stress Management Protocol, consider the following:
 3. Micro-Relaxation Cues: Utilize techniques like progressive muscle relaxation or splashing cold water on your face for rapid stress reduction during acute moments.
 4. Mindfulness for Urges: Practice observing cravings without immediate reactivity, using techniques like urge surfing to gain control over impulsive responses.
 5. HRV Monitoring (Optional): If available, use HRV tracking to monitor your physiological state and use it as feedback to engage in calming practices when needed.
+
+[^7]: Bowen, S., Witkiewitz, K., Clifasefi, S. L., Grow, J., Chawla, N., Hsu, S. H., ... & Larimer, M. E. (2014). Relative efficacy of mindfulness-based relapse prevention, standard relapse prevention, and treatment as usual for substance use disorders. JAMA Psychiatry, 71(5), 547-556. DOI: 10.1001/jamapsychiatry.2013.4546
+
+[^9]: Gerritsen, R. J., & Band, G. P. (2018). Breath of life: The respiratory vagal stimulation model of contemplative activity. Frontiers in Human Neuroscience, 12, 397. DOI: 10.3389/fnhum.2018.00397
+
+[^12]: Roberts, V., Maddison, R., Simpson, C., Bullen, C., & Prapavessis, H. (2012). The acute effects of exercise on cigarette cravings, withdrawal symptoms, affect, and smoking behaviour: systematic review update and meta-analysis. Psychopharmacology, 222(1), 1-15. DOI: 10.1007/s00213-012-2731-z
