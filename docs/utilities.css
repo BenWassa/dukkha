@@ -1,0 +1,131 @@
+/* =============================================
+   Project Dukkha - Utility Classes
+   Helpers, Loading States, and Utility Components
+   ============================================= */
+
+/* =============================================
+   Utility Classes
+   ============================================= */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.font-serif { font-family: var(--font-serif); }
+.font-sans { font-family: var(--font-sans); }
+.font-mono { font-family: var(--font-mono); }
+
+.text-accent { color: var(--color-accent); }
+.text-muted { color: var(--color-text-muted); }
+.text-primary { color: var(--color-text-primary); }
+
+.bg-surface { background-color: var(--color-surface); }
+.bg-elevated { background-color: var(--color-surface-elevated); }
+
+.border { border: 1px solid var(--color-border); }
+.border-accent { border-color: var(--color-accent); }
+
+.rounded { border-radius: var(--border-radius); }
+.rounded-lg { border-radius: var(--border-radius-lg); }
+
+.shadow-sm { box-shadow: var(--shadow-sm); }
+.shadow-md { box-shadow: var(--shadow-md); }
+.shadow-lg { box-shadow: var(--shadow-lg); }
+
+.transition { transition: all var(--transition-normal); }
+
+/* =============================================
+   Loading States
+   ============================================= */
+
+.loading {
+  opacity: 0.6;
+  pointer-events: none;
+  position: relative;
+}
+
+.loading::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--color-border);
+  border-top: 2px solid var(--color-accent);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* =============================================
+   Diagram Utilities
+   ============================================= */
+
+/* General Styling for Actual Diagrams (SVG files embedded via <img>) */
+.diagram-visual {
+    display: block;
+    width: 100%;
+    max-width: 700px; /* Adjust max width for all diagrams as needed for consistency */
+    height: 400px; /* Fixed height to create a viewport for cropping */
+    margin: var(--space-8) auto;
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-sm);
+    object-fit: none; /* Don't scale the SVG, show it at original size */
+    object-position: center center; /* Center the SVG within the viewport */
+    overflow: hidden; /* Hide parts that extend beyond the viewport */
+}
+
+/* =============================================
+   Protocol Components
+   ============================================= */
+
+/* Protocol list & details styles */
+.protocol-list { 
+  display: grid; 
+  gap: 1rem; 
+  grid-template-columns: 1fr; 
+  max-width: 900px; 
+  margin: 0 auto; 
+}
+
+.protocol-card { 
+  border: 1px solid var(--color-border); 
+  padding: 1rem; 
+  border-radius: 8px; 
+  background: var(--color-surface); 
+}
+
+details.protocol-summary { 
+  border: 1px solid var(--color-border); 
+  padding: 0.6rem; 
+  border-radius: 6px; 
+  background: transparent; 
+}
+
+details.protocol-summary summary { 
+  font-weight: 600; 
+  cursor: pointer; 
+}
+
+details.protocol-summary[open] { 
+  background: rgba(0,0,0,0.02); 
+}

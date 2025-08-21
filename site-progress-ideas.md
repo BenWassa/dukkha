@@ -11,6 +11,25 @@
   - Added proper footnotes and citations for new myths
   - Now shows complete set of 5 myths with consistent structure
 
+### CSS File Organization (FIXED ✅)
+- **Issue:** Single massive styles.css file (was ~40KB) was becoming unwieldy for maintenance
+- **Fixed:** Split into modular CSS architecture:
+  - `variables.css` (2.5KB) - Design tokens, CSS custom properties, color schemes
+  - `styles.css` (32.3KB) - Main layout, components, page-specific styles  
+  - `utilities.css` (3.6KB) - Utility classes, loading states, diagram helpers
+  - `print.css` (1.2KB) - Print-optimized styles (loaded only for print media)
+- **Benefits:** Better maintainability, selective loading, clearer separation of concerns
+- **Implementation:** Updated all 12 HTML files with new CSS imports, maintained load order
+
+### Truth Statement Styling Enhancement (FIXED ✅)  
+- **Issue:** "Truth:" statements in myths.html needed better visual distinction
+- **Fixed:** Added comprehensive styling with:
+  - Green gradient background and left border for visual hierarchy
+  - Checkmark icon (✓) and bold italic typography
+  - Hover animations and fade-in effects
+  - Dark mode support and responsive design
+  - Professional appearance that reinforces correctness vs myths
+
 ---
 
 ## 1. Progress Indicator for Each Page

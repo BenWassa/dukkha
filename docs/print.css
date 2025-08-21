@@ -1,0 +1,67 @@
+/* =============================================
+   Project Dukkha - Print Styles
+   Optimized for printing and PDF generation
+   ============================================= */
+
+@media print {
+  * {
+    background: white !important;
+    color: black !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+  
+  .nav,
+  .hero-visual,
+  .footer-links,
+  .cta-primary,
+  .cta-secondary {
+    display: none !important;
+  }
+  
+  .hero {
+    margin-top: 0;
+    padding: var(--space-8) 0;
+  }
+  
+  .hero-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    page-break-after: avoid;
+  }
+  
+  p, li {
+    page-break-inside: avoid;
+  }
+  
+  .access-card,
+  .pillar {
+    break-inside: avoid;
+    border: 1px solid #ccc;
+    margin-bottom: var(--space-4);
+  }
+  
+  .footnote-list {
+    font-size: var(--text-xs);
+  }
+  
+  a {
+    text-decoration: underline;
+  }
+  
+  a[href^="http"]:after {
+    content: " (" attr(href) ")";
+    font-size: 0.8em;
+  }
+  
+  details.protocol-summary { 
+    display: block; 
+  }
+  
+  .footnote-list li {
+    border-width: 2px;
+  }
+}
