@@ -828,6 +828,7 @@ a:hover {
 
 .card-cta:hover {
   background-color: var(--color-accent-light);
+  color: var(--color-background);
   transform: translateY(-1px);
   box-shadow: var(--shadow-md);
   text-decoration: none;
