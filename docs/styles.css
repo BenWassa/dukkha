@@ -748,6 +748,23 @@ a:hover {
 }
 
 /* =============================================
+   Layout helper: sticky footer
+   Simple approach: use min-height on main content to push footer down
+   when content is short, without disrupting existing layout.
+   ============================================= */
+
+/* Ensure body can be full height */
+html, body {
+  height: 100%;
+}
+
+/* Make main content take up at least full viewport minus nav/footer space */
+main,
+.page-content {
+  min-height: calc(100vh - 160px); /* Approximate space for nav + footer */
+}
+
+/* =============================================
    Page Content & Layout
    ============================================= */
 
