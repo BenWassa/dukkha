@@ -680,6 +680,7 @@ a:hover {
 .card-icon img[src*="Dopamine.svg"] {
   width: 112px;
   height: 112px;
+  transform: translateX(8px);
 }
 
 .access-card:hover .card-icon {
@@ -690,6 +691,11 @@ a:hover {
 .access-card:hover .card-icon img {
   filter: invert(58%) sepia(23%) saturate(537%) hue-rotate(8deg) brightness(97%) contrast(87%);
   transform: scale(1.1);
+}
+
+/* Maintain dopamine icon position on hover */
+.access-card:hover .card-icon img[src*="Dopamine.svg"] {
+  transform: translateX(8px) scale(1.1);
 }
 
 .card-pain-point {
@@ -712,13 +718,58 @@ a:hover {
 
 .pain-text {
   font-size: var(--text-base);
-  color: #b91c1c;
+  color: var(--color-text-primary);
   font-weight: 600;
   line-height: 1.2;
+  background: linear-gradient(135deg, #fef2f2, #fee2e2);
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--border-radius);
+  border-left: 3px solid #dc2626;
+  position: relative;
+  overflow: hidden;
+}
+
+.pain-text::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(220, 38, 38, 0.05), rgba(239, 68, 68, 0.08));
+  pointer-events: none;
+}
+
+/* Dark mode adjustments */
+@media (prefers-color-scheme: dark) {
+  .pain-text {
+    background: linear-gradient(135deg, rgba(220, 38, 38, 0.15), rgba(239, 68, 68, 0.12));
+    border-left-color: #f87171;
+    color: #fecaca;
+  }
+  
+  .pain-text::before {
+    background: linear-gradient(135deg, rgba(248, 113, 113, 0.08), rgba(252, 165, 165, 0.06));
+  }
 }
 
 .access-card:hover .card-pain-point {
   opacity: 1;
+}
+
+.access-card:hover .pain-text {
+  background: linear-gradient(135deg, #fee2e2, #fecaca);
+  border-left-color: #b91c1c;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(220, 38, 38, 0.15);
+}
+
+@media (prefers-color-scheme: dark) {
+  .access-card:hover .pain-text {
+    background: linear-gradient(135deg, rgba(239, 68, 68, 0.2), rgba(248, 113, 113, 0.15));
+    border-left-color: #fca5a5;
+    box-shadow: 0 2px 4px rgba(248, 113, 113, 0.2);
+  }
 }
 
 .card-content {
@@ -740,7 +791,7 @@ a:hover {
 .card-theme {
   font-family: 'Crimson Text', serif;
   font-style: italic;
-  font-size: var(--text-lg);
+  font-size: var(--text-xl);
   color: var(--color-accent);
   margin: 0;
   font-weight: 600;
@@ -1392,6 +1443,7 @@ a:hover {
   .card-icon img[src*="Dopamine.svg"] {
     width: 98px;
     height: 98px;
+    transform: translateX(6px);
   }
   
   .footer-content {
