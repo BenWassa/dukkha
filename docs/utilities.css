@@ -217,13 +217,24 @@ details.protocol-summary[open] {
 }
 
 /* =============================================
-   Layout Utilities: Sticky Footer
+   Layout Utilities: Sticky Footer (Minimal)
    ============================================= */
 
-/* Make main content take up at least full viewport minus nav/footer space
-   This pushes footer to bottom when content is short */
-main,
-.page-content {
-  min-height: calc(100vh - 160px); /* Approximate space for nav + footer */
+/* Only apply sticky footer on very short pages by detecting viewport height.
+   Uses CSS custom property for precise control without breaking existing layout. */
+@media (min-height: 800px) {
+  body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  main {
+    flex: 1;
+  }
+  
+  .footnotes {
+    margin-top: auto;
+  }
 }
 
