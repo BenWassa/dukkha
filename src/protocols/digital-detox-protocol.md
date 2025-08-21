@@ -22,7 +22,7 @@ The constant presence of notifications creates a state of "continuous partial at
 
 **Implementation**: Configure your device to deliver notifications in scheduled batches rather than immediately upon arrival.
 
-**Research Foundation**: Studies by Kushlev et al. (2016) demonstrate that participants who checked email just three times per day (rather than continuously) reported significantly lower stress levels and higher well-being[^7]. Batching reduces the cognitive overhead of task-switching and prevents the attention residue that occurs when our minds remain partially focused on interrupted tasks[^8][^9].
+**Research Foundation**: Studies demonstrate that participants who checked email just three times per day (rather than continuously) reported significantly lower stress levels and higher well-being[^7]. Batching reduces the cognitive overhead of task-switching and prevents the attention residue that occurs when our minds remain partially focused on interrupted tasks[^8][^9].
 
 **Practical Steps**:
 - Set specific times for notification delivery (e.g., 9 AM, 1 PM, 5 PM)
