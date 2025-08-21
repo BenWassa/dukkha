@@ -137,22 +137,25 @@ details.protocol-summary[open] {
 .read-progress {
   position: fixed;
   top: 0;
-  right: 0;
-  width: 4px;
-  height: 100vh;
+  left: 0;
+  width: 100%;
+  height: 4px;
   background: var(--color-border);
   pointer-events: none;
   z-index: 1000;
+  display: none;
+}
+.read-progress.visible {
+  display: block;
 }
 .read-progress__bar {
-  width: 100%;
+  width: 0;
   height: 100%;
   background: var(--color-accent);
-  transform-origin: top;
-  transform: scaleY(0);
 }
 @media (max-width: 767px) {
   .read-progress { display: none; }
+  .read-progress.visible { display: none; }
 }
 
 .read-prompt {

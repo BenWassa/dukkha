@@ -1,12 +1,31 @@
 (function() {
   // reading progress
-  var bar = document.querySelector('.read-progress__bar');
+  var progress = document.querySelector('.read-progress');
+  if (!progress) {
+    progress = document.createElement('div');
+    progress.className = 'read-progress';
+    progress.setAttribute('aria-hidden', 'true');
+    progress.innerHTML = '<div class="read-progress__bar"></div>';
+    document.body.appendChild(progress);
+  }
+  var bar = progress.querySelector('.read-progress__bar');
   if (bar) {
+    var nav = document.querySelector('.nav');
+    var hero = document.querySelector('[class^="hero"]');
+    var showPoint = 0;
+    if (nav) { progress.style.top = nav.offsetHeight + 'px'; }
+    if (hero && nav) { showPoint = hero.offsetHeight - nav.offsetHeight; }
+
     var updateProgress = function() {
       var h = document.body.scrollHeight - window.innerHeight;
       var y = window.scrollY;
       var r = h > 0 ? y / h : 0;
-      bar.style.transform = 'scaleY(' + r + ')';
+      bar.style.width = (r * 100) + '%';
+      if (y > showPoint) {
+        progress.classList.add('visible');
+      } else {
+        progress.classList.remove('visible');
+      }
     };
     window.addEventListener('scroll', updateProgress, { passive: true });
     updateProgress();
@@ -48,68 +67,62 @@
   // nav dropdown
   var dropdown = document.querySelector('.nav-dropdown');
   if (dropdown) {
-    var toggle = dropdown.querySelector('.nav-dropdown__toggle');
-    var menu = dropdown.querySelector('.nav-dropdown__menu');
-    var inProtocols = window.location.pathname.indexOf('/protocols/') !== -1;
-    var basePath = inProtocols ? '' : 'protocols/';
-    var overviewPath = inProtocols ? '../protocols.html' : 'protocols.html';
+      var toggle = dropdown.querySelector('.nav-dropdown__toggle');
+      var menu = dropdown.querySelector('.nav-dropdown__menu');
+      var inProtocols = window.location.pathname.indexOf('/protocols/') !== -1;
+      var basePath = inProtocols ? '' : 'protocols/';
+      var overviewPath = inProtocols ? '../protocols.html' : 'protocols.html';
+      if (toggle) { toggle.setAttribute('href', overviewPath); }
 
-    function buildMenu(list) {
-      menu.innerHTML = '';
-      var first = document.createElement('li');
-      var firstLink = document.createElement('a');
-      firstLink.href = overviewPath;
-      firstLink.textContent = 'All Protocols';
-      firstLink.setAttribute('role', 'menuitem');
-      first.appendChild(firstLink);
-      menu.appendChild(first);
-      list.forEach(function(p) {
-        var li = document.createElement('li');
-        var a = document.createElement('a');
-        a.href = basePath + p.filename;
-        a.textContent = p.title;
-        a.setAttribute('role', 'menuitem');
-        li.appendChild(a);
-        menu.appendChild(li);
+      function buildMenu(list) {
+        menu.innerHTML = '';
+        list.forEach(function(p) {
+          var li = document.createElement('li');
+          var a = document.createElement('a');
+          a.href = basePath + p.filename;
+          a.textContent = p.title;
+          a.setAttribute('role', 'menuitem');
+          li.appendChild(a);
+          menu.appendChild(li);
+        });
+      }
+
+      fetch(basePath + 'manifest.json')
+        .then(function(r) { return r.json(); })
+        .then(function(data) { buildMenu(data.protocols || []); })
+        .catch(function() {
+          buildMenu([
+            {title:'Digital Detox Protocol', filename:'digital-detox-protocol.html'},
+            {title:'Mindfulness & Awareness Protocol', filename:'mindfulness-awareness-protocol.html'},
+            {title:'Nutrition & Supplementation Protocol', filename:'nutrition-supplementation-protocol.html'},
+            {title:'Sleep Optimization Protocol', filename:'sleep-optimization-protocol.html'},
+            {title:'Stress Management Protocol', filename:'stress-management-protocol.html'}
+          ]);
+        });
+
+      function getItems() {
+        return Array.prototype.slice.call(menu.querySelectorAll('a'));
+      }
+      function open() {
+        dropdown.classList.add('open');
+        toggle.setAttribute('aria-expanded', 'true');
+      }
+      function close() {
+        dropdown.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+      }
+
+      toggle.addEventListener('keydown', function(e) {
+        if (e.key === 'ArrowDown') { e.preventDefault(); open(); getItems()[0] && getItems()[0].focus(); }
       });
-    }
-
-    fetch(basePath + 'manifest.json')
-      .then(function(r) { return r.json(); })
-      .then(function(data) { buildMenu(data.protocols || []); })
-      .catch(function() {
-        buildMenu([
-          {title:'Digital Detox Protocol', filename:'digital-detox-protocol.html'},
-          {title:'Mindfulness & Awareness Protocol', filename:'mindfulness-awareness-protocol.html'},
-          {title:'Nutrition & Supplementation Protocol', filename:'nutrition-supplementation-protocol.html'},
-          {title:'Sleep Optimization Protocol', filename:'sleep-optimization-protocol.html'},
-          {title:'Stress Management Protocol', filename:'stress-management-protocol.html'}
-        ]);
+      var closeTimeout;
+      dropdown.addEventListener('mouseenter', function() {
+        clearTimeout(closeTimeout);
+        open();
       });
-
-    function getItems() {
-      return Array.prototype.slice.call(menu.querySelectorAll('a'));
-    }
-    function open() {
-      dropdown.classList.add('open');
-      toggle.setAttribute('aria-expanded', 'true');
-    }
-    function close() {
-      dropdown.classList.remove('open');
-      toggle.setAttribute('aria-expanded', 'false');
-    }
-
-    toggle.addEventListener('click', function(e) {
-      e.preventDefault();
-      var isOpen = dropdown.classList.toggle('open');
-      toggle.setAttribute('aria-expanded', isOpen);
-      if (isOpen) { getItems()[0] && getItems()[0].focus(); }
-    });
-    toggle.addEventListener('keydown', function(e) {
-      if (e.key === 'ArrowDown') { e.preventDefault(); open(); getItems()[0] && getItems()[0].focus(); }
-    });
-    dropdown.addEventListener('mouseenter', open);
-    dropdown.addEventListener('mouseleave', close);
+      dropdown.addEventListener('mouseleave', function() {
+        closeTimeout = setTimeout(close, 250);
+      });
 
     menu.addEventListener('keydown', function(e) {
       var items = getItems();
