@@ -81,9 +81,21 @@ class Protocol:
         else:
             raise ValueError(f"No front-matter found in {path}")
         
-        # Convert markdown to HTML
-        md = markdown.Markdown(extensions=['extra', 'toc', 'codehilite'])
+        # Convert markdown to HTML with footnotes
+        md = markdown.Markdown(extensions=['extra', 'toc', 'codehilite', 'footnotes'])
         html_content = md.convert(body.strip())
+        
+        # Remove auto-generated footnotes div from main content
+        from bs4 import BeautifulSoup
+        soup = BeautifulSoup(html_content, 'html.parser')
+        
+        # Remove all auto-generated footnotes divs
+        for footnote_div in soup.find_all('div', class_='footnote'):
+            footnote_div.decompose()
+        for footnotes_div in soup.find_all('div', class_='footnotes'):
+            footnotes_div.decompose()
+        
+        html_content = str(soup)
         
         return cls(
             title=metadata['title'],
