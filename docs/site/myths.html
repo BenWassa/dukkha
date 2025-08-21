@@ -135,11 +135,27 @@
     <script src="js/site-ui.js" defer></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Collapsible footnotes section
+            const footnotesSection = document.querySelector('.footnotes');
+            const footnotesHeader = document.querySelector('.footnotes h3');
+            
+            if (footnotesHeader && footnotesSection) {
+                footnotesHeader.addEventListener('click', function() {
+                    footnotesSection.classList.toggle('collapsed');
+                });
+            }
+
             // Footnote smooth scroll
             document.querySelectorAll('.footnote-link').forEach(link => {
                 link.addEventListener('click', function(e) {
                     e.preventDefault();
                     const target = document.querySelector(this.getAttribute('href'));
+                    
+                    // If footnotes section is collapsed, expand it first
+                    if (footnotesSection && footnotesSection.classList.contains('collapsed')) {
+                        footnotesSection.classList.remove('collapsed');
+                    }
+                    
                     target.scrollIntoView({ behavior: 'smooth' });
                     target.classList.add('highlight');
                     setTimeout(() => target.classList.remove('highlight'), 2000);
