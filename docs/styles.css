@@ -695,9 +695,10 @@ a:hover {
    ============================================= */
 
 .footer {
-  background-color: var(--color-surface);
-  border-top: 1px solid var(--color-border);
+  background-color: var(--color-background); /* Different background from footnotes */
+  border-top: 2px solid var(--color-accent); /* Stronger, colored border */
   padding: var(--space-12) 0 var(--space-8);
+  margin-top: var(--space-8); /* Additional top margin for separation */
 }
 
 .footer-content {
@@ -1060,6 +1061,8 @@ a:hover {
   padding: var(--space-12) 0;
   border-top: 2px solid var(--color-border);
   margin-top: var(--space-16);
+  /* Add bottom margin to create space before footer */
+  margin-bottom: var(--space-8);
 }
 
 .footnotes h3 {
