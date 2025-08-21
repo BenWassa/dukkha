@@ -655,7 +655,15 @@ a:hover {
   justify-content: space-between;
   padding: var(--space-6) var(--space-6) var(--space-4);
   background: linear-gradient(135deg, rgba(201, 169, 97, 0.03) 0%, transparent 100%);
-  border-bottom: 1px solid var(--color-border);
+  border: 2px solid rgba(201, 169, 97, 0.15);
+  border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0;
+  position: relative;
+  transition: all var(--transition-normal);
+}
+
+.access-card:hover .card-header {
+  border-color: rgba(201, 169, 97, 0.3);
+  background: linear-gradient(135deg, rgba(201, 169, 97, 0.06) 0%, rgba(201, 169, 97, 0.02) 100%);
 }
 
 .card-icon {
