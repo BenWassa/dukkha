@@ -7,9 +7,13 @@ Build system for Project Dukkha         # Convert markdown to HTML with footnote
         # Remove the footnotes div from main content since we'll handle it separately
         from bs4 import BeautifulSoup
         soup = BeautifulSoup(html_content, 'html.parser')
-        footnotes_div = soup.find('div', class_='footnote')
-        if footnotes_div:
+        
+        # Remove all auto-generated footnotes divs
+        for footnotes_div in soup.find_all('div', class_='footnote'):
             footnotes_div.decompose()
+        for footnotes_div in soup.find_all('div', class_='footnotes'):
+            footnotes_div.decompose()
+        
         html_content = str(soup)
         
         return cls(
@@ -126,9 +130,13 @@ class Page:
         # Remove the footnotes div from main content since we'll handle it separately
         from bs4 import BeautifulSoup
         soup = BeautifulSoup(html_content, 'html.parser')
-        footnotes_div = soup.find('div', class_='footnote')
-        if footnotes_div:
+        
+        # Remove all auto-generated footnotes divs
+        for footnotes_div in soup.find_all('div', class_='footnote'):
             footnotes_div.decompose()
+        for footnotes_div in soup.find_all('div', class_='footnotes'):
+            footnotes_div.decompose()
+        
         html_content = str(soup)
         
         return cls(
