@@ -1,8 +1,26 @@
 #!/usr/bin/env python3
 """
-Build system for Project Dukkha site.
-
-Reads Markdown files with front-matter from:
+Build system for Project Dukkha         # Convert markdown to HTML with footnotes support
+        md = markdown.Markdown(extensions=['extra', 'toc', 'codehilite', 'footnotes'])
+        html_content = md.convert(body.strip())
+        
+        # Remove the footnotes div from main content since we'll handle it separately
+        from bs4 import BeautifulSoup
+        soup = BeautifulSoup(html_content, 'html.parser')
+        footnotes_div = soup.find('div', class_='footnote')
+        if footnotes_div:
+            footnotes_div.decompose()
+        html_content = str(soup)
+        
+        return cls(
+            title=metadata['title'],
+            duration=metadata['duration'],
+            tags=metadata.get('tags', []),
+            description=metadata['description'],
+            slug=metadata['slug'],
+            content=html_content,
+            filename=f"{metadata['slug']}.html"
+        )s Markdown files with front-matter from:
 - src/protocols/ for protocol pages
 - src/pages/ for main content pages
 
@@ -105,6 +123,14 @@ class Page:
         md = markdown.Markdown(extensions=['extra', 'toc', 'codehilite', 'footnotes'])
         html_content = md.convert(body.strip())
         
+        # Remove the footnotes div from main content since we'll handle it separately
+        from bs4 import BeautifulSoup
+        soup = BeautifulSoup(html_content, 'html.parser')
+        footnotes_div = soup.find('div', class_='footnote')
+        if footnotes_div:
+            footnotes_div.decompose()
+        html_content = str(soup)
+        
         return cls(
             title=metadata['title'],
             slug=metadata['slug'],
@@ -125,6 +151,8 @@ class SiteBuilder:
         self.src_dir = self.root / 'src'
         self.protocols_dir = self.src_dir / 'protocols'
         self.pages_dir = self.src_dir / 'pages'
+        self.protocols_source_dir = self.protocols_dir  # For footnotes extraction
+        self.pages_source_dir = self.pages_dir  # For footnotes extraction
         self.templates_dir = self.src_dir / 'templates'
         self.output_dir = self.root / 'docs' / 'site'
         self.protocols_output_dir = self.output_dir / 'protocols'
@@ -196,6 +224,16 @@ class SiteBuilder:
         </section>
     </main>
 
+    <!-- Footnotes Section -->
+    <section class="footnotes" id="footnotes">
+        <div class="container">
+            <h3>Notes & Citations</h3>
+            <ol class="footnote-list">
+                {footnotes_content}
+            </ol>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
@@ -217,6 +255,45 @@ class SiteBuilder:
     </footer>
 
     <script src="../js/site-ui.js" defer></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {{
+            // Collapsible footnotes section
+            const footnotesSection = document.querySelector('.footnotes');
+            const footnotesHeader = document.querySelector('.footnotes h3');
+            
+            if (footnotesHeader && footnotesSection) {{
+                footnotesHeader.addEventListener('click', function() {{
+                    footnotesSection.classList.toggle('collapsed');
+                }});
+            }}
+
+            // Footnote click handling
+            document.querySelectorAll('a[href^="#fn"]').forEach(link => {{
+                link.addEventListener('click', function(e) {{
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    // Handle both fn:1 and fn1 formats
+                    let targetElement = document.getElementById(targetId);
+                    if (!targetElement && targetId.startsWith('fn') && !targetId.includes(':')) {{
+                        targetElement = document.getElementById('fn:' + targetId.substring(2));
+                    }} else if (!targetElement && targetId.includes(':')) {{
+                        targetElement = document.getElementById(targetId.replace(':', ''));
+                    }}
+                    if (targetElement) {{
+                        // If footnotes section is collapsed, expand it first
+                        if (footnotesSection && footnotesSection.classList.contains('collapsed')) {{
+                            footnotesSection.classList.remove('collapsed');
+                        }}
+                        // Smooth scroll to the footnote
+                        targetElement.scrollIntoView({{ 
+                            behavior: 'smooth',
+                            block: 'center'
+                        }});
+                    }}
+                }});
+            }});
+        }});
+    </script>
 </body>
 </html>'''
     
@@ -274,6 +351,16 @@ class SiteBuilder:
         </section>
     </main>
 
+    <!-- Footnotes Section -->
+    <section class="footnotes" id="footnotes">
+        <div class="container">
+            <h3>Notes & Citations</h3>
+            <ol class="footnote-list">
+                {footnotes_content}
+            </ol>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
@@ -295,6 +382,45 @@ class SiteBuilder:
     </footer>
 
     <script src="js/site-ui.js" defer></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {{
+            // Collapsible footnotes section
+            const footnotesSection = document.querySelector('.footnotes');
+            const footnotesHeader = document.querySelector('.footnotes h3');
+            
+            if (footnotesHeader && footnotesSection) {{
+                footnotesHeader.addEventListener('click', function() {{
+                    footnotesSection.classList.toggle('collapsed');
+                }});
+            }}
+
+            // Footnote click handling
+            document.querySelectorAll('a[href^="#fn"]').forEach(link => {{
+                link.addEventListener('click', function(e) {{
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    // Handle both fn:1 and fn1 formats
+                    let targetElement = document.getElementById(targetId);
+                    if (!targetElement && targetId.startsWith('fn') && !targetId.includes(':')) {{
+                        targetElement = document.getElementById('fn:' + targetId.substring(2));
+                    }} else if (!targetElement && targetId.includes(':')) {{
+                        targetElement = document.getElementById(targetId.replace(':', ''));
+                    }}
+                    if (targetElement) {{
+                        // If footnotes section is collapsed, expand it first
+                        if (footnotesSection && footnotesSection.classList.contains('collapsed')) {{
+                            footnotesSection.classList.remove('collapsed');
+                        }}
+                        // Smooth scroll to the footnote
+                        targetElement.scrollIntoView({{ 
+                            behavior: 'smooth',
+                            block: 'center'
+                        }});
+                    }}
+                }});
+            }});
+        }});
+    </script>
 </body>
 </html>'''
     
@@ -378,11 +504,22 @@ class SiteBuilder:
         """Build a single protocol page."""
         template = self.get_default_protocol_template()
         
+        # Read the original markdown file to extract footnotes
+        protocol_file = self.protocols_source_dir / f"{protocol.slug}.md"
+        original_content = protocol_file.read_text(encoding='utf-8')
+        # Extract just the body content after front matter
+        if '---\n' in original_content:
+            _, _, body = original_content.split('---\n', 2)
+            footnotes_content = self._extract_footnotes(body.strip())
+        else:
+            footnotes_content = ""
+        
         html = template.format(
             title=protocol.title,
             description=protocol.description,
             duration=protocol.duration,
-            content=protocol.content
+            content=protocol.content,
+            footnotes_content=footnotes_content
         )
         
         output_path = self.protocols_output_dir / protocol.filename
@@ -396,6 +533,16 @@ class SiteBuilder:
         # Extract title and hero description from content
         page_title = page.title
         hero_description = page.description
+        
+        # Read the original markdown file to extract footnotes
+        page_file = self.pages_source_dir / f"{page.slug}.md"
+        original_content = page_file.read_text(encoding='utf-8')
+        # Extract just the body content after front matter
+        if '---\n' in original_content:
+            _, _, body = original_content.split('---\n', 2)
+            footnotes_content = self._extract_footnotes(body.strip())
+        else:
+            footnotes_content = ""
         
         # Set active navigation classes
         nav_classes = {
@@ -418,12 +565,57 @@ class SiteBuilder:
             hero_description=hero_description,
             hero_class=page.hero_class,
             content=page.content,
+            footnotes_content=footnotes_content,
             **nav_classes
         )
         
         output_path = self.output_dir / page.filename
         output_path.write_text(html, encoding='utf-8')
         print(f"Generated: {output_path}")
+    
+    def _extract_footnotes(self, original_content: str) -> str:
+        """Extract footnotes from the original markdown content and process with markdown."""
+        # Process the original markdown content to get footnotes
+        md = markdown.Markdown(extensions=['extra', 'toc', 'codehilite', 'footnotes'])
+        html_content = md.convert(original_content)
+        
+        from bs4 import BeautifulSoup
+        
+        # If there's no footnotes div, return empty
+        if '<div class="footnote">' not in html_content:
+            return ""
+        
+        soup = BeautifulSoup(html_content, 'html.parser')
+        footnotes_div = soup.find('div', class_='footnote')
+        
+        if not footnotes_div:
+            return ""
+        
+        # Find the footnote list
+        footnote_list = footnotes_div.find('ol')
+        if not footnote_list:
+            return ""
+        
+        # Extract footnote items and reformat them
+        footnote_items = []
+        for li in footnote_list.find_all('li', recursive=False):
+            # Get the footnote ID
+            footnote_id = li.get('id', '')
+            
+            # Remove the backlink anchor but keep other content
+            backlink = li.find('a', class_='footnote-backref')
+            if backlink:
+                backlink.decompose()
+            
+            # Get the cleaned content
+            li_content = str(li)
+            # Clean up the opening/closing li tags to just get inner content
+            li_content = li_content.replace(f'<li id="{footnote_id}">', '').replace('</li>', '').strip()
+            
+            if footnote_id and li_content:
+                footnote_items.append(f'<li id="{footnote_id}">{li_content}</li>')
+        
+        return '\n                '.join(footnote_items)
     
     def build_protocols_index(self, protocols: List[Protocol]) -> None:
         """Build the protocols index page."""

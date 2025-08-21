@@ -73,6 +73,16 @@
         </section>
     </main>
 
+    <!-- Footnotes Section -->
+    <section class="footnotes" id="footnotes">
+        <div class="container">
+            <h3>Notes & Citations</h3>
+            <ol class="footnote-list">
+                
+            </ol>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
@@ -94,5 +104,44 @@
     </footer>
 
     <script src="js/site-ui.js" defer></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Collapsible footnotes section
+            const footnotesSection = document.querySelector('.footnotes');
+            const footnotesHeader = document.querySelector('.footnotes h3');
+            
+            if (footnotesHeader && footnotesSection) {
+                footnotesHeader.addEventListener('click', function() {
+                    footnotesSection.classList.toggle('collapsed');
+                });
+            }
+
+            // Footnote click handling
+            document.querySelectorAll('a[href^="#fn"]').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    // Handle both fn:1 and fn1 formats
+                    let targetElement = document.getElementById(targetId);
+                    if (!targetElement && targetId.startsWith('fn') && !targetId.includes(':')) {
+                        targetElement = document.getElementById('fn:' + targetId.substring(2));
+                    } else if (!targetElement && targetId.includes(':')) {
+                        targetElement = document.getElementById(targetId.replace(':', ''));
+                    }
+                    if (targetElement) {
+                        // If footnotes section is collapsed, expand it first
+                        if (footnotesSection && footnotesSection.classList.contains('collapsed')) {
+                            footnotesSection.classList.remove('collapsed');
+                        }
+                        // Smooth scroll to the footnote
+                        targetElement.scrollIntoView({ 
+                            behavior: 'smooth',
+                            block: 'center'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
