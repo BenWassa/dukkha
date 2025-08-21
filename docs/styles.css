@@ -724,7 +724,6 @@ a:hover {
   background: linear-gradient(135deg, #fef2f2, #fee2e2);
   padding: var(--space-1) var(--space-2);
   border-radius: var(--border-radius);
-  border-left: 3px solid #dc2626;
   position: relative;
   overflow: hidden;
 }
@@ -759,7 +758,6 @@ a:hover {
 
 .access-card:hover .pain-text {
   background: linear-gradient(135deg, #fee2e2, #fecaca);
-  border-left-color: #b91c1c;
   transform: translateY(-1px);
   box-shadow: 0 2px 4px rgba(220, 38, 38, 0.15);
 }
