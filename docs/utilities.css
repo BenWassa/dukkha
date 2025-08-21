@@ -217,11 +217,10 @@ details.protocol-summary[open] {
 }
 
 /* =============================================
-   Layout Utilities: Sticky Footer (Minimal)
+   Layout Utilities: Sticky Footer (Corrected)
    ============================================= */
 
-/* Only apply sticky footer on very short pages by detecting viewport height.
-   Uses CSS custom property for precise control without breaking existing layout. */
+/* Now that footer comes after footnotes in HTML, this is much simpler */
 @media (min-height: 800px) {
   body {
     min-height: 100vh;
@@ -233,7 +232,7 @@ details.protocol-summary[open] {
     flex: 1;
   }
   
-  .footnotes {
+  .footer {
     margin-top: auto;
   }
 }
