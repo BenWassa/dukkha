@@ -3,19 +3,19 @@
 
 flowchart LR
   %% Nodes around the loop
-  A["Notification / Ping"] --> B["Check / Quick Scan"]
-  B --> C["Scroll / Feed Interaction"]
-  C --> D["Anticipation & Craving<br>(Dopamine Spike)"]
-  D --> E["Brief Relief / Reward"]
-  E --> F["Baseline Drops / Frustration"]
+  A["<font size='5'>Notification | Ping</font>"] --> B["<font size='5'>Check Phone</font>"]
+  B --> C["<font size='5'>Scroll | Feed Interaction</font>"]
+  C --> D["<font size='5'>Anticipation & Craving<br>(Dopamine Spike)</font>"]
+  D --> E["<font size='5'>Brief Relief / Reward</font>"]
+  E --> F["<font size='5'>Baseline Drops / Frustration</font>"]
   F --> A
 
   %% Intervention off-ramps (outside the main loop)
   subgraph interventions
     direction TB
-    X1(("Exit: Pause / Breathwork"))
-    X2(("Exit: Put Phone Away"))
-    X3(("Exit: Redirect Task"))
+  X1(("<font size='5'>Exit: Pause / Breathwork</font>"))
+  X2(("<font size='5'>Exit: Put Phone Away</font>"))
+  X3(("<font size='5'>Exit: Redirect Task</font>"))
   end
 
   %% Dashed connections from loop to interventions
@@ -27,12 +27,16 @@ flowchart LR
   %% nodeBase: neutral nodes; nodeAccent: dopamine node; offRamp: intervention pills; arrow styling via linkStyle
   classDef nodeBase fill:#ffffff,stroke:#e2e8f0,stroke-width:1px,color:#0f172a,font-size:14px
   classDef nodeAccent fill:#c9a961,stroke:#c9a961,stroke-width:1px,color:#ffffff,font-size:15px
-  classDef offRamp fill:transparent,stroke:#64748b,stroke-dasharray:4 4,color:#475569,font-size:13px
+  %% off-ramp styling: light transparent blue fill, clear stroke and darker text for legibility
+  classDef offRamp fill:#e6f5ff,stroke:#60a5fa,stroke-dasharray:4 4,color:#0f172a,font-size:14px
 
   %% assign classes to nodes
   class A,B,C,E,F nodeBase
   class D nodeAccent
   class X1,X2,X3 offRamp
+
+  %% style the interventions subgraph background (subtle blue panel)
+  style interventions fill:#f0fbff,stroke:#60a5fa,stroke-width:1px
 
   %% Link styles: main loop links 0..5, off-ramps 6..8
   linkStyle 0 stroke:#475569,stroke-width:2px
