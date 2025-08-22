@@ -1,0 +1,35 @@
+%% Ping/Scroll Loop - Mermaid prototype
+%% Place this file in Figma or export to SVG with mermaid-cli (mmdc)
+
+flowchart LR
+  %% Nodes around the loop
+  A["Notification / Ping"] --> B["Check / Quick Scan"]
+  B --> C["Scroll / Feed Interaction"]
+  C --> D["Anticipation & Craving<br>(Dopamine Spike)"]
+  D --> E["Brief Relief / Reward"]
+  E --> F["Baseline Drops / Frustration"]
+  F --> A
+
+  %% Intervention off-ramps (outside the main loop)
+  subgraph interventions
+    direction TB
+    X1(("Exit: Pause / Breathwork"))
+    X2(("Exit: Put Phone Away"))
+    X3(("Exit: Redirect Task"))
+  end
+
+  %% Dashed connections from loop to interventions
+  B -.-> X1
+  C -.-> X2
+  F -.-> X3
+
+  %% Styling: mark the dopamine node and dashed lines
+  classDef accent fill:#e04a3f,stroke:#e04a3f,color:#ffffff,stroke-width:1px;
+  classDef muted stroke-dasharray: 4 4,stroke:#999,color:#333;
+
+  class D accent
+  linkStyle 6 stroke-dasharray: 4 4,stroke:#999
+
+  %% Notes:
+  %% - When exporting to SVG and importing into Figma, convert styled text to editable text and restyle fills with your CSS variables.
+  %% - The numbered linkStyle refers to the 0-based index of links; adjust after export if needed.
