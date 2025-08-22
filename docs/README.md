@@ -8,6 +8,13 @@ This folder hosts the published version of Project Dukkha. Source material lives
 - **Interactive Features**: Collapsible footnotes sections with smooth scrolling navigation
 - **Quality Validation**: Zero duplicate footnotes verified across all generated HTML pages
 
+### Visual & UX updates (August 2025)
+
+- Homepage: Full-screen hero with smooth-scroll arrow; enlarged project title and compass for stronger visual impact.
+- Quick Access: Redesigned six-card layout with improved hierarchy, larger icons, and cleaner CTA interactions (hover underlines removed).
+- Diagrams: Intro SVG sizing aligned to content column; background and elevated framing removed so visuals integrate with page flow.
+- UX polish: Dropdowns open on hover with delayed close for accessibility; `index-ui.js` updated to handle hover behavior.
+
 ## Directory map
 - `index.html` – landing page linking to all major sections.
 - `site/` – generated pages (**do not** edit manually).

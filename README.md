@@ -173,6 +173,16 @@ python -m pytest tests/ -v
 - **Improved Content Completion**: Full five myths with proper academic citations
 - **Navigation Consistency**: Fixed protocol page navigation across all 12 HTML files
 
+### Visual & UX updates (August 2025)
+
+- Full-screen hero on the homepage with a smooth-scroll arrow and enlarged project title and compass for stronger visual impact.
+- Quick Access redesigned into six cards with improved hierarchy and readability; hero CTA hover underlines removed for a cleaner interaction.
+- Intro SVG diagram sizing harmonized with adjacent text content and background styling removed so visuals sit naturally in the layout.
+- Dopamine model emphasis: larger, repositioned Dopamine icon and an icon-sizing hierarchy added to the CSS for consistent scale across cards.
+- Card header styling refined to a textured, darker header with a horizontal divider instead of a full yellow border.
+- New CSS variables added to the design system: `--text-6xl`, `--space-20`, and `--space-32` to support the expanded layout scale.
+- Navigation UX: dropdowns now open on hover and were populated; `index-ui.js` updated to handle hover behavior and delayed close for accessibility.
+
 ### Page Types
 - **Hero Pages**: Focus & Attention, Recovery & Baseline, Five Myths, Model, Library
 - **Protocol Pages**: Time-bound, actionable interventions with research backing
