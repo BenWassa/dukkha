@@ -1,0 +1,34 @@
+---
+config:
+  layout: dagre
+  theme: redux
+id: 929c3d45-866c-4d0a-beff-893dd184461e
+---
+flowchart LR
+  %% Nodes around the loop
+  A["Notification / Ping"] --> B["Check / Quick Scan"]
+  B --> C["Scroll / Feed Interaction"]
+  C --> D["Anticipation & Craving<br>(Dopamine Spike)"]
+  D --> E["Brief Relief / Reward"]
+  E --> F["Baseline Drops / Frustration"]
+  F --> A
+
+  %% Intervention off-ramps (outside the main loop)
+  subgraph interventions
+    direction TB
+    X1(("Exit: Pause / Breathwork"))
+    X2(("Exit: Put Phone Away"))
+    X3(("Exit: Redirect Task"))
+  end
+
+  %% Dashed connections from loop to interventions
+  B -.-> X1
+  C -.-> X2
+  F -.-> X3
+
+  %% Styling: mark the dopamine node and dashed lines
+  classDef accent fill:#e04a3f,stroke:#e04a3f,color:#ffffff,stroke-width:1px;
+  classDef muted stroke-dasharray: 4 4,stroke:#999,color:#333;
+
+  class D accent
+  linkStyle 6 stroke-dasharray: 4 4,stroke:#999

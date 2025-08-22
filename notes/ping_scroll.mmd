@@ -23,12 +23,28 @@ flowchart LR
   C -.-> X2
   F -.-> X3
 
-  %% Styling: mark the dopamine node and dashed lines
-  classDef accent fill:#e04a3f,stroke:#e04a3f,color:#ffffff,stroke-width:1px;
-  classDef muted stroke-dasharray: 4 4,stroke:#999,color:#333;
+  %% Styling: use project tokens (hex values from variables.css)
+  %% nodeBase: neutral nodes; nodeAccent: dopamine node; offRamp: intervention pills; arrow styling via linkStyle
+  classDef nodeBase fill:#ffffff,stroke:#e2e8f0,stroke-width:1px,color:#0f172a,font-size:14px
+  classDef nodeAccent fill:#c9a961,stroke:#c9a961,stroke-width:1px,color:#ffffff,font-size:15px
+  classDef offRamp fill:transparent,stroke:#64748b,stroke-dasharray:4 4,color:#475569,font-size:13px
 
-  class D accent
-  linkStyle 6 stroke-dasharray: 4 4,stroke:#999
+  %% assign classes to nodes
+  class A,B,C,E,F nodeBase
+  class D nodeAccent
+  class X1,X2,X3 offRamp
+
+  %% Link styles: main loop links 0..5, off-ramps 6..8
+  linkStyle 0 stroke:#475569,stroke-width:2px
+  linkStyle 1 stroke:#475569,stroke-width:2px
+  linkStyle 2 stroke:#475569,stroke-width:2px
+  linkStyle 3 stroke:#475569,stroke-width:2px
+  linkStyle 4 stroke:#475569,stroke-width:2px
+  linkStyle 5 stroke:#475569,stroke-width:2px
+
+  linkStyle 6 stroke:#64748b,stroke-width:2px,stroke-dasharray:4 4
+  linkStyle 7 stroke:#64748b,stroke-width:2px,stroke-dasharray:4 4
+  linkStyle 8 stroke:#64748b,stroke-width:2px,stroke-dasharray:4 4
 
   %% Notes:
   %% - When exporting to SVG and importing into Figma, convert styled text to editable text and restyle fills with your CSS variables.
