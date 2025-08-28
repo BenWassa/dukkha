@@ -83,6 +83,14 @@
             border-radius: 16px;
             overflow: hidden;
             box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+            /* Single linear gradient for the entire matrix with much stronger colors */
+            background-image: linear-gradient(
+                to top right,
+                #8b0000, /* Darker red for Burnout */
+                #cc5500, /* Darker orange hint */
+                #00008b, /* Darker blue hint */
+                #006400  /* Darker green for Optimal */
+            );
         }
 
         .quadrant {
@@ -95,8 +103,10 @@
             transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
             cursor: pointer;
             position: relative;
-            background-color: white;
             z-index: 1;
+            /* Use a semi-transparent white background to let the gradient show through */
+            background-color: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(5px);
         }
 
         .quadrant:hover {
@@ -130,12 +140,6 @@
             color: #607d8b;
             line-height: 1.5;
         }
-
-        /* Quadrant specific styles */
-        .compulsive-seeking { background-color: #fef3c7; }
-        .optimal-flow { background-color: #d1f7e0; }
-        .burnout { background-color: #fee2e2; }
-        .low-drive { background-color: #e0f2fe; }
 
         /* Axes Labels */
         .axes-container {

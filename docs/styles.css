@@ -1816,29 +1816,31 @@ button:focus,
 
 /* =============================================
    Reward Compass Interactive Component
+   (upgraded visuals — uses site tokens, subtle gradients, backdrop blur)
    ============================================= */
 
 .reward-compass-container {
-  background: var(--color-surface-elevated);
+  background: linear-gradient(180deg, var(--color-surface-elevated) 0%, rgba(201,169,97,0.02) 100%);
   border: 1px solid var(--color-border);
-  border-radius: var(--border-radius-lg);
-  padding: var(--space-8);
+  border-radius: calc(var(--border-radius-lg) + 6px);
+  padding: calc(var(--space-8) + 8px);
   margin: var(--space-8) 0;
-  box-shadow: var(--shadow-md);
-  max-width: 800px;
+  box-shadow: var(--shadow-lg);
+  max-width: 920px;
   margin-left: auto;
   margin-right: auto;
+  backdrop-filter: blur(8px);
 }
 
 .compass-title {
   text-align: center;
-  margin-bottom: var(--space-8);
+  margin-bottom: var(--space-6);
 }
 
 .compass-title h3 {
-  font-size: var(--text-3xl);
+  font-size: calc(var(--text-3xl) + 0.1rem);
   color: var(--color-text-primary);
-  font-weight: 600;
+  font-weight: 700;
   margin-bottom: var(--space-2);
 }
 
@@ -1862,7 +1864,7 @@ button:focus,
   position: relative;
   width: 100%;
   padding-bottom: 100%;
-  margin-bottom: var(--space-8);
+  margin-bottom: var(--space-6);
 }
 
 .matrix {
@@ -1874,11 +1876,22 @@ button:focus,
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
-  gap: 2px;
+  gap: 4px;
   background: var(--color-border);
-  border-radius: var(--border-radius);
+  border-radius: calc(var(--border-radius) + 4px);
   overflow: hidden;
-  box-shadow: var(--shadow-sm);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.03);
+  /* subtle multi-stop tint using site tones */
+  background-image: linear-gradient(135deg, rgba(201,169,97,0.04) 0%, rgba(5,150,105,0.02) 50%, rgba(220,38,38,0.02) 100%);
+}
+
+.matrix::before {
+  /* faint noise/shine layer so quadrants read as cards */
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.01));
 }
 
 .quadrant {
@@ -1888,28 +1901,31 @@ button:focus,
   justify-content: center;
   align-items: center;
   text-align: center;
-  transition: all var(--transition-normal);
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
   cursor: pointer;
   position: relative;
-  background-color: var(--color-surface-elevated);
   z-index: 1;
+  /* semi-transparent card so subtle matrix tint shows through */
+  background-color: rgba(255,255,255,0.78);
+  backdrop-filter: blur(4px) saturate(1.02);
+  border-right: 1px solid rgba(0,0,0,0.02);
 }
 
 .quadrant:hover {
-  transform: translateY(-4px) scale(1.02);
-  box-shadow: var(--shadow-lg);
-  z-index: 2;
+  transform: translateY(-8px) scale(1.035);
+  box-shadow: 0 30px 60px rgba(15,23,42,0.12);
+  z-index: 3;
 }
 
 .quadrant-icon {
-  font-size: 2.5rem;
+  font-size: clamp(2rem, 5vw, 3.25rem);
   margin-bottom: var(--space-4);
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+  filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.08));
 }
 
 .quadrant-title {
-  font-size: var(--text-xl);
-  font-weight: 600;
+  font-size: var(--text-2xl);
+  font-weight: 700;
   margin-bottom: var(--space-2);
   color: var(--color-text-primary);
   font-family: var(--font-serif);
@@ -1919,55 +1935,45 @@ button:focus,
   font-size: var(--text-sm);
   color: var(--color-text-secondary);
   margin-bottom: var(--space-3);
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.025em;
+  font-weight: 600;
+  text-transform: none;
+  letter-spacing: 0.01em;
 }
 
 .quadrant-description {
   font-size: var(--text-sm);
   color: var(--color-text-secondary);
-  line-height: 1.5;
+  line-height: 1.6;
 }
 
-/* Quadrant specific styles using existing color palette */
+/* Quadrant accents — keep semantic color cues, but softened */
 .compulsive-seeking { 
-  background-color: #fef3c7; 
-  border-left: 4px solid var(--color-warning);
+  background-color: rgba(254,243,199,0.85);
+  box-shadow: inset 0 2px 0 rgba(0,0,0,0.02);
 }
 
 .optimal-flow { 
-  background-color: #d1f7e0; 
-  border-left: 4px solid var(--color-success);
+  background-color: rgba(209,247,224,0.9);
+  box-shadow: inset 0 2px 0 rgba(0,0,0,0.02);
 }
 
 .burnout { 
-  background-color: #fee2e2; 
-  border-left: 4px solid var(--color-error);
+  background-color: rgba(254,226,226,0.9);
+  box-shadow: inset 0 2px 0 rgba(0,0,0,0.02);
 }
 
 .low-drive { 
-  background-color: #e0f2fe; 
-  border-left: 4px solid var(--color-accent);
+  background-color: rgba(224,242,254,0.9);
+  box-shadow: inset 0 2px 0 rgba(0,0,0,0.02);
 }
 
 /* Dark mode adjustments */
 @media (prefers-color-scheme: dark) {
-  .compulsive-seeking { 
-    background-color: rgba(217, 119, 6, 0.1);
-  }
-  
-  .optimal-flow { 
-    background-color: rgba(5, 150, 105, 0.1);
-  }
-  
-  .burnout { 
-    background-color: rgba(220, 38, 38, 0.1);
-  }
-  
-  .low-drive { 
-    background-color: rgba(201, 169, 97, 0.1);
-  }
+  .reward-compass-container { backdrop-filter: blur(6px); }
+  .compulsive-seeking { background-color: rgba(217,119,6,0.08); }
+  .optimal-flow { background-color: rgba(5,150,105,0.06); }
+  .burnout { background-color: rgba(220,38,38,0.06); }
+  .low-drive { background-color: rgba(201,169,97,0.06); }
 }
 
 /* Axes Labels */
@@ -1982,19 +1988,16 @@ button:focus,
 
 .axis-label {
   position: absolute;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--color-text-secondary);
   font-size: var(--text-sm);
   text-transform: uppercase;
-  letter-spacing: 0.025em;
+  letter-spacing: 0.03em;
   pointer-events: auto;
   cursor: help;
-  transition: color var(--transition-fast);
 }
 
-.axis-label:hover {
-  color: var(--color-text-primary);
-}
+.axis-label:hover { color: var(--color-text-primary); }
 
 .axis-label::before {
   content: attr(data-tooltip);
@@ -2011,79 +2014,34 @@ button:focus,
   visibility: hidden;
   transition: opacity var(--transition-fast), visibility var(--transition-fast);
   font-size: var(--text-xs);
-  text-transform: none;
-  letter-spacing: normal;
   z-index: 10;
 }
 
-.axis-label:hover::before {
-  opacity: 1;
-  visibility: visible;
-}
+.axis-label:hover::before { opacity: 1; visibility: visible; }
 
 .y-axis {
-  left: -80px;
+  left: -70px;
   top: 50%;
   transform: rotate(-90deg) translateX(50%);
   transform-origin: left center;
 }
 
-.x-axis {
-  bottom: -40px;
-  left: 50%;
-  transform: translateX(-50%);
-}
+.x-axis { bottom: -40px; left: 50%; transform: translateX(-50%); }
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .reward-compass-container {
-    padding: var(--space-6);
-    margin: var(--space-6) 0;
-  }
-  
-  .quadrant {
-    padding: var(--space-4);
-  }
-  
-  .quadrant-icon {
-    font-size: 2rem;
-    margin-bottom: var(--space-3);
-  }
-  
-  .quadrant-title {
-    font-size: var(--text-lg);
-  }
-  
-  .quadrant-subtitle {
-    font-size: var(--text-xs);
-  }
-  
-  .quadrant-description {
-    font-size: var(--text-xs);
-  }
-  
-  .y-axis {
-    left: -60px;
-    font-size: var(--text-xs);
-  }
-  
-  .x-axis {
-    bottom: -30px;
-    font-size: var(--text-xs);
-  }
+  .reward-compass-container { padding: var(--space-6); }
+  .quadrant { padding: var(--space-4); }
+  .quadrant-icon { font-size: 2rem; }
+  .quadrant-title { font-size: var(--text-lg); }
+  .quadrant-subtitle { font-size: var(--text-xs); }
+  .quadrant-description { font-size: var(--text-xs); }
+  .y-axis { left: -60px; font-size: var(--text-xs); }
+  .x-axis { bottom: -30px; font-size: var(--text-xs); }
 }
 
 @media (max-width: 480px) {
-  .quadrant:hover {
-    transform: none;
-    box-shadow: var(--shadow-md);
-  }
-  
-  .y-axis {
-    left: -50px;
-  }
-  
-  .x-axis {
-    bottom: -25px;
-  }
+  .quadrant:hover { transform: none; box-shadow: var(--shadow-md); }
+  .y-axis { left: -50px; }
+  .x-axis { bottom: -25px; }
 }
