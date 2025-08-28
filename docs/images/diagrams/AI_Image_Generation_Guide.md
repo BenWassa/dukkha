@@ -188,3 +188,39 @@ Create a dramatic scene of a person standing in a storm of digital notifications
 - **Psychological Insight:** Clear communication of behavioral science principles through art
 - **Aesthetic Appeal:** Professional, artistic quality that elevates the guidebook
 - **Versatility:** Images that work across different contexts and formats
+
+## Page-specific image ideas
+Below are three targeted image concepts for each site page you listed. These build directly on the metaphors in this guide and are tuned to the content and tone of each page.
+
+### `docs/site/attention.html` — 3 ideas
+1. "Attention Lanterns": A dim cityscape where individual people carry lantern-like phones; each lantern's light casts narrow cones that highlight tiny, isolated islands of activity while everything else is in soft shadow — showing attentional narrowing.
+	- Prompt kernel: cinematic nighttime city, people with glowing lantern-phones, spotlight cones, selective focus, high contrast.
+2. "Juggling Focus": A single person juggling glowing orbs labeled 'Work', 'Friend', 'News', 'Feed' with one orb (the phone) becoming heavier and warping the juggler's posture.
+	- Prompt kernel: surreal portrait, glowing orbs, physical strain, metaphor for divided attention.
+3. "Attention Map": Overhead map view of a desk and room where beams of light move chaotically between objects, with the phone beam looping repeatedly — visualizing attention routing and capture.
+	- Prompt kernel: top-down composition, light-beams tracing paths, minimal color palette, schematic yet emotional.
+
+### `docs/site/model.html` — 3 ideas
+1. "Inner Dashboard": Cutaway of a person with a visible analog dashboard in their chest showing needles for 'Craving', 'Baseline', 'Stress' — the phone as a small console connected by wires.
+	- Prompt kernel: analog gauges, human cutaway, subtle sci-fi, tactile materials.
+2. "Reward Garden": A garden where plants bloom into notification icons; a gardener tends some plots (healthy habits) while others overgrow into invasive luminescent vines (compulsive behaviors).
+	- Prompt kernel: surreal botanical scene, mixing organic + digital motifs, warm tones for healthy plots, cold for invasive.
+3. "Levers of Control": A control room with large levers labeled 'Pause', 'Limit', 'Redirect' that a user can pull to reroute streams of light from devices — illustrating model interventions.
+	- Prompt kernel: retro-futuristic control room, warm cinematic lighting, clear labels, hopeful tone.
+
+### `docs/site/myths.html` — 3 ideas
+1. "Myth Mask": A gallery wall where portraits labeled with common myths wear theatrical masks; one person removes a mask to reveal a calmer, less sensational face beneath.
+	- Prompt kernel: museum/gallery lighting, masks, revelation moment, neutral palette.
+2. "Tall Tale Telephone": An exaggerated, cartoonish old-time telephone that grows into a mythic creature whispering sensational phrases; a rational figure uses a small lamp labelled 'Evidence' to shrink it.
+	- Prompt kernel: stylized illustration, playful but clear allegory, contrasting scales.
+3. "Fact vs. Hype Tug-of-War": Two teams pulling a rope; on one side 'Hype' banners made of flashy notifications; on the other 'Evidence' banners anchored by quieter, sturdier icons.
+	- Prompt kernel: visual metaphor, dynamic composition, clear labels, slightly documentary tone.
+
+### `docs/site/recovery.html` — 3 ideas
+1. "Slow Sunrise": A figure sitting on a shoreline watching a gradual sunrise made of soft, warm pixels rising above a dark sea of notifications — symbolizing gradual recovery.
+	- Prompt kernel: tranquil seascape, pixel-sunrise, gentle color gradient, meditative mood.
+2. "Repair Workshop": A cozy workshop where a person carefully repairs a fragile glowing orb (their attention) with tools labelled 'Routine', 'Sleep', 'Pause' — hands-on recovery work.
+	- Prompt kernel: warm indoor lighting, tactile materials, comforting palette, intimate scene.
+3. "Stepping Stones": A path across a dark river with stones labeled small achievable steps (e.g., '10 min offline', 'No notifications') and the figure progressing toward a bright shore.
+	- Prompt kernel: symbolic landscape, clear labels on stones, hopeful perspective, accessible metaphor.
+
