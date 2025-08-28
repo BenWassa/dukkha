@@ -1904,7 +1904,7 @@ button:focus,
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
   /* slightly reduced gap for a tighter matrix */
-  gap: clamp(10px, 1.8vw, 18px);
+  gap: clamp(8px, 1.2vw, 14px);
   width: 100%;
   height: 100%;
   position: relative;
@@ -1921,6 +1921,8 @@ button:focus,
 }
 
 .quadrant {
+  box-sizing: border-box;
+  margin: var(--space-3);
   padding: clamp(var(--space-5), 2vw, var(--space-8));
   display: flex;
   flex-direction: column;
