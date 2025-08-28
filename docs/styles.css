@@ -1848,12 +1848,12 @@ button:focus,
   background: linear-gradient(180deg, var(--color-surface-elevated) 0%, rgba(201,169,97,0.02) 100%);
   border: 1px solid var(--color-border);
   border-radius: calc(var(--border-radius-lg) + 6px);
-  /* responsive padding so component doesn't become too large on wide screens */
-  padding: clamp(var(--space-6), 3vw, var(--space-9));
-  margin: clamp(var(--space-6), 2.25vw, var(--space-10)) 0;
+  /* responsive padding with better scaling */
+  padding: clamp(var(--space-8), 4vw, var(--space-12));
+  margin: clamp(var(--space-8), 3vw, var(--space-16)) 0;
   box-shadow: var(--shadow-lg);
   width: 100%;
-  max-width: 760px; /* limit overall width so the compass isn't overly large */
+  max-width: min(95vw, 1200px); /* allow much wider scaling */
   margin-left: auto;
   margin-right: auto;
   backdrop-filter: blur(8px);
@@ -1863,14 +1863,14 @@ button:focus,
 
 .compass-title {
   text-align: center;
-  margin-bottom: var(--space-6);
+  margin-bottom: var(--space-8);
 }
 
 .compass-title h3 {
   font-size: calc(var(--text-3xl) + 0.1rem);
   color: var(--color-text-primary);
   font-weight: 700;
-  margin-bottom: var(--space-2);
+  margin-bottom: var(--space-3);
 }
 
 .compass-title p {
@@ -1883,8 +1883,8 @@ button:focus,
   text-align: center;
   font-size: var(--text-sm);
   color: var(--color-text-muted);
-  margin-top: var(--space-6);
-  padding-top: var(--space-4);
+  margin-top: var(--space-8);
+  padding-top: var(--space-6);
   border-top: 1px solid var(--color-border-light);
   line-height: 1.5;
 }
@@ -1892,11 +1892,11 @@ button:focus,
 .matrix-wrapper {
   position: relative;
   width: 100%;
-  /* use aspect-ratio for a true square that scales with parent width */
-  aspect-ratio: 1 / 1;
-  max-width: min(640px, 100%);
-  margin: var(--space-6) auto var(--space-8);
-  overflow: visible; /* allow children to overflow for pop-out */
+  /* adjust aspect ratio to be less square for better proportions */
+  aspect-ratio: 5 / 4;
+  max-width: 700px; /* more reasonable max width */
+  margin: var(--space-8) auto var(--space-12);
+  overflow: visible;
 }
 
 .matrix {
@@ -1905,11 +1905,11 @@ button:focus,
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
-  /* responsive breathing room */
-  gap: clamp(12px, 2.5vw, 32px);
+  /* responsive breathing room with better scaling */
+  gap: clamp(20px, 4vw, 48px);
   background: var(--color-border);
   border-radius: calc(var(--border-radius) + 6px);
-  padding: clamp(12px, 2.5vw, 20px);
+  padding: clamp(20px, 4vw, 32px);
   overflow: visible;
   box-shadow: inset 0 1px 0 rgba(255,255,255,0.03);
   /* subtle multi-stop tint using site tones */
@@ -1926,7 +1926,7 @@ button:focus,
 }
 
 .quadrant {
-  padding: var(--space-6);
+  padding: clamp(var(--space-8), 3vw, var(--space-12));
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -1957,8 +1957,8 @@ button:focus,
 }
 
 .quadrant-icon {
-  font-size: clamp(2rem, 5vw, 3.25rem);
-  margin-bottom: var(--space-4);
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  margin-bottom: var(--space-6);
   filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.08));
 }
 
@@ -2075,25 +2075,78 @@ button:focus,
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .reward-compass-container { padding: var(--space-6); }
-  .quadrant { padding: var(--space-4); }
-  .quadrant-icon { font-size: 2rem; }
-  .quadrant-title { font-size: var(--text-lg); }
-  .quadrant-subtitle { font-size: var(--text-xs); }
-  .quadrant-description { font-size: var(--text-xs); }
-  .y-axis { left: -60px; font-size: var(--text-xs); }
-  .x-axis { bottom: -30px; font-size: var(--text-xs); }
+  .reward-compass-container { 
+    padding: clamp(var(--space-6), 5vw, var(--space-8));
+    margin: var(--space-6) 0;
+    max-width: 95vw;
+  }
+  .quadrant { 
+    padding: clamp(var(--space-6), 4vw, var(--space-8));
+  }
+  .quadrant-icon { 
+    font-size: clamp(2rem, 8vw, 2.5rem);
+    margin-bottom: var(--space-4);
+  }
+  .quadrant-title { 
+    font-size: var(--text-xl);
+    margin-bottom: var(--space-2);
+  }
+  .quadrant-subtitle { 
+    font-size: var(--text-sm);
+    margin-bottom: var(--space-2);
+  }
+  .quadrant-description { 
+    font-size: var(--text-sm);
+  }
+  .y-axis { 
+    left: -50px; 
+    font-size: var(--text-xs); 
+  }
+  .x-axis { 
+    bottom: -35px; 
+    font-size: var(--text-xs); 
+  }
 }
 
 /* Responsive tweak: ensure hover pop-outs are limited and not clipped on small screens */
 @media (max-width: 768px) {
-  .reward-compass-container { padding: var(--space-8); overflow: visible; }
-  .matrix { gap: 16px; padding: 12px; }
-  .quadrant:hover { transform: translateY(-6px) scale(1.02); box-shadow: var(--shadow-md); }
+  .reward-compass-container { 
+    padding: clamp(var(--space-6), 5vw, var(--space-8)); 
+    overflow: visible; 
+  }
+  .matrix { 
+    gap: clamp(16px, 3vw, 24px); 
+    padding: clamp(16px, 3vw, 24px); 
+  }
+  .quadrant:hover { 
+    transform: translateY(-4px) scale(1.02); 
+    box-shadow: var(--shadow-lg); 
+  }
 }
 
 @media (max-width: 480px) {
-  .quadrant:hover { transform: none; box-shadow: var(--shadow-md); }
-  .y-axis { left: -50px; }
-  .x-axis { bottom: -25px; }
+  .reward-compass-container {
+    padding: var(--space-4);
+    margin: var(--space-4) 0;
+    max-width: 98vw;
+  }
+  .matrix {
+    gap: 12px;
+    padding: 12px;
+  }
+  .quadrant { 
+    padding: var(--space-4);
+    transform: none; 
+    box-shadow: var(--shadow-md); 
+  }
+  .quadrant:hover {
+    transform: translateY(-2px) scale(1.01);
+    box-shadow: var(--shadow-md);
+  }
+  .y-axis { 
+    left: -40px; 
+  }
+  .x-axis { 
+    bottom: -25px; 
+  }
 }
