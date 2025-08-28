@@ -1813,3 +1813,277 @@ button:focus,
     padding: var(--space-6);
   }
 }
+
+/* =============================================
+   Reward Compass Interactive Component
+   ============================================= */
+
+.reward-compass-container {
+  background: var(--color-surface-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-lg);
+  padding: var(--space-8);
+  margin: var(--space-8) 0;
+  box-shadow: var(--shadow-md);
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.compass-title {
+  text-align: center;
+  margin-bottom: var(--space-8);
+}
+
+.compass-title h3 {
+  font-size: var(--text-3xl);
+  color: var(--color-text-primary);
+  font-weight: 600;
+  margin-bottom: var(--space-2);
+}
+
+.compass-title p {
+  color: var(--color-text-secondary);
+  font-size: var(--text-lg);
+  font-weight: 500;
+}
+
+.compass-disclaimer {
+  text-align: center;
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  margin-top: var(--space-6);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-border-light);
+  line-height: 1.5;
+}
+
+.matrix-wrapper {
+  position: relative;
+  width: 100%;
+  padding-bottom: 100%;
+  margin-bottom: var(--space-8);
+}
+
+.matrix {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 2px;
+  background: var(--color-border);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.quadrant {
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  transition: all var(--transition-normal);
+  cursor: pointer;
+  position: relative;
+  background-color: var(--color-surface-elevated);
+  z-index: 1;
+}
+
+.quadrant:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: var(--shadow-lg);
+  z-index: 2;
+}
+
+.quadrant-icon {
+  font-size: 2.5rem;
+  margin-bottom: var(--space-4);
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.quadrant-title {
+  font-size: var(--text-xl);
+  font-weight: 600;
+  margin-bottom: var(--space-2);
+  color: var(--color-text-primary);
+  font-family: var(--font-serif);
+}
+
+.quadrant-subtitle {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-3);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+}
+
+.quadrant-description {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+}
+
+/* Quadrant specific styles using existing color palette */
+.compulsive-seeking { 
+  background-color: #fef3c7; 
+  border-left: 4px solid var(--color-warning);
+}
+
+.optimal-flow { 
+  background-color: #d1f7e0; 
+  border-left: 4px solid var(--color-success);
+}
+
+.burnout { 
+  background-color: #fee2e2; 
+  border-left: 4px solid var(--color-error);
+}
+
+.low-drive { 
+  background-color: #e0f2fe; 
+  border-left: 4px solid var(--color-accent);
+}
+
+/* Dark mode adjustments */
+@media (prefers-color-scheme: dark) {
+  .compulsive-seeking { 
+    background-color: rgba(217, 119, 6, 0.1);
+  }
+  
+  .optimal-flow { 
+    background-color: rgba(5, 150, 105, 0.1);
+  }
+  
+  .burnout { 
+    background-color: rgba(220, 38, 38, 0.1);
+  }
+  
+  .low-drive { 
+    background-color: rgba(201, 169, 97, 0.1);
+  }
+}
+
+/* Axes Labels */
+.axes-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.axis-label {
+  position: absolute;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  font-size: var(--text-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+  pointer-events: auto;
+  cursor: help;
+  transition: color var(--transition-fast);
+}
+
+.axis-label:hover {
+  color: var(--color-text-primary);
+}
+
+.axis-label::before {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%);
+  padding: var(--space-2) var(--space-3);
+  background-color: var(--color-primary);
+  color: var(--color-surface-elevated);
+  border-radius: var(--border-radius);
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--transition-fast), visibility var(--transition-fast);
+  font-size: var(--text-xs);
+  text-transform: none;
+  letter-spacing: normal;
+  z-index: 10;
+}
+
+.axis-label:hover::before {
+  opacity: 1;
+  visibility: visible;
+}
+
+.y-axis {
+  left: -80px;
+  top: 50%;
+  transform: rotate(-90deg) translateX(50%);
+  transform-origin: left center;
+}
+
+.x-axis {
+  bottom: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .reward-compass-container {
+    padding: var(--space-6);
+    margin: var(--space-6) 0;
+  }
+  
+  .quadrant {
+    padding: var(--space-4);
+  }
+  
+  .quadrant-icon {
+    font-size: 2rem;
+    margin-bottom: var(--space-3);
+  }
+  
+  .quadrant-title {
+    font-size: var(--text-lg);
+  }
+  
+  .quadrant-subtitle {
+    font-size: var(--text-xs);
+  }
+  
+  .quadrant-description {
+    font-size: var(--text-xs);
+  }
+  
+  .y-axis {
+    left: -60px;
+    font-size: var(--text-xs);
+  }
+  
+  .x-axis {
+    bottom: -30px;
+    font-size: var(--text-xs);
+  }
+}
+
+@media (max-width: 480px) {
+  .quadrant:hover {
+    transform: none;
+    box-shadow: var(--shadow-md);
+  }
+  
+  .y-axis {
+    left: -50px;
+  }
+  
+  .x-axis {
+    bottom: -25px;
+  }
+}

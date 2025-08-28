@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Reward Compass</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f0f4f8 0%, #d9e2ec 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .compass-container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(15px);
+            border-radius: 24px;
+            padding: 50px 70px; /* Increased padding for more space */
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+            max-width: 900px;
+            width: 100%;
+            position: relative;
+        }
+
+        .title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .title h1 {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            color: #1a365d;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .title p {
+            color: #607d8b;
+            font-size: clamp(0.9rem, 2vw, 1.1rem);
+            font-weight: 500;
+        }
+        
+        .disclaimer {
+            text-align: center;
+            font-size: clamp(0.7rem, 1.5vw, 0.8rem);
+            color: #8899a6;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #e0e7f1;
+            line-height: 1.5;
+        }
+
+        .matrix-wrapper {
+            position: relative;
+            width: 100%;
+            padding-bottom: 100%;
+            margin-bottom: 40px;
+        }
+        
+        .matrix {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            gap: 2px;
+            background: #e0e7f1;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .quadrant {
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            cursor: pointer;
+            position: relative;
+            background-color: white;
+            z-index: 1;
+        }
+
+        .quadrant:hover {
+            transform: translateY(-8px) scale(1.03);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            z-index: 2;
+        }
+
+        .quadrant-icon {
+            font-size: clamp(2rem, 5vw, 3rem);
+            margin-bottom: 15px;
+            filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+        }
+
+        .quadrant-title {
+            font-size: clamp(1rem, 2.5vw, 1.3rem);
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #1a365d;
+        }
+
+        .quadrant-subtitle {
+            font-size: clamp(0.8rem, 1.8vw, 0.95rem);
+            color: #7b94b5;
+            margin-bottom: 12px;
+            font-weight: 500;
+        }
+
+        .quadrant-description {
+            font-size: clamp(0.75rem, 1.6vw, 0.85rem);
+            color: #607d8b;
+            line-height: 1.5;
+        }
+
+        /* Quadrant specific styles */
+        .compulsive-seeking { background-color: #fef3c7; }
+        .optimal-flow { background-color: #d1f7e0; }
+        .burnout { background-color: #fee2e2; }
+        .low-drive { background-color: #e0f2fe; }
+
+        /* Axes Labels */
+        .axes-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .axis-label {
+            position: absolute;
+            font-weight: 600;
+            color: #475569;
+            font-size: clamp(0.8rem, 2vw, 0.9rem);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            pointer-events: auto;
+            cursor: help;
+            position: relative;
+        }
+        
+        .axis-label::before {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: calc(100% + 10px);
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 8px 12px;
+            background-color: #334155;
+            color: white;
+            border-radius: 8px;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            font-size: 0.7rem;
+            text-transform: none;
+            letter-spacing: normal;
+        }
+
+        .axis-label:hover::before {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .y-axis {
+            left: -50px; /* Adjusted position */
+            top: 50%;
+            transform: rotate(-90deg) translateX(50%);
+            transform-origin: left center;
+        }
+
+        .x-axis {
+            bottom: -50px; /* Adjusted position */
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+    </style>
+</head>
+<body>
+    <div class="compass-container">
+        <div class="title">
+            <h1>The Reward Compass</h1>
+            <p>A Holistic View of Neurochemical States</p>
+        </div>
+
+        <div class="matrix-wrapper">
+            <div class="matrix">
+                <!-- Top-Left Quadrant (Low Tonic, High Phasic) -->
+                <div class="quadrant compulsive-seeking">
+                    <div class="quadrant-icon">⚡</div>
+                    <div class="quadrant-title">Cue-Driven Craving</div>
+                    <div class="quadrant-subtitle">Low Tonic • High Phasic Responsiveness</div>
+                    <div class="quadrant-description">
+                        Heightened reactivity to rewards and cues despite low baseline tone. Associated with impulsivity, addiction vulnerability, and “chasing the hit.”
+                    </div>
+                </div>
+
+                <!-- Top-Right Quadrant (High Tonic, High Phasic) -->
+                <div class="quadrant optimal-flow">
+                    <div class="quadrant-icon">🎯</div>
+                    <div class="quadrant-title">Optimal Motivational Zone</div>
+                    <div class="quadrant-subtitle">High Tonic • High Phasic Responsiveness</div>
+                    <div class="quadrant-description">
+                        Balanced tonic tone and receptor responsiveness. Supports focus, sustained motivation, and adaptive reward learning. Associated with states of flow and healthy goal pursuit.
+                    </div>
+                </div>
+
+                <!-- Bottom-Left Quadrant (Low Tonic, Low Phasic) -->
+                <div class="quadrant burnout">
+                    <div class="quadrant-icon">🔥</div>
+                    <div class="quadrant-title">Burnout / Reward Deficit</div>
+                    <div class="quadrant-subtitle">Low Tonic • Low Phasic Responsiveness</div>
+                    <div class="quadrant-description">
+                        Low baseline tone with blunted receptor signaling. Linked to fatigue, anhedonia, and diminished capacity to find things rewarding (e.g., depression, chronic stress).
+                    </div>
+                </div>
+
+                <!-- Bottom-Right Quadrant (High Tonic, Low Phasic) -->
+                <div class="quadrant low-drive">
+                    <div class="quadrant-icon">😴</div>
+                    <div class="quadrant-title">Reward Desensitization</div>
+                    <div class="quadrant-subtitle">High Tonic • Low Phasic Responsiveness</div>
+                    <div class="quadrant-description">
+                        Tonic dopamine tone is high, but receptors are downregulated. Leads to emotional blunting, lack of drive, difficulty enjoying normal activities — seen in overstimulation, drug tolerance, and reward saturation.
+                    </div>
+                </div>
+            </div>
+
+            <div class="axes-container">
+                <div class="axis-label y-axis" data-tooltip="Phasic responsiveness = short bursts in response to events or cues.">Phasic Responsiveness ($\Delta$ Dopamine)</div>
+                <div class="axis-label x-axis" data-tooltip="Tonic dopamine = steady background release.">Tonic Dopamine Levels ($\mu$ Dopamine)</div>
+            </div>
+        </div>
+
+        <div class="disclaimer">
+            This model is a simplified conceptual framework for learning. Real dopamine function is context-dependent and influenced by many other systems (e.g., serotonin, norepinephrine, stress hormones).
+        </div>
+    </div>
+</body>
+</html>
