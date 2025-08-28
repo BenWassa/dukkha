@@ -1892,9 +1892,9 @@ button:focus,
 .matrix-wrapper {
   position: relative;
   width: 100%;
-  /* adjust aspect ratio to be less square for better proportions */
-  aspect-ratio: 5 / 4;
-  max-width: 700px; /* more reasonable max width */
+  /* increase size and adjust aspect ratio for better content fit */
+  aspect-ratio: 4 / 3;
+  max-width: 800px; /* larger matrix for better content display */
   margin: var(--space-8) auto var(--space-12);
   overflow: visible;
 }
@@ -1905,11 +1905,11 @@ button:focus,
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
-  /* reduce gap for tighter layout */
-  gap: clamp(16px, 2.5vw, 24px);
+  /* reduce gap for tighter quadrant spacing */
+  gap: clamp(12px, 2vw, 20px);
   background: var(--color-border);
   border-radius: calc(var(--border-radius) + 6px);
-  padding: clamp(16px, 2.5vw, 24px);
+  padding: clamp(20px, 3vw, 28px);
   overflow: visible;
   box-shadow: inset 0 1px 0 rgba(255,255,255,0.03);
   /* subtle multi-stop tint using site tones */
@@ -1926,7 +1926,7 @@ button:focus,
 }
 
 .quadrant {
-  padding: clamp(var(--space-6), 2vw, var(--space-8));
+  padding: clamp(var(--space-6), 2.5vw, var(--space-10));
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -1944,9 +1944,9 @@ button:focus,
   /* gentle base elevation */
   box-shadow: 0 8px 18px rgba(15,23,42,0.06);
   transform-origin: center center;
-  /* ensure quadrants don't overflow their grid cells */
-  min-height: 0;
-  overflow: hidden;
+  /* allow content to display properly */
+  overflow: visible;
+  min-height: 120px; /* ensure minimum height for content */
 }
 
 .quadrant:hover {
@@ -2063,16 +2063,16 @@ button:focus,
 .axis-label:hover::before { opacity: 1; visibility: visible; }
 
 .y-axis {
-  /* place label outside the matrix with proper spacing */
-  left: calc(-1 * (var(--space-10) + 4px));
+  /* better positioning for the larger matrix */
+  left: -60px;
   top: 50%;
   transform: rotate(-90deg) translateX(50%);
   transform-origin: left center;
 }
 
 .x-axis {
-  /* place x-axis below the matrix with proper spacing */
-  bottom: calc(-1 * (var(--space-10) + 4px));
+  /* better positioning for the larger matrix */
+  bottom: -50px;
   left: 50%;
   transform: translateX(-50%);
 }
@@ -2080,11 +2080,17 @@ button:focus,
 /* Responsive Design - General screen adjustments only */
 @media (max-width: 1024px) {
   .reward-compass-container {
-    max-width: 800px;
+    max-width: 850px;
     padding: clamp(var(--space-6), 2.5vw, var(--space-8));
   }
   .matrix-wrapper {
-    max-width: 600px;
+    max-width: 700px;
+  }
+  .y-axis {
+    left: -50px;
+  }
+  .x-axis {
+    bottom: -40px;
   }
 }
 
@@ -2098,11 +2104,20 @@ button:focus,
   }
   .quadrant {
     padding: var(--space-4);
+    min-height: 100px;
   }
   .quadrant-icon {
     font-size: 1.75rem;
   }
   .quadrant-title {
     font-size: var(--text-lg);
+  }
+  .y-axis {
+    left: -40px;
+    font-size: var(--text-xs);
+  }
+  .x-axis {
+    bottom: -30px;
+    font-size: var(--text-xs);
   }
 }
