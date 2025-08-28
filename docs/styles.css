@@ -1849,15 +1849,15 @@ button:focus,
   border: 1px solid var(--color-border);
   border-radius: calc(var(--border-radius-lg) + 6px);
   /* responsive padding with better scaling */
-  padding: clamp(var(--space-8), 4vw, var(--space-12));
-  margin: clamp(var(--space-8), 3vw, var(--space-16)) 0;
+  padding: clamp(var(--space-8), 3vw, var(--space-10));
+  margin: clamp(var(--space-8), 2.5vw, var(--space-12)) 0;
   box-shadow: var(--shadow-lg);
   width: 100%;
-  max-width: min(95vw, 1200px); /* allow much wider scaling */
+  max-width: 900px; /* reasonable max width for better proportions */
   margin-left: auto;
   margin-right: auto;
   backdrop-filter: blur(8px);
-  overflow: visible; /* allow hover shadows to extend */
+  overflow: visible;
   position: relative;
 }
 
@@ -1905,11 +1905,11 @@ button:focus,
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
-  /* responsive breathing room with better scaling */
-  gap: clamp(20px, 4vw, 48px);
+  /* reduce gap for tighter layout */
+  gap: clamp(16px, 2.5vw, 24px);
   background: var(--color-border);
   border-radius: calc(var(--border-radius) + 6px);
-  padding: clamp(20px, 4vw, 32px);
+  padding: clamp(16px, 2.5vw, 24px);
   overflow: visible;
   box-shadow: inset 0 1px 0 rgba(255,255,255,0.03);
   /* subtle multi-stop tint using site tones */
@@ -1926,7 +1926,7 @@ button:focus,
 }
 
 .quadrant {
-  padding: clamp(var(--space-8), 3vw, var(--space-12));
+  padding: clamp(var(--space-6), 2vw, var(--space-8));
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -1944,6 +1944,9 @@ button:focus,
   /* gentle base elevation */
   box-shadow: 0 8px 18px rgba(15,23,42,0.06);
   transform-origin: center center;
+  /* ensure quadrants don't overflow their grid cells */
+  min-height: 0;
+  overflow: hidden;
 }
 
 .quadrant:hover {
@@ -1957,13 +1960,13 @@ button:focus,
 }
 
 .quadrant-icon {
-  font-size: clamp(2.5rem, 6vw, 4rem);
-  margin-bottom: var(--space-6);
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin-bottom: var(--space-4);
   filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.08));
 }
 
 .quadrant-title {
-  font-size: var(--text-2xl);
+  font-size: var(--text-xl);
   font-weight: 700;
   margin-bottom: var(--space-2);
   color: var(--color-text-primary);
@@ -1973,7 +1976,7 @@ button:focus,
 .quadrant-subtitle {
   font-size: var(--text-sm);
   color: var(--color-text-secondary);
-  margin-bottom: var(--space-3);
+  margin-bottom: var(--space-2);
   font-weight: 600;
   text-transform: none;
   letter-spacing: 0.01em;
@@ -1982,7 +1985,8 @@ button:focus,
 .quadrant-description {
   font-size: var(--text-sm);
   color: var(--color-text-secondary);
-  line-height: 1.6;
+  line-height: 1.4;
+  margin: 0;
 }
 
 /* Quadrant accents — keep semantic color cues, but softened */
@@ -2059,94 +2063,46 @@ button:focus,
 .axis-label:hover::before { opacity: 1; visibility: visible; }
 
 .y-axis {
-  /* place label consistently outside the matrix, accounting for inner padding */
-  left: calc(-1 * (var(--space-12) + 8px)); /* ~-56px */
+  /* place label outside the matrix with proper spacing */
+  left: calc(-1 * (var(--space-10) + 4px));
   top: 50%;
   transform: rotate(-90deg) translateX(50%);
   transform-origin: left center;
 }
 
 .x-axis {
-  /* place x-axis below the matrix with consistent offset */
-  bottom: calc(-1 * (var(--space-12) + 8px)); /* ~-56px */
+  /* place x-axis below the matrix with proper spacing */
+  bottom: calc(-1 * (var(--space-10) + 4px));
   left: 50%;
   transform: translateX(-50%);
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-  .reward-compass-container { 
-    padding: clamp(var(--space-6), 5vw, var(--space-8));
-    margin: var(--space-6) 0;
-    max-width: 95vw;
-  }
-  .quadrant { 
-    padding: clamp(var(--space-6), 4vw, var(--space-8));
-  }
-  .quadrant-icon { 
-    font-size: clamp(2rem, 8vw, 2.5rem);
-    margin-bottom: var(--space-4);
-  }
-  .quadrant-title { 
-    font-size: var(--text-xl);
-    margin-bottom: var(--space-2);
-  }
-  .quadrant-subtitle { 
-    font-size: var(--text-sm);
-    margin-bottom: var(--space-2);
-  }
-  .quadrant-description { 
-    font-size: var(--text-sm);
-  }
-  .y-axis { 
-    left: -50px; 
-    font-size: var(--text-xs); 
-  }
-  .x-axis { 
-    bottom: -35px; 
-    font-size: var(--text-xs); 
-  }
-}
-
-/* Responsive tweak: ensure hover pop-outs are limited and not clipped on small screens */
-@media (max-width: 768px) {
-  .reward-compass-container { 
-    padding: clamp(var(--space-6), 5vw, var(--space-8)); 
-    overflow: visible; 
-  }
-  .matrix { 
-    gap: clamp(16px, 3vw, 24px); 
-    padding: clamp(16px, 3vw, 24px); 
-  }
-  .quadrant:hover { 
-    transform: translateY(-4px) scale(1.02); 
-    box-shadow: var(--shadow-lg); 
-  }
-}
-
-@media (max-width: 480px) {
+/* Responsive Design - General screen adjustments only */
+@media (max-width: 1024px) {
   .reward-compass-container {
+    max-width: 800px;
+    padding: clamp(var(--space-6), 2.5vw, var(--space-8));
+  }
+  .matrix-wrapper {
+    max-width: 600px;
+  }
+}
+
+@media (max-width: 768px) {
+  .reward-compass-container {
+    max-width: 95vw;
+    padding: var(--space-6);
+  }
+  .matrix-wrapper {
+    max-width: 90vw;
+  }
+  .quadrant {
     padding: var(--space-4);
-    margin: var(--space-4) 0;
-    max-width: 98vw;
   }
-  .matrix {
-    gap: 12px;
-    padding: 12px;
+  .quadrant-icon {
+    font-size: 1.75rem;
   }
-  .quadrant { 
-    padding: var(--space-4);
-    transform: none; 
-    box-shadow: var(--shadow-md); 
-  }
-  .quadrant:hover {
-    transform: translateY(-2px) scale(1.01);
-    box-shadow: var(--shadow-md);
-  }
-  .y-axis { 
-    left: -40px; 
-  }
-  .x-axis { 
-    bottom: -25px; 
+  .quadrant-title {
+    font-size: var(--text-lg);
   }
 }
