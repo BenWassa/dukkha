@@ -33,7 +33,7 @@
 
   // playful prompts
   var prompt = document.querySelector('.read-prompt');
-  if (prompt && !sessionStorage.getItem('readPromptDismissed')) {
+  if (prompt && !sessionStorage.getItem('readPromptDismissed') && window.location.pathname.includes('attention.html')) {
     var promptText = prompt.querySelector('.read-prompt__text');
     var closeBtn = prompt.querySelector('.read-prompt__close');
     var messages = [
