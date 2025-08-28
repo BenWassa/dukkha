@@ -2060,16 +2060,16 @@ button:focus,
 .axis-label:hover::before { opacity: 1; visibility: visible; }
 
 .y-axis {
-  /* better positioning for the larger matrix */
-  left: -60px;
+  /* properly positioned relative to matrix container */
+  left: -40px;
   top: 50%;
   transform: rotate(-90deg) translateX(50%);
   transform-origin: left center;
 }
 
 .x-axis {
-  /* better positioning for the larger matrix */
-  bottom: -50px;
+  /* properly positioned below matrix */
+  bottom: -35px;
   left: 50%;
   transform: translateX(-50%);
 }
@@ -2084,10 +2084,10 @@ button:focus,
     max-width: 700px;
   }
   .y-axis {
-    left: -50px;
+    left: -35px;
   }
   .x-axis {
-    bottom: -40px;
+    bottom: -30px;
   }
 }
 
