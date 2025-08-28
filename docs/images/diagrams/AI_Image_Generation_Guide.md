@@ -1,208 +1,190 @@
 # Visual Assets Documentation for AI Image Generation
 
 ## Overview
-This document catalogs all visual assets in the Dukkha project that are candidates for replacement with AI-generated images. Each asset is described in detail to facilitate generation of high-quality replacements using tools like Sora, Google's AI image generation, or similar platforms.
+This document catalogs visual assets in the Dukkha project that are candidates for replacement with **metaphorical, situational AI-generated images**. Rather than recreating diagrams, we'll create artistic moments and metaphors that embody the psychological principles through visual storytelling.
 
-## Current Visual Assets
+## Current Visual Assets → Metaphorical Replacements
 
-### 1. Ping/Scroll Loop Diagrams
+### 1. Ping/Scroll Loop → **Digital Temptation Metaphors**
 
-#### notification_scroll_loop.svg
-**Type:** Cyclical Flowchart  
-**Purpose:** Illustrates the compulsive digital distraction cycle  
-**Current Style:** Clean SVG flowchart with nodes and arrows  
-**Key Elements:**
-- 6 main nodes forming a cycle: Notification/Ping → Check Phone → Scroll/Feed → Anticipation & Craving (Dopamine Spike) → Brief Relief → Baseline Drops → back to Notification
-- 3 intervention off-ramps: Pause/Breathwork, Put Phone Away, Redirect Task
-- Dashed lines connecting interventions to main loop
-- Dopamine spike node highlighted in accent color
+#### notification_scroll_loop.svg → **"The Bulging Phone"**
+**Current:** Cyclical flowchart of digital distraction cycle  
+**New Vision:** Metaphorical image capturing compulsive urge and content pressure
 
 **AI Generation Prompt:**
 ```
-Create a premium, minimalist cyclical flowchart showing the digital distraction cycle. Use a clean, modern design with 6 rounded rectangular nodes in a smooth oval loop. Include 3 intervention points outside the loop connected by dashed lines. Highlight the "Anticipation & Craving (Dopamine Spike)" node in a warm accent color. Use subtle curved arrows and ample white space. Professional guidebook aesthetic.
+Create a surreal, artistic image of a smartphone wrapped in tight leather straps, bulging and expanding against the restraints. The phone's screen glows intensely with notifications and content spilling out like liquid light. Show the straps straining, the phone's form distorting as if it's about to burst from internal pressure. Use dramatic lighting and shadows to convey urgency and containment. Dark, moody atmosphere with the phone as the central, almost living entity.
 ```
 
-#### ping_scroll_loop v2.0.svg
-**Type:** Enhanced Flowchart  
-**Purpose:** Refined version of the ping/scroll loop  
-**Current Style:** More polished SVG with improved styling  
-**Key Elements:**
-- Same core structure as original
-- Better typography and spacing
-- Enhanced color scheme
-- More professional appearance
+**Alternative Concepts:**
+- Phone as a "pressure cooker" with steam escaping through cracks
+- Phone morphing into a pulsating, organic form with digital veins
+- Phone as a "black hole generator" creating gravitational pull in a room
+
+#### ping_scroll_loop v2.0.svg → **"Moth to Flame"**
+**Current:** Enhanced flowchart with intervention points  
+**New Vision:** People drawn irresistibly to digital light
 
 **AI Generation Prompt:**
 ```
-Generate an enhanced version of a digital behavior cycle diagram. Show 6 interconnected nodes in a flowing circular pattern representing: notification triggers, checking behavior, scrolling interaction, dopamine anticipation, brief reward, and baseline drop. Add 3 external intervention points connected by dashed lines. Use a sophisticated color palette with one node highlighted in gold accent color. Clean, authoritative design suitable for a premium wellness guide.
+Illustrate a dramatic scene of people walking through a dark urban environment, all irresistibly drawn toward a glowing smartphone held by one person. Show multiple figures in silhouette, their faces illuminated by the phone's light, walking toward it like moths to a flame. Capture the magnetic pull - some reaching out, others with outstretched hands, all compelled by the digital glow. Use cinematic lighting with the phone as the sole light source in an otherwise dark scene.
 ```
 
-#### ping_scroll_loop_original.svg
-**Type:** Original Concept Diagram  
-**Purpose:** Initial prototype of the behavior cycle  
-**Current Style:** Basic flowchart layout  
-**Key Elements:**
-- Fundamental loop structure
-- Simple node connections
-- Basic intervention points
+#### ping_scroll_loop_original.svg → **"Digital Siren Call"**
+**Current:** Basic loop structure  
+**New Vision:** Phone as irresistible, almost supernatural attractor
 
 **AI Generation Prompt:**
 ```
-Design a simple behavioral loop diagram showing the cycle of digital notifications leading to compulsive checking and scrolling. Use 6 circular nodes connected in a cycle with arrows. Include 3 exit points outside the loop. Keep it clean and minimal with soft colors and clear typography.
+Create an artistic composition showing a smartphone as a mesmerizing digital siren. Depict ethereal light beams emanating from the screen, wrapping around and pulling toward it like invisible tendrils. Show subtle human silhouettes in the background, partially formed from light particles, being drawn into the phone's glow. Use flowing, organic lines and a dreamlike quality to represent the compulsive attraction.
 ```
 
-### 2. Dopamine Curve Diagrams
+### 2. Dopamine Curve → **Reward & Crash Metaphors**
 
-#### dopamine_baseline_spike.svg
-**Type:** Scientific Line Graph  
-**Purpose:** Shows dopamine response dynamics over time  
-**Current Style:** Clean line graph with baseline and spike visualization  
-**Key Elements:**
-- X-axis: Time progression
-- Y-axis: Dopamine Level
-- Sharp rise to peak (spike)
-- Drop below baseline (crash)
-- Gradual return to baseline (recovery)
-- Highlighted accent curve
+#### dopamine_baseline_spike.svg → **"The Dopamine Crash"**
+**Current:** Scientific line graph of dopamine dynamics  
+**New Vision:** Physical manifestation of the reward crash cycle
 
 **AI Generation Prompt:**
 ```
-Create a scientific line graph illustrating dopamine response patterns. Show a sharp upward spike followed by a drop below baseline, then a gradual return to normal. Use clean axes with "Time" and "Dopamine Level" labels. Make the main curve prominent in a distinctive color. Include subtle gridlines and professional scientific styling. Emphasize the contrast between healthy and dysregulated dopamine responses.
+Visualize the dopamine crash as a person standing on a precarious platform that suddenly drops beneath them. Show the initial high as they're lifted up by glowing energy, then the sudden fall as the platform collapses, leaving them suspended in empty space. Use contrasting lighting - bright, euphoric glow at the peak, then stark darkness in the crash. Include subtle digital elements (notifications, screens) integrated into the physical scene.
 ```
 
-#### simple dopamine case process.svg
-**Type:** Simplified Process Diagram  
-**Purpose:** Basic dopamine response illustration  
-**Current Style:** Minimal process flow  
-**Key Elements:**
-- Simplified dopamine cycle
-- Clear progression steps
-- Basic visual metaphor
+#### simple dopamine case process.svg → **"Sugar Rush Drop"**
+**Current:** Simplified dopamine process  
+**New Vision:** Physical metaphor of temporary high followed by depletion
 
 **AI Generation Prompt:**
 ```
-Generate a simplified diagram showing the dopamine reward process. Use a clean, step-by-step visual flow showing anticipation, spike, brief relief, and baseline drop. Keep it minimal and easy to understand with clear icons or simple shapes representing each phase.
+Create a metaphorical image of a person consuming digital content like a sugary substance. Show them in a state of initial euphoria, glowing with energy, then transitioning to a depleted, slumped posture as the "sugar rush" wears off. Use food/drink metaphors - perhaps holding a glowing digital "candy" that dissolves into emptiness. Capture the physical toll with slumped shoulders, drained expression, and fading light.
 ```
 
-### 3. Stress-Sensitization Loop Diagrams
+### 3. Stress-Sensitization Loop → **Escalating Pressure Metaphors**
 
-#### stress_sensitization_loop.svg
-**Type:** Descending Flowchart  
-**Purpose:** Shows stress amplification and coping cycle  
-**Current Style:** Vertical flowchart with downward trajectory  
-**Key Elements:**
-- 6 nodes in descending spiral: Stress/Anxiety → Attention on Quick Rewards → Impulse-Seeking → Brief Relief → Baseline Drops → More Stress
-- Intervention exit points
-- Downward visual flow
-- Highlighted dopamine spike node
+#### stress_sensitization_loop.svg → **"The Tightening Coil"**
+**Current:** Descending flowchart of stress amplification  
+**New Vision:** Physical manifestation of tightening psychological pressure
 
 **AI Generation Prompt:**
 ```
-Design a psychological flowchart showing a stress-sensitization cycle. Create 6 interconnected nodes in a descending spiral pattern representing escalating stress and maladaptive coping. Include intervention points as off-ramps. Use a downward trajectory to convey the spiral effect. Highlight the reward-seeking phase and contrast it with clear exit strategies. Professional, insightful aesthetic.
+Depict a person wrapped in tightening digital cables or wires that constrict around them like a python. Show the wires emanating from a smartphone, coiling tighter with each interaction. Capture the escalating tension - initial loose connections becoming painfully tight. Use metallic, technological elements mixed with organic human form to show the fusion of digital and psychological pressure.
 ```
 
-#### stress_sensitization_loop_pic.png
-**Type:** Raster Image Version  
-**Purpose:** PNG version of the stress loop  
-**Current Style:** Static image format  
-**Key Elements:**
-- Same structure as SVG version
-- Fixed resolution image
-- May have background or styling differences
+#### stress_sensitization_loop_pic.png → **"Digital Quicksand"**
+**Current:** Raster version of stress loop  
+**New Vision:** Person sinking into digital quicksand
 
 **AI Generation Prompt:**
 ```
-Create a high-resolution image of a stress feedback loop diagram. Show a descending spiral of 6 nodes representing stress escalation and coping mechanisms. Include intervention points and use a professional color scheme. Make it suitable for both digital and print use with clear typography and visual hierarchy.
+Illustrate a person sinking into a pool of glowing digital quicksand made of app icons, notifications, and screen fragments. Show them initially standing firm, then progressively sinking as the digital elements pull them down. Use depth and perspective to convey the sinking motion, with the person's expression showing initial resistance turning to resignation. Dark, ominous atmosphere with the digital elements as both attractive and destructive.
 ```
 
-### 4. Reward Compass Diagrams
+### 4. Reward Compass → **Motivational State Metaphors**
 
-#### reward_compass.svg
-**Type:** 2x2 Matrix/Quadrant Chart  
-**Purpose:** Self-assessment tool for motivational states  
-**Current Style:** Clean quadrant matrix  
-**Key Elements:**
-- X-axis: Spike vs. Sensitivity (Desensitized/High Spikes ↔ Highly Sensitive/Low Spikes)
-- Y-axis: Dopamine Baseline Level (Low ↔ High)
-- 4 quadrants: Low Drive/Anhedonia, Compulsive Seeking/Burnout, Optimal Flow/Contentment, High Spikes/Low Sensitivity
-- Central compass motif
-- Optimal quadrant highlighted
+#### reward_compass.svg → **"The Four Rooms"**
+**Current:** 2x2 matrix for self-assessment  
+**New Vision:** Four distinct psychological environments
 
 **AI Generation Prompt:**
 ```
-Generate a 2x2 quadrant matrix for psychological self-assessment. Label axes as "Spike vs. Sensitivity" (horizontal) and "Dopamine Baseline Level" (vertical). Create 4 distinct zones: Low Drive/Anhedonia (bottom-left), Compulsive Seeking/Burnout (bottom-right), Optimal Flow/Contentment (top-right, highlighted), and High Spikes/Low Sensitivity (top-left). Add a compass rose at the center. Use professional styling with clear labels and subtle background differentiation.
+Create a surreal architectural visualization of four interconnected rooms representing different motivational states. Show:
+- "Low Drive/Anhedonia": A dim, empty room with faded colors and a slumped figure
+- "Compulsive Seeking/Burnout": A chaotic room with flickering screens and exhausted figure
+- "Optimal Flow/Contentment": A bright, harmonious room with balanced light and peaceful figure (highlighted)
+- "High Spikes/Low Sensitivity": A stark room with intense, overwhelming light and agitated figure
+Use architectural metaphors to represent psychological states, with doors connecting the rooms.
 ```
 
-### 5. Mermaid Diagram Files
+### 5. Mermaid Diagrams → **Interactive Digital Ecosystems**
 
-#### Untitled-1.mmd (notes/)
-**Type:** Mermaid Diagram Source  
-**Purpose:** Machine-readable diagram specification  
-**Current Style:** Text-based diagram definition  
-**Key Elements:**
-- Complete Mermaid syntax for ping/scroll loop
-- Styling classes and configuration
-- Theme and layout specifications
+#### Untitled-1.mmd → **"The Digital Web"**
+**Current:** Machine-readable diagram specification  
+**New Vision:** Person entangled in digital connection web
 
 **AI Generation Prompt:**
 ```
-Based on this Mermaid diagram specification, generate a visual representation of the ping/scroll behavioral cycle. The diagram should show a cyclical flow with notification triggers, checking behavior, scrolling interaction, dopamine spikes, brief relief, and baseline drops. Include intervention off-ramps connected by dashed lines. Use the specified color scheme with accent highlighting for the dopamine node.
+Visualize a person at the center of a complex web of digital connections. Show glowing threads emanating from their phone, wrapping around their body and extending outward to connect with other devices and people in the distance. Depict the web as both beautiful and constricting - luminous and attractive, yet binding. Use light trails and particle effects to show the flow of digital energy through the network.
 ```
 
-#### ping_scroll.mmd (notes/)
-**Type:** Enhanced Mermaid Diagram  
-**Purpose:** Improved version with better styling  
-**Current Style:** Advanced Mermaid syntax  
-**Key Elements:**
-- Enhanced styling with CSS variables
-- Better typography and spacing
-- Professional color scheme integration
+#### ping_scroll.mmd → **"The Notification Storm"**
+**Current:** Enhanced Mermaid diagram  
+**New Vision:** Person weathering a storm of digital notifications
 
 **AI Generation Prompt:**
 ```
-Create a premium visualization of the digital distraction cycle using modern design principles. Show 6 interconnected nodes in a smooth loop representing the complete behavioral cycle from notification to frustration. Include 3 intervention strategies as external off-ramps. Use a sophisticated color palette with gold accent for the dopamine spike. Ensure excellent typography and clean, professional aesthetics suitable for a wellness guidebook.
+Create a dramatic scene of a person standing in a storm of digital notifications. Show notifications as physical raindrops or snowflakes made of light, falling heavily around them. Depict the person shielding themselves or being buffeted by the storm, with some notifications breaking through their defenses. Use weather metaphors - lightning flashes from screen brightness, wind from notification urgency - to convey the overwhelming nature of digital bombardment.
 ```
 
 ## AI Generation Guidelines
 
-### Style Consistency
-- **Premium Aesthetic:** All replacements should maintain a high-end, professional look
-- **Color Palette:** Use the project's established colors (gold accent, neutral backgrounds, clear typography)
-- **Typography:** Clean, sans-serif fonts with excellent readability
-- **White Space:** Ample negative space for clarity and sophistication
+### Artistic Direction
+- **Metaphorical Depth:** Each image should tell a visual story that embodies the psychological principle
+- **Emotional Impact:** Focus on creating visceral, memorable images that evoke the experience
+- **Surreal Elements:** Embrace surrealism to represent abstract psychological concepts
+- **Cinematic Quality:** Use dramatic lighting, composition, and atmosphere for visual impact
 
 ### Technical Specifications
-- **Resolution:** High-resolution for both digital and print use
-- **Formats:** SVG preferred for scalability, PNG for raster images
-- **Aspect Ratios:** Maintain proportions suitable for the content layout
-- **Accessibility:** Ensure good contrast and clear visual hierarchy
+- **Style:** Digital art, surrealism, cinematic realism
+- **Composition:** Strong focal points with clear metaphorical elements
+- **Lighting:** Dramatic use of light/dark contrast to represent psychological states
+- **Resolution:** High-resolution for detailed metaphorical elements
+- **Formats:** AI-generated images in high-quality formats
 
-### Content Accuracy
-- **Scientific Precision:** Maintain accuracy of psychological and neurological concepts
-- **Visual Metaphors:** Use appropriate visual language for abstract concepts
-- **Intervention Focus:** Emphasize actionable exit strategies and positive change
-- **User-Friendly:** Keep complex ideas accessible through clear visual design
+### Content Principles
+- **Psychological Accuracy:** Maintain the core behavioral science concepts through metaphor
+- **User Relatability:** Create images that users can immediately connect with their own experiences
+- **Intervention Hints:** Subtly include elements of escape or awareness in some images
+- **Brand Consistency:** Maintain premium, thoughtful aesthetic while embracing artistic expression
 
-## Replacement Strategy
+## Conceptual Themes to Explore
 
-### Phase 1: Core Diagrams
-1. Ping/Scroll Loop (highest priority - central to the project)
-2. Dopamine Curve (scientific foundation)
-3. Stress-Sensitization Loop (psychological context)
-4. Reward Compass (self-assessment tool)
+### **Digital Pressure & Containment**
+- Objects straining against digital forces
+- Physical manifestations of mental pressure
+- Containment metaphors (straps, cages, bubbles)
 
-### Phase 2: Variants and Enhancements
-- Create multiple style variations for different contexts
-- Develop animated versions for interactive elements
-- Generate localized versions for different audiences
+### **Attraction & Compulsion**
+- Light as irresistible force
+- Magnetic or gravitational pull
+- Siren-like digital calls
 
-### Phase 3: Integration
-- Test new images in actual page layouts
-- Ensure responsive design compatibility
-- Validate accessibility and user experience
+### **Consumption & Depletion**
+- Physical toll of digital engagement
+- Energy depletion metaphors
+- Crash and recovery cycles
+
+### **Connection & Isolation**
+- Paradox of digital connection creating isolation
+- Web/network metaphors
+- Individual vs. collective digital experience
+
+### **Awareness & Escape**
+- Moments of clarity breaking through
+- Exit strategies visualized
+- Consciousness emerging from digital haze
+
+## Implementation Strategy
+
+### Phase 1: Core Metaphors (High Priority)
+1. **Bulging Phone** - Captures compulsive content pressure
+2. **Moth to Flame** - Represents irresistible digital attraction
+3. **Dopamine Crash** - Physicalizes the reward cycle
+4. **Tightening Coil** - Shows escalating psychological pressure
+
+### Phase 2: Supporting Metaphors
+- Digital quicksand for sinking feeling
+- Four rooms for motivational states
+- Digital web for connection patterns
+- Notification storm for overwhelm
+
+### Phase 3: Thematic Variations
+- Create 2-3 variations of each core metaphor
+- Develop seasonal or contextual adaptations
+- Explore different artistic styles (photorealistic, painterly, abstract)
 
 ## Success Metrics
-- **Visual Appeal:** More engaging and professional appearance
-- **User Comprehension:** Clearer communication of complex concepts
-- **Brand Consistency:** Better alignment with premium guidebook aesthetic
-- **Technical Quality:** Improved scalability and performance
+- **Emotional Resonance:** Images that users immediately relate to their digital experiences
+- **Memorability:** Visual metaphors that stick in memory and aid understanding
+- **Psychological Insight:** Clear communication of behavioral science principles through art
+- **Aesthetic Appeal:** Professional, artistic quality that elevates the guidebook
+- **Versatility:** Images that work across different contexts and formats
