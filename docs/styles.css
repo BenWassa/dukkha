@@ -2060,11 +2060,13 @@ button:focus,
 .axis-label:hover::before { opacity: 1; visibility: visible; }
 
 .y-axis {
-  /* properly positioned relative to matrix container */
-  left: -40px;
+  position: absolute; /* position relative to .matrix-wrapper (which is already relative) */
+  left: 0; /* align to the left edge of the matrix-wrapper so it sits inside the container margin */
   top: 50%;
-  transform: rotate(-90deg) translateX(50%);
-  transform-origin: left center;
+  /* shift left by its full width and vertically center, then rotate */
+  transform: translate(-100%, -50%) rotate(-90deg);
+  transform-origin: center center;
+  white-space: nowrap;
 }
 
 .x-axis {
@@ -2084,7 +2086,7 @@ button:focus,
     max-width: 700px;
   }
   .y-axis {
-    left: -35px;
+    left: 0;
   }
   .x-axis {
     bottom: -30px;
@@ -2110,7 +2112,7 @@ button:focus,
     font-size: var(--text-lg);
   }
   .y-axis {
-    left: -40px;
+    left: 0;
     font-size: var(--text-xs);
   }
   .x-axis {
