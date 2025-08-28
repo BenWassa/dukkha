@@ -1900,22 +1900,15 @@ button:focus,
 }
 
 .matrix {
-  position: absolute;
-  inset: 0;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
-  /* reduce gap for tighter quadrant spacing */
-  gap: clamp(12px, 2vw, 20px);
-  background: var(--color-border);
-  border-radius: calc(var(--border-radius) + 6px);
-  padding: clamp(20px, 3vw, 28px);
-  overflow: visible;
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.03);
-  /* subtle multi-stop tint using site tones */
-  background-image: linear-gradient(135deg, rgba(201,169,97,0.04) 0%, rgba(5,150,105,0.02) 50%, rgba(220,38,38,0.02) 100%);
+  gap: var(--space-6);
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 0;
 }
-
 .matrix::before {
   /* faint noise/shine layer so quadrants read as cards */
   content: '';
@@ -1986,7 +1979,11 @@ button:focus,
   font-size: var(--text-sm);
   color: var(--color-text-secondary);
   line-height: 1.4;
-  margin: 0;
+  margin: 0.1em 0;
+  margin-left: 0.2em;
+  padding-left: 0.2em;
+  margin-right: 0.2em;
+  padding-right: 0.2em;
 }
 
 /* Quadrant accents — keep semantic color cues, but softened */
