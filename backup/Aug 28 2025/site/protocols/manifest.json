@@ -1,0 +1,68 @@
+{
+  "generated_at": "1755799392.6228504",
+  "protocols": [
+    {
+      "title": "Digital Detox Protocol",
+      "slug": "digital-detox-protocol",
+      "filename": "digital-detox-protocol.html",
+      "description": "A systematic approach to reducing smartphone dependency and improving attention through environmental design changes and behavioral interventions.",
+      "duration": "4-6 weeks",
+      "tags": []
+    },
+    {
+      "title": "Mindfulness & Awareness Protocol",
+      "slug": "mindfulness-awareness-protocol",
+      "filename": "mindfulness-awareness-protocol.html",
+      "description": "A 21-day experiment designed to cultivate metacognitive awareness, enabling individuals to understand and respond skillfully to cravings and internal states.",
+      "duration": "21 Days",
+      "tags": [
+        "mindfulness",
+        "meditation",
+        "craving-management",
+        "awareness"
+      ]
+    },
+    {
+      "title": "Nutrition & Supplementation Protocol",
+      "slug": "nutrition-supplementation-protocol",
+      "filename": "nutrition-supplementation-protocol.html",
+      "description": "Evidence-based nutritional strategies to optimize dopamine function through foundational dietary approaches and targeted supplementation.",
+      "duration": "Ongoing",
+      "tags": [
+        "sleep",
+        "stress",
+        "nutrition",
+        "craving",
+        "dopamine"
+      ]
+    },
+    {
+      "title": "Sleep Optimization Protocol",
+      "slug": "sleep-optimization-protocol",
+      "filename": "sleep-optimization-protocol.html",
+      "description": "The ",
+      "duration": "14 Days",
+      "tags": [
+        "digital-detox",
+        "sleep",
+        "stress",
+        "nutrition",
+        "craving"
+      ]
+    },
+    {
+      "title": "Stress Management Protocol",
+      "slug": "stress-management-protocol",
+      "filename": "stress-management-protocol.html",
+      "description": "The ",
+      "duration": "10 Days",
+      "tags": [
+        "mindfulness",
+        "sleep",
+        "stress",
+        "craving",
+        "dopamine"
+      ]
+    }
+  ]
+}
