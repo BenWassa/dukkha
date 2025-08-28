@@ -1849,11 +1849,11 @@ button:focus,
   border: 1px solid var(--color-border);
   border-radius: calc(var(--border-radius-lg) + 6px);
   /* responsive padding with better scaling */
-  padding: clamp(var(--space-8), 3vw, var(--space-10));
-  margin: clamp(var(--space-8), 2.5vw, var(--space-12)) 0;
+  padding: clamp(var(--space-7), 2.5vw, var(--space-9));
+  margin: clamp(var(--space-7), 2vw, var(--space-10)) 0;
   box-shadow: var(--shadow-lg);
   width: 100%;
-  max-width: 900px; /* reasonable max width for better proportions */
+  max-width: 860px; /* slightly reduced overall width */
   margin-left: auto;
   margin-right: auto;
   backdrop-filter: blur(8px);
@@ -1894,7 +1894,7 @@ button:focus,
   width: 100%;
   /* increase size and adjust aspect ratio for better content fit */
   aspect-ratio: 4 / 3;
-  max-width: 800px; /* larger matrix for better content display */
+  max-width: 760px; /* slightly smaller matrix for tighter layout */
   margin: var(--space-8) auto var(--space-12);
   overflow: visible;
 }
@@ -1903,11 +1903,13 @@ button:focus,
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
-  gap: var(--space-6);
+  /* slightly reduced gap for a tighter matrix */
+  gap: clamp(10px, 1.8vw, 18px);
   width: 100%;
   height: 100%;
   position: relative;
   z-index: 0;
+  padding: clamp(12px, 2vw, 20px);
 }
 .matrix::before {
   /* faint noise/shine layer so quadrants read as cards */
@@ -1919,7 +1921,7 @@ button:focus,
 }
 
 .quadrant {
-  padding: clamp(var(--space-6), 2.5vw, var(--space-10));
+  padding: clamp(var(--space-5), 2vw, var(--space-8));
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -1939,7 +1941,7 @@ button:focus,
   transform-origin: center center;
   /* allow content to display properly */
   overflow: visible;
-  min-height: 120px; /* ensure minimum height for content */
+  min-height: 110px; /* ensure minimum height for content */
 }
 
 .quadrant:hover {
@@ -1953,8 +1955,8 @@ button:focus,
 }
 
 .quadrant-icon {
-  font-size: clamp(2rem, 4vw, 3rem);
-  margin-bottom: var(--space-4);
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  margin-bottom: var(--space-3);
   filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.08));
 }
 
