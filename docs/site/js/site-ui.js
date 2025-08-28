@@ -151,4 +151,78 @@
       if (!dropdown.contains(e.target)) { close(); }
     });
   }
+
+  // Ensure nav links scroll to top when targeting the current page
+  function ensureNavScrollTopSite() {
+    document.querySelectorAll('.nav-link').forEach(function(link) {
+      link.addEventListener('click', function(e) {
+        try {
+          var href = link.getAttribute('href') || '';
+          var url = new URL(href, window.location.href);
+          if (url.pathname === window.location.pathname) {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            if (url.hash && url.hash !== window.location.hash) {
+              history.replaceState(null, '', url.hash);
+            } else if (!url.hash) {
+              history.replaceState(null, '', url.pathname + window.location.search);
+            }
+          }
+        } catch (err) {
+          // noop
+        }
+      });
+    });
+  }
+
+  ensureNavScrollTopSite();
+  // Ensure nav links behave by scrolling to top for hashes and across-page navigation
+  (function navScrollTopBehavior() {
+    try {
+      var navLinks = document.querySelectorAll('.nav-link');
+      if (!navLinks || !navLinks.length) return;
+
+      navLinks.forEach(function(a) {
+        a.addEventListener('click', function(e) {
+          var href = a.getAttribute('href');
+          if (!href) return;
+
+          // In-page hash (e.g., #home) - smooth scroll
+          if (href.charAt(0) === '#') {
+            e.preventDefault();
+            var id = href.slice(1);
+            if (!id) {
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+              history.replaceState(null, '', '#');
+              return;
+            }
+            var target = document.getElementById(id);
+            if (target) {
+              target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              history.replaceState(null, '', href);
+            } else {
+              // If element not found, go to top
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+            return;
+          }
+
+          // For cross-page links, set flag so the next page scrolls to top on load
+          try { sessionStorage.setItem('scrollToTop', '1'); } catch (err) { /* ignore */ }
+          // allow default navigation to proceed
+        });
+      });
+
+      // On load, if flag set then scroll to top and clear it
+      if (sessionStorage.getItem('scrollToTop')) {
+        try {
+          window.scrollTo(0, 0);
+        } catch (e) {}
+        try { sessionStorage.removeItem('scrollToTop'); } catch (err) {}
+      }
+    } catch (e) {
+      // silent
+    }
+  })();
+
 })();

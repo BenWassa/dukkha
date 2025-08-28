@@ -113,4 +113,69 @@
   } else {
     initDropdown();
   }
+
+  // Scroll-to-top / hash behavior for nav links on root index
+  (function navScrollTopBehaviorIndex() {
+    try {
+      var navLinks = document.querySelectorAll('.nav-link');
+      if (!navLinks || !navLinks.length) return;
+
+      navLinks.forEach(function(a) {
+        a.addEventListener('click', function(e) {
+          var href = a.getAttribute('href');
+          if (!href) return;
+          if (href.charAt(0) === '#') {
+            e.preventDefault();
+            if (href === '#home' || href === '#') {
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+              history.replaceState(null, '', '#home');
+              return;
+            }
+            var id = href.slice(1);
+            var target = document.getElementById(id);
+            if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            return;
+          }
+          // Cross-page: set flag to scroll to top on next load
+          try { sessionStorage.setItem('scrollToTop', '1'); } catch (err) {}
+        });
+      });
+
+      if (sessionStorage.getItem('scrollToTop')) {
+        try { window.scrollTo(0, 0); } catch (e) {}
+        try { sessionStorage.removeItem('scrollToTop'); } catch (e) {}
+      }
+    } catch (e) {}
+  })();
+
+  // Ensure nav links scroll to top when they target the current page (e.g., '#home' or same-path links)
+  function ensureNavScrollTop() {
+    document.querySelectorAll('.nav-link').forEach(function(link) {
+      link.addEventListener('click', function(e) {
+        try {
+          var href = link.getAttribute('href') || '';
+          var url = new URL(href, window.location.href);
+          if (url.pathname === window.location.pathname) {
+            // same page target - smooth scroll to top and prevent default anchor jump
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            // update hash in the address bar if necessary (but avoid page reload)
+            if (url.hash && url.hash !== window.location.hash) {
+              history.replaceState(null, '', url.hash);
+            } else if (!url.hash) {
+              history.replaceState(null, '', url.pathname + window.location.search);
+            }
+          }
+        } catch (err) {
+          // if URL parsing fails, do nothing and allow default navigation
+        }
+      });
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', ensureNavScrollTop);
+  } else {
+    ensureNavScrollTop();
+  }
 })();
