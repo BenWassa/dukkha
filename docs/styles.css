@@ -5,35 +5,35 @@
 
 /* Base Styles */
 
-.quadrant {
-  padding: clamp(var(--space-4), 1.8vw, var(--space-6));
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  transition: transform var(--transition-normal), box-shadow var(--transition-normal), background-color var(--transition-fast);
-  cursor: pointer;
-  position: relative;
-  z-index: 1;
-  /* semi-transparent card so subtle matrix tint shows through */
-  background-color: rgba(255,255,255,0.95);
-  backdrop-filter: blur(4px) saturate(1.02);
-  border-right: 1px solid rgba(0,0,0,0.02);
-  border-radius: calc(var(--border-radius) - 2px);
-  /* gentle base elevation */
-  box-shadow: 0 8px 18px rgba(15,23,42,0.06);
-  transform-origin: center center;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
-.quadrant:hover {
-  transform: translateY(-6px) scale(1.025);
-  /* outer lift shadow + subtle inner bevel highlight */
-  box-shadow:
-    0 28px 60px rgba(15,23,42,0.12),
-    inset 0 6px 12px rgba(240, 215, 178, 0.22),
-    inset 0 -6px 12px rgba(0,0,0,0.04);
-  z-index: 6;
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
 }
+
+body {
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  line-height: 1.6;
+  color: var(--color-text-primary);
+  background-color: var(--color-background);
+  transition: background-color var(--transition-normal), color var(--transition-normal);
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  line-height: 1.2;
+  margin-bottom: var(--space-4);
+  color: var(--color-text-primary);
+}
+
 h1 { font-size: var(--text-5xl); }
 h2 { font-size: var(--text-4xl); }
 h3 { font-size: var(--text-3xl); }
@@ -2065,16 +2065,6 @@ button:focus,
   .reward-compass-container { padding: var(--space-8); overflow: visible; }
   .matrix { gap: 16px; padding: 12px; }
   .quadrant:hover { transform: translateY(-6px) scale(1.02); box-shadow: var(--shadow-md); }
-}
-
-@media (max-width: 560px) {
-  .reward-compass-container { max-width: 420px; padding: var(--space-6); }
-  .matrix-wrapper { max-width: 420px; }
-  .matrix { gap: 10px; padding: 8px; }
-  .quadrant { padding: var(--space-3); }
-  .quadrant-title { font-size: 1rem; }
-  .quadrant-subtitle, .quadrant-description { font-size: 0.8rem; }
-  .quadrant:hover { transform: none; box-shadow: var(--shadow-md); }
 }
 
 @media (max-width: 480px) {
