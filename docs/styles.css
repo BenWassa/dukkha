@@ -1904,12 +1904,15 @@ button:focus,
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
   /* slightly reduced gap for a tighter matrix */
-  gap: clamp(8px, 1.2vw, 14px);
+  gap: clamp(12px, 1.6vw, 18px);
   width: 100%;
   height: 100%;
   position: relative;
   z-index: 0;
   padding: clamp(12px, 2vw, 20px);
+  align-items: stretch; /* make grid items stretch to fill rows */
+  justify-items: stretch;
+  grid-auto-rows: 1fr; /* ensure rows distribute evenly */
 }
 .matrix::before {
   /* faint noise/shine layer so quadrants read as cards */
@@ -1922,11 +1925,11 @@ button:focus,
 
 .quadrant {
   box-sizing: border-box;
-  margin: var(--space-3);
+  margin: 0; /* spacing handled by grid gap */
   padding: clamp(var(--space-5), 2vw, var(--space-8));
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   text-align: center;
   transition: transform var(--transition-normal), box-shadow var(--transition-normal), background-color var(--transition-fast);
@@ -1943,7 +1946,8 @@ button:focus,
   transform-origin: center center;
   /* allow content to display properly */
   overflow: visible;
-  min-height: 110px; /* ensure minimum height for content */
+  height: 100%; /* fill the grid cell */
+  min-height: clamp(140px, 18vh, 200px); /* larger min-height so descriptions don't overflow */
 }
 
 .quadrant:hover {
