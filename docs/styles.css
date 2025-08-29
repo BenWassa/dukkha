@@ -2134,9 +2134,9 @@ button:focus,
 .axis-line-x::after {
   content: '';
   position: absolute;
-  right: 0;
-  bottom: 0;
-  transform: translate(50%, 50%);
+  right: -8px; /* nudge slightly outside the axis end */
+  top: 50%;
+  transform: translateY(-50%);
   border-width: 6px 0 6px 10px;
   border-style: solid;
   border-color: transparent transparent transparent var(--color-text-muted);
@@ -2157,7 +2157,8 @@ button:focus,
   position: absolute;
   top: 0;
   left: 50%;
-  transform: translate(-50%, -150%);
+  /* center horizontally and nudge so the arrowhead sits on the axis end, then flip 180deg */
+  transform: translate(-50%, -50%) rotate(180deg);
   border-width: 10px 6px 0 6px;
   border-style: solid;
   border-color: var(--color-text-muted) transparent transparent transparent;
