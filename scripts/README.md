@@ -181,3 +181,4 @@ powershell -ExecutionPolicy Bypass -File scripts/qa_check.ps1
 - **Safety Features**: Added backup system and validation pipeline
 - **Script Cleanup**: Archived outdated utilities, focused on core functionality
 - **Documentation**: Created comprehensive README with usage examples
+ - **UI/JS Enhancements**: Site-level JavaScript (`docs/site/js/site-ui.js`) now includes read-progress alignment to page content, conditional read prompt logic (attention-only), robust active-nav detection for protocol subpages, default-collapsed footnotes, and footer contact replacement with a GitHub icon. These enhancements are progressive and do not affect core build logic.

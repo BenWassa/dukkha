@@ -173,6 +173,17 @@ python -m pytest tests/ -v
 - **Improved Content Completion**: Full five myths with proper academic citations
 - **Navigation Consistency**: Fixed protocol page navigation across all 12 HTML files
 
+### Latest UI & Build Fixes (Aug 2025 - ongoing)
+
+- Footer contact button replaced with a GitHub icon link (white mark) for a cleaner footer and consistent call-to-action across pages.
+- Reading prompt restricted to `attention.html` only (no cross-page prompts).
+- Reading progress bar now aligns to the `.page-content` container and ends when the reader reaches the end of the content area.
+- Reward Compass (model visualization) layout and axes fixed: quadrants resized, gaps reduced, axis lines anchored to the matrix origin with corrected arrowheads.
+- Navigation header reduced in height and centered to match content width; removed hover-induced size growth for stability.
+- Footnotes collapsed by default on page load to reduce visual noise; individual page toggles remain available.
+- Typographic drop-cap added for `.content-claims` first paragraph to improve editorial feel.
+
+
 ### Visual & UX updates (August 2025)
 
 - Full-screen hero on the homepage with a smooth-scroll arrow and enlarged project title and compass for stronger visual impact.
