@@ -1913,12 +1913,13 @@ button:focus,
 .quadrant {
   box-sizing: border-box;
   margin: 0; /* spacing handled by grid gap */
-  padding: clamp(var(--space-5), 2vw, var(--space-8));
+  padding: clamp(var(--space-4), 2vw, var(--space-6));
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
   text-align: center;
+  gap: var(--space-3);
   transition: transform var(--transition-normal), box-shadow var(--transition-normal), background-color var(--transition-fast);
   cursor: pointer;
   position: relative;
@@ -1948,15 +1949,20 @@ button:focus,
 }
 
 .quadrant-icon {
-  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
-  margin-bottom: var(--space-3);
+  font-size: clamp(1.5rem, 3.2vw, 2.2rem);
+  /* place icon inline with title */
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0; /* spacing handled by header gap */
   filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.08));
 }
 
 .quadrant-title {
   font-size: var(--text-3xl);
   font-weight: 700;
-  margin-bottom: var(--space-2);
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0;
   color: var(--color-text-primary);
   font-family: var(--font-serif);
 }
@@ -1966,7 +1972,7 @@ button:focus,
   font-family: 'Crimson Text', serif;
   font-style: italic;
   color: var(--color-accent);
-  margin-bottom: var(--space-2);
+  margin: 0;
   font-weight: 600;
   text-transform: none;
   letter-spacing: 0.01em;
@@ -1976,11 +1982,33 @@ button:focus,
   font-size: var(--text-xs);
   color: var(--color-text-secondary);
   line-height: 1.4;
-  margin: 0.1em 0;
-  margin-left: 0.2em;
-  padding-left: 0.2em;
-  margin-right: 0.2em;
-  padding-right: 0.2em;
+  margin: 0;
+  padding: 0;
+  max-width: 46ch; /* constrain text measure for readability */
+}
+
+/* On very narrow screens stack icon above title to preserve readability */
+@media (max-width: 480px) {
+  .quadrant-icon, .quadrant-title {
+    display: block;
+    margin: 0 0 var(--space-2) 0;
+    text-align: center;
+  }
+}
+
+/* Quadrant header: align icon left of title on the same line */
+.quadrant-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  width: 100%;
+  margin-bottom: 0; /* gap handles spacing */
+}
+
+/* Slightly reduce title margin when inside header (prevents double-spacing) */
+.quadrant-header .quadrant-title {
+  margin-bottom: 0;
 }
 
 /* Quadrant accents — keep semantic color cues, but softened */
