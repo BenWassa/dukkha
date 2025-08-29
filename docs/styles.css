@@ -1978,8 +1978,10 @@ button:focus,
 }
 
 .quadrant-subtitle {
-  font-size: var(--text-sm);
-  color: var(--color-text-secondary);
+  font-size: var(--text-base);
+  font-family: 'Crimson Text', serif;
+  font-style: italic;
+  color: var(--color-accent);
   margin-bottom: var(--space-2);
   font-weight: 600;
   text-transform: none;
