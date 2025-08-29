@@ -112,6 +112,8 @@
           li.appendChild(a);
           menu.appendChild(li);
         });
+  // After menu is built, ensure nav active state is applied (handles protocol subpages)
+  try { setActiveNavState(); } catch (e) { /* noop */ }
       }
 
       fetch(basePath + 'manifest.json')
@@ -126,6 +128,62 @@
             {title:'Stress Management Protocol', filename:'stress-management-protocol.html'}
           ]);
         });
+
+      // Robust active-nav detection: mark top-level nav links and protocol subpage links as active
+      function setActiveNavState() {
+        var currentPath = window.location.pathname || window.location.href;
+        // normalize to just pathname
+        try { currentPath = new URL(window.location.href).pathname; } catch (e) {}
+
+        function nameOf(path) { return (path || '').split('/').filter(Boolean).pop() || path; }
+
+        // mark top-level links
+        document.querySelectorAll('.nav-link').forEach(function(link) {
+          try {
+            var href = link.getAttribute('href') || '';
+            if (!href || href === '#') return;
+            var resolved = new URL(href, window.location.href).pathname;
+            // exact match
+            if (resolved === currentPath) {
+              link.classList.add('active');
+              return;
+            }
+            // match by filename
+            if (nameOf(resolved) === nameOf(currentPath)) {
+              link.classList.add('active');
+              return;
+            }
+            // protocols parent should be active for any /protocols/ subpage
+            if (nameOf(resolved) === 'protocols.html' && currentPath.indexOf('/protocols/') !== -1) {
+              link.classList.add('active');
+              return;
+            }
+            // clear other links
+            link.classList.remove('active');
+          } catch (e) { /* noop */ }
+        });
+
+        // mark specific protocol submenu item (if present)
+        if (menu) {
+          Array.prototype.slice.call(menu.querySelectorAll('a')).forEach(function(a) {
+            try {
+              var href = a.getAttribute('href') || '';
+              var resolved = new URL(href, window.location.href).pathname;
+              if (resolved === currentPath || nameOf(resolved) === nameOf(currentPath)) {
+                a.classList.add('active');
+                // also ensure the parent toggle shows active so user sees category highlighted
+                var toggle = document.querySelector('.nav-dropdown__toggle');
+                if (toggle) toggle.classList.add('active');
+              } else {
+                a.classList.remove('active');
+              }
+            } catch (e) { /* noop */ }
+          });
+        }
+      }
+
+      // Run once now in case menu was synchronous or already present
+      try { setActiveNavState(); } catch (e) {}
 
       function getItems() {
         return Array.prototype.slice.call(menu.querySelectorAll('a'));
