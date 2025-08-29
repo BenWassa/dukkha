@@ -146,8 +146,13 @@ a:hover {
 }
 
 .nav-link:hover,
+.nav-link:focus {
+  color: var(--color-accent);
+  background-color: var(--color-surface);
+  text-decoration: none; /* override global anchor underline on hover */
+}
 .nav-link.active {
-  color: var(--color-text-primary);
+  color: var(--color-accent);
   background-color: var(--color-surface);
 }
 
