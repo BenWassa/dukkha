@@ -1,4 +1,12 @@
 (function() {
+  // Collapse Notes & Citations (footnotes) by default so they don't show expanded on page load.
+  // Individual page scripts still attach toggle handlers to the header to allow expanding.
+  try {
+    var _fnSections = document.querySelectorAll('.footnotes');
+    _fnSections.forEach(function(s) { s.classList.add('collapsed'); });
+  } catch (e) {
+    // noop
+  }
   // reading progress
   var progress = document.querySelector('.read-progress');
   if (!progress) {
