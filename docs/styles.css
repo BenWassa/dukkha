@@ -2094,7 +2094,7 @@ button:focus,
 
 .x-axis {
   /* properly positioned below matrix */
-  bottom: -35px;
+  bottom: -25px;
   left: 50%;
   transform: translateX(-50%);
 }
