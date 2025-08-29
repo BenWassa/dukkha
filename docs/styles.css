@@ -86,32 +86,6 @@ a:hover {
   justify-content: space-between;
   max-width: var(--container-width);
   margin: 0 auto;
-  /* reduced vertical padding for a slimmer nav */
-  padding: calc(var(--space-3)) var(--container-padding);
-}
-
-/* =============================================
-   Navigation
-   ============================================= */
-
-.nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 100;
-  background-color: var(--color-surface-elevated);
-  backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--color-border);
-  transition: all var(--transition-normal);
-}
-
-.nav-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  max-width: var(--container-width);
-  margin: 0 auto;
   padding: var(--space-4) var(--container-padding);
 }
 
