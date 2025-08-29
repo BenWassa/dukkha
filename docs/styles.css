@@ -1034,6 +1034,7 @@ a:hover {
 .footer-links {
   display: flex;
   gap: var(--space-6);
+  align-items: center; /* vertically center links and icons */
 }
 
 .footer-links a {
