@@ -1054,21 +1054,24 @@ a:hover {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
+  width: 44px; /* slightly larger container for better spacing */
+  height: 44px;
   border-radius: 6px;
   background: transparent;
   transition: background-color var(--transition-fast), transform var(--transition-fast);
+  vertical-align: middle; /* keep the icon aligned with adjacent text */
 }
 .github-link:hover {
-  background: rgba(255,255,255,0.03);
-  transform: translateY(-2px);
+  background: rgba(255,255,255,0.04);
+  transform: none; /* avoid shifting baseline relative to text */
 }
 .github-icon {
-  width: 20px;
-  height: 20px;
+  width: 24px; /* increased size for crisper rendering */
+  height: 24px;
   display: block;
-  filter: invert(90%) sepia(0%) saturate(0%) hue-rotate(180deg) brightness(100%) contrast(90%);
+  filter: none; /* ensure white SVG is not inverted/darkened */
+  object-fit: contain;
+  image-rendering: -webkit-optimize-contrast;
 }
 
 .footer-note {
