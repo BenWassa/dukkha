@@ -86,7 +86,8 @@ a:hover {
   justify-content: space-between;
   max-width: var(--container-width);
   margin: 0 auto;
-  padding: var(--space-4) var(--container-padding);
+  /* reduced vertical padding for a slimmer nav */
+  padding: calc(var(--space-3)) var(--container-padding);
 }
 
 /* =============================================
@@ -124,11 +125,11 @@ a:hover {
 }
 
 .brand-symbol {
-  font-size: var(--text-2xl);
+  font-size: var(--text-xl);
   color: var(--color-accent);
   display: inline-block;
-  width: 50px;
-  height: 50px;
+  width: 42px;
+  height: 42px;
   background-image: url('images/icons/ouroboros-svgrepo-com.svg');
   background-size: contain;
   background-repeat: no-repeat;
@@ -147,14 +148,14 @@ a:hover {
 .nav-menu {
   display: flex;
   list-style: none;
-  gap: var(--space-8);
+  gap: var(--space-6);
 }
 
 .nav-link {
   font-weight: 500;
   font-size: var(--text-sm);
   color: var(--color-text-secondary);
-  padding: var(--space-2) var(--space-3);
+  padding: var(--space-1) calc(var(--space-2));
   border-radius: var(--border-radius);
   transition: all var(--transition-fast);
   text-transform: uppercase;
@@ -1076,7 +1077,8 @@ a:hover {
    ============================================= */
 
 .page-content {
-  margin-top: 80px;
+  /* match the fixed nav height + small gap */
+  margin-top: 64px;
   padding: var(--space-8) 0 var(--space-16);
   max-width: 900px;
   margin-left: auto;
@@ -2005,8 +2007,8 @@ button:focus,
 }
 
 .optimal-flow { 
-  /* new, slightly different green — adjust to taste */
-  background-color: rgba(34,197,94,0.12); /* light green */
+  /* clearer, slightly stronger green for better legibility */
+  background-color: rgba(34,197,94,0.18); /* tailwind emerald-500 at low alpha */
   box-shadow: inset 0 2px 0 rgba(0,0,0,0.02);
 }
 
@@ -2025,8 +2027,8 @@ button:focus,
   .reward-compass-container { backdrop-filter: blur(6px); }
   .compulsive-seeking { background-color: rgba(217,119,6,0.226); }
   .optimal-flow { 
-    /* darker/light alpha for dark mode */
-    background-color: rgba(16, 185, 106, 0.226);
+  /* slightly stronger green in dark mode */
+  background-color: rgba(16, 185, 106, 0.28);
   }
   .burnout { background-color: rgba(220,38,38,0.226); }
   .low-drive { background-color: rgba(69, 75, 114, 0.301); }
