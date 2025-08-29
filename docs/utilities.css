@@ -137,13 +137,16 @@ details.protocol-summary[open] {
 .read-progress {
   position: fixed;
   top: 0;
-  left: 0;
+  left: 50%;
+  transform: translateX(-50%);
   width: 100%;
-  height: 6px;
-  background: var(--color-border);
+  max-width: var(--container-width);
+  height: 8px; /* slightly thicker */
+  background: transparent;
   pointer-events: none;
   z-index: 1000;
   display: none;
+  box-sizing: border-box;
 }
 .read-progress.visible {
   display: block;
@@ -152,6 +155,8 @@ details.protocol-summary[open] {
   width: 0;
   height: 100%;
   background: var(--color-accent);
+  transition: width 220ms ease;
+  border-radius: 999px;
 }
 @media (max-width: 767px) {
   .read-progress { display: none; }

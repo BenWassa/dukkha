@@ -64,6 +64,12 @@ a:hover {
   padding: 0 var(--container-padding);
 }
 
+/* Layout tokens used by header/nav so spacing changes propagate */
+:root {
+  --nav-height: 48px; /* slimmer header */
+  --nav-brand-size: 32px;
+}
+
 /* =============================================
    Navigation
    ============================================= */
@@ -78,6 +84,8 @@ a:hover {
   backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--color-border);
   transition: all var(--transition-normal);
+  height: var(--nav-height);
+  box-sizing: border-box;
 }
 
 .nav-container {
@@ -86,7 +94,8 @@ a:hover {
   justify-content: space-between;
   max-width: var(--container-width);
   margin: 0 auto;
-  padding: var(--space-4) var(--container-padding);
+  padding: 0 var(--container-padding);
+  height: 100%;
 }
 
 .nav-brand {
@@ -99,11 +108,11 @@ a:hover {
 }
 
 .brand-symbol {
-  font-size: var(--text-xl);
+  font-size: calc(var(--nav-brand-size) * 0.6);
   color: var(--color-accent);
   display: inline-block;
-  width: 42px;
-  height: 42px;
+  width: var(--nav-brand-size);
+  height: var(--nav-brand-size);
   background-image: url('images/icons/ouroboros-svgrepo-com.svg');
   background-size: contain;
   background-repeat: no-repeat;
@@ -122,14 +131,14 @@ a:hover {
 .nav-menu {
   display: flex;
   list-style: none;
-  gap: var(--space-6);
+  gap: var(--space-4);
 }
 
 .nav-link {
   font-weight: 500;
   font-size: var(--text-sm);
   color: var(--color-text-secondary);
-  padding: var(--space-1) calc(var(--space-2));
+  padding: 6px calc(var(--space-2));
   border-radius: var(--border-radius);
   transition: all var(--transition-fast);
   text-transform: uppercase;
@@ -202,8 +211,8 @@ a:hover {
    ============================================= */
 
 .hero {
-  margin-top: 80px;
-  min-height: calc(100vh - 80px);
+  margin-top: calc(var(--nav-height) + var(--space-2));
+  min-height: calc(100vh - var(--nav-height) - var(--space-2));
   padding: var(--space-12) 0 var(--space-8);
   background: linear-gradient(135deg, var(--color-surface) 0%, var(--color-background) 100%);
   position: relative;
@@ -1052,7 +1061,7 @@ a:hover {
 
 .page-content {
   /* match the fixed nav height + small gap */
-  margin-top: 64px;
+  margin-top: calc(var(--nav-height) + var(--space-2));
   padding: var(--space-8) 0 var(--space-16);
   max-width: 900px;
   margin-left: auto;
@@ -1503,8 +1512,8 @@ a:hover {
   }
   
   .hero {
-    margin-top: 120px; /* Account for taller mobile nav */
-    padding: var(--space-16) 0;
+  margin-top: calc(var(--nav-height) + var(--space-4)); /* Account for mobile nav spacing */
+  padding: var(--space-16) 0;
   }
   
   .intro-stats {
