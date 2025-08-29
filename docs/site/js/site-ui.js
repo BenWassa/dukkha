@@ -310,4 +310,25 @@
     }
   })();
 
+  // Replace footer contact mailto link with a GitHub icon link (site-wide)
+  try {
+    var footerLinks = document.querySelector('.footer-links');
+    if (footerLinks) {
+      var mailto = footerLinks.querySelector('a[href^="mailto:"]');
+      if (mailto) {
+    const ghLink = document.createElement('a');
+    ghLink.href = 'https://github.com/BenWassa/dukkha';
+    ghLink.target = '_blank';
+    ghLink.rel = 'noopener noreferrer';
+    ghLink.className = 'github-link';
+    const img = document.createElement('img');
+    img.src = '/docs/images/icons/github-mark/github-mark-white.svg';
+    img.alt = 'GitHub';
+    img.className = 'github-icon';
+    ghLink.appendChild(img);
+    mailto.parentNode.replaceChild(ghLink, mailto);
+      }
+    }
+  } catch (e) { /* noop */ }
+
 })();

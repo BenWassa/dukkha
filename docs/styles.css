@@ -1049,6 +1049,28 @@ a:hover {
   color: var(--color-accent);
 }
 
+/* GitHub icon in footer - replaces contact button */
+.github-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 6px;
+  background: transparent;
+  transition: background-color var(--transition-fast), transform var(--transition-fast);
+}
+.github-link:hover {
+  background: rgba(255,255,255,0.03);
+  transform: translateY(-2px);
+}
+.github-icon {
+  width: 20px;
+  height: 20px;
+  display: block;
+  filter: invert(90%) sepia(0%) saturate(0%) hue-rotate(180deg) brightness(100%) contrast(90%);
+}
+
 .footer-note {
   text-align: center;
   padding-top: var(--space-4); /* Reduced from space-8 */
