@@ -316,17 +316,64 @@
     if (footerLinks) {
       var mailto = footerLinks.querySelector('a[href^="mailto:"]');
       if (mailto) {
-    const ghLink = document.createElement('a');
-    ghLink.href = 'https://github.com/BenWassa/dukkha';
-    ghLink.target = '_blank';
-    ghLink.rel = 'noopener noreferrer';
-    ghLink.className = 'github-link';
-    const img = document.createElement('img');
-    img.src = '/docs/images/icons/github-mark/github-mark-white.svg';
-    img.alt = 'GitHub';
-    img.className = 'github-icon';
-    ghLink.appendChild(img);
-    mailto.parentNode.replaceChild(ghLink, mailto);
+        // Candidate paths to the white GitHub mark SVG. We'll try each until one loads.
+        var candidates = [
+          'images/icons/github-mark/github-mark-white.svg',
+          '../images/icons/github-mark/github-mark-white.svg',
+          '../../images/icons/github-mark/github-mark-white.svg',
+          '/docs/images/icons/github-mark/github-mark-white.svg',
+          '/images/icons/github-mark/github-mark-white.svg'
+        ];
+
+        function tryLoad(index) {
+          if (index >= candidates.length) {
+            // fallback: use the first candidate without waiting
+            insertGhLink(candidates[0]);
+            return;
+          }
+          var testSrc = candidates[index];
+          var tester = new Image();
+          var done = false;
+          tester.onload = function() {
+            if (done) return; done = true;
+            insertGhLink(testSrc);
+          };
+          tester.onerror = function() {
+            if (done) return; done = true;
+            // try next candidate
+            tryLoad(index + 1);
+          };
+          // small timeout in case network stalls (use setTimeout to fallback)
+          var to = setTimeout(function() {
+            if (done) return; done = true;
+            tryLoad(index + 1);
+          }, 400);
+          // start loading
+          tester.src = testSrc;
+        }
+
+        function insertGhLink(src) {
+          try {
+            var ghLink = document.createElement('a');
+            ghLink.href = 'https://github.com/BenWassa/dukkha';
+            ghLink.target = '_blank';
+            ghLink.rel = 'noopener noreferrer';
+            ghLink.className = 'github-link';
+            var img = document.createElement('img');
+            img.src = src;
+            img.alt = 'GitHub';
+            img.className = 'github-icon';
+            // ensure the image uses the white mark; if src doesn't indicate white, we prefer explicit file
+            if (!/white/i.test(src)) img.src = src;
+            ghLink.appendChild(img);
+            mailto.parentNode.replaceChild(ghLink, mailto);
+          } catch (e) {
+            // final fallback — do nothing
+          }
+        }
+
+        // kick off attempts
+        tryLoad(0);
       }
     }
   } catch (e) { /* noop */ }
