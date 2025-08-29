@@ -2115,6 +2115,54 @@ button:focus,
   transform: translateX(-50%);
 }
 
+/* Solid axes lines with arrowheads centered on the matrix origin */
+.axis-line {
+  position: absolute;
+  pointer-events: none;
+}
+
+/* Horizontal axis: full width, centered vertically */
+.axis-line-x {
+  left: 0;
+  bottom: 0; /* anchor to bottom of the matrix */
+  width: 100%;
+  height: 2px;
+  background: var(--color-text-muted);
+  transform: none;
+  z-index: 2; /* above quadrant backgrounds, below hovered elevation */
+}
+.axis-line-x::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  transform: translate(50%, 50%);
+  border-width: 6px 0 6px 10px;
+  border-style: solid;
+  border-color: transparent transparent transparent var(--color-text-muted);
+}
+
+/* Vertical axis: full height, centered horizontally */
+.axis-line-y {
+  left: 0;
+  bottom: 0; /* anchor to left edge and bottom */
+  width: 2px;
+  height: 100%;
+  background: var(--color-text-muted);
+  transform: none;
+  z-index: 2;
+}
+.axis-line-y::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -150%);
+  border-width: 10px 6px 0 6px;
+  border-style: solid;
+  border-color: var(--color-text-muted) transparent transparent transparent;
+}
+
 /* Responsive Design - General screen adjustments only */
 @media (max-width: 1024px) {
   .reward-compass-container {
