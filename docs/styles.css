@@ -211,8 +211,9 @@ a:hover {
    ============================================= */
 
 .hero {
-  margin-top: calc(var(--nav-height) + var(--space-2));
-  min-height: calc(100vh - var(--nav-height) - var(--space-2));
+  /* sit directly beneath the fixed nav (avoid extra visual gap on index) */
+  margin-top: var(--nav-height);
+  min-height: calc(100vh - var(--nav-height));
   padding: var(--space-12) 0 var(--space-8);
   background: linear-gradient(135deg, var(--color-surface) 0%, var(--color-background) 100%);
   position: relative;
@@ -1542,7 +1543,7 @@ a:hover {
   }
   
   .hero {
-  margin-top: calc(var(--nav-height) + var(--space-4)); /* Account for mobile nav spacing */
+  margin-top: var(--nav-height); /* Account for mobile nav spacing */
   padding: var(--space-16) 0;
   }
   
