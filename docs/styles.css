@@ -2044,7 +2044,8 @@ button:focus,
   font-weight: 700;
   color: var(--color-text-secondary);
   font-size: var(--text-sm);
-  text-transform: uppercase;
+  /* avoid forcing uppercase here — axis labels may contain symbols (e.g. μ) */
+  text-transform: none;
   letter-spacing: 0.03em;
   pointer-events: auto;
   cursor: help;
@@ -2072,9 +2073,18 @@ button:focus,
 
 .axis-label:hover::before { opacity: 1; visibility: visible; }
 
+/* Prefer sentence-case for axis labels to avoid symbol uppercasing issues
+   (lowercase entire string then uppercase first letter) */
+.axes-container .axis-label {
+  text-transform: lowercase;
+}
+.axes-container .axis-label::first-letter {
+  text-transform: uppercase;
+}
+
 .y-axis {
   position: absolute; /* position relative to .matrix-wrapper (which is already relative) */
-  left: 138px; /* align to the left edge of the matrix-wrapper so it sits inside the container margin */
+  left: 118px; /* align to the left edge of the matrix-wrapper so it sits inside the container margin */
   top: 50%;
   /* shift left by its full width and vertically center, then rotate */
   transform: translate(-100%, -50%) rotate(-90deg);
