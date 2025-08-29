@@ -16,10 +16,25 @@
     if (nav) { progress.style.top = nav.offsetHeight + 'px'; }
     if (hero && nav) { showPoint = hero.offsetHeight - nav.offsetHeight; }
 
+    // Align the progress container to the page content width (not full viewport)
+    function alignProgressToContent() {
+      var content = document.querySelector('.page-content') || document.querySelector('.container') || document.querySelector('main') || document.body;
+      if (!content) return;
+      var rect = content.getBoundingClientRect();
+      // Position fixed element using viewport coordinates
+      progress.style.left = rect.left + 'px';
+      progress.style.width = rect.width + 'px';
+      // remove any translate used by CSS centering
+      progress.style.transform = 'none';
+      // keep top aligned to nav if present
+      if (nav) { progress.style.top = nav.offsetHeight + 'px'; }
+    }
+
     var updateProgress = function() {
       var h = document.body.scrollHeight - window.innerHeight;
       var y = window.scrollY;
       var r = h > 0 ? y / h : 0;
+      // set bar width as percentage of the progress container
       bar.style.width = (r * 100) + '%';
       if (y > showPoint) {
         progress.classList.add('visible');
@@ -27,6 +42,10 @@
         progress.classList.remove('visible');
       }
     };
+
+    // initial alignment and on resize
+    alignProgressToContent();
+    window.addEventListener('resize', alignProgressToContent, { passive: true });
     window.addEventListener('scroll', updateProgress, { passive: true });
     updateProgress();
   }

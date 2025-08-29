@@ -143,6 +143,8 @@ details.protocol-summary[open] {
   max-width: var(--container-width);
   height: 8px; /* slightly thicker */
   background: transparent;
+  /* align to page content by matching container padding */
+  padding: 0 var(--container-padding);
   pointer-events: none;
   z-index: 1000;
   display: none;
