@@ -327,7 +327,9 @@ python scripts/build_site.py
 
 ## 📄 License
 
-This project is released under the MIT License - see the LICENSE file for details.
+Code in this repository is licensed under the MIT License, and all content is
+licensed under the Creative Commons Attribution-NonCommercial-NoDerivatives 4.0
+International License. See LICENSE.md for details.
 
 ## 🕘 Recent Activity
 
