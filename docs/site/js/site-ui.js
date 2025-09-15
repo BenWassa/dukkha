@@ -99,7 +99,18 @@
       var inProtocols = window.location.pathname.indexOf('/protocols/') !== -1;
       var basePath = inProtocols ? '' : 'protocols/';
       var overviewPath = inProtocols ? '../protocols.html' : 'protocols.html';
-      if (toggle) { toggle.setAttribute('href', overviewPath); }
+      if (toggle) {
+        try {
+          var existing = toggle.getAttribute('href');
+          // Only override if there is no href or it's a placeholder '#'
+          if (!existing || existing === '#') {
+            toggle.setAttribute('href', overviewPath);
+          }
+        } catch (e) {
+          // fallback: set href if getAttribute throws for any reason
+          try { toggle.setAttribute('href', overviewPath); } catch (err) {}
+        }
+      }
 
       function buildMenu(list) {
         menu.innerHTML = '';
@@ -190,8 +201,8 @@
       }
       function open() {
         dropdown.classList.add('open');
-        toggle.setAttribute('aria-expanded', 'true');
-        
+        // preserve any existing aria-expanded attribute set in markup; do not overwrite
+
         // Position the dropdown correctly relative to the toggle button
         var rect = toggle.getBoundingClientRect();
         menu.style.left = rect.left + 'px';
@@ -199,7 +210,7 @@
       }
       function close() {
         dropdown.classList.remove('open');
-        toggle.setAttribute('aria-expanded', 'false');
+        // preserve aria-expanded attribute
       }
 
       toggle.addEventListener('keydown', function(e) {

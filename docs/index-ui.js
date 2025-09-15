@@ -22,14 +22,14 @@
       clearTimeout(closeTimeout);
       isOpen = true;
       dropdown.classList.add('open');
-      toggle.setAttribute('aria-expanded', 'true');
+      // preserve any existing aria-expanded value; do not overwrite so hover CSS remains primary
     }
 
     function close() {
       if (!isOpen) return;
       isOpen = false;
       dropdown.classList.remove('open');
-      toggle.setAttribute('aria-expanded', 'false');
+      // preserve aria-expanded attribute
     }
 
     function delayedClose() {
