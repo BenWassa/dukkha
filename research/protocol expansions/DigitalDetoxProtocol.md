@@ -31,7 +31,7 @@ This protocol integrates findings across multiple studies to offer a comprehensi
 * **Option A: Full Internet Disconnect (High Impact, High Commitment):** Disable mobile internet on your smartphone for 1–2 weeks, allowing only calls and texts.
 
   * **Considerations:** Powerful “reset” with low adherence (\~25% stayed offline) \[7–10]. Best suited as a voluntary challenge with support.
-* **Option B: Drastic Recreational Screen Reduction (Moderate Impact, Moderate Commitment):** Limit recreational screen use to <3 hours per week for 1–2 weeks \[5].
+* **Option B: Drastic Recreational Screen Reduction (Moderate Impact, Moderate Commitment):** Limit recreational screen use to < 3 hours per week for 1–2 weeks \[5].
 
   * **Considerations:** Boosts mood and well-being, though stress biomarkers may not shift.
 
