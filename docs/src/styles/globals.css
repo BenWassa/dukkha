@@ -1,9 +1,9 @@
+/* Import design token variables so components can use them */
+@import './variables.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-/* Import design token variables so components can use them */
-@import './variables.css';
 
 /* Utility aliases mapping CSS variables where Tailwind cannot handle directly */
 :root {

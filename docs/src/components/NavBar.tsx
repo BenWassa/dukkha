@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
+import { Link } from 'react-router-dom'
 
 export default function NavBar() {
   const [open, setOpen] = useState(false)
@@ -19,7 +20,7 @@ export default function NavBar() {
           <div className="font-serif font-semibold">Project Dukkha</div>
         </div>
         <ul className="ml-auto hidden md:flex gap-4 items-center">
-          <li><a className="nav-link text-sm font-medium" href="#home">Home</a></li>
+          <li><Link className="nav-link text-sm font-medium" to="/">Home</Link></li>
           <li><a className="nav-link text-sm font-medium" href="/site/attention.html">Focus &amp; Attention</a></li>
           <li><a className="nav-link text-sm font-medium" href="/site/recovery.html">Recovery &amp; Baseline</a></li>
           <li className="relative">
