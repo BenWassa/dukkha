@@ -1383,8 +1383,10 @@ a:hover {
 }
 
 /* Ensure content paragraphs use the full reading width (no max-width clamp) */
+.page-content p,
 .content-claims p {
   max-width: 100%;
+  width: 100%;
 }
 
 /* Editorial (narrow) page-content layout */
