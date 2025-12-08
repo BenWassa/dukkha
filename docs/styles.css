@@ -559,14 +559,14 @@ a:hover {
   font-size: var(--text-xl);
   line-height: 1.7;
 }
-  p {
-    margin-bottom: var(--space-4);
-    color: var(--color-text-secondary);
-    font-family: var(--font-sans);
-    font-size: 1.125rem; /* 18px editorial body */
-    line-height: 1.75;
-    max-width: 65ch;
-  }
+p {
+  margin-bottom: var(--space-4);
+  color: var(--color-text-secondary);
+  font-family: var(--font-sans);
+  font-size: 1.125rem; /* 18px editorial body */
+  line-height: 1.75;
+  max-width: none;
+}
 
 
 .intro-stats {
