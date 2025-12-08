@@ -9,6 +9,8 @@
 :root {
   --tw-color-accent: var(--color-accent);
   --tw-color-text-primary: var(--color-text-primary);
+  --tw-radius: 0.75rem;
+  --tw-shadow-soft: 0 15px 45px rgba(15, 23, 42, 0.08);
 }
 
 /* small helpers */
@@ -22,3 +24,26 @@
 /* Small animation util */
 @keyframes spin-slow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 .animate-spin-slow { animation: spin-slow 20s linear infinite; }
+
+/* Common component shells to reduce Tailwind noise in prompts */
+.btn-primary {
+  @apply inline-flex items-center justify-center px-4 py-3 font-semibold rounded-lg text-white transition-all duration-200;
+  background-color: var(--color-accent);
+  box-shadow: var(--tw-shadow-soft);
+}
+
+.btn-ghost {
+  @apply inline-flex items-center justify-center px-4 py-3 font-semibold rounded-lg border transition-all duration-200;
+  border-color: var(--color-border);
+  color: var(--color-text-primary);
+  background: transparent;
+}
+
+.section-shell {
+  @apply max-w-6xl mx-auto px-6;
+}
+
+.card-shell {
+  @apply bg-white border border-border rounded-xl shadow-sm transition-all duration-200;
+  border-radius: var(--tw-radius);
+}
