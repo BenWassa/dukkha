@@ -348,9 +348,11 @@ section.in-view {
 }
 .footer-links { gap: var(--space-8); }
 .footer-note {
-  text-align: center;
-  padding-top: var(--space-6);
-  border-top: 1px solid var(--color-border-light);
+    flex-basis: 100%;
+    text-align: center;
+    padding-top: var(--space-6);
+    border-top: 1px solid var(--color-border-light);
+    margin-top: var(--space-4);
 }
 .footer-note p {
   font-size: var(--text-sm);
