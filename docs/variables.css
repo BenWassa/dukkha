@@ -87,6 +87,11 @@
   /* Accent decoration thickness (unused) */
   /* --accent-thickness: 3px; */
   --nav-text-color: var(--color-text-secondary);
+  /* Footer tokens */
+  --footer-bg: var(--color-surface);
+  --footer-border: var(--color-border);
+  --footer-text: var(--color-text-secondary);
+  --footer-muted: var(--color-text-muted);
 }
 
 /* Dark Mode Variables */

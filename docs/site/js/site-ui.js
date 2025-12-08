@@ -394,10 +394,12 @@
             ghLink.href = 'https://github.com/BenWassa/dukkha';
             ghLink.target = '_blank';
             ghLink.rel = 'noopener noreferrer';
-            ghLink.className = 'github-link';
+            ghLink.className = 'site-footer__github github-link';
+            ghLink.setAttribute('aria-label', 'Project Dukkha on GitHub');
             var img = document.createElement('img');
             img.src = src;
-            img.alt = 'GitHub';
+            // decorative image — provide empty alt text when anchor is labelled
+            img.alt = '';
             img.className = 'github-icon';
             // ensure the image uses the white mark; if src doesn't indicate white, we prefer explicit file
             if (!/white/i.test(src)) img.src = src;
@@ -412,6 +414,16 @@
         tryLoad(0);
       }
     }
+  } catch (e) { /* noop */ }
+
+  // Attach print link behaviour for elements with class .print-link
+  try {
+    document.querySelectorAll('.print-link').forEach(function(link) {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        window.print();
+      });
+    });
   } catch (e) { /* noop */ }
 
 })();
