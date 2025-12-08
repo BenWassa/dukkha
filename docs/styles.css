@@ -1029,15 +1029,18 @@ a:hover {
 .footer {
   background-color: var(--color-background); /* Different background from footnotes */
   border-top: 2px solid var(--color-accent); /* Stronger, colored border */
-  padding: var(--space-6) 0 var(--space-4); /* Reduced from space-12 and space-8 */
-  margin-top: var(--space-8); /* Additional top margin for separation */
+  padding: var(--space-12) 0 var(--space-8); /* More generous spacing */
+  margin-top: var(--space-12);
 }
 
 .footer-content {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  margin-bottom: var(--space-4); /* Reduced from space-8 */
+  gap: var(--space-8);
+  margin-bottom: var(--space-4);
+  flex-wrap: wrap;
+  padding: 0 var(--container-padding);
 }
 
 .footer-brand {
@@ -1052,8 +1055,9 @@ a:hover {
 
 .footer-links {
   display: flex;
-  gap: var(--space-6);
+  gap: var(--space-8);
   align-items: center; /* vertically center links and icons */
+  justify-content: center;
 }
 
 .footer-links a {
@@ -1096,8 +1100,9 @@ a:hover {
 
 .footer-note {
   text-align: center;
-  padding-top: var(--space-4); /* Reduced from space-8 */
+  padding-top: var(--space-6);
   border-top: 1px solid var(--color-border);
+  width: 100%;
 }
 
 .footer-note p {
