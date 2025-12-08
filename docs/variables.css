@@ -53,7 +53,8 @@
   --space-32: 8rem;      /* 128px */
   
   /* Layout */
-  --container-width: 1320px;
+  /* Wider default container to reduce cramped body copy on large viewports */
+  --container-width: 1440px;
   --container-padding: var(--space-6);
   --border-radius: 8px;
   --border-radius-lg: 12px;
@@ -68,6 +69,9 @@
 
   /* Editorial Width Settings for "Premium Journal" */
   --content-width: 760px; /* Tighter reading column for editorial layout */
+  /* Ideal measure (characters per line) for text readability */
+  --measure-ch: 75ch;
+  --measure-narrow-ch: 65ch;
   /* Make wide width equal to container width so nav and content can align */
   --wide-width: var(--container-width);
   /* Nav floating card tokens */
