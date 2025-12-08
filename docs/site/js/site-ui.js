@@ -334,13 +334,32 @@
       var mailto = footerLinks.querySelector('a[href^="mailto:"]');
       if (mailto) {
         // Candidate paths to the white GitHub mark SVG. We'll try each until one loads.
-        var candidates = [
-          'images/icons/github-mark/github-mark-white.svg',
-          '../images/icons/github-mark/github-mark-white.svg',
-          '../../images/icons/github-mark/github-mark-white.svg',
+        // Compute a script-relative candidate (works for multiple server root setups).
+        var candidates = [];
+        try {
+          // document.currentScript is the best way to find the script URL at runtime
+          var scriptSrc = (document.currentScript && document.currentScript.src) || (function() {
+            var s = document.querySelector('script[src*="site-ui.js"]');
+            return s ? s.src : null;
+          })();
+          if (scriptSrc) {
+            try {
+              var scriptUrl = new URL(scriptSrc, window.location.href);
+              // Attempt to resolve to the /docs/images path by climbing up to the repo root
+              var resolved = new URL('../../images/icons/github-mark/github-mark-white.svg', scriptUrl).pathname;
+              candidates.push(resolved);
+            } catch (e) { /* ignore if URL fails */ }
+          }
+        } catch (e) { /* safe fallback */ }
+
+        // Other fallbacks (absolute and relative)
+        candidates = candidates.concat([
           '/docs/images/icons/github-mark/github-mark-white.svg',
-          '/images/icons/github-mark/github-mark-white.svg'
-        ];
+          '/images/icons/github-mark/github-mark-white.svg',
+          '../../images/icons/github-mark/github-mark-white.svg',
+          '../images/icons/github-mark/github-mark-white.svg',
+          'images/icons/github-mark/github-mark-white.svg'
+        ]);
 
         function tryLoad(index) {
           if (index >= candidates.length) {
