@@ -66,9 +66,10 @@
     var messages = [
       'Keep going—you\'re doing great.',
       'Halfway there!',
-      'Almost finished!'
+      'Almost finished!',
+      'Finished!'
     ];
-    var thresholds = [0.25, 0.5, 0.75];
+    var thresholds = [0.25, 0.5, 0.75, 0.99];
     var shown = -1;
     var checkPrompt = function() {
       var h = document.body.scrollHeight - window.innerHeight;
@@ -82,6 +83,11 @@
         shown = idx;
         promptText.textContent = messages[idx];
         prompt.classList.add('active');
+        if (idx === thresholds.length - 1) {
+          prompt.classList.add('finished');
+        } else {
+          prompt.classList.remove('finished');
+        }
       }
     };
     window.addEventListener('scroll', checkPrompt, { passive: true });

@@ -190,6 +190,11 @@ details.protocol-summary[open] {
 }
 .read-prompt__close:focus { outline: 2px solid var(--color-accent); }
 
+.read-prompt.finished .read-prompt__text {
+  font-weight: 700;
+  color: var(--color-accent);
+}
+
 .nav-dropdown { position: relative; }
 .nav-dropdown__toggle {
   background: none;

@@ -65,6 +65,14 @@
   --transition-fast: 0.15s ease-out;
   --transition-normal: 0.25s ease-out;
   --transition-slow: 0.5s ease-out;
+
+  /* Editorial Width Settings for "Premium Journal" */
+  --content-width: 760px; /* Tighter reading column for editorial layout */
+  --wide-width: 1100px;
+  --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
+  /* RGB fallback for nav backdrop if needed */
+  --color-background-rgb: 255, 255, 255;
+  --nav-text-color: var(--color-text-secondary);
 }
 
 /* Dark Mode Variables */
@@ -82,5 +90,8 @@
     --color-text-muted: #94a3b8;
     --color-border: #334155;
     --color-border-light: #475569;
+    /* RGB white/black pairs for glass nav fallback */
+    --color-background-rgb: 15, 23, 42; /* Dark mode background rgb */
+    --nav-text-color: var(--color-text-primary);
   }
 }
