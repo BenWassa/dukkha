@@ -70,6 +70,13 @@
   --content-width: 760px; /* Tighter reading column for editorial layout */
   /* Make wide width equal to container width so nav and content can align */
   --wide-width: var(--container-width);
+  /* Nav floating card tokens */
+  --nav-floating-bg-a: 0.86; /* alpha for the glass background on the nav container */
+  --nav-floating-offset-y: 8px; /* vertical visual lift of the floating nav */
+  --nav-floating-radius: 12px; /* corner radius for the nav card */
+  --nav-floating-padding-vertical: 6px; /* inner padding for nav card */
+  --nav-floating-shadow: 0 10px 30px rgba(15,23,42,0.12);
+  --nav-floating-border: rgba(15,23,42,0.06);
   --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
   /* RGB fallback for nav backdrop if needed */
   --color-background-rgb: 255, 255, 255;
@@ -96,5 +103,8 @@
     /* RGB white/black pairs for glass nav fallback */
     --color-background-rgb: 15, 23, 42; /* Dark mode background rgb */
     --nav-text-color: var(--color-text-primary);
+    /* Nav floating adjustments for dark mode */
+    --nav-floating-bg-a: 0.14;
+    --nav-floating-border: rgba(255,255,255,0.06);
   }
 }
