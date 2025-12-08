@@ -1,0 +1,82 @@
+file,fn_id,citation,url,type
+attention.html,fn1,Schultz et al. (1997),https://doi.org/10.1126/science.275.5306.1593,DOI
+attention.html,fn1,Bunzeck & Du08zel (2006),https://doi.org/10.1523/JNEUROSCI.4795-05.2006,DOI
+attention.html,fn2,Steinberg et al. (2013),https://doi.org/10.1038/nn.3496,DOI
+attention.html,fn3,Oulasvirta et al. (2012),https://doi.org/10.1145/2207676.2207693,DOI
+attention.html,fn3,Stothart et al. (2015),https://doi.org/10.1016/j.compheab.2014.12.007,DOI
+attention.html,fn3,Fitz et al. (2019),https://doi.org/10.1145/3311956.3312015,DOI
+attention.html,fn4,Krebs et al. (2009),https://doi.org/10.1016/j.neuroimage.2009.02.049,DOI
+attention.html,fn4,Berridge & Robinson (2016),https://doi.org/10.1016/j.neuron.2016.09.006,DOI
+attention.html,fn5,Berridge & Robinson (1998),https://doi.org/10.1016/S0149-7634(98)00021-X,DOI
+attention.html,fn6,Evans et al. (2006),https://doi.org/10.1002/dneu.20235,DOI
+attention.html,fn6,Knutson et al. (2001),https://doi.org/10.1523/JNEUROSCI.21-10-03683.2001,DOI
+attention.html,fn7,Pecina et al. (2003),https://doi.org/10.1523/JNEUROSCI.23-28-11118.2003,DOI
+attention.html,fn8,Berridge & Robinson (2016),https://doi.org/10.1016/j.neuron.2016.09.006,DOI
+attention.html,fn8,Wyvell & Berridge (2000),https://doi.org/10.1523/jneurosci.20-22-08521.2000,DOI
+attention.html,fn9,Ness Labs (context switching),https://nesslabs.com/blog,URL
+attention.html,fn9,Microsoft WorkLab (breaks),https://www.microsoft.com/en-us/worklab/why-your-brain-needs-breaks-throughout-the-workday,URL
+attention.html,fn10,Lembke (2021) Dopamine Nation (publisher),https://www.penguinrandomhouse.com/books/668388/dopamine-nation-by-dr-anna-lembke/,URL
+attention.html,fn10,Lembke (author),https://annalembke.com/,URL
+attention.html,fn11,Ness Labs (breaks),https://nesslabs.com/blog,URL
+attention.html,fn11,Microsoft WorkLab,https://www.microsoft.com/en-us/worklab/,URL
+
+model.html,fn1,Berridge & Kringelbach (2015),https://doi.org/10.1016/j.neuron.2015.02.049,DOI
+model.html,fn1,Baik (2020),https://doi.org/10.1038/s12276-020-00532-4,DOI
+model.html,fn2,Schultz et al. (1997),https://doi.org/10.1126/science.275.5306.1593,DOI
+model.html,fn2,Steinberg et al. (2013),https://doi.org/10.1038/nn.3496,DOI
+model.html,fn3,McKeever (Hacking Dopamine blog),https://niallmckeever.com/blog/hacking-dopamine-achieve-long-term-goals,URL
+model.html,fn4,Lembke (2021) Dopamine Nation (publisher),https://www.penguinrandomhouse.com/books/668388/dopamine-nation-by-dr-anna-lembke/,URL
+model.html,fn4,Lembke (author),https://annalembke.com/,URL
+model.html,fn5,Ness Labs (Single-tasking),https://nesslabs.com/single-tasking,URL
+model.html,fn6,Sinha (2024),https://doi.org/10.1038/s41386-024-01728-3,DOI
+model.html,fn6,McKee et al. (2011),https://doi.org/10.1038/npp.2010.103,DOI
+model.html,fn7,Baik (2020),https://doi.org/10.1038/s12276-020-00532-4,DOI
+model.html,fn8,Medical News Today (serotonin overview),https://www.medicalnewstoday.com/articles/232248,URL
+model.html,fn8,Cleveland Clinic (serotonin),https://my.clevelandclinic.org/health/articles/24641-serotonin,URL
+model.html,fn9,Cleveland Clinic (oxytocin),https://my.clevelandclinic.org/health/articles/22588-oxytocin,URL
+model.html,fn9,NCBI Bookshelf (oxytocin),https://www.ncbi.nlm.nih.gov/books/NBK507849/,URL
+
+recovery.html,fn1,Baik (2020),https://doi.org/10.1038/s12276-020-00532-4,DOI
+recovery.html,fn2,Zhang et al. (2021),https://doi.org/10.3389/fpsyt.2021.785050,DOI
+recovery.html,fn2,Brower et al. (1998),https://doi.org/10.1093/alcalc/33.5.495,DOI
+recovery.html,fn3,Sinha (2024),https://doi.org/10.1038/s41386-024-01728-3,DOI
+recovery.html,fn3,McKee et al. (2011),https://doi.org/10.1038/npp.2010.103,DOI
+recovery.html,fn4,Wemm et al. (2019),https://doi.org/10.1037/adb0000494,DOI
+recovery.html,fn5,Zhang et al. (2021),https://doi.org/10.3389/fpsyt.2021.785050,DOI
+recovery.html,fn6,Haasova et al. (2013),https://doi.org/10.1016/j.addbeh.2013.06.012,DOI
+recovery.html,fn6,Wang et al. (2014),https://doi.org/10.1080/16066359.2013.842247,DOI
+recovery.html,fn7,Bowen et al. (2014),https://doi.org/10.1001/jamapsychiatry.2013.3516,DOI
+recovery.html,fn8,Huberman Lab (Using Light for Health),https://hubermanlab.com/using-light-for-health/,URL
+recovery.html,fn9,Huberman Lab (Using Light for Health),https://hubermanlab.com/using-light-for-health/,URL
+recovery.html,fn10,Harvard Health (Take a digital detox),https://www.health.harvard.edu/blog/take-a-digital-detox-202209152820,URL
+recovery.html,fn11,SELF (How Exercise Makes You Happier),https://www.self.com/story/how-exercise-makes-you-happier,URL
+recovery.html,fn11,Harvard Health (Exercising to relax),https://www.health.harvard.edu/staying-healthy/exercising-to-relax,URL
+recovery.html,fn12,Goyal et al. (2014) Meditation meta-analysis,https://doi.org/10.1001/jamainternmed.2013.13018,DOI
+recovery.html,fn12,Goyal et al. PubMed,https://pubmed.ncbi.nlm.nih.gov/24395196/,URL
+recovery.html,fn13,Sleep Foundation (Sleep hygiene),https://www.sleepfoundation.org/sleep-hygiene,URL
+recovery.html,fn13,CDC (Sleep hygiene),https://www.cdc.gov/sleep/about_sleep/sleep_hygiene.html,URL
+
+myths.html,fn1,Rahula (1974) What the Buddha Taught,https://openlibrary.org/works/OL173719W/What_the_Buddha_Taught,URL
+myths.html,fn1,Gombrich (2009) What the Buddha Thought,https://www.worldcat.org/title/what-the-buddha-thought/oclc/268798993,URL
+myths.html,fn2,Rahula (1974) What the Buddha Taught,https://openlibrary.org/works/OL173719W/What_the_Buddha_Taught,URL
+myths.html,fn3,Berridge & Robinson (2016),https://doi.org/10.1016/j.neuron.2016.09.006,DOI
+myths.html,fn3,Berridge & Robinson (1998),https://doi.org/10.1016/S0149-7634(98)00021-X,DOI
+myths.html,fn4,Evans et al. (2006),https://doi.org/10.1002/dneu.20235,DOI
+myths.html,fn4,Berridge & Kringelbach (2015),https://doi.org/10.1016/j.neuron.2015.02.049,DOI
+myths.html,fn5,Bodhi (2000) The Connected Discourses of the Buddha,https://openlibrary.org/books/OL8962057M/The_Connected_Discourses_of_the_Buddha,URL
+myths.html,fn5,Buddharakkhita (1985) Dhammapada,https://openlibrary.org/books/OL2612089M/Dhammapada,URL
+myths.html,fn6,Payutto (1992) Buddhadhamma,https://thuvienhoasen.org/D_1-2_M2_2-205_L3_4-2_B50_F1/Payutto--Phra-Dhammapitaka--Buddhadhamma.html,URL
+
+library.html,entry,Baik (2020),https://doi.org/10.1038/s12276-020-00532-4,DOI
+library.html,entry,Dekker et al. (2024),https://doi.org/10.1016/j.addbeh.2023.107875,DOI
+library.html,entry,Fitz & Kushlev (2019),https://doi.org/10.1145/3311956.3312015,DOI
+library.html,entry,Gray et al. (2023),https://doi.org/10.1145/3544549.3585994,DOI
+library.html,entry,Holte & Ferraro (2020),https://doi.org/10.1016/j.chbr.2020.100027,DOI
+library.html,entry,Mathur et al. (2019),https://doi.org/10.1145/3359218,DOI
+library.html,entry,Olson et al. (2022),https://doi.org/10.1556/2006.2022.00030,DOI
+library.html,entry,Qin et al. (2022),https://doi.org/10.3389/fpsyg.2022.932805,DOI
+library.html,entry,Sinha (2024),https://doi.org/10.1038/s41386-024-01728-3,DOI
+library.html,entry,Soravia et al. (2021),https://doi.org/10.1016/j.psyneuen.2021.105255,DOI
+library.html,entry,Wemm & Wray (2019),https://doi.org/10.1037/adb0000494,DOI
+library.html,entry,Wickord et al. (2023),https://doi.org/10.2196/43567,DOI
+library.html,entry,Zhang et al. (2021),https://doi.org/10.3389/fpsyt.2021.785050,DOI
