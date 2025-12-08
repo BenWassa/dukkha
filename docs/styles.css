@@ -2064,6 +2064,7 @@ button:focus,
 .myths-hero {
   position: relative;
   padding: clamp(var(--space-12), 5vw, var(--space-16));
+  margin-top: var(--space-6);
   background: linear-gradient(135deg, var(--color-surface) 0%, var(--color-background) 70%);
   border: 1px solid var(--color-border);
   border-radius: 20px;
