@@ -119,6 +119,18 @@ a:hover {
   background-repeat: no-repeat;
   background-position: center;
   filter: brightness(0) saturate(100%) invert(77%) sepia(15%) saturate(1068%) hue-rotate(21deg) brightness(94%) contrast(89%);
+  position: relative; /* for accent underline */
+}
+
+.brand-symbol::after {
+  content: '';
+  position: absolute;
+  left: -6px;
+  right: -6px;
+  bottom: -6px;
+  height: var(--accent-thickness);
+  background: var(--color-accent);
+  border-radius: 2px;
 }
 
 .cta-icon {
@@ -1317,6 +1329,19 @@ a:hover {
 }
 
 .page-hero__visual:hover { transform: perspective(1000px) rotateY(0) rotateX(0); }
+
+/* Accent underline on hero visual */
+.page-hero__visual { position: relative; }
+.page-hero__visual::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: var(--accent-thickness);
+  background: var(--color-accent);
+  border-radius: 0 0 var(--border-radius) var(--border-radius);
+}
 
 .page-hero__badge {
   display: inline-flex;

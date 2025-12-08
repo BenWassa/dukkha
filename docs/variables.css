@@ -72,6 +72,8 @@
   --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
   /* RGB fallback for nav backdrop if needed */
   --color-background-rgb: 255, 255, 255;
+  /* Accent decoration thickness */
+  --accent-thickness: 3px;
   --nav-text-color: var(--color-text-secondary);
 }
 
