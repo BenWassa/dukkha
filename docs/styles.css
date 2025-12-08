@@ -1173,7 +1173,7 @@ a:hover {
 
 .page-hero {
   position: relative;
-  margin: var(--space-12) 0 var(--space-16);
+  margin: calc(var(--nav-height) + var(--space-8)) 0 var(--space-16);
   padding: var(--space-14) 0;
   background: linear-gradient(135deg, var(--color-surface) 0%, var(--color-background) 100%);
   overflow: hidden;
@@ -1730,6 +1730,10 @@ a:hover {
     gap: var(--space-8);
   }
   
+  .page-hero__visual {
+    order: 2;
+  }
+  
   .nav-menu {
     gap: var(--space-4);
   }
@@ -1766,6 +1770,16 @@ a:hover {
     gap: var(--space-3);
   }
   
+  .page-hero__deck {
+    font-size: var(--text-base);
+    max-width: 100%;
+  }
+
+  .page-hero__label {
+    padding: var(--space-2) var(--space-2);
+    gap: var(--space-1);
+  }
+
   .page-hero__cta-row {
     width: 100%;
   }
@@ -1869,6 +1883,15 @@ a:hover {
   
   .page-hero__deck {
     font-size: var(--text-base);
+  }
+
+  .page-hero__meta {
+    gap: var(--space-2);
+  }
+  
+  .meta-chip {
+    font-size: var(--text-2xs);
+    padding: var(--space-1) var(--space-2);
   }
 }
 

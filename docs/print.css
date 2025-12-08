@@ -28,13 +28,32 @@
   }
   
   .page-hero {
-    padding: var(--space-6) 0 !important;
-    margin: var(--space-6) 0 !important;
+    padding: var(--space-8) 0 !important;
+    margin: var(--space-8) 0 !important;
     border: none !important;
+    page-break-after: avoid;
   }
   
   .page-hero__inner {
     grid-template-columns: 1fr !important;
+  }
+
+  .page-hero__label {
+    display: block !important;
+    margin-bottom: var(--space-3);
+    background: transparent !important;
+    padding: 0 !important;
+    color: var(--color-text-primary) !important;
+  }
+  
+  .page-hero__title {
+    page-break-after: avoid;
+    margin-bottom: var(--space-4);
+  }
+  
+  .page-hero__deck {
+    page-break-after: avoid;
+    margin-bottom: 0;
   }
   
   .hero {
