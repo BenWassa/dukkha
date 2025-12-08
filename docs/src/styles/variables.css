@@ -1,0 +1,14 @@
+/* CSS variables imported from backup/variables.css (source of truth) */
+:root {
+  --color-primary: #1e293b;
+  --color-primary-light: #334155;
+  --color-accent: #c9a961;
+  --color-accent-light: #d4b574;
+  --color-background: #fefefe;
+  --color-surface: #f8fafc;
+  --color-surface-elevated: #ffffff;
+  --color-text-primary: #0f172a;
+  --color-text-secondary: #475569;
+  --color-text-muted: #64748b;
+  --color-border: #e2e8f0;
+}

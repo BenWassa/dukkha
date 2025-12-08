@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Import design token variables so components can use them */
+@import './variables.css';
+
+/* Utility aliases mapping CSS variables where Tailwind cannot handle directly */
+:root {
+  --tw-color-accent: var(--color-accent);
+  --tw-color-text-primary: var(--color-text-primary);
+}
+
+/* small helpers */
+.bg-surface { background-color: var(--color-surface); }
+.text-text-primary { color: var(--color-text-primary); }
+.text-text-secondary { color: var(--color-text-secondary); }
+.bg-accent { background-color: var(--color-accent); }
+.border-border { border-color: var(--color-border); }
+.border-border-light { border-color: var(--color-border-light); }
+
+/* Small animation util */
+@keyframes spin-slow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+.animate-spin-slow { animation: spin-slow 20s linear infinite; }
