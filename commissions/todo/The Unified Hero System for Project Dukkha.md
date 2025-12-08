@@ -193,3 +193,26 @@ If you want, I can:
 - Generate the full shared CSS block, ready to paste  
 - Generate the new HTML hero markup for each page  
 - Apply the edits directly
+
+---
+
+## Sprint Breakdown
+
+**Sprint 1 — System foundation**  
+- Add `.page-hero` component styles to `docs/styles.css` (desktop grid, mobile stack, chips, CTA styles, label typography, visual slot).  
+- Update `print.css` to strip backgrounds/CTAs/meta chips while preserving hierarchy.  
+- Wire a single page (e.g., `docs/site/attention.html`) to the new markup structure as the pilot.  
+- Quick QA: desktop/mobile/print for the pilot page.
+
+**Sprint 2 — Page migrations**  
+- Migrate remaining pages to the new hero markup: `library.html`, `model.html`, `myths.html`, `protocols.html`, `recovery.html`.  
+- Apply per-page labels, decks, meta chips, and CTA anchors (jump links) per the plan.  
+- Light visual accents per page (optional icons/illustrations in the right column).  
+- QA each page for responsiveness and accessibility (aria-labels on meta list/CTAs).
+
+**Sprint 3 — Polish & governance**  
+- Refine spacing/typography tokens if needed (line-length clamp, top padding with fixed nav).  
+- Validate print view across all pages; ensure backgrounds/CTAs/chips are hidden.  
+- Add small utility helpers if helpful (e.g., `.meta-chip--accent` variants).  
+- Write a short “hero system” note in the docs/commissions or README to guide future pages.  
+- Final cross-browser smoke test and tidy any unused legacy hero styles.

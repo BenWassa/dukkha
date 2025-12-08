@@ -15,8 +15,26 @@
   .hero-visual,
   .footer-links,
   .cta-primary,
-  .cta-secondary {
+  .cta-secondary,
+  .page-hero__visual,
+  .page-hero__meta,
+  .page-hero__cta-row {
     display: none !important;
+  }
+
+  .page-hero,
+  .page-hero::before {
+    background: transparent !important;
+  }
+  
+  .page-hero {
+    padding: var(--space-6) 0 !important;
+    margin: var(--space-6) 0 !important;
+    border: none !important;
+  }
+  
+  .page-hero__inner {
+    grid-template-columns: 1fr !important;
   }
   
   .hero {
