@@ -93,6 +93,7 @@ a:hover {
   align-items: center;
   justify-content: flex-start;
   gap: var(--space-6);
+  position: relative; /* enable pseudo-element accent */
   max-width: var(--container-width);
   margin: 0 auto;
   padding: 0 var(--container-padding);
@@ -122,16 +123,7 @@ a:hover {
   position: relative; /* for accent underline */
 }
 
-.brand-symbol::after {
-  content: '';
-  position: absolute;
-  left: -6px;
-  right: -6px;
-  bottom: -6px;
-  height: var(--accent-thickness);
-  background: var(--color-accent);
-  border-radius: 2px;
-}
+/* brand underline removed; nav container accent used instead */
 
 .cta-icon {
   font-size: var(--text-lg);
@@ -146,6 +138,17 @@ a:hover {
   list-style: none;
   gap: var(--space-4);
   margin-left: var(--space-6);
+}
+
+/* Bottom accent for the nav container */
+.nav-container::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px; /* sits right below the nav container */
+  height: var(--accent-thickness);
+  background: var(--color-accent);
 }
 
 .nav-link {
@@ -1332,16 +1335,7 @@ a:hover {
 
 /* Accent underline on hero visual */
 .page-hero__visual { position: relative; }
-.page-hero__visual::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: var(--accent-thickness);
-  background: var(--color-accent);
-  border-radius: 0 0 var(--border-radius) var(--border-radius);
-}
+/* hero visual underline removed; nav container accent used instead */
 
 .page-hero__badge {
   display: inline-flex;
