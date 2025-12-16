@@ -95,6 +95,48 @@
 }
 
 /* =============================================
+   Infographic Helpers
+   Provides landscape and portrait variants for diagrams and images
+   ============================================= */
+.infographic {
+  display: block;
+  max-width: 100%;
+  margin: var(--space-6) auto;
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+
+.infographic .diagram-visual {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: none; /* let the container handle border if required */
+}
+
+/* Landscape infographics (wider visual) */
+.infographic--landscape .diagram-visual {
+  aspect-ratio: 16 / 9;
+  max-height: 480px;
+  object-fit: cover; /* crop when necessary to preserve visual impact */
+}
+
+/* Portrait infographics (taller visual) */
+.infographic--portrait .diagram-visual {
+  aspect-ratio: 3 / 4;
+  max-height: 720px;
+  object-fit: contain; /* show entire diagram for tall visuals */
+}
+
+/* Caption for infographics */
+.infographic-caption {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  text-align: center;
+  padding: var(--space-2) var(--space-3);
+}
+
+/* =============================================
    Protocol Components
    ============================================= */
 

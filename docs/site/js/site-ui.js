@@ -347,6 +347,9 @@
               var scriptUrl = new URL(scriptSrc, window.location.href);
               // Attempt to resolve to the /docs/images path by climbing up to the repo root
               var resolved = new URL('../../images/icons/github-mark/github-mark-white.svg', scriptUrl).pathname;
+              // Also attempt the assets/images path (canonical assets folder)
+              var resolvedAssets = new URL('../../assets/images/icons/github-mark/github-mark-white.svg', scriptUrl).pathname;
+              candidates.push(resolvedAssets);
               candidates.push(resolved);
             } catch (e) { /* ignore if URL fails */ }
           }
@@ -354,10 +357,15 @@
 
         // Other fallbacks (absolute and relative)
         candidates = candidates.concat([
+          '/docs/assets/images/icons/github-mark/github-mark-white.svg',
+          '/assets/images/icons/github-mark/github-mark-white.svg',
           '/docs/images/icons/github-mark/github-mark-white.svg',
           '/images/icons/github-mark/github-mark-white.svg',
+          '../../assets/images/icons/github-mark/github-mark-white.svg',
           '../../images/icons/github-mark/github-mark-white.svg',
+          '../assets/images/icons/github-mark/github-mark-white.svg',
           '../images/icons/github-mark/github-mark-white.svg',
+          'assets/images/icons/github-mark/github-mark-white.svg',
           'images/icons/github-mark/github-mark-white.svg'
         ]);
 
