@@ -1,80 +1,72 @@
-# Project Dukkha — Docs React Migration
+# Docs Directory – Site Build & Live Assets
 
-This folder will house the new React + Tailwind site that replaces the static docs currently in `/backup`.
+This folder hosts the published version of Project Dukkha. Source material lives in `src/` and is compiled here by running `python scripts/build_site.py`. Only commit generated files or assets that are meant to be served on the live site.
 
-## Migration Summary
+## Recent Updates (August 2025)
+- **Complete Footnotes System**: All 5 protocols now have comprehensive citations (49 total) with clean separation
+- **Enhanced Build System**: Resolved duplicate footnotes issue - citations appear only in dedicated sections
+- **Interactive Features**: Collapsible footnotes sections with smooth scrolling navigation
+- **Quality Validation**: Zero duplicate footnotes verified across all generated HTML pages
 
-Goals:
-- Use Vite + React (TypeScript) + Tailwind to modernize the site
-- Keep design tokens consistent via CSS variables and a Tailwind config derived from `variables.css`
-- Convert individual UI pieces into reusable React components
-- Replace imperative `site-ui.js` with React logic (hooks and small components)
+### Visual & UX updates (August 2025)
 
-Why this approach:
-- Component-driven migration (NavBar, Hero, AccessCard, Footnotes, etc.) minimizes breakage and allows progressive conversion
-- Reusing design tokens ensures visual continuity while moving to utility-first styling
+- Homepage: Full-screen hero with smooth-scroll arrow; enlarged project title and compass for stronger visual impact.
+- Quick Access: Redesigned six-card layout with improved hierarchy, larger icons, and cleaner CTA interactions (hover underlines removed).
+- Diagrams: Intro SVG sizing aligned to content column; background and elevated framing removed so visuals integrate with page flow.
+- UX polish: Dropdowns open on hover with delayed close for accessibility; `index-ui.js` updated to handle hover behavior.
 
-## Suggested File Structure
+## Directory map
+- `index.html` – landing page linking to all major sections.
+- `site/` – generated pages (**do not** edit manually).
+- `images/` – diagrams, icons and placeholders used by the live site.
+- `assets/` – data files and reference material consumed by pages.
+- `styles.css`, `variables.css`, `utilities.css`, `print.css`, `index-ui.js` – styling and interactivity.
 
-- docs/
-  - package.json (vite project root)
-  - tailwind.config.js
-  - postcss.config.js
-  - index.html
-  - public/
-    - images/
-  - src/
-    - main.tsx
-    - App.tsx
-    - pages/
-      - Home.tsx
-      - Protocols.tsx
-    - components/
-      - NavBar.tsx
-      - Hero.tsx
-      - AccessCard.tsx
-      - Footer.tsx
-    - hooks/
-      - useScrollProgress.ts
-      - useDropdown.ts
-    - styles/
-      - variables.css (imported)  // merge or reference from backup
-      - globals.css
+## Live site pages
+| File | Purpose | Connected assets |
+| --- | --- | --- |
+| `index.html` | Entry point with quick access cards for protocols and resources. | icons `focus-target.svg`, `moon2.svg`, `myth-busting.svg`, `Dopamine.svg`, `research-library.svg`; diagram `simple dopamine case process.svg` |
+| `site/attention.html` | Home for the **Focus Sprint** protocol addressing the ping‑scroll loop. | diagram `ping_scroll_loop_original.svg`; sources `assets/content_sources/A_attention` |
+| `site/recovery.html` | **Recovery Reset** protocol restoring baseline via sleep and stress management. | diagrams `dopamine_baseline_spike.svg`, `stress_sensitization_loop.svg`; sources `assets/content_sources/B_recovery` |
+| `site/myths.html` | Seven dopamine myths with citations. | sources `assets/content_sources/C_myths` |
+| `site/model.html` | Explains dopamine baseline/spike and reward compass model. | diagrams `dopamine_baseline_spike.svg`, `reward_compass.svg` |
+| `site/library.html` | Searchable research library compiled from references. | data `assets/content_sources/references_extracted.csv` |
+| `site/protocols.html` | Index of extended protocols. | icons as on landing page |
+| `site/protocols/*.html` | Detailed protocol pages: digital detox, mindfulness, sleep, nutrition and stress. | Complete footnotes sections with 49 total research citations; served with `protocols/manifest.json` for PWA |
 
-## Migration Steps (High-level)
+## Live images
+### Diagrams (`images/diagrams/`)
+- `simple dopamine case process.svg` – landing page overview of dopamine cycle.
+- `ping_scroll_loop_original.svg` – illustrates the attention ping/scroll loop.
+- `dopamine_baseline_spike.svg` – compares baseline vs spike; shared across model & recovery pages.
+- `reward_compass.svg` – visualizes the reward compass on the model page.
+- `stress_sensitization_loop.svg` – stress‑reward loop featured on the recovery page.
+- Other files in this folder are drafts or unused; keep them outside `docs/` when not deployed.
 
-1. Create the Vite React + TypeScript project inside `docs/`.
-2. Add the `tailwind.config.js` and `postcss.config.js` to the project and map design tokens.
-3. Create minimal page(s) and import `variables.css` and `styles.css` as a fallback initially.
-4. Build the small components one-by-one by converting page fragments from `index.html`:
-   - NavBar (convert dropdown to React `useState` & accessible keyboard handling)
-   - Hero (keep the CSS visual or replace with an inline SVG)
-   - AccessCard (props-driven component: `title`, `icon`, `painPoint`, `description`, `link`)
-   - Footnotes -> component with collapsible logic
-5. Convert imperative code in `site-ui.js` to React hooks and components:
-   - `useScrollProgress` to set a progress bar width and visibility
-   - `ScrollToTop` component to support React Router
-   - `useDropdown` to manage nav dropdown menu & keyboard traps
-6. Replace `styles.css` gradually with Tailwind utilities while preserving the look.
-7. Add tests & smoke tests (e.g., Playwright or Jest + React Testing Library) for critical components.
+### Icons (`images/icons/`)
+- `focus-target.svg` – Focus Sprint quick‑access card.
+- `moon2.svg` – Recovery Reset card.
+- `myth-busting.svg` – Myth Busting card.
+- `Dopamine.svg` – Dopamine Model card.
+- `research-library.svg` – Research Library card.
+- `ouroboros-svgrepo-com.svg` – background motif referenced in `styles.css`.
+- Additional icons (`3.svg`, `lightbulb.svg`, `ouroboros-simple.svg`, `recovery-moon.svg`, `sleeper.svg`) are available but not currently referenced.
 
-## Notes & Recommendations
-- Keep `variables.css` as a source of truth; the Tailwind tokens mirror it to enable utility-first conversion over time.
-- Preserve the `compass` CSS div art if desired, or replace with a more maintainable SVG component.
-- Build incrementally: start with a single homepage (Home.tsx) and core components, verify them visually, then move other pages.
-- Use `manifest.json` inside `protocols/` to dynamically populate the protocols dropdown as currently implemented in `site-ui.js`.
+### Placeholders (`images/placeholders/`)
+- `diagram_placeholder.svg` – reserved for future diagram slots; not used in production.
 
----
+## Non-image assets
+- `assets/content_sources/A_attention` – raw references for attention protocol.
+- `assets/content_sources/B_recovery` – references for recovery protocol.
+- `assets/content_sources/C_myths` – references for myths page.
+- `assets/content_sources/references_extracted.csv` – master citation list powering the research library.
 
-If you want, I can scaffold a minimal Vite project in `docs/` with a minimal `NavBar`, `Hero`, and `AccessCard` components (TSX) and the `tailwind.config.js` created. I have scaffolded a starter Vite project and components in `docs/src/` already.
+## Update & test workflow
+1. Make edits in `src/`.
+2. Rebuild: `python scripts/build_site.py`.
+3. Run tests: `pytest tests/`.
+4. Optional link check: `pwsh scripts/qa_check.ps1 -CheckUrls` (Windows PowerShell).
+5. Commit updated `src/` and generated `docs/` files.
 
-Try it locally:
-```bash
-cd docs
-npm install
-npm run dev
-```
+Maintaining accurate asset mapping keeps the site aligned with Project Dukkha’s mission: integrating Buddhist wisdom with contemporary dopamine science.
 
-Notes:
-- The starter uses Tailwind + CSS variables. It includes component stubs and `useScrollProgress` hook.
-- Replace the content and continue converting pages to React components using the component migration guides.
