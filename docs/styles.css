@@ -128,7 +128,8 @@ a:hover {
   display: inline-block;
   width: var(--nav-brand-size);
   height: var(--nav-brand-size);
-  background-image: url('images/icons/ouroboros-svgrepo-com.svg');
+  /* Use canonical assets path so the icon loads reliably */
+  background-image: url('assets/images/icons/ouroboros-svgrepo-com.svg');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
