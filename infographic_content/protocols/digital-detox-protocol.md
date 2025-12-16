@@ -1,6 +1,6 @@
 <!-- Source: backup/current-html/protocols/digital-detox-protocol.html -->
 # Digital Detox Protocol - Project Dukkha
-**Description:** The
+**Description:** Practical interventions to reduce compulsive checking and manage notifications, lowering the pull of novelty-driven digital stimuli and improving sustained attention.
 
 ---
 

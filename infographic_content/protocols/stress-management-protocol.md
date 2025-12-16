@@ -1,6 +1,6 @@
 <!-- Source: backup/current-html/protocols/stress-management-protocol.html -->
 # Stress Management Protocol - Project Dukkha
-**Description:** The
+**Description:** Techniques to reduce stress reactivity, manage cravings, and build resilience to prevent relapse and support long-term recovery.
 
 ---
 

@@ -1,6 +1,6 @@
 <!-- Source: backup/current-html/protocols/sleep-optimization-protocol.html -->
 # Sleep Optimization Protocol - Project Dukkha
-**Description:** The
+**Description:** Evidence-based steps to restore circadian rhythm and improve sleep quality, stabilizing dopamine function and reducing craving.
 
 ---
 

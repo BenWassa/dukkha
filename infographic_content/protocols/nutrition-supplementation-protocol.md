@@ -1,6 +1,6 @@
 <!-- Source: backup/current-html/protocols/nutrition-supplementation-protocol.html -->
 # Nutrition & Supplementation Protocol - Project Dukkha
-**Description:** The
+**Description:** Foundational nutrition and lifestyle strategies to support dopamine synthesis, receptor health, and cognitive resilience.
 
 ---
 
