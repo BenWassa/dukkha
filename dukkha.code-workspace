@@ -3,5 +3,17 @@
         {
             "path": "."
         }
-    ]
+    ],
+    "launch": {
+        "configurations": [
+            {
+                "type": "pwa-chrome",
+                "name": "Open docs in Brave",
+                "request": "launch",
+                "url": "http://127.0.0.1:3002/docs/index.html",
+                "runtimeExecutable": "/Applications/Brave Browser.app/Contents/MacOS/Brave Browser",
+                "webRoot": "${workspaceFolder}"
+            }
+        ]
+    }
 }
