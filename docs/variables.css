@@ -74,6 +74,19 @@
   --measure-narrow-ch: 65ch;
   /* Make wide width equal to container width so nav and content can align */
   --wide-width: var(--container-width);
+  /* Component & visual tokens (added for layout normalization) */
+  --diagram-max-width: 700px;
+  --diagram-max-height: 480px;
+  --visual-max-width: 460px;
+  --component-max-width: 420px;
+
+  /* Card sizing */
+  --card-min-height: 0; /* prefer fluid height */
+  --card-equalize-gap: var(--space-6);
+
+  /* Compass / hero decorations */
+  --compass-max-width: 400px;
+  --hero-deco-size: clamp(180px, 28vw, 420px);
   /* Nav floating card tokens */
   --nav-floating-bg-a: 0.86; /* alpha for the glass background on the nav container */
   --nav-floating-offset-y: 8px; /* vertical visual lift of the floating nav */

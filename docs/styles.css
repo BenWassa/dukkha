@@ -761,9 +761,9 @@ a:hover {
 
 .access-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: var(--space-8);
-  max-width: 1200px;
+  max-width: var(--container-width);
   margin: 0 auto;
 }
 
@@ -779,7 +779,7 @@ a:hover {
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  min-height: 380px;
+  min-height: var(--card-min-height);
 }
 
 .access-card:hover {
