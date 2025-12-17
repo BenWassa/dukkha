@@ -873,7 +873,7 @@ a:hover {
   color: var(--color-text-primary);
   font-weight: 600;
   line-height: 1.2;
-  background: linear-gradient(135deg, #fef2f2, #fee2e2);
+  background: linear-gradient(135deg, var(--color-pain-200), var(--color-pain-300));
   padding: var(--space-1) var(--space-2);
   border-radius: var(--border-radius);
   position: relative;
@@ -887,20 +887,20 @@ a:hover {
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(135deg, rgba(220, 38, 38, 0.05), rgba(239, 68, 68, 0.08));
+  background: linear-gradient(135deg, rgba(220, 38, 38, 0.08), rgba(239, 68, 68, 0.12));
   pointer-events: none;
 }
 
 /* Dark mode adjustments */
 @media (prefers-color-scheme: dark) {
   .pain-text {
-    background: linear-gradient(135deg, rgba(220, 38, 38, 0.15), rgba(239, 68, 68, 0.12));
-    border-left-color: #f87171;
-    color: #fecaca;
+    background: linear-gradient(135deg, rgba(220, 38, 38, 0.22), rgba(239, 68, 68, 0.18));
+    border-left-color: var(--color-pain-400);
+    color: #fff;
   }
   
   .pain-text::before {
-    background: linear-gradient(135deg, rgba(248, 113, 113, 0.08), rgba(252, 165, 165, 0.06));
+    background: linear-gradient(135deg, rgba(248, 113, 113, 0.12), rgba(252, 165, 165, 0.08));
   }
 }
 
@@ -909,7 +909,7 @@ a:hover {
 }
 
 .access-card:hover .pain-text {
-  background: linear-gradient(135deg, #fee2e2, #fecaca);
+  background: linear-gradient(135deg, var(--color-pain-300), var(--color-pain-400));
   transform: translateY(-1px);
   box-shadow: 0 2px 4px rgba(220, 38, 38, 0.15);
 }

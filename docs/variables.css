@@ -21,6 +21,11 @@
   --color-success: #059669;
   --color-warning: #d97706;
   --color-error: #dc2626;
+  /* Pain/alert tone for UI (used by .pain-text) */
+  --color-pain-100: #fee2e2; /* very light */
+  --color-pain-200: #fecaca; /* light */
+  --color-pain-300: #fca5a5; /* medium */
+  --color-pain-400: #f87171; /* strong */
   
   /* Typography */
   --font-serif: 'Crimson Text', 'Times New Roman', serif;
