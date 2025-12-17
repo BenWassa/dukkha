@@ -87,6 +87,12 @@
   /* Compass / hero decorations */
   --compass-max-width: 400px;
   --hero-deco-size: clamp(180px, 28vw, 420px);
+  /* Additional spacing tokens */
+  --space-10: 2.5rem;   /* 40px */
+  /* Diagram portrait max height */
+  --diagram-portrait-max-height: 720px;
+  /* Small border radius */
+  --border-radius-sm: 6px;
   /* Nav floating card tokens */
   --nav-floating-bg-a: 0.86; /* alpha for the glass background on the nav container */
   --nav-floating-offset-y: 8px; /* vertical visual lift of the floating nav */
@@ -105,6 +111,7 @@
   --footer-border: var(--color-border);
   --footer-text: var(--color-text-secondary);
   --footer-muted: var(--color-text-muted);
+  --footer-column-min: 220px;
 }
 
 /* Force dark mode when the root has the `.dark` class (explicit override for testing) */

@@ -393,8 +393,8 @@ a:hover {
 
 .compass-container {
   position: relative;
-  width: 400px;
-  height: 400px;
+  width: min(35vw, var(--compass-max-width));
+  aspect-ratio: 1 / 1; /* maintain square shape responsively */
 }
 
 .compass-ring {
@@ -474,7 +474,7 @@ a:hover {
   font-size: 0.9rem;
   color: var(--color-text-muted);
   text-align: center;
-  margin-top: 8px;
+  margin-top: var(--space-2);
 }
 
 @keyframes rotate {
@@ -1052,7 +1052,7 @@ a:hover {
 /* Grid layout for desktop with 3 columns: brand | nav | actions/meta */
 .site-footer__grid, .footer-grid, .footer-content {
   display: grid;
-  grid-template-columns: 1fr 360px 320px;
+  grid-template-columns: 1fr minmax(var(--footer-column-min), 360px) minmax(var(--footer-column-min), 320px);
   gap: var(--space-6);
   align-items: start;
   padding: 0 var(--container-padding);
@@ -1360,7 +1360,7 @@ a:hover {
   background: transparent;
   border: 1px solid var(--color-border);
   font-size: 0.75rem;
-  padding: 6px 12px;
+  padding: var(--space-1) var(--space-3);
   transition: all 0.2s ease;
 }
 
@@ -1552,11 +1552,11 @@ a:hover {
   font-size: 1.5rem;
   font-style: italic;
   color: var(--color-text-primary);
-  margin: var(--space-12) -40px;
-  padding: var(--space-4) 40px;
+  margin: var(--space-12) calc(-1 * var(--space-10));
+  padding: var(--space-4) var(--space-10);
   border-left: none;
   background: linear-gradient(90deg, rgba(201, 169, 97, 0.1) 0%, transparent 100%);
-  border-radius: 4px;
+  border-radius: var(--border-radius-sm);
 }
 
 /* Protocol sections */
@@ -1612,7 +1612,7 @@ a:hover {
   color: var(--color-accent);
   font-size: 0.75rem;
   font-weight: 700;
-  padding: 4px 10px;
+  padding: var(--space-1) var(--space-2);
   border-radius: 100px;
   text-transform: uppercase;
   letter-spacing: 0.05em;

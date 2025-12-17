@@ -118,14 +118,14 @@
 /* Landscape infographics (wider visual) */
 .infographic--landscape .diagram-visual {
   aspect-ratio: 16 / 9;
-  max-height: 480px;
+  max-height: var(--diagram-max-height);
   object-fit: cover; /* crop when necessary to preserve visual impact */
 }
 
 /* Portrait infographics (taller visual) */
 .infographic--portrait .diagram-visual {
   aspect-ratio: 3 / 4;
-  max-height: 720px;
+  max-height: var(--diagram-portrait-max-height);
   object-fit: contain; /* show entire diagram for tall visuals */
 }
 
@@ -160,7 +160,7 @@
 details.protocol-summary { 
   border: 1px solid var(--color-border); 
   padding: 0.6rem; 
-  border-radius: 6px; 
+  border-radius: var(--border-radius-sm); 
   background: transparent; 
 }
 
