@@ -24,8 +24,8 @@
   /* Pain/alert tone for UI (used by .pain-text) */
   --color-pain-100: #fee2e2; /* very light */
   --color-pain-200: #fecaca; /* light */
-  --color-pain-300: #fca5a5; /* medium */
-  --color-pain-400: #f87171; /* strong */
+  --color-pain-300: #dc2626; /* medium - darker for accessibility */
+  --color-pain-400: #b91c1c; /* strong - dark red */
   
   /* Typography */
   --font-serif: 'Crimson Text', 'Times New Roman', serif;
@@ -84,6 +84,9 @@
   --diagram-max-height: 480px;
   --visual-max-width: 460px;
   --component-max-width: 420px;
+
+  /* Pain text max width: cap width of .pain-text boxes to avoid overly wide boxes */
+  --pain-max-width: 280px;
 
   /* Card sizing */
   --card-min-height: 0; /* prefer fluid height */

@@ -289,39 +289,54 @@
     </section>
 
     <!-- Footer -->
-    <footer class="site-footer footer" role="contentinfo" aria-label="Site footer">
-        <div class="container site-footer__grid footer-grid">
-            <div class="site-footer__brand footer-brand">
-                <div class="brand-symbol" aria-hidden="true"></div>
-                <div>
-                    <p class="site-footer__title footer-title">Project Dukkha</p>
-                    <p class="site-footer__tagline footer-tagline">Field guide to dopamine, attention, and the rewarded animal. &nbsp;| &nbsp;दुःख</p>
+    <footer class="site-footer footer-v1" role="contentinfo">
+        <div class="container">
+            <div class="v1-grid">
+                <!-- Brand Column -->
+                <div class="v1-brand">
+                    <h3>Project Dukkha</h3>
+                    <p>A digital field guide to the rewarded animal. Understanding dopamine as a living, mythic force shaping culture and habits.</p>
+                </div>
+                
+                <!-- Column 1 -->
+                <div class="v1-col">
+                    <h4>Protocols</h4>
+                    <ul>
+                        <li><a href="site/attention.html">Focus Sprint</a></li>
+                        <li><a href="site/protocols/digital-detox-protocol.html">Digital Detox</a></li>
+                        <li><a href="site/recovery.html">Sleep Optimization</a></li>
+                        <li><a href="site/protocols.html">Baseline Reset</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Column 2 -->
+                <div class="v1-col">
+                    <h4>Theory</h4>
+                    <ul>
+                        <li><a href="site/model.html">The Model</a></li>
+                        <li><a href="site/myths.html">Five Myths</a></li>
+                        <li><a href="site/model.html#rpe">Reward Prediction</a></li>
+                        <li><a href="site/library.html">Research Library</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Column 3 -->
+                <div class="v1-col">
+                    <h4>Project</h4>
+                    <ul>
+                        <li><a href="#home">Introduction</a></li>
+                        <li><a href="site/library.html">Citations</a></li>
+                        <li><a href="mailto:contact@projectdukkha.com">Contact</a></li>
+                    </ul>
                 </div>
             </div>
-            <nav class="site-footer__nav" aria-label="Footer navigation">
-                <ul class="site-footer__links footer-links">
-                    <li><a href="site/attention.html">Focus &amp; Attention</a></li>
-                    <li><a href="site/recovery.html">Recovery &amp; Baseline</a></li>
-                    <li><a href="site/myths.html">Five Myths</a></li>
-                    <li><a href="site/model.html">Model</a></li>
-                    <li><a href="site/protocols.html">Protocols</a></li>
-                    <li><a href="site/library.html">Library</a></li>
-                </ul>
-            </nav>
-            <div class="site-footer__actions footer-actions">
-                <ul class="site-footer__actions-list footer-actions">
-                    <li><a class="print-link" href="#">Print guide</a></li>
-                    <li><a href="mailto:contact@projectdukkha.com">Contact</a></li>
-                    <li>
-                        <a class="site-footer__github github-link" href="https://github.com/BenWassa/dukkha" target="_blank" rel="noopener noreferrer" aria-label="Project Dukkha on GitHub">
-                            <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 .198a8 8 0 0 0-2.529 15.6c.4.074.547-.174.547-.385 0-.19-.007-.693-.01-1.36-2.226.483-2.695-1.073-2.695-1.073-.364-.924-.89-1.17-.89-1.17-.727-.497.055-.487.055-.487.804.057 1.227.826 1.227.826.715 1.225 1.874.871 2.33.666.072-.518.28-.872.508-1.073-1.777-.202-3.644-.888-3.644-3.953 0-.873.312-1.588.824-2.148-.083-.202-.357-1.015.078-2.118 0 0 .67-.215 2.2.82a7.65 7.65 0 0 1 4.006 0c1.53-1.035 2.2-.82 2.2-.82.435 1.103.161 1.916.079 2.118.513.56.823 1.275.823 2.148 0 3.073-1.87 3.748-3.65 3.947.288.248.544.736.544 1.483 0 1.07-.01 1.934-.01 2.197 0 .213.146.462.55.384A8 8 0 0 0 8 .198Z"></path></svg>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <div class="site-footer__meta footer-meta">
-                <p class="site-footer__note footer-note">This field guide is for educational purposes. Consult healthcare professionals for medical decisions.</p>
-                <p class="site-footer__copy footer-copy">© 2024–2025 Project Dukkha. All rights reserved.</p>
+            
+            <div class="v1-bottom">
+                <span>&copy; 2025 Project Dukkha. Educational use only.</span>
+                <div style="display:flex; gap: 1rem;">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Use</a>
+                </div>
             </div>
         </div>
     </footer>
@@ -366,6 +381,146 @@
                     this.style.transform = 'translateY(0)';
                 });
             });
+
+            // Normalize .pain-text widths so all instances are the same size (largest natural width),
+            // clamped to the available space of each card header to avoid overflow.
+                function normalizePainTextWidths() {
+                    const els = Array.from(document.querySelectorAll('.pain-text'));
+                    if (!els.length) return;
+
+                    // Clear inline sizes and clamps
+                    els.forEach(el => {
+                        el.classList.remove('pain-text--clamp');
+                        el.style.width = 'auto';
+                        el.style.height = 'auto';
+                    });
+
+                    // Read CSS cap (if provided) from root custom prop
+                    const rootStyles = getComputedStyle(document.documentElement);
+                    let capRaw = rootStyles.getPropertyValue('--pain-max-width').trim();
+                    let capPx = Infinity;
+                    if (capRaw) {
+                        const pxMatch = capRaw.match(/([0-9.]+)px/);
+                        if (pxMatch) capPx = Number(pxMatch[1]);
+                    }
+
+                    // Measure single-line natural widths and available widths
+                    let maxSingle = 0;
+                    const allowedWidths = [];
+                    els.forEach(el => {
+                        const prevWhite = el.style.whiteSpace;
+                        el.style.whiteSpace = 'nowrap';
+                        const w = Math.ceil(el.getBoundingClientRect().width);
+                        el.style.whiteSpace = prevWhite;
+                        if (w > maxSingle) maxSingle = w;
+
+                        const parent = el.closest('.card-header') || el.parentElement;
+                        const parentRect = parent ? parent.getBoundingClientRect() : { width: window.innerWidth };
+                        // compute available width for the element within its parent by accounting for its left offset
+                        const elLeftOffset = Math.floor(el.getBoundingClientRect().left - parentRect.left);
+                        const available = Math.floor(parentRect.width - elLeftOffset - 12);
+                        allowedWidths.push(available);
+                    });
+
+                    // Choose a final candidate width based on natural size and CSS cap
+                    const finalCandidate = Math.max(0, Math.min(maxSingle, capPx));
+
+                    // Apply per-element width clamped by each card's available space (avoids overflow in narrow cards)
+                    els.forEach((el, i) => {
+                        const parent = el.closest('.card-header') || el.parentElement;
+                        const parentRect = parent ? parent.getBoundingClientRect() : { width: window.innerWidth };
+                        const elLeftOffset = Math.floor(el.getBoundingClientRect().left - parentRect.left);
+                        const parentAvailable = Math.floor(parentRect.width - elLeftOffset - 12);
+                        const applied = Math.max(0, Math.min(finalCandidate, parentAvailable));
+                        el.style.width = applied + 'px';
+                    });
+
+                    // Determine line-height and allowed height for 2 lines
+                    const sample = els[0];
+                    const cs = sample ? getComputedStyle(sample) : null;
+                    let sampleLineHeight = cs ? parseFloat(cs.lineHeight) : NaN;
+                    if (!sampleLineHeight || isNaN(sampleLineHeight)) {
+                        const fs = cs ? parseFloat(cs.fontSize) : 16;
+                        sampleLineHeight = fs * 1.2;
+                    }
+                    const allowedHeight = Math.ceil(sampleLineHeight * 2) + 4; // small padding
+
+                    // Compute measured heights and apply clamp to those exceeding two lines
+                    let maxMeasured = 0;
+                    els.forEach(el => {
+                        const h = Math.ceil(el.getBoundingClientRect().height);
+                        if (h > allowedHeight) {
+                            // clamp to 2 lines
+                            el.classList.add('pain-text--clamp');
+                            // re-measure after clamp
+                            const h2 = Math.ceil(el.getBoundingClientRect().height);
+                            maxMeasured = Math.max(maxMeasured, Math.min(h2, allowedHeight));
+                        } else {
+                            el.classList.remove('pain-text--clamp');
+                            maxMeasured = Math.max(maxMeasured, h);
+                        }
+                    });
+
+                    // Final uniform height (up to allowedHeight)
+                    const uniformHeight = Math.min(maxMeasured || allowedHeight, allowedHeight);
+                    els.forEach(el => { el.style.height = uniformHeight + 'px'; });
+
+                    // If any elements still overflow (browser truncation or clamping issues),
+                    // replace their text with a word-safe truncated string with ellipsis.
+                    function truncateToFit(el, maxH) {
+                        // preserve original text
+                        if (!el.dataset.painOriginal) el.dataset.painOriginal = el.textContent.trim();
+                        const original = el.dataset.painOriginal;
+
+                        // quick check
+                        if (el.getBoundingClientRect().height <= maxH) return;
+
+                        // binary search on substring length, but prefer breaking at word boundary
+                        let low = 0, high = original.length, best = '';
+                        while (low <= high) {
+                            const mid = Math.floor((low + high) / 2);
+                            // prefer to cut at last space before mid
+                            let idx = original.lastIndexOf(' ', mid);
+                            if (idx <= 0) idx = mid; // fallback to mid
+                            const candidate = original.slice(0, idx).trim() + '…';
+                            el.textContent = candidate;
+                            if (el.getBoundingClientRect().height <= maxH) {
+                                best = candidate;
+                                low = mid + 1;
+                            } else {
+                                high = mid - 1;
+                            }
+                        }
+                        if (best) {
+                            el.textContent = best;
+                            el.setAttribute('title', original);
+                        } else {
+                            // as a last resort, show original truncated to fewer chars
+                            el.textContent = original.slice(0, Math.max(0, Math.floor(original.length * 0.6))) + '…';
+                            el.setAttribute('title', original);
+                        }
+                    }
+
+                    els.forEach(el => {
+                        // remove webkit clamp to avoid browser hyphenation artifacts, we'll do safe truncation if needed
+                        el.classList.remove('pain-text--clamp');
+                        if (el.getBoundingClientRect().height > uniformHeight) {
+                            truncateToFit(el, uniformHeight);
+                        }
+                    });
+                }
+
+            // Debounce helper
+            let _painResizeTimer = null;
+            function scheduleNormalize() {
+                clearTimeout(_painResizeTimer);
+                _painResizeTimer = setTimeout(normalizePainTextWidths, 120);
+            }
+
+            // Run once now and on relevant events
+            normalizePainTextWidths();
+            window.addEventListener('resize', scheduleNormalize);
+            if (document.fonts && document.fonts.ready) document.fonts.ready.then(normalizePainTextWidths);
         });
     </script>
     <script src="index-ui.js" defer></script>

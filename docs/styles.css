@@ -761,10 +761,18 @@ a:hover {
 
 .access-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr)); /* default 3x grid */
   gap: var(--space-8);
   max-width: var(--container-width);
   margin: 0 auto;
+}
+
+/* Responsive: fall back to 2 columns on medium, 1 on small screens */
+@media (max-width: 900px) {
+  .access-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 520px) {
+  .access-grid { grid-template-columns: 1fr; }
 }
 
 .access-card {
@@ -790,9 +798,10 @@ a:hover {
 
 .card-header {
   display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  padding: var(--space-6) var(--space-6) var(--space-4);
+  align-items: center; /* vertically center icon and pain box */
+  justify-content: flex-start; /* keep icon and label close */
+  gap: var(--space-4);
+  padding: var(--space-4) var(--space-6) var(--space-4);
   background: 
     linear-gradient(135deg, rgba(0, 0, 0, 0.18) 0%, rgba(0, 0, 0, 0.12) 100%),
     linear-gradient(45deg, rgba(201, 169, 97, 0.03) 0%, transparent 50%, rgba(201, 169, 97, 0.02) 100%);
@@ -822,16 +831,23 @@ a:hover {
 }
 
 .card-icon img {
-  width: 64px;
-  height: 64px;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  aspect-ratio: auto;
   transition: all var(--transition-normal);
   filter: invert(58%) sepia(23%) saturate(537%) hue-rotate(8deg) brightness(97%) contrast(87%);
+  object-fit: contain;
+  display: block;
 }
 
-/* Make dopamine icon larger */
+/* Dopamine icon - square format (512x512) */
 .card-icon img[src*="Dopamine.svg"] {
-  width: 112px;
-  height: 112px;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
   transform: translateX(8px);
 }
 
@@ -853,18 +869,20 @@ a:hover {
 .card-pain-point {
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
-  text-align: right;
-  opacity: 0.8;
+  align-items: center; /* center the indicator over the pain-text */
+  text-align: center;
+  gap: 0.125rem;
+  opacity: 0.95;
   transition: all var(--transition-normal);
 }
 
 .pain-indicator {
-  font-size: var(--text-sm);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+  font-size: 0.85rem;
+  text-transform: none; /* no all-caps */
+  font-style: italic;
+  letter-spacing: 0.02em;
   color: var(--color-text-muted);
-  margin-bottom: var(--space-1);
+  margin-bottom: calc(var(--space-1) - 2px);
   font-weight: 500;
 }
 
@@ -874,10 +892,20 @@ a:hover {
   font-weight: 600;
   line-height: 1.2;
   background: linear-gradient(135deg, var(--color-pain-300), var(--color-pain-400));
-  padding: var(--space-1) var(--space-2);
+  padding: calc(var(--space-1) + 2px) var(--space-3);
   border-radius: var(--border-radius);
   position: relative;
   overflow: hidden;
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.1);
+  display: inline-block; /* allow explicit width control */
+  box-sizing: border-box;
+  transition: width 160ms ease, transform 120ms ease;
+  white-space: normal; /* allow wrapping (JS will clamp to 2 lines when needed) */
+  overflow-wrap: break-word; /* prefer breaking at word boundaries */
+  word-break: normal;
+  hyphens: none;
+  max-width: var(--pain-max-width);
+  min-width: 96px; /* prevent extremely narrow boxes */
 }
 
 .pain-text::before {
@@ -887,21 +915,30 @@ a:hover {
   left: 0;
   right: 0;
   bottom: 0;
-  /* slightly stronger overlay to improve perceived contrast */
-  background: linear-gradient(135deg, rgba(220, 38, 38, 0.12), rgba(239, 68, 68, 0.16));
+  /* subtle texture overlay */
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.04));
   pointer-events: none;
+}
+
+/* Multiline clamp to 2 lines when JS determines overflow */
+.pain-text--clamp {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* Dark mode adjustments */
 @media (prefers-color-scheme: dark) {
   .pain-text {
-    background: linear-gradient(135deg, rgba(220, 38, 38, 0.22), rgba(239, 68, 68, 0.18));
-    border-left-color: var(--color-pain-400);
+    background: linear-gradient(135deg, var(--color-pain-300), var(--color-pain-400));
     color: #fff;
+    box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.1), 0 2px 4px rgba(0, 0, 0, 0.3);
   }
   
   .pain-text::before {
-    background: linear-gradient(135deg, rgba(248, 113, 113, 0.12), rgba(252, 165, 165, 0.08));
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.04));
   }
 }
 
@@ -912,13 +949,13 @@ a:hover {
 .access-card:hover .pain-text {
   background: linear-gradient(135deg, var(--color-pain-300), var(--color-pain-400));
   transform: translateY(-1px);
-  box-shadow: 0 2px 4px rgba(220, 38, 38, 0.15);
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.12), 0 4px 8px rgba(185, 28, 28, 0.25);
 }
 
 @media (prefers-color-scheme: dark) {
   .access-card:hover .pain-text {
-    background: linear-gradient(135deg, rgba(239, 68, 68, 0.2), rgba(248, 113, 113, 0.15));
-    box-shadow: 0 2px 4px rgba(248, 113, 113, 0.2);
+    background: linear-gradient(135deg, var(--color-pain-300), var(--color-pain-400));
+    box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.12), 0 4px 8px rgba(0, 0, 0, 0.4);
   }
 }
 
@@ -1174,6 +1211,105 @@ a:hover {
   height: 1px;
   background: var(--color-border);
   margin: var(--space-2) 0 var(--space-1);
+}
+
+/* =============================================
+   Footer Style: Academic Journal (V1)
+   ============================================= */
+
+/* Common Footer Reset */
+.site-footer a {
+  text-decoration: none;
+  transition: color var(--transition-normal);
+}
+.site-footer ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* V1 Specific Styles */
+.footer-v1 {
+  background-color: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+  padding: var(--space-12) 0 var(--space-6);
+  margin-top: var(--space-16);
+  color: var(--color-text-primary);
+}
+
+.v1-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: var(--space-8);
+  margin-bottom: var(--space-12);
+}
+
+.v1-brand h3 {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  margin: 0 0 var(--space-3);
+  display: flex; 
+  align-items: center; 
+  gap: var(--space-2);
+  color: var(--color-text-primary);
+  font-weight: 600;
+}
+
+.v1-brand p {
+  color: var(--color-text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  max-width: 320px;
+  margin-top: 0;
+}
+
+.v1-col h4 {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-text-muted);
+  margin: 0 0 var(--space-4);
+  font-weight: 600;
+}
+
+.v1-col ul li { 
+  margin-bottom: var(--space-2); 
+}
+
+.v1-col a {
+  color: var(--color-text-secondary);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.v1-col a:hover { 
+  color: var(--color-accent); 
+}
+
+.v1-bottom {
+  border-top: 1px solid var(--color-border);
+  padding-top: var(--space-6);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  .v1-grid { grid-template-columns: 1fr 1fr; }
+  .v1-brand { grid-column: span 2; margin-bottom: var(--space-4); }
+}
+
+@media (max-width: 600px) {
+  .v1-grid { grid-template-columns: 1fr; }
+  .v1-brand { grid-column: span 1; }
+  .v1-bottom { 
+    flex-direction: column; 
+    gap: var(--space-4); 
+    text-align: center; 
+  }
 }
 
 /* =============================================
