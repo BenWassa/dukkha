@@ -870,10 +870,10 @@ a:hover {
 
 .pain-text {
   font-size: var(--text-base);
-  color: var(--color-text-primary);
+  color: #fff;
   font-weight: 600;
   line-height: 1.2;
-  background: linear-gradient(135deg, var(--color-pain-200), var(--color-pain-300));
+  background: linear-gradient(135deg, var(--color-pain-300), var(--color-pain-400));
   padding: var(--space-1) var(--space-2);
   border-radius: var(--border-radius);
   position: relative;
@@ -887,7 +887,8 @@ a:hover {
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(135deg, rgba(220, 38, 38, 0.08), rgba(239, 68, 68, 0.12));
+  /* slightly stronger overlay to improve perceived contrast */
+  background: linear-gradient(135deg, rgba(220, 38, 38, 0.12), rgba(239, 68, 68, 0.16));
   pointer-events: none;
 }
 
