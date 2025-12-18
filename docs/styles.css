@@ -3579,7 +3579,7 @@ button:focus,
   --compass-size: 80px;
 }
 
-.compass-container {
+.neural-compass-container {
   position: fixed;
   bottom: 30px;
   right: 30px;
@@ -3595,7 +3595,7 @@ button:focus,
 
 /* Hide on mobile to save screen real estate */
 @media (max-width: 768px) {
-  .compass-container { display: none; }
+  .neural-compass-container { display: none; }
 }
 
 .magnet-zone {
@@ -3680,6 +3680,18 @@ button:focus,
   transform: scale(0.8);
 }
 
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .compass-text,
+  .magnet-zone,
+  .ring-fill,
+  .myths-nav__link::after {
+    transition: none !important;
+    animation: none !important;
+  }
+  .compass-text.blur-out { filter: none; opacity: 1; transform: none; }
+}
+
 /* Label Reveal */
 .compass-label {
   font-family: var(--font-sans);
@@ -3699,7 +3711,7 @@ button:focus,
   box-shadow: var(--shadow-md);
 }
 
-.compass-container:hover .compass-label {
+.neural-compass-container:hover .compass-label {
   opacity: 1;
   transform: translateX(0);
 }
