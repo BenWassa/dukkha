@@ -2547,26 +2547,29 @@ button:focus,
   padding-left: calc(var(--space-3) + 12px);
 }
 .myths-nav__link::before {
+  /* disabled: replaced by full-link background fill (::after) */
+  display: none;
+}
+
+/* Full-link horizontal background fill driven by --progress (e.g., "65%") */
+.myths-nav__link::after {
   content: '';
   position: absolute;
-  left: 8px;
-  top: 8px;
-  bottom: 8px;
-  width: 6px;
-  border-radius: 6px;
-  background: linear-gradient(to bottom,
-    var(--color-accent-light) 0 calc(var(--progress)),
-    transparent calc(var(--progress)) 100%);
-  transition: background 120ms linear, box-shadow 120ms linear;
-  box-shadow: inset 0 0 12px rgba(0,0,0,0.03);
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: var(--progress, 0%);
+  background: linear-gradient(90deg, var(--color-accent-light), var(--color-accent));
+  opacity: 0.10;
+  transition: width 160ms linear, opacity 160ms ease;
+  z-index: 0;
+  border-radius: 8px;
 }
-.myths-nav__link[aria-current="true"]::before {
-  background: var(--color-accent-light);
-  box-shadow: 0 0 18px rgba(201,169,97,0.12);
+.myths-nav__link[aria-current="true"]::after {
+  width: 100%;
+  opacity: 0.16;
 }
-.myths-nav__link[aria-current="true"] {
-  color: var(--color-text-primary);
-}
+.myths-nav__link > * { position: relative; z-index: 1; }
 
 .myth-collection {
   display: flex;
