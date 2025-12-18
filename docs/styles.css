@@ -1232,9 +1232,9 @@ a:hover {
 .footer-v1 {
   background-color: var(--color-surface);
   border-top: 1px solid var(--color-border);
-  padding: var(--space-10) 0 var(--space-6);
-  /* reduce top margin so pages with footnotes don't create excessive gap */
-  margin-top: var(--space-8);
+  padding: var(--space-8) 0 var(--space-6);
+  /* slightly smaller top margin to create a lean overall footer gap */
+  margin-top: var(--space-6);
   color: var(--color-text-primary);
 }
 
@@ -1930,11 +1930,18 @@ a:hover {
 
 .footnotes {
   background-color: var(--color-surface);
-  padding: var(--space-12) 0;
+  /* leaner vertical rhythm for footnotes */
+  padding: var(--space-8) 0;
   border-top: 2px solid var(--color-border);
-  margin-top: var(--space-16);
-  /* Add bottom margin to create space before footer */
-  margin-bottom: var(--space-8);
+  margin-top: var(--space-8);
+  /* reduce gap to footer and avoid double-spacing with footer's top margin */
+  margin-bottom: var(--space-6);
+}
+
+.footnotes > .container {
+  /* keep footnotes readable and visually separate from the page width */
+  max-width: var(--content-width, 760px);
+  margin: 0 auto;
 }
 
 .footnotes h3 {
