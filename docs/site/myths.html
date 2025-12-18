@@ -40,7 +40,7 @@
     </nav>
 
     <main class="page-content myths-page">
-        <section class="myths-hero">
+        <section class="myths-hero" data-roman="0" data-title="Introduction">
             <div class="container myths-hero__grid">
                 <div>
                     <div class="myths-hero__label">Field Guide</div>
@@ -81,7 +81,7 @@
                 </section>
 
                 <section class="myth-collection" id="myth-collection">
-                    <article id="myth-1" class="myth-card">
+                    <article id="myth-1" class="myth-card" data-roman="I" data-title="Myth I: Dukkha">
                         <div class="myth-card__grid">
                     <div class="myth-card__visual">
                         <div class="myth-visual__label">Beyond “Life is Suffering”</div>
@@ -112,7 +112,7 @@
                 </div>
             </article>
 
-                    <article id="myth-2" class="myth-card">
+                    <article id="myth-2" class="myth-card" data-roman="II" data-title="Myth II: Dopamine">
                 <div class="myth-card__grid">
                     <div class="myth-card__visual">
                         <div class="myth-visual__label">Wanting vs. Liking</div>
@@ -143,7 +143,7 @@
                 </div>
             </article>
 
-                    <article id="myth-3" class="myth-card">
+                    <article id="myth-3" class="myth-card" data-roman="III" data-title="Myth III: Desire">
                 <div class="myth-card__grid">
                     <div class="myth-card__visual">
                         <div class="myth-visual__label">Craving vs. Aspiration</div>
@@ -174,7 +174,7 @@
                 </div>
             </article>
 
-                    <article id="myth-4" class="myth-card">
+                    <article id="myth-4" class="myth-card" data-roman="IV" data-title="Myth IV: Detox">
                 <div class="myth-card__grid">
                     <div class="myth-card__visual">
                         <div class="myth-visual__label">Tolerance, not Detox</div>
@@ -385,5 +385,18 @@
             });
         });
     </script>
+    <!-- The Neural Compass UI -->
+    <div class="compass-container" aria-hidden="true">
+        <div class="magnet-zone" id="magnet">
+            <div class="compass-disc">
+                <svg class="progress-ring" viewBox="0 0 80 80">
+                    <circle class="ring-bg" cx="40" cy="40" r="38"></circle>
+                    <circle class="ring-fill" id="ringFill" cx="40" cy="40" r="38"></circle>
+                </svg>
+                <span class="compass-text" id="compassNum">0</span>
+            </div>
+        </div>
+        <div class="compass-label" id="compassLabel">Introduction</div>
+    </div>
 </body>
 </html>
