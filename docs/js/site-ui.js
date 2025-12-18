@@ -46,6 +46,9 @@ document.addEventListener('DOMContentLoaded', () => {
     
     let currentRoman = "0"; 
 
+    const liveRegion = document.getElementById('compassLive');
+    const mythsList = Array.from(document.querySelectorAll('.myth-card[data-roman]'));
+
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if(entry.isIntersecting) {
@@ -66,6 +69,21 @@ document.addEventListener('DOMContentLoaded', () => {
                             compassNum.innerText = newRoman;
                             compassNum.classList.remove('blur-out');
                         }, 300); // Matches CSS transition time
+                    }
+
+                    // Accessibility: announce via live region
+                    if (liveRegion) {
+                        let announcement = newTitle || newRoman;
+                        // If this is a myth card, compute its index among myths
+                        if (newRoman !== '0') {
+                            const idx = mythsList.findIndex(m => m === entry.target);
+                            if (idx !== -1) {
+                                announcement = `${newTitle}. Myth ${idx + 1} of ${mythsList.length}`;
+                            }
+                        } else {
+                            announcement = `Introduction`;
+                        }
+                        liveRegion.innerText = announcement;
                     }
                 }
             }

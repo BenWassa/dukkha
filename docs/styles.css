@@ -3803,27 +3803,20 @@ button:focus,
 
 .myth-card::before { display: none; } /* Remove background fill pseudo-element */
 
-/* The Grid: Image vs Text */
+/* The Grid: Content flows around full-width infographic */
 .myth-card__grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-12);
-  align-items: center;
+  grid-template-columns: 1fr;
+  gap: var(--space-8);
 }
 
-/* ALTERNATING RHYTHM: Even items flip order */
-.myth-card:nth-child(even) .myth-card__grid {
-  direction: rtl; /* Quick trick to swap columns visually */
-}
-.myth-card:nth-child(even) .myth-card__grid > * {
-  direction: ltr; /* Reset text direction inside */
-}
-
-/* --- 3. VISUALS --- */
+/* --- 3. VISUALS: Full-Width Infographics --- */
 .myth-card__visual {
   background: transparent;
   border: none;
   padding: 0;
+  grid-column: 1 / -1; /* Span full width */
+  margin-bottom: var(--space-4);
 }
 
 .myth-card__visual::before { display: none; } /* Remove top accent line */
@@ -3840,6 +3833,7 @@ button:focus,
   transform: rotate(-1deg); /* Subtle organic tilt */
   transition: transform 0.4s ease;
   margin: 0; /* Reset margins */
+  width: 100%; /* Full content width */
 }
 
 .myth-card:nth-child(even) .myth-infographic {
@@ -3851,8 +3845,11 @@ button:focus,
 }
 
 .myth-infographic img {
-  max-height: 520px; /* Increased from 460px */
+  width: 100%;
+  height: auto;
+  max-height: 620px; /* Increased for full-width presence */
   object-fit: contain;
+  display: block;
 }
 
 .myth-visual__label {

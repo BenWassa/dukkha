@@ -82,14 +82,14 @@
 
                 <section class="myth-collection" id="myth-collection">
                     <article id="myth-1" class="myth-card" data-roman="I" data-title="Myth I: Dukkha">
-                        <div class="myth-card__grid">
                     <div class="myth-card__visual">
-                        <div class="myth-visual__label">Beyond “Life is Suffering”</div>
+                        <div class="myth-visual__label">Beyond "Life is Suffering"</div>
                         <figure class="myth-infographic myth-infographic--landscape">
                             <img src="../assets/infographics/M1_Dukkha- Unsatisfactoriness, Not Just Pain.png" alt="Infographic reframing dukkha as unsatisfactoriness and showing how craving fuels suffering." loading="lazy" decoding="async">
                             <figcaption class="myth-infographic__caption">Dukkha as unsatisfactoriness and craving in one glance.</figcaption>
                         </figure>
                     </div>
+                        <div class="myth-card__grid">
                     <div class="myth-card__content">
                         <div class="myth-card__tag">Myth #1</div>
                         <p class="myth-card__myth">"Buddhism says 'Life is Suffering,' so it's a pessimistic philosophy."</p>
@@ -113,7 +113,6 @@
             </article>
 
                     <article id="myth-2" class="myth-card" data-roman="II" data-title="Myth II: Dopamine">
-                <div class="myth-card__grid">
                     <div class="myth-card__visual">
                         <div class="myth-visual__label">Wanting vs. Liking</div>
                         <figure class="myth-infographic myth-infographic--landscape">
@@ -121,6 +120,7 @@
                             <figcaption class="myth-infographic__caption">Dopamine-driven wanting contrasted with liking, plus autonomy cues.</figcaption>
                         </figure>
                     </div>
+                <div class="myth-card__grid">
                     <div class="myth-card__content">
                         <div class="myth-card__tag">Myth #2</div>
                         <p class="myth-card__myth">"Dopamine is the 'pleasure chemical' – more dopamine means more happiness."</p>
@@ -144,7 +144,6 @@
             </article>
 
                     <article id="myth-3" class="myth-card" data-roman="III" data-title="Myth III: Desire">
-                <div class="myth-card__grid">
                     <div class="myth-card__visual">
                         <div class="myth-visual__label">Craving vs. Aspiration</div>
                         <figure class="myth-infographic myth-infographic--landscape">
@@ -152,6 +151,7 @@
                             <figcaption class="myth-infographic__caption">Craving versus aspiration mapped to hijacked wanting.</figcaption>
                         </figure>
                     </div>
+                <div class="myth-card__grid">
                     <div class="myth-card__content">
                         <div class="myth-card__tag">Myth #3</div>
                         <p class="myth-card__myth">"All desire is bad; I should become emotionless and want nothing."</p>
@@ -175,7 +175,6 @@
             </article>
 
                     <article id="myth-4" class="myth-card" data-roman="IV" data-title="Myth IV: Detox">
-                <div class="myth-card__grid">
                     <div class="myth-card__visual">
                         <div class="myth-visual__label">Tolerance, not Detox</div>
                         <figure class="myth-infographic myth-infographic--landscape">
@@ -183,6 +182,7 @@
                             <figcaption class="myth-infographic__caption">Detox myth debunked with a focus on overstimulation and baseline.</figcaption>
                         </figure>
                     </div>
+                <div class="myth-card__grid">
                     <div class="myth-card__content">
                         <div class="myth-card__tag">Myth #4</div>
                         <p class="myth-card__myth">"I can get addicted to dopamine itself — I need a 'dopamine detox' to reset my brain."</p>
@@ -204,8 +204,7 @@
                 </div>
             </article>
 
-                    <article id="myth-5" class="myth-card">
-                <div class="myth-card__grid">
+                    <article id="myth-5" class="myth-card" data-roman="V" data-title="Myth V: Emotions">
                     <div class="myth-card__visual">
                         <div class="myth-visual__label">Balance over Extremes</div>
                         <figure class="myth-infographic myth-infographic--landscape">
@@ -213,6 +212,7 @@
                             <figcaption class="myth-infographic__caption">Middle Way balance visualized between indulgence and asceticism.</figcaption>
                         </figure>
                     </div>
+                <div class="myth-card__grid">
                     <div class="myth-card__content">
                         <div class="myth-card__tag">Myth #5</div>
                         <p class="myth-card__myth">"Buddhism teaches that we should eliminate all pleasure and become emotionless monks."</p>
@@ -300,6 +300,78 @@
     </footer>
 
     <script src="js/site-ui.js" defer></script>
+    <script>
+    // Inline fallback/init for the Neural Compass (guarded)
+    if (!window.__nc_inline_init) {
+      window.__nc_inline_init = true;
+      (function() {
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- 1. MAGNET PHYSICS ---
+            const magnet = document.getElementById('magnet');
+            if (magnet) {
+                magnet.addEventListener('mousemove', (e) => {
+                    const rect = magnet.getBoundingClientRect();
+                    const x = e.clientX - rect.left - rect.width / 2;
+                    const y = e.clientY - rect.top - rect.height / 2;
+                    magnet.style.transform = `translate(${x / 4}px, ${y / 4}px)`;
+                });
+
+                magnet.addEventListener('mouseleave', () => {
+                    magnet.style.transform = `translate(0px, 0px)`;
+                });
+            }
+
+            // --- 2. SCROLL PROGRESS RING ---
+            const ringFill = document.getElementById('ringFill');
+            const circumference = 238; // 2 * pi * 38
+
+            const updateRing = () => {
+                const collection = document.getElementById('myth-collection');
+                if (!collection || !ringFill) return;
+                const start = collection.offsetTop;
+                const total = Math.max(1, collection.offsetHeight - window.innerHeight);
+                const scrolled = Math.max(0, Math.min(1, (window.scrollY - start) / total));
+                const offset = circumference - (scrolled * circumference);
+                ringFill.style.strokeDashoffset = offset;
+            };
+
+            window.addEventListener('scroll', () => requestAnimationFrame(updateRing));
+            updateRing();
+
+            // --- 3. SECTION TRACKING (Blur Reveal + Label) ---
+            const compassNum = document.getElementById('compassNum');
+            const compassLabel = document.getElementById('compassLabel');
+            const liveRegion = document.getElementById('compassLive');
+            const trackableSections = document.querySelectorAll('.myths-hero, .myth-card');
+            let currentRoman = "0";
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if(entry.isIntersecting) {
+                        const newRoman = entry.target.getAttribute('data-roman');
+                        const newTitle = entry.target.getAttribute('data-title');
+
+                        if(newRoman && newRoman !== currentRoman) {
+                            currentRoman = newRoman;
+                            if(compassLabel && newTitle) compassLabel.innerText = newTitle;
+                            if(liveRegion && newTitle) liveRegion.innerText = `Current section: ${newTitle}`;
+                            if(compassNum) {
+                                compassNum.classList.add('blur-out');
+                                setTimeout(() => {
+                                    compassNum.innerText = newRoman;
+                                    compassNum.classList.remove('blur-out');
+                                }, 300);
+                            }
+                        }
+                    }
+                });
+            }, { threshold: 0.25 });
+
+            trackableSections.forEach(sec => observer.observe(sec));
+        });
+      })();
+    }
+    </script>
         <script>
         // Myths sidebar progress indicator
         (function() {
