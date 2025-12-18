@@ -368,6 +368,45 @@
     </footer>
 
     <script src="js/site-ui.js" defer></script>
+        <script>
+        // Myths sidebar progress indicator
+        (function() {
+            function initMythsNav() {
+                const nav = document.querySelector('.myths-nav');
+                if (!nav) return;
+                const links = Array.from(nav.querySelectorAll('.myths-nav__link'));
+                const sections = links.map(l => {
+                    const href = l.getAttribute('href');
+                    return href && href.startsWith('#') ? document.querySelector(href) : null;
+                });
+                const pairs = links.map((l, i) => ({ link: l, section: sections[i] })).filter(p => p.section);
+                if (!pairs.length) return;
+
+                const thresholds = Array.from({length: 21}, (_, i) => i/20);
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        const pair = pairs.find(p => p.section === entry.target);
+                        if (!pair) return;
+                        const ratio = entry.intersectionRatio;
+                        pair.link.style.setProperty('--progress', Math.round(ratio * 100) + '%');
+                        if (ratio > 0.6) {
+                            pair.link.setAttribute('aria-current', 'true');
+                        } else {
+                            pair.link.removeAttribute('aria-current');
+                        }
+                    });
+                }, { threshold: thresholds, rootMargin: '0px 0px -20% 0px' });
+
+                pairs.forEach(p => observer.observe(p.section));
+            }
+
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initMythsNav);
+            } else {
+                initMythsNav();
+            }
+        })();
+        </script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Collapsible footnotes section
