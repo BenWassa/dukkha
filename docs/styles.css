@@ -3465,3 +3465,50 @@ button:focus,
     font-size: var(--text-xs);
   }
 }
+
+/* =============================================
+   Myths Page Specific Fixes
+   ============================================= */
+
+/* 1. Constrain the Intro Text in the right column */
+.myths-page .content-claims {
+  max-width: var(--content-width, 760px);
+  margin: 0 auto; /* Centers it within the right grid column */
+  padding-bottom: var(--space-8); /* Breathing room before cards */
+}
+
+/* Typography tweak to match Attention page editorial feel */
+.myths-page .content-claims p {
+  font-size: 1.125rem;
+  line-height: 1.8;
+  color: var(--color-text-primary);
+}
+
+/* 2. Constrain the Myth Cards */
+.myths-page .myth-collection {
+  max-width: 960px; /* ~200px wider than text for visual pop */
+  margin: 0 auto;   /* Centers cards in the right column */
+  width: 100%;
+}
+
+/* 3. Card Spacing & Polish */
+.myth-card {
+  margin-bottom: var(--space-8);
+}
+
+/* 4. Hero Spacing Adjustments */
+.myths-page .myths-hero {
+  margin-bottom: var(--space-12);
+}
+
+/* 5. Mobile Adjustments */
+@media (max-width: 960px) {
+  /* On tablets/mobile where grid collapses to 1 column */
+  .myths-page .content-claims,
+  .myths-page .myth-collection {
+    max-width: 100%; /* Use full width available on small screens */
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
