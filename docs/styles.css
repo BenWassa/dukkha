@@ -3717,44 +3717,289 @@ button:focus,
    Myths Page Specific Fixes
    ============================================= */
 
-/* 1. Constrain the Intro Text in the right column */
-.myths-page .content-claims {
-  max-width: var(--content-width, 760px);
-  margin: 0 auto; /* Centers it within the right grid column */
-  padding-bottom: var(--space-8); /* Breathing room before cards */
+/* =============================================
+   Myths Page: "The Editorial Upgrade"
+   ============================================= */
+
+.myths-page {
+  /* Give the page breathing room */
+  padding-bottom: 30vh;
 }
 
-/* Typography tweak to match Attention page editorial feel */
-.myths-page .content-claims p {
-  font-size: 1.125rem;
-  line-height: 1.8;
-  color: var(--color-text-primary);
-}
-
-/* 2. Constrain the Myth Cards */
-.myths-page .myth-collection {
-  max-width: 960px; /* ~200px wider than text for visual pop */
-  margin: 0 auto;   /* Centers cards in the right column */
-  width: 100%;
-}
-
-/* 3. Card Spacing & Polish */
-.myth-card {
-  margin-bottom: var(--space-8);
-}
-
-/* 4. Hero Spacing Adjustments */
-.myths-page .myths-hero {
+/* --- 1. CINEMATIC HERO --- */
+/* Center the hero, remove the boxy borders, make it a statement */
+.myths-hero {
+  text-align: center;
+  padding: var(--space-20) var(--container-padding);
+  background: radial-gradient(circle at 50% 50%, rgba(201, 169, 97, 0.08) 0%, transparent 60%);
+  border: none;
+  box-shadow: none;
   margin-bottom: var(--space-12);
 }
 
-/* 5. Mobile Adjustments */
-@media (max-width: 960px) {
-  /* On tablets/mobile where grid collapses to 1 column */
-  .myths-page .content-claims,
-  .myths-page .myth-collection {
-    max-width: 100%; /* Use full width available on small screens */
-    padding-left: 0;
-    padding-right: 0;
+/* Hide the pseudo-elements (borders/decorations) from the old style */
+.myths-hero::before, .myths-hero::after { display: none; }
+
+.myths-hero__grid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Hide the "What this page delivers" side panel for a cleaner look */
+.myths-hero__panel { display: none; }
+
+.myths-hero__label {
+  margin-bottom: var(--space-6);
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+  background: transparent;
+}
+
+.myths-hero__title {
+  font-size: clamp(3rem, 6vw, 5rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.myths-hero__summary {
+  font-size: 1.25rem;
+  max-width: 60ch;
+  margin: 0 auto var(--space-8);
+  color: var(--color-text-secondary);
+}
+
+/* --- 2. ZIG-ZAG LAYOUT RHYTHM --- */
+/* Move from a stacked list to an alternating editorial flow */
+
+.myths-body {
+  /* Remove the sidebar grid. The Compass replaces the sidebar. */
+  display: block;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+}
+
+.myths-nav {
+  /* Hide the old sticky sidebar since we have the Compass now */
+  display: none;
+}
+
+.myth-collection {
+  gap: var(--space-32); /* Huge gap between myths for dramatic pacing */
+}
+
+.myth-card {
+  /* Remove the "Card" look. Make it a "Section". */
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+  overflow: visible;
+  margin-bottom: var(--space-32);
+}
+
+.myth-card::before { display: none; } /* Remove background fill pseudo-element */
+
+/* The Grid: Image vs Text */
+.myth-card__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-12);
+  align-items: center;
+}
+
+/* ALTERNATING RHYTHM: Even items flip order */
+.myth-card:nth-child(even) .myth-card__grid {
+  direction: rtl; /* Quick trick to swap columns visually */
+}
+.myth-card:nth-child(even) .myth-card__grid > * {
+  direction: ltr; /* Reset text direction inside */
+}
+
+/* --- 3. VISUALS --- */
+.myth-card__visual {
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+
+.myth-card__visual::before { display: none; } /* Remove top accent line */
+
+/* Make infographics look like "Plates" in a book */
+.myth-infographic {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  padding: var(--space-2);
+  border-radius: var(--border-radius-lg);
+  box-shadow:
+    0 20px 40px -10px rgba(0,0,0,0.2),
+    0 0 0 1px rgba(255,255,255,0.05);
+  transform: rotate(-1deg); /* Subtle organic tilt */
+  transition: transform 0.4s ease;
+  margin: 0; /* Reset margins */
+}
+
+.myth-card:nth-child(even) .myth-infographic {
+  transform: rotate(1deg); /* Tilt other way */
+}
+
+.myth-card:hover .myth-infographic {
+  transform: rotate(0deg) scale(1.02); /* Focus on hover */
+}
+
+.myth-infographic img {
+  max-height: 520px; /* Increased from 460px */
+  object-fit: contain;
+}
+
+.myth-visual__label {
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-2);
+  font-weight: 700;
+}
+
+/* --- 4. TYPOGRAPHY & CONTENT --- */
+.myth-card__content {
+  padding: 0;
+}
+
+.myth-card__tag {
+  background: transparent;
+  color: var(--color-accent);
+  padding: 0;
+  margin-bottom: var(--space-4);
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.1rem;
+}
+.myth-card__tag::before { content: "— "; margin-right: 4px; }
+
+/* The Myth: Faded, subtle */
+.myth-card__myth {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 1.1rem;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-4);
+  text-decoration: none; /* Remove strikethrough default */
+  opacity: 0.7;
+  border-left: 2px solid var(--color-border);
+  padding-left: var(--space-4);
+}
+
+/* The Truth: Big, Bold, Serif */
+.myth-card__truth {
+  font-family: var(--font-serif);
+  font-size: 2.5rem;
+  line-height: 1.1;
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-6);
+  font-weight: 600;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-4);
+}
+.myth-card__truth::before { display: none; } /* Remove checkmark circle */
+
+.myth-card__body p {
+  font-size: 1.125rem;
+  line-height: 1.8;
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+/* One Action Box: Minimalist */
+.myth-card__action {
+  margin-top: var(--space-8);
+  background: transparent;
+  border: 1px solid var(--color-accent);
+  border-radius: var(--border-radius);
+  padding: var(--space-6);
+  position: relative;
+}
+
+.myth-card__action span {
+  position: absolute;
+  top: -10px;
+  left: 20px;
+  background: var(--color-background);
+  padding: 0 var(--space-2);
+  color: var(--color-accent);
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* Sources: Cleaner Dropdown */
+.myth-card__sources {
+  margin-top: var(--space-4);
+  border-top: none;
+}
+
+/* Intro text section */
+.myths-page .content-claims {
+  max-width: 900px;
+  margin: 0 auto var(--space-12);
+  padding: 0;
+}
+
+.myths-page .content-claims p {
+  font-size: 1.25rem;
+  line-height: 1.8;
+  color: var(--color-text-secondary);
+  text-align: center;
+}
+
+/* Scale up CSS visuals for the big layout */
+.dukkha-visual,
+.dopamine-visual,
+.paths-visual,
+.receptor-visual,
+.gauge-visual {
+  max-width: 100%; /* Fill the container */
+  transform: scale(1.1); /* Slight zoom */
+}
+
+/* Mobile: Stack normally */
+@media (max-width: 900px) {
+  .myth-card__grid,
+  .myth-card:nth-child(even) .myth-card__grid {
+    grid-template-columns: 1fr;
+    direction: ltr;
+    gap: var(--space-8);
+  }
+
+  .myth-card {
+    margin-bottom: var(--space-12);
+  }
+
+  .myth-infographic img {
+    max-height: 360px;
+  }
+
+  .myth-card__truth {
+    font-size: 1.8rem;
+  }
+
+  .myths-body {
+    padding: 0 var(--container-padding);
+  }
+
+  .myths-hero {
+    padding: var(--space-12) var(--container-padding);
+  }
+
+  .myths-hero__title {
+    font-size: clamp(2rem, 5vw, 3rem);
+  }
+
+  .myths-hero__summary {
+    font-size: 1rem;
   }
 }
