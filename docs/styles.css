@@ -2582,6 +2582,26 @@ button:focus,
   box-shadow: var(--shadow-md);
 }
 
+/* Background fill on the myth card driven by --progress (e.g., "65%") */
+.myth-card {
+  position: relative;
+}
+.myth-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: var(--progress, 0%);
+  background: linear-gradient(to bottom, var(--color-accent-light), transparent 80%);
+  opacity: 0.14;
+  pointer-events: none;
+  transition: height 140ms linear, opacity 200ms ease;
+  z-index: 0;
+}
+/* Ensure card children render above the pseudo element */
+.myth-card > * { position: relative; z-index: 1; }
+
 .myth-card__grid {
   display: grid;
   grid-template-columns: 1fr;

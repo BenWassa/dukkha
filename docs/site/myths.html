@@ -384,17 +384,24 @@
 
                 const thresholds = Array.from({length: 21}, (_, i) => i/20);
                 const observer = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        const pair = pairs.find(p => p.section === entry.target);
-                        if (!pair) return;
-                        const ratio = entry.intersectionRatio;
-                        pair.link.style.setProperty('--progress', Math.round(ratio * 100) + '%');
-                        if (ratio > 0.6) {
-                            pair.link.setAttribute('aria-current', 'true');
-                        } else {
-                            pair.link.removeAttribute('aria-current');
-                        }
-                    });
+                        entries.forEach(entry => {
+                            const pair = pairs.find(p => p.section === entry.target);
+                            if (!pair) return;
+                            const ratio = entry.intersectionRatio;
+                            const pct = Math.round(ratio * 100) + '%';
+                            // update nav link progress
+                            pair.link.style.setProperty('--progress', pct);
+                            // update the section card background progress
+                            pair.section.style.setProperty('--progress', pct);
+                            // mark active when mostly visible
+                            if (ratio > 0.6) {
+                                pair.link.setAttribute('aria-current', 'true');
+                                pair.section.classList.add('is-current');
+                            } else {
+                                pair.link.removeAttribute('aria-current');
+                                pair.section.classList.remove('is-current');
+                            }
+                        });
                 }, { threshold: thresholds, rootMargin: '0px 0px -20% 0px' });
 
                 pairs.forEach(p => observer.observe(p.section));
