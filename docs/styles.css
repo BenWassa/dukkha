@@ -2628,6 +2628,47 @@ button:focus,
   opacity: 0.65;
 }
 
+.myth-infographic {
+  margin: var(--space-4) 0 0;
+  padding: var(--space-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-lg);
+  background:
+    radial-gradient(circle at 14% 18%, rgba(201, 169, 97, 0.16), transparent 32%),
+    radial-gradient(circle at 86% 8%, rgba(59, 130, 246, 0.12), transparent 26%),
+    rgba(15, 23, 42, 0.32);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.myth-infographic img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: calc(var(--border-radius-lg) - 2px);
+  background: #0b1220;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.02);
+}
+
+.myth-infographic__caption {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: 1.5;
+}
+
+.myth-infographic--landscape img {
+  max-height: 460px;
+  object-fit: contain;
+}
+
+.myth-infographic--portrait img {
+  max-height: 640px;
+  object-fit: contain;
+}
+
 .myth-card__content {
   padding: clamp(var(--space-6), 4vw, var(--space-8));
   display: flex;
@@ -3575,4 +3616,3 @@ button:focus,
     padding-right: 0;
   }
 }
-
