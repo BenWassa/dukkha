@@ -66,10 +66,9 @@
     var messages = [
       'Keep going—you\'re doing great.',
       'Halfway there!',
-      'Almost finished!',
-      'Finished!'
+      'Almost finished!'
     ];
-    var thresholds = [0.25, 0.5, 0.75, 0.99];
+    var thresholds = [0.25, 0.5, 0.75];
     var shown = -1;
     var checkPrompt = function() {
       var h = document.body.scrollHeight - window.innerHeight;
@@ -83,11 +82,6 @@
         shown = idx;
         promptText.textContent = messages[idx];
         prompt.classList.add('active');
-        if (idx === thresholds.length - 1) {
-          prompt.classList.add('finished');
-        } else {
-          prompt.classList.remove('finished');
-        }
       }
     };
     window.addEventListener('scroll', checkPrompt, { passive: true });
@@ -334,40 +328,13 @@
       var mailto = footerLinks.querySelector('a[href^="mailto:"]');
       if (mailto) {
         // Candidate paths to the white GitHub mark SVG. We'll try each until one loads.
-        // Compute a script-relative candidate (works for multiple server root setups).
-        var candidates = [];
-        try {
-          // document.currentScript is the best way to find the script URL at runtime
-          var scriptSrc = (document.currentScript && document.currentScript.src) || (function() {
-            var s = document.querySelector('script[src*="site-ui.js"]');
-            return s ? s.src : null;
-          })();
-          if (scriptSrc) {
-            try {
-              var scriptUrl = new URL(scriptSrc, window.location.href);
-              // Attempt to resolve to the /docs/images path by climbing up to the repo root
-              var resolved = new URL('../../images/icons/github-mark/github-mark-white.svg', scriptUrl).pathname;
-              // Also attempt the assets/images path (canonical assets folder)
-              var resolvedAssets = new URL('../../assets/images/icons/github-mark/github-mark-white.svg', scriptUrl).pathname;
-              candidates.push(resolvedAssets);
-              candidates.push(resolved);
-            } catch (e) { /* ignore if URL fails */ }
-          }
-        } catch (e) { /* safe fallback */ }
-
-        // Other fallbacks (absolute and relative)
-        candidates = candidates.concat([
-          '/docs/assets/images/icons/github-mark/github-mark-white.svg',
-          '/assets/images/icons/github-mark/github-mark-white.svg',
-          '/docs/images/icons/github-mark/github-mark-white.svg',
-          '/images/icons/github-mark/github-mark-white.svg',
-          '../../assets/images/icons/github-mark/github-mark-white.svg',
-          '../../images/icons/github-mark/github-mark-white.svg',
-          '../assets/images/icons/github-mark/github-mark-white.svg',
+        var candidates = [
+          'images/icons/github-mark/github-mark-white.svg',
           '../images/icons/github-mark/github-mark-white.svg',
-          'assets/images/icons/github-mark/github-mark-white.svg',
-          'images/icons/github-mark/github-mark-white.svg'
-        ]);
+          '../../images/icons/github-mark/github-mark-white.svg',
+          '/docs/images/icons/github-mark/github-mark-white.svg',
+          '/images/icons/github-mark/github-mark-white.svg'
+        ];
 
         function tryLoad(index) {
           if (index >= candidates.length) {
@@ -402,12 +369,10 @@
             ghLink.href = 'https://github.com/BenWassa/dukkha';
             ghLink.target = '_blank';
             ghLink.rel = 'noopener noreferrer';
-            ghLink.className = 'site-footer__github github-link';
-            ghLink.setAttribute('aria-label', 'Project Dukkha on GitHub');
+            ghLink.className = 'github-link';
             var img = document.createElement('img');
             img.src = src;
-            // decorative image — provide empty alt text when anchor is labelled
-            img.alt = '';
+            img.alt = 'GitHub';
             img.className = 'github-icon';
             // ensure the image uses the white mark; if src doesn't indicate white, we prefer explicit file
             if (!/white/i.test(src)) img.src = src;
@@ -422,16 +387,6 @@
         tryLoad(0);
       }
     }
-  } catch (e) { /* noop */ }
-
-  // Attach print link behaviour for elements with class .print-link
-  try {
-    document.querySelectorAll('.print-link').forEach(function(link) {
-      link.addEventListener('click', function(e) {
-        e.preventDefault();
-        window.print();
-      });
-    });
   } catch (e) { /* noop */ }
 
 })();

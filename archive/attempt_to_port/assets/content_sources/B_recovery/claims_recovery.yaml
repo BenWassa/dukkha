@@ -1,0 +1,89 @@
+- id: R4-C01
+  text: "Acute stress surges (e.g., via cortisol and noradrenaline) heighten dopaminergic “salience” signals for drug cues, leading to increased craving and drug-seeking."
+  importance: High
+  strength: High
+  scope: mixed
+  caveats: "Laboratory stress analogs (e.g., TSST) reliably provoke craving, but may not capture all real-world factors; individual variability in stress responses exists."
+  evidence_cites: ["mckee2011", "sinha2024"]
+  contradictions: []
+
+- id: R4-C02
+  text: "Chronic or repeated stress produces lasting dysregulation in stress and reward circuits (e.g., elevated CRF–dynorphin activity and blunted dopamine responses), fostering anhedonia and greater relapse vulnerability."
+  importance: High
+  strength: Medium
+  scope: mixed
+  caveats: "Human evidence is largely correlational; extrapolated from animal models of chronic stress-induced reward deficits; species differences and confounding life factors limit direct inference."
+  evidence_cites: ["baik2020", "mantsch2016"]
+  contradictions: []
+
+- id: R4-C03
+  text: "Stress exposure is a potent trigger for craving, and stress-induced craving often immediately precedes lapses or relapse episodes."
+  importance: High
+  strength: High
+  scope: human
+  caveats: "Demonstrated in prospective human studies; however, retrospective self-report can bias stress–relapse links."
+  evidence_cites: ["wemm2019", "sinha2024"]
+  contradictions: []
+
+- id: R4-C04
+  text: "Individuals with heightened stress reactivity or negative affect (e.g., high cortisol response, anxiety/PTSD) experience stronger cue-induced cravings and face elevated relapse risk."
+  importance: Medium
+  strength: Medium
+  scope: human
+  caveats: "Stress reactivity varies widely; e.g., patients with high withdrawal-related distress benefited most from stress-targeted treatment. Associations are correlational; causality is inferred but not definitively proven in humans."
+  evidence_cites: ["sinha2024"]
+  contradictions: []
+
+- id: R4-C05
+  text: "Noradrenergic arousal mediates stress-related craving: pharmacologically dampening central noradrenaline (using α₁-blockers like prazosin or α₂-agonists like clonidine/lofexidine) reduces stress-induced craving and can improve abstinence outcomes."
+  importance: High
+  strength: Medium
+  scope: human
+  caveats: "Supported by pilot trials; effects may be specific to high-stress subgroups (e.g., those with severe withdrawal or comorbid PTSD). Medication side effects and adherence affect real-world utility."
+  evidence_cites: ["sinha2024"]
+  contradictions: []
+
+- id: R4-C06
+  text: "HPA-axis modulation can alter craving: Elevated cortisol during stress correlates with higher craving, yet paradoxically, administering cortisol acutely can reduce drug-cue craving by impairing memory reconsolidation of drug cues."
+  importance: Medium
+  strength: Medium
+  scope: human
+  caveats: "Context-dependent effects: cortisol’s craving-reducing impact was seen in low-dependence cases and in controlled exposure settings. Not a standard treatment yet; longitudinal benefits and optimal dosing remain unclear."
+  evidence_cites: ["mckee2011", "walter2015", "soravia2021"]
+  contradictions: []
+
+- id: R4-C07
+  text: "Sleep disturbances (insomnia, reduced slow-wave sleep) are pervasive in recovery and independently predict stronger cravings and higher relapse risk."
+  importance: High
+  strength: High
+  scope: human
+  caveats: "Baseline insomnia and poor sleep continuity correlate with earlier relapse in alcohol use disorder. Causality is bidirectional—substance withdrawal disrupts sleep, and lack of restorative sleep elevates stress and impulsivity."
+  evidence_cites: ["brower1998", "zhang2021"]
+  contradictions: []
+
+- id: R4-C08
+  text: "Targeting sleep early in treatment (through sleep hygiene or therapy) can lower stress and improve self-regulation, potentially reducing relapse likelihood, although direct evidence for long-term relapse prevention is still emerging."
+  importance: High
+  strength: Medium
+  scope: human
+  caveats: "Small trials of insomnia treatment in SUD show improved sleep and next-day mood, but mixed impact on 3–6 month relapse rates. Poor adherence to sleep interventions can limit efficacy."
+  evidence_cites: ["zhang2021"]
+  contradictions: []
+
+- id: R4-C09
+  text: "Regular physical exercise attenuates stress and craving: acute moderate exercise reliably reduces momentary drug cravings, and exercise-based programs modestly improve mood and increase abstinence rates in SUD patients."
+  importance: Medium
+  strength: High
+  scope: human
+  caveats: "Consistent acute effects on craving are reported; however, sustaining exercise long-term is challenging, and not all studies show significant improvements in sustained abstinence (effects often modest, e.g., OR≈1.7)."
+  evidence_cites: ["haasova2013", "wang2014"]
+  contradictions: []
+
+- id: R4-C10
+  text: "Mindfulness-based interventions (e.g., meditation, breathwork) reduce stress reactivity and help manage cravings. In RCTs, mindfulness training (MBRP) significantly lowered relapse risk and days of use compared to standard relapse prevention."
+  importance: High
+  strength: High
+  scope: human
+  caveats: "Mindfulness requires active patient engagement; while multiple trials report benefits, some outcomes (e.g., time to first lapse) may be comparable to cognitive-behavioral approaches. Optimal integration (group vs. individual format) is under study."
+  evidence_cites: ["bowen2014"]
+  contradictions: []
