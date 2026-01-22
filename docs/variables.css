@@ -5,19 +5,19 @@
 
 /* CSS Custom Properties */
 :root {
-  /* Colors - Light Mode */
-  --color-primary: #1e293b;
-  --color-primary-light: #334155;
+  /* Colors - Dark Mode (Forced) */
+  --color-primary: #f1f5f9;
+  --color-primary-light: #e2e8f0;
   --color-accent: #c9a961;
   --color-accent-light: #d4b574;
-  --color-background: #fefefe;
-  --color-surface: #f8fafc;
-  --color-surface-elevated: #ffffff;
-  --color-text-primary: #0f172a;
-  --color-text-secondary: #475569;
-  --color-text-muted: #64748b;
-  --color-border: #e2e8f0;
-  --color-border-light: #f1f5f9;
+  --color-background: #0f172a;
+  --color-surface: #1e293b;
+  --color-surface-elevated: #334155;
+  --color-text-primary: #f8fafc;
+  --color-text-secondary: #cbd5e1;
+  --color-text-muted: #94a3b8;
+  --color-border: #334155;
+  --color-border-light: #475569;
   --color-success: #059669;
   --color-warning: #d97706;
   --color-error: #dc2626;
@@ -102,18 +102,18 @@
   /* Small border radius */
   --border-radius-sm: 6px;
   /* Nav floating card tokens */
-  --nav-floating-bg-a: 0.86; /* alpha for the glass background on the nav container */
+  --nav-floating-bg-a: 0.14; /* alpha for the glass background on the nav container */
   --nav-floating-offset-y: 8px; /* vertical visual lift of the floating nav */
   --nav-floating-radius: 12px; /* corner radius for the nav card */
   --nav-floating-padding-vertical: 6px; /* inner padding for nav card */
   --nav-floating-shadow: 0 10px 30px rgba(15,23,42,0.12);
-  --nav-floating-border: rgba(15,23,42,0.06);
+  --nav-floating-border: rgba(255,255,255,0.06);
   --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
   /* RGB fallback for nav backdrop if needed */
-  --color-background-rgb: 255, 255, 255;
+  --color-background-rgb: 15, 23, 42;
   /* Accent decoration thickness (unused) */
   /* --accent-thickness: 3px; */
-  --nav-text-color: var(--color-text-secondary);
+  --nav-text-color: var(--color-text-primary);
   /* Footer tokens */
   --footer-bg: var(--color-surface);
   --footer-border: var(--color-border);
@@ -122,46 +122,4 @@
   --footer-column-min: 220px;
 }
 
-/* Force dark mode when the root has the `.dark` class (explicit override for testing) */
-:root.dark {
-  --color-primary: #f1f5f9;
-  --color-primary-light: #e2e8f0;
-  --color-accent: #c9a961;
-  --color-accent-light: #d4b574;
-  --color-background: #0f172a;
-  --color-surface: #1e293b;
-  --color-surface-elevated: #334155;
-  --color-text-primary: #f8fafc;
-  --color-text-secondary: #cbd5e1;
-  --color-text-muted: #94a3b8;
-  --color-border: #334155;
-  --color-border-light: #475569;
-  --color-background-rgb: 15, 23, 42;
-  --nav-text-color: var(--color-text-primary);
-  --nav-floating-bg-a: 0.14;
-  --nav-floating-border: rgba(255,255,255,0.06);
-}
-
-/* Dark Mode Variables */
-@media (prefers-color-scheme: dark) {
-  :root, :root.dark {
-    --color-primary: #f1f5f9;
-    --color-primary-light: #e2e8f0;
-    --color-accent: #c9a961;
-    --color-accent-light: #d4b574;
-    --color-background: #0f172a;
-    --color-surface: #1e293b;
-    --color-surface-elevated: #334155;
-    --color-text-primary: #f8fafc;
-    --color-text-secondary: #cbd5e1;
-    --color-text-muted: #94a3b8;
-    --color-border: #334155;
-    --color-border-light: #475569;
-    /* RGB white/black pairs for glass nav fallback */
-    --color-background-rgb: 15, 23, 42; /* Dark mode background rgb */
-    --nav-text-color: var(--color-text-primary);
-    /* Nav floating adjustments for dark mode */
-    --nav-floating-bg-a: 0.14;
-    --nav-floating-border: rgba(255,255,255,0.06);
-  }
-}
+/* Dark Mode Variables - Removed to force dark mode always */
