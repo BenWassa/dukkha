@@ -81,60 +81,17 @@
 
 /* General Styling for Actual Diagrams (SVG files embedded via <img>) */
 .diagram-visual {
-  display: block;
-  width: 100%;
-  max-width: var(--diagram-max-width); /* tokenized max width */
-  aspect-ratio: 16 / 9; /* maintain a flexible viewport */
-  max-height: var(--diagram-max-height);
-  margin: var(--space-8) auto;
-  border: 1px solid var(--color-border);
-  border-radius: var(--border-radius-lg);
-  box-shadow: var(--shadow-sm);
-  object-fit: contain; /* allow SVGs to scale naturally */
-  object-position: center center; /* Center the SVG within the viewport */
-  overflow: hidden; /* Hide parts that extend beyond the viewport */
-}
-
-/* =============================================
-   Infographic Helpers
-   Provides landscape and portrait variants for diagrams and images
-   ============================================= */
-.infographic {
-  display: block;
-  max-width: 100%;
-  margin: var(--space-6) auto;
-  border-radius: var(--border-radius-lg);
-  box-shadow: var(--shadow-sm);
-  overflow: hidden;
-}
-
-.infographic .diagram-visual {
-  display: block;
-  width: 100%;
-  height: auto;
-  border: none; /* let the container handle border if required */
-}
-
-/* Landscape infographics (wider visual) */
-.infographic--landscape .diagram-visual {
-  aspect-ratio: 16 / 9;
-  max-height: var(--diagram-max-height);
-  object-fit: cover; /* crop when necessary to preserve visual impact */
-}
-
-/* Portrait infographics (taller visual) */
-.infographic--portrait .diagram-visual {
-  aspect-ratio: 3 / 4;
-  max-height: var(--diagram-portrait-max-height);
-  object-fit: contain; /* show entire diagram for tall visuals */
-}
-
-/* Caption for infographics */
-.infographic-caption {
-  font-size: 0.9rem;
-  color: var(--color-text-muted);
-  text-align: center;
-  padding: var(--space-2) var(--space-3);
+    display: block;
+    width: 100%;
+    max-width: 700px; /* Adjust max width for all diagrams as needed for consistency */
+    height: 400px; /* Fixed height to create a viewport for cropping */
+    margin: var(--space-8) auto;
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-sm);
+    object-fit: none; /* Don't scale the SVG, show it at original size */
+    object-position: center center; /* Center the SVG within the viewport */
+    overflow: hidden; /* Hide parts that extend beyond the viewport */
 }
 
 /* =============================================
@@ -144,23 +101,23 @@
 /* Protocol list & details styles */
 .protocol-list { 
   display: grid; 
-  gap: var(--space-4); 
+  gap: 1rem; 
   grid-template-columns: 1fr; 
-  max-width: var(--container-width); 
+  max-width: 900px; 
   margin: 0 auto; 
 }
 
 .protocol-card { 
   border: 1px solid var(--color-border); 
-  padding: var(--space-4); 
-  border-radius: var(--border-radius); 
+  padding: 1rem; 
+  border-radius: 8px; 
   background: var(--color-surface); 
 }
 
 details.protocol-summary { 
   border: 1px solid var(--color-border); 
   padding: 0.6rem; 
-  border-radius: var(--border-radius-sm); 
+  border-radius: 6px; 
   background: transparent; 
 }
 
@@ -232,11 +189,6 @@ details.protocol-summary[open] {
   cursor: pointer;
 }
 .read-prompt__close:focus { outline: 2px solid var(--color-accent); }
-
-.read-prompt.finished .read-prompt__text {
-  font-weight: 700;
-  color: var(--color-accent);
-}
 
 .nav-dropdown { position: relative; }
 .nav-dropdown__toggle {
