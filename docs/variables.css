@@ -5,6 +5,7 @@
 
 /* CSS Custom Properties - Dark Mode (Default & Forced) */
 :root {
+  color-scheme: dark;
   /* Colors - Dark Mode (Forced) */
   --color-primary: #f1f5f9;
   --color-primary-light: #e2e8f0;
@@ -65,22 +66,4 @@
   --transition-fast: 0.15s ease-out;
   --transition-normal: 0.25s ease-out;
   --transition-slow: 0.5s ease-out;
-}
-
-/* Dark Mode Variables */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-primary: #f1f5f9;
-    --color-primary-light: #e2e8f0;
-    --color-accent: #c9a961;
-    --color-accent-light: #d4b574;
-    --color-background: #0f172a;
-    --color-surface: #1e293b;
-    --color-surface-elevated: #334155;
-    --color-text-primary: #f8fafc;
-    --color-text-secondary: #cbd5e1;
-    --color-text-muted: #94a3b8;
-    --color-border: #334155;
-    --color-border-light: #475569;
-  }
 }

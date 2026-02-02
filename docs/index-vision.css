@@ -67,14 +67,9 @@ section.in-view {
     border-bottom: 1px solid transparent;
 }
 .main-nav.scrolled {
-    background-color: rgba(254, 254, 254, 0.8);
+    background-color: rgba(15, 23, 42, 0.8);
     backdrop-filter: blur(8px);
     border-bottom-color: var(--color-border);
-}
-@media (prefers-color-scheme: dark) {
-    .main-nav.scrolled {
-        background-color: rgba(15, 23, 42, 0.8);
-    }
 }
 .nav-brand {
     display: flex;
